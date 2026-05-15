@@ -1,0 +1,16 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><link rel="stylesheet" href="_card.css"><style>
+.sem { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+.tile { padding: 14px 16px; border-radius: var(--r-md); border: 1px solid var(--border); display: flex; flex-direction: column; gap: 8px; }
+.tile .dot { width: 28px; height: 28px; border-radius: 50%; }
+.tile .name { font-weight: 600; font-size: 13px; color: var(--fg); }
+.tile .hex { font-family: var(--font-mono); font-size: 11px; color: var(--fg-muted); }
+.tile .use { font-size: 11px; color: var(--fg-subtle); }
+</style></head><body>
+<div class="card">
+  <div class="sem">
+    <div class="tile"><div class="dot" style="background:#209499"></div><div><div class="name">Info / Accent</div><div class="hex">#209499</div></div><div class="use">Primary CTA, links, focus</div></div>
+    <div class="tile"><div class="dot" style="background:#6FA13E"></div><div><div class="name">Success</div><div class="hex">#6FA13E</div></div><div class="use">Confirmation, positive state</div></div>
+    <div class="tile"><div class="dot" style="background:#ED9321"></div><div><div class="name">Warning</div><div class="hex">#ED9321</div></div><div class="use">Attention, non-blocking</div></div>
+    <div class="tile"><div class="dot" style="background:#BD2429"></div><div><div class="name">Danger</div><div class="hex">#BD2429</div></div><div class="use">Destructive, error</div></div>
+  </div>
+</div></body></html>

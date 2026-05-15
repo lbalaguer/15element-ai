@@ -1,0 +1,32 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><link rel="stylesheet" href="_card.css"><style>
+.palette { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+.swatch {
+  border-radius: var(--r-md);
+  overflow: hidden;
+  border: 1px solid var(--border);
+}
+.chip { height: 96px; display: flex; align-items: flex-end; padding: 10px; color: white; font-family: var(--font-mono); font-size: 11px; font-weight: 600; }
+.meta { padding: 8px 10px 10px; background: white; }
+.meta .name { font-size: 12px; font-weight: 600; color: var(--fg); margin-bottom: 2px; }
+.meta .hex { font-family: var(--font-mono); font-size: 11px; color: var(--fg-muted); }
+</style></head><body>
+<div class="card">
+  <div class="palette">
+    <div class="swatch">
+      <div class="chip" style="background:#7EB749">01</div>
+      <div class="meta"><div class="name">Element Green</div><div class="hex">#7EB749</div></div>
+    </div>
+    <div class="swatch">
+      <div class="chip" style="background:#BD2429">02</div>
+      <div class="meta"><div class="name">Element Red</div><div class="hex">#BD2429</div></div>
+    </div>
+    <div class="swatch">
+      <div class="chip" style="background:#209499">03</div>
+      <div class="meta"><div class="name">Element Teal</div><div class="hex">#209499</div></div>
+    </div>
+    <div class="swatch">
+      <div class="chip" style="background:#ED9321">04</div>
+      <div class="meta"><div class="name">Element Orange</div><div class="hex">#ED9321</div></div>
+    </div>
+  </div>
+</div></body></html>

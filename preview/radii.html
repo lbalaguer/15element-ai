@@ -1,0 +1,20 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><link rel="stylesheet" href="_card.css"><style>
+.radii { display: grid; grid-template-columns: repeat(7, 1fr); gap: 10px; }
+.r-tile { aspect-ratio: 1 / 1; background: var(--brand-navy); display: flex; align-items: flex-end; justify-content: center; padding-bottom: 6px; }
+.r-tile .l { font-family: var(--font-mono); font-size: 10px; color: rgba(255,255,255,0.8); }
+.r-row { display: grid; grid-template-columns: repeat(7, 1fr); gap: 10px; font-family: var(--font-mono); font-size: 10px; color: var(--fg-subtle); text-align: center; }
+</style></head><body>
+<div class="card">
+  <div class="radii">
+    <div class="r-tile" style="border-radius:0"><span class="l">0</span></div>
+    <div class="r-tile" style="border-radius:4px"><span class="l">4</span></div>
+    <div class="r-tile" style="border-radius:6px"><span class="l">6</span></div>
+    <div class="r-tile" style="border-radius:10px"><span class="l">10</span></div>
+    <div class="r-tile" style="border-radius:14px"><span class="l">14</span></div>
+    <div class="r-tile" style="border-radius:20px"><span class="l">20</span></div>
+    <div class="r-tile" style="border-radius:999px"><span class="l">pill</span></div>
+  </div>
+  <div class="r-row">
+    <span>none</span><span>xs</span><span>sm</span><span>md ★</span><span>lg</span><span>xl</span><span>pill</span>
+  </div>
+</div></body></html>

@@ -1,0 +1,14 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><link rel="stylesheet" href="_card.css"><style>
+.shadows { display: grid; grid-template-columns: repeat(5, 1fr); gap: 18px; padding: 8px 0 20px; }
+.s-tile { aspect-ratio: 1 / 1; background: white; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-family: var(--font-mono); font-size: 11px; color: var(--fg-muted); border: 1px solid rgba(0,0,0,0.02); }
+.s-row { display: grid; grid-template-columns: repeat(5, 1fr); gap: 18px; font-family: var(--font-mono); font-size: 10px; color: var(--fg-subtle); text-align: center; }
+</style></head><body>
+<div class="card" style="background:var(--ink-50)">
+  <div class="shadows">
+    <div class="s-tile" style="box-shadow:0 1px 2px rgba(20,22,42,0.06)">xs</div>
+    <div class="s-tile" style="box-shadow:0 2px 6px rgba(20,22,42,0.08), 0 1px 2px rgba(20,22,42,0.04)">sm</div>
+    <div class="s-tile" style="box-shadow:0 8px 24px rgba(20,22,42,0.10), 0 2px 6px rgba(20,22,42,0.05)">md</div>
+    <div class="s-tile" style="box-shadow:0 20px 48px rgba(20,22,42,0.14), 0 4px 10px rgba(20,22,42,0.06)">lg</div>
+    <div class="s-tile" style="box-shadow:0 32px 80px rgba(20,22,42,0.22)">xl</div>
+  </div>
+</div></body></html>

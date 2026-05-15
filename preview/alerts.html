@@ -1,0 +1,15 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><link rel="stylesheet" href="_card.css"><style>
+.alert { display: flex; gap: 14px; padding: 14px 18px; border-radius: 10px; border: 1px solid; align-items: flex-start; }
+.alert .ic { width: 18px; height: 18px; flex-shrink: 0; margin-top: 2px; }
+.alert .ttl { font-weight: 600; font-size: 14px; margin-bottom: 2px; }
+.alert .msg { font-size: 13px; line-height: 1.5; opacity: 0.85; }
+.a-info { background: rgba(32,148,153,0.06); border-color: rgba(32,148,153,0.3); color: #1A7B80; }
+.a-success { background: rgba(126,183,73,0.08); border-color: rgba(126,183,73,0.35); color: #5B8830; }
+.a-warning { background: rgba(237,147,33,0.08); border-color: rgba(237,147,33,0.35); color: #B0691A; }
+.a-danger { background: rgba(189,36,41,0.06); border-color: rgba(189,36,41,0.3); color: #A41F23; }
+</style></head><body>
+<div class="card" style="gap:10px">
+  <div class="alert a-info"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 8v4M12 16h.01"/></svg><div><div class="ttl">Inference cache warming</div><div class="msg">Element will be available in approximately 30 seconds.</div></div></div>
+  <div class="alert a-success"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg><div><div class="ttl">Deployed to production</div><div class="msg">Endpoint live at api.15e.ai/v1/cls/04.</div></div></div>
+  <div class="alert a-danger"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 8v4M12 16h.01"/></svg><div><div class="ttl">Connection lost</div><div class="msg">Retrying in 4s. Check region status.</div></div></div>
+</div></body></html>

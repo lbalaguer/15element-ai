@@ -1,0 +1,39 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><link rel="stylesheet" href="_card.css"><style>
+.cards { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.surf {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 18px 18px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  box-shadow: 0 2px 6px rgba(20,22,42,0.06);
+}
+.surf .eye { font-size: 10px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--fg-muted); }
+.surf .ttl { font-family: var(--font-body); font-size: 16px; font-weight: 600; color: var(--brand-navy); }
+.surf .num { font-family: var(--font-display); font-size: 40px; font-weight: 800; color: var(--brand-navy); line-height: 1; letter-spacing: -0.02em; }
+.surf .meta { display: flex; gap: 8px; font-size: 11px; color: var(--fg-muted); font-family: var(--font-mono); }
+.surf .b { font-family: var(--font-body); font-size: 11px; font-weight: 600; padding: 3px 8px; border-radius: 999px; background: rgba(126,183,73,0.16); color: #5B8830; align-self: flex-start; }
+.surf-dark { background: var(--brand-navy); border: 1px solid var(--brand-navy); color: white; }
+.surf-dark .ttl, .surf-dark .num { color: white; }
+.surf-dark .eye { color: rgba(255,255,255,0.55); }
+.surf-dark .meta { color: rgba(255,255,255,0.55); }
+</style></head><body>
+<div class="card" style="background:var(--ink-50); padding:24px">
+  <div class="cards">
+    <div class="surf">
+      <span class="eye">ELEMENT · 04</span>
+      <div class="ttl">Sentiment classifier</div>
+      <div class="num">12.4K</div>
+      <div class="meta"><span>p50 · 47ms</span><span>·</span><span>99.94% up</span></div>
+      <span class="b">Healthy</span>
+    </div>
+    <div class="surf surf-dark">
+      <span class="eye">ELEMENT · 07</span>
+      <div class="ttl">Vision embedder</div>
+      <div class="num">3.8M</div>
+      <div class="meta"><span>p50 · 112ms</span><span>·</span><span>99.99% up</span></div>
+    </div>
+  </div>
+</div></body></html>

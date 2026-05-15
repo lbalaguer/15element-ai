@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>15Element.AI — Pipeline B2B sin anuncios</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="../../colors_and_type.css">
+<style>
+  * { box-sizing: border-box; }
+  body { margin: 0; }
+
+  .container { max-width: 1200px; margin: 0 auto; padding: 0 32px; }
+
+  /* ─── Nav ──────────────────────────────────────────────── */
+  .nav {
+    position: sticky; top: 0;
+    background: rgba(255,255,255,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    z-index: 10;
+  }
+  .nav-inner { display: flex; align-items: center; height: 64px; gap: 40px; }
+  .nav-logo { height: 24px; }
+  .nav-links { display: flex; gap: 28px; font-size: 14px; }
+  .nav-links a {
+    color: var(--fg);
+    border-bottom: 0;
+    font-weight: 500;
+    opacity: 0.78;
+    transition: opacity 120ms;
+  }
+  .nav-links a:hover { opacity: 1; }
+  .nav-actions { margin-left: auto; display: flex; gap: 8px; align-items: center; }
+
+  .btn {
+    font-family: var(--font-body);
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1;
+    padding: 11px 20px;
+    border-radius: 10px;
+    border: 1px solid transparent;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: all var(--dur-fast) var(--ease-standard);
+    text-decoration: none;
+  }
+  .btn-primary { background: var(--brand-teal); color: white; }
+  .btn-primary:hover { background: var(--brand-teal-600); transform: translateY(-1px); box-shadow: var(--shadow-md); }
+  .btn-secondary { background: var(--brand-navy); color: white; }
+  .btn-secondary:hover { background: var(--brand-navy-soft); }
+  .btn-ghost { background: transparent; color: var(--brand-navy); border-color: var(--border-strong); }
+  .btn-ghost:hover { background: var(--bg-sunken); }
+  .btn-lg { padding: 16px 28px; font-size: 16px; }
+
+  /* ─── Hero ─────────────────────────────────────────────── */
+  .hero { padding: 80px 0 100px; position: relative; overflow: hidden; }
+  .hero .container { position: relative; z-index: 2; }
+  .hero-eyebrow {
+    font-size: 12px; font-weight: 600;
+    letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--brand-teal);
+    margin-bottom: 24px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .hero-eyebrow::before {
+    content: ''; width: 28px; height: 1.5px; background: var(--brand-teal);
+  }
+  .hero h1 {
+    font-family: var(--font-display);
+    font-weight: 800;
+    letter-spacing: -0.025em;
+    line-height: 0.98;
+    font-size: clamp(56px, 7.5vw, 104px);
+    color: var(--brand-navy);
+    margin: 0 0 28px;
+    max-width: 1000px;
+    text-transform: none;
+  }
+  .hero h1 .accent { color: var(--brand-teal); }
+  .hero .lead {
+    font-size: 19px;
+    line-height: 1.55;
+    color: var(--fg-muted);
+    max-width: 620px;
+    margin: 0 0 36px;
+  }
+  .hero-ctas { display: flex; gap: 12px; margin-bottom: 56px; }
+  .hero-decor {
+    position: absolute;
+    right: -160px; top: 80px;
+    width: 460px;
+    opacity: 0.12;
+    pointer-events: none;
+    z-index: 1;
+  }
+  .hero-proofs {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 32px;
+    padding-top: 32px;
+    border-top: 1px solid var(--border);
+    position: relative;
+    max-width: 880px;
+  }
+  .hero-proof .n {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 36px;
+    line-height: 1;
+    color: var(--brand-navy);
+    letter-spacing: -0.02em;
+  }
+  .hero-proof .l {
+    font-size: 12px;
+    color: var(--fg-muted);
+    margin-top: 8px;
+    line-height: 1.4;
+  }
+
+  /* ─── Logos band ───────────────────────────────────────── */
+  .logos {
+    padding: 32px 0;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    background: var(--ink-50);
+  }
+  .logos .lab {
+    font-size: 11px; font-weight: 600; letter-spacing: 0.18em;
+    text-transform: uppercase; color: var(--fg-muted); margin-bottom: 18px;
+    text-align: center;
+  }
+  .logos-row {
+    display: flex; justify-content: center; flex-wrap: wrap;
+    gap: 32px 48px; align-items: center;
+  }
+  .logos-row span {
+    font-family: var(--font-display);
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--brand-navy);
+    opacity: 0.55;
+    letter-spacing: -0.01em;
+    text-transform: uppercase;
+  }
+
+  /* ─── Pillars section ──────────────────────────────────── */
+  .section { padding: 100px 0; }
+  .section-head { max-width: 760px; margin-bottom: 56px; }
+  .section-head .eyebrow {
+    font-size: 11px; font-weight: 600; letter-spacing: 0.18em;
+    text-transform: uppercase; color: var(--fg-muted); margin-bottom: 14px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .section-head .eyebrow::before { content: ''; width: 24px; height: 1.5px; background: currentColor; }
+  .section-head h2 {
+    font-family: var(--font-display);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    line-height: 1;
+    font-size: clamp(40px, 5vw, 64px);
+    color: var(--brand-navy);
+    margin: 0 0 18px;
+    text-transform: none;
+  }
+  .section-head p { font-size: 18px; color: var(--fg-muted); line-height: 1.55; margin: 0; max-width: 580px; }
+
+  .pillars { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .pillar {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 32px 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    transition: all 200ms var(--ease-standard);
+    position: relative;
+  }
+  .pillar:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); border-color: var(--border-strong); }
+  .pillar-num {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 13px;
+    letter-spacing: 0.18em;
+    color: var(--fg-muted);
+  }
+  .pillar-stripe {
+    height: 4px;
+    border-radius: 2px;
+    width: 40px;
+  }
+  .pillar h3 {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 30px;
+    letter-spacing: -0.02em;
+    line-height: 1;
+    color: var(--brand-navy);
+    margin: 0;
+    text-transform: none;
+  }
+  .pillar p {
+    font-size: 14.5px;
+    color: var(--fg-muted);
+    line-height: 1.6;
+    margin: 0;
+    flex: 1;
+  }
+  .pillar-tags { display: flex; gap: 6px; flex-wrap: wrap; }
+  .pillar-tags span {
+    font-size: 11px;
+    font-weight: 500;
+    padding: 4px 10px;
+    background: var(--ink-50);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    color: var(--fg-muted);
+    font-family: var(--font-mono);
+  }
+
+  /* ─── Process ──────────────────────────────────────────── */
+  .process-band { background: var(--brand-navy); color: white; padding: 100px 0; position: relative; overflow: hidden; }
+  .process-band .section-head h2 { color: white; }
+  .process-band .section-head p { color: rgba(255,255,255,0.65); }
+  .process-band .section-head .eyebrow { color: var(--brand-teal-400); }
+  .process-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+  .step {
+    padding: 28px 24px;
+    border-radius: 14px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    display: flex; flex-direction: column; gap: 14px;
+  }
+  .step-num {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 56px;
+    line-height: 1;
+    letter-spacing: -0.02em;
+    color: var(--brand-teal-400);
+  }
+  .step h4 {
+    font-family: var(--font-display);
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+    color: white;
+    margin: 0;
+    text-transform: none;
+  }
+  .step p {
+    font-size: 13.5px;
+    color: rgba(255,255,255,0.65);
+    line-height: 1.55;
+    margin: 0;
+  }
+  .step .out {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--brand-teal-400);
+    padding-top: 12px;
+    border-top: 1px solid rgba(255,255,255,0.08);
+    margin-top: auto;
+  }
+  .step .out b { color: white; font-weight: 600; }
+  .process-mark {
+    position: absolute;
+    right: -80px; bottom: -120px;
+    width: 480px;
+    opacity: 0.05;
+    pointer-events: none;
+  }
+
+  /* ─── Cases ────────────────────────────────────────────── */
+  .cases { display: grid; grid-template-columns: 1.4fr 1fr 1fr; grid-auto-rows: minmax(220px, auto); gap: 16px; }
+  .case {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    position: relative;
+    overflow: hidden;
+  }
+  .case-meta {
+    display: flex;
+    justify-content: space-between;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--fg-muted);
+  }
+  .case-client {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 22px;
+    color: var(--brand-navy);
+    text-transform: none;
+    letter-spacing: -0.01em;
+  }
+  .case-quote {
+    font-size: 14.5px;
+    color: var(--fg-muted);
+    line-height: 1.55;
+    font-style: italic;
+    margin: 0;
+  }
+  .case-stat {
+    margin-top: auto;
+    padding-top: 16px;
+    border-top: 1px solid var(--border);
+  }
+  .case-stat .big {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 40px;
+    line-height: 1;
+    letter-spacing: -0.02em;
+    color: var(--brand-navy);
+  }
+  .case-stat .lab {
+    font-size: 12px;
+    color: var(--fg-muted);
+    margin-top: 6px;
+  }
+  .case.feature {
+    grid-row: span 2;
+    background: var(--brand-navy);
+    color: white;
+    border-color: var(--brand-navy);
+  }
+  .case.feature .case-client { color: white; }
+  .case.feature .case-quote { color: rgba(255,255,255,0.7); font-size: 18px; line-height: 1.5; }
+  .case.feature .case-meta { color: rgba(255,255,255,0.5); }
+  .case.feature .case-stat { border-top-color: rgba(255,255,255,0.1); }
+  .case.feature .case-stat .big { color: white; font-size: 56px; }
+  .case.feature .case-stat .lab { color: rgba(255,255,255,0.6); }
+  .case-color {
+    width: 8px;
+    height: 28px;
+    border-radius: 2px;
+  }
+
+  /* ─── Compare table ────────────────────────────────────── */
+  .compare {
+    border-radius: 14px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    background: white;
+  }
+  .compare table { width: 100%; border-collapse: collapse; }
+  .compare th, .compare td {
+    text-align: left;
+    padding: 16px 20px;
+    border-bottom: 1px solid var(--border);
+    font-size: 14px;
+  }
+  .compare thead th {
+    font-family: var(--font-display);
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--fg-muted);
+    background: var(--ink-50);
+  }
+  .compare thead th:nth-child(2) { color: var(--brand-red); }
+  .compare thead th:nth-child(3) { color: var(--brand-teal); }
+  .compare tbody td:first-child { font-weight: 600; color: var(--brand-navy); width: 38%; }
+  .compare tbody td .x { color: var(--brand-red); margin-right: 6px; font-weight: 700; }
+  .compare tbody td .v { color: var(--success); margin-right: 6px; font-weight: 700; }
+  .compare tbody tr:last-child td { border-bottom: 0; }
+
+  /* ─── CTA band ─────────────────────────────────────────── */
+  .cta-band {
+    background: var(--brand-navy);
+    color: white;
+    padding: 100px 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .cta-band h2 {
+    font-family: var(--font-display);
+    font-weight: 800;
+    letter-spacing: -0.025em;
+    line-height: 0.98;
+    font-size: clamp(48px, 6vw, 80px);
+    margin: 0 0 24px;
+    color: white;
+    max-width: 800px;
+    text-transform: none;
+  }
+  .cta-band h2 .accent { color: var(--brand-teal-400); }
+  .cta-band p { font-size: 18px; color: rgba(255,255,255,0.7); max-width: 560px; margin: 0 0 36px; line-height: 1.55; }
+  .cta-band .btn-primary { background: white; color: var(--brand-navy); }
+  .cta-band .btn-primary:hover { background: var(--ink-100); }
+  .cta-band .btn-ghost { color: white; border-color: rgba(255,255,255,0.25); }
+  .cta-band .btn-ghost:hover { background: rgba(255,255,255,0.08); }
+  .cta-meta {
+    margin-top: 24px;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: rgba(255,255,255,0.55);
+    display: flex; gap: 16px; flex-wrap: wrap;
+  }
+  .cta-meta span::before { content: '·  '; opacity: 0.5; }
+  .cta-meta span:first-child::before { content: ''; }
+  .cta-mark {
+    position: absolute;
+    right: -80px; top: 50%;
+    transform: translateY(-50%);
+    width: 520px;
+    opacity: 0.07;
+  }
+
+  /* ─── Footer ───────────────────────────────────────────── */
+  footer { background: var(--ink-50); padding: 60px 0 40px; border-top: 1px solid var(--border); }
+  .foot-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 1fr; gap: 32px; margin-bottom: 48px; }
+  .foot-grid h4 { font-size: 11px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--fg-muted); margin: 0 0 16px; }
+  .foot-grid ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 10px; }
+  .foot-grid a { color: var(--fg); font-size: 14px; opacity: 0.75; }
+  .foot-logo { height: 24px; margin-bottom: 16px; }
+  .foot-tag { font-size: 13px; color: var(--fg-muted); max-width: 280px; line-height: 1.55; }
+  .foot-bottom { display: flex; justify-content: space-between; padding-top: 24px; border-top: 1px solid var(--border); font-size: 12px; color: var(--fg-muted); font-family: var(--font-mono); }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="container nav-inner">
+    <img src="../../assets/logo-horizontal-navy.png" class="nav-logo" alt="15Element.AI">
+    <div class="nav-links">
+      <a href="#">Servicios</a>
+      <a href="#">Industrias</a>
+      <a href="#">Casos</a>
+      <a href="#">Blog</a>
+      <a href="#">Nosotros</a>
+      <a href="#">Contacto</a>
+    </div>
+    <div class="nav-actions">
+      <a href="#" class="btn btn-primary">Agenda auditoría gratis</a>
+    </div>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="container">
+    <div class="hero-eyebrow">Agencia B2B · LATAM + Canada</div>
+    <h1>Pipeline B2B sin anuncios. <span class="accent">Solo señales reales.</span></h1>
+    <p class="lead">Generamos leads calificados para empresas B2B por LinkedIn orgánico, señales de compra y posicionamiento AEO/GEO. Sin Meta. Sin Google Ads. Sin depender de referidos.</p>
+    <div class="hero-ctas">
+      <a href="#" class="btn btn-primary btn-lg">Agenda tu auditoría gratuita
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+      </a>
+      <a href="#" class="btn btn-ghost btn-lg">Ver casos reales</a>
+    </div>
+    <div class="hero-proofs">
+      <div class="hero-proof"><div class="n">842</div><div class="l">leads B2B generados<br>(Nextco, 10 meses)</div></div>
+      <div class="hero-proof"><div class="n">$9M <span style="font-size:0.55em; color:var(--brand-teal)">USD</span></div><div class="l">proyecto cerrado<br>LinkedIn orgánico</div></div>
+      <div class="hero-proof"><div class="n">22 <span style="font-size:0.55em; color:var(--brand-teal)">años</span></div><div class="l">decodificando<br>el éxito B2B</div></div>
+      <div class="hero-proof"><div class="n">100%</div><div class="l">orgánico —<br>0 ads</div></div>
+    </div>
+  </div>
+  <img src="../../assets/logo-mark-color.png" class="hero-decor" alt="">
+</section>
+
+<section class="logos">
+  <div class="container">
+    <div class="lab">Empresas que ya generan pipeline con nosotros</div>
+    <div class="logos-row">
+      <span>Nextco</span><span>Spakio</span><span>Sport City</span><span>Mercedes-Benz</span><span>Cinépolis</span><span>ITESM</span><span>IPADE</span><span>Honda</span><span>SEIDOR</span><span>Quickcap</span><span>Royal LePage</span><span>Top Energy</span>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">El sistema</div>
+      <h2>Pipeline predecible en 3 pilares.</h2>
+      <p>No son herramientas sueltas. Es un sistema donde cada pilar se alimenta del siguiente.</p>
+    </div>
+    <div class="pillars">
+      <div class="pillar">
+        <div style="display:flex; justify-content:space-between; align-items:center;">
+          <div class="pillar-num">01</div>
+          <div class="pillar-stripe" style="background:#7EB749"></div>
+        </div>
+        <h3>SEO · AEO · GEO</h3>
+        <p>Posicionamos tu empresa en Google y en las respuestas de ChatGPT, Gemini y Perplexity. Cuando un decision-maker le pregunta a una IA quién resuelve su problema — tu empresa aparece.</p>
+        <div class="pillar-tags"><span>SEO B2B</span><span>AEO/GEO</span><span>ChatGPT · Gemini</span></div>
+      </div>
+      <div class="pillar">
+        <div style="display:flex; justify-content:space-between; align-items:center;">
+          <div class="pillar-num">02</div>
+          <div class="pillar-stripe" style="background:#209499"></div>
+        </div>
+        <h3>Señales de compra en LinkedIn</h3>
+        <p>Detectamos quién está buscando lo que tú vendes <em>antes</em> de que llegue a Google. Cambios de rol, expansiones, contrataciones, publicaciones — cada señal es una ventana de oportunidad.</p>
+        <div class="pillar-tags"><span>Señales B2B</span><span>LinkedIn orgánico</span><span>Intent data</span></div>
+      </div>
+      <div class="pillar">
+        <div style="display:flex; justify-content:space-between; align-items:center;">
+          <div class="pillar-num">03</div>
+          <div class="pillar-stripe" style="background:#ED9321"></div>
+        </div>
+        <h3>Email outreach con contexto</h3>
+        <p>Mensajes personalizados basados en señales reales del prospecto — no templates genéricos. 4× más respuesta que el outreach genérico de volumen. Citas calificadas, no silencio.</p>
+        <div class="pillar-tags"><span>Email B2B</span><span>Contexto real</span><span>Sin spam</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="process-band">
+  <img src="../../assets/logo-mark-white-on-navy.png" class="process-mark" alt="">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">El proceso</div>
+      <h2>De señal a cita calificada en 30 días.</h2>
+      <p>Cuatro pasos concretos. Cada uno con un output medible. Sin pasos ocultos ni "esperar y ver".</p>
+    </div>
+    <div class="process-grid">
+      <div class="step">
+        <div class="step-num">01</div>
+        <h4>Detección de señales B2B</h4>
+        <p>Monitoreamos LinkedIn en tiempo real. Cada señal se registra y clasifica por relevancia para tu oferta.</p>
+        <div class="out">Output: <b>lista semanal de prospectos con intención activa</b></div>
+      </div>
+      <div class="step">
+        <div class="step-num">02</div>
+        <h4>Calificación y priorización</h4>
+        <p>Filtramos por industria, tamaño, cargo del decisor y fit con tu oferta. Solo alta probabilidad entra al flujo.</p>
+        <div class="out">Output: <b>ICP validado y citas potenciales priorizadas</b></div>
+      </div>
+      <div class="step">
+        <div class="step-num">03</div>
+        <h4>Outreach con contexto real</h4>
+        <p>Cada mensaje se construye sobre la señal específica del prospecto — no sobre un template. 4× tasa de respuesta.</p>
+        <div class="out">Output: <b>conversaciones activas con decision-makers</b></div>
+      </div>
+      <div class="step">
+        <div class="step-num">04</div>
+        <h4>Cita calificada en tu calendario</h4>
+        <p>La primera llamada no es de descubrimiento genérico — es de negocio. Ya sabemos su empresa, su problema, su momento.</p>
+        <div class="out">Output: <b>citas B2B calificadas listas para convertir</b></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">Resultados reales</div>
+      <h2>Lo que pasa a los 60 días.</h2>
+      <p>Números de clientes que operan con el sistema en producción. No demos. No proyecciones.</p>
+    </div>
+    <div class="cases">
+      <div class="case feature">
+        <div class="case-meta"><span>Nextco</span><span>Tech B2B · México</span></div>
+        <div class="case-color" style="background:#209499"></div>
+        <div class="case-client">"Llevábamos 3 años intentando entrar a corporativos grandes."</div>
+        <p class="case-quote">"Sin sistema, sin tracción. En 10 meses cerramos pipeline con BOSCH, Continental y SuKarne — sin conocer a nadie adentro."</p>
+        <div class="case-stat">
+          <div class="big">842 leads</div>
+          <div class="lab">calificados en 10 meses</div>
+        </div>
+      </div>
+      <div class="case">
+        <div class="case-meta"><span>Itechmaint</span><span>Energía Solar · Chile</span></div>
+        <div class="case-color" style="background:#7EB749"></div>
+        <div class="case-client">Itechmaint</div>
+        <p class="case-quote">"El mercado solar en Chile es competido. No llegábamos a los decision-makers."</p>
+        <div class="case-stat">
+          <div class="big">59.9%</div>
+          <div class="lab">tasa de conexión · 1,144 de 1,914</div>
+        </div>
+      </div>
+      <div class="case">
+        <div class="case-meta"><span>Top Energy</span><span>Multinacional</span></div>
+        <div class="case-color" style="background:#ED9321"></div>
+        <div class="case-client">Top Energy</div>
+        <p class="case-quote">"Necesitábamos cerrar proyectos de instalación industrial a escala."</p>
+        <div class="case-stat">
+          <div class="big">$9M <span style="font-size:0.5em;color:var(--brand-teal)">USD</span></div>
+          <div class="lab">proyecto cerrado · LinkedIn orgánico</div>
+        </div>
+      </div>
+      <div class="case">
+        <div class="case-meta"><span>Spakio</span><span>Logística · México</span></div>
+        <div class="case-color" style="background:#BD2429"></div>
+        <div class="case-client">Spakio</div>
+        <p class="case-quote">"Tuvimos que pausar todas las campañas — no había más bodega para lo que entró."</p>
+        <div class="case-stat">
+          <div class="big">100%</div>
+          <div class="lab">ocupación · un solo lead de SEO</div>
+        </div>
+      </div>
+      <div class="case">
+        <div class="case-meta"><span>LeaseMD</span><span>Salud · México</span></div>
+        <div class="case-color" style="background:#209499"></div>
+        <div class="case-client">LeaseMD</div>
+        <p class="case-quote">"Aparecemos en ChatGPT cuando alguien busca leasing de equipo médico en México."</p>
+        <div class="case-stat">
+          <div class="big">+320%</div>
+          <div class="lab">inbound calificado · $0 en ads</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="background:var(--ink-50); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">¿Por qué no ads?</div>
+      <h2>Ads vs Pipeline orgánico B2B.</h2>
+      <p>Los anuncios generan clics. Las señales de compra generan conversaciones con personas que ya tienen el problema.</p>
+    </div>
+    <div class="compare">
+      <table>
+        <thead>
+          <tr><th></th><th>Ads (Meta / Google)</th><th>LinkedIn Orgánico + AEO/GEO</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>¿Qué genera?</td><td><span class="x">✕</span>Clics de personas que vieron un banner</td><td><span class="v">✓</span>Conversaciones con personas que tienen el problema hoy</td></tr>
+          <tr><td>¿Si dejas de pagar?</td><td><span class="x">✕</span>Pipeline en cero al día siguiente</td><td><span class="v">✓</span>El contenido y el posicionamiento siguen trabajando</td></tr>
+          <tr><td>Costo por lead B2B</td><td><span class="x">✕</span>$80–$400 USD por lead (ticket alto)</td><td><span class="v">✓</span>Decrece con el tiempo — el activo se acumula</td></tr>
+          <tr><td>Calidad del lead</td><td><span class="x">✕</span>Variable — mucho ruido, pocos calificados</td><td><span class="v">✓</span>Alta — contactado por señal de intención real</td></tr>
+          <tr><td>¿Aparece en ChatGPT / Gemini?</td><td><span class="x">✕</span>No</td><td><span class="v">✓</span>Sí — AEO/GEO te posiciona en respuestas de IA</td></tr>
+          <tr><td>¿Escala sin más presupuesto?</td><td><span class="x">✕</span>No — más leads = más gasto</td><td><span class="v">✓</span>Sí — el sistema se retroalimenta</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section class="cta-band">
+  <img src="../../assets/logo-mark-white-on-navy.png" class="cta-mark" alt="">
+  <div class="container">
+    <h2>45 minutos para ver dónde está <span class="accent">tu pipeline perdido.</span></h2>
+    <p>Auditamos tu presencia B2B actual — LinkedIn, SEO, posicionamiento en IAs — y te entregamos un mapa de oportunidades específico para tu industria.</p>
+    <div style="display:flex; gap:12px; flex-wrap: wrap;">
+      <a href="#" class="btn btn-primary btn-lg">Agenda tu auditoría — es gratis</a>
+      <a href="#" class="btn btn-ghost btn-lg">Ver casos primero</a>
+    </div>
+    <div class="cta-meta">
+      <span>45 minutos</span>
+      <span>Sin compromiso</span>
+      <span>Sin letra pequeña</span>
+      <span>Garantía: si no ves valor — $100 USD a tu PayPal</span>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="foot-grid">
+      <div>
+        <img src="../../assets/logo-horizontal-navy.png" class="foot-logo" alt="15Element.AI">
+        <p class="foot-tag">Generamos leads B2B calificados por LinkedIn orgánico, señales de compra y posicionamiento SEO/AEO/GEO. Sin ads. Sin DIY.</p>
+      </div>
+      <div>
+        <h4>Servicios</h4>
+        <ul><li><a href="#">SEO · AEO · GEO</a></li><li><a href="#">Señales LinkedIn</a></li><li><a href="#">LinkedIn Prospecting</a></li><li><a href="#">Email outreach B2B</a></li><li><a href="#">Auditoría gratuita</a></li></ul>
+      </div>
+      <div>
+        <h4>Industrias</h4>
+        <ul><li><a href="#">Energía solar</a></li><li><a href="#">Salud / Médico</a></li><li><a href="#">Logística</a></li><li><a href="#">Tech B2B</a></li><li><a href="#">Retail B2B</a></li></ul>
+      </div>
+      <div>
+        <h4>Empresa</h4>
+        <ul><li><a href="#">Nosotros</a></li><li><a href="#">Casos de éxito</a></li><li><a href="#">Blog</a></li><li><a href="#">Contacto</a></li></ul>
+      </div>
+      <div>
+        <h4>Contacto</h4>
+        <ul><li><a href="#">[email protected]</a></li><li><a href="#">Agenda una llamada</a></li><li><a href="#">AI OS →</a></li></ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 15Element AI</span>
+      <span>LATAM · Canada · 100% orgánico</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
