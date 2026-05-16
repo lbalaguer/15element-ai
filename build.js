@@ -42,6 +42,15 @@ function hashFile(absPath) {
   return crypto.createHash('sha256').update(buf).digest('hex').slice(0, 8);
 }
 
+function readCssIfExists(absPath) {
+  if (!fs.existsSync(absPath)) return '';
+  return fs.readFileSync(absPath, 'utf8');
+}
+
+function escapeRe(str) {
+  return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+}
+
 const PARTIALS = ['nav', 'footer', 'wa-float', 'theme-script'];
 
 // ------------------------------------------------------------
@@ -136,6 +145,34 @@ function processFile(srcAbs) {
     /(<link rel="preload" href="https:\/\/fonts\.gstatic\.com\/s\/sairacondensed[^"]+" as="font"[^>]+>)/,
     `$1\n${fontsAsync}`
   );
+
+  // ----------------------------------------------------------------
+  // PERF: Inline all local CSS into <style> (eliminates 3 render-blocking
+  // requests, saves ~2,500ms LCP on mobile slow 4G). Trade-off: HTML grows
+  // ~12KB per page, but no critical path latency from CSS.
+  // ----------------------------------------------------------------
+  const colorsCssContent = readCssIfExists(path.join(ROOT, 'colors_and_type.css'));
+  const commonCssContent = readCssIfExists(path.join(ROOT, '_styles', 'common.css'));
+  const pageCssContent   = readCssIfExists(pageCssAbs);
+  const combinedCss = [colorsCssContent, commonCssContent, pageCssContent].filter(Boolean).join('\n');
+
+  // Remove the 3 link tags (now versioned URLs) and inject inline <style>
+  html = html.replace(new RegExp('<link rel="stylesheet" href="' + escapeRe(colorsCssPath) + '">\\s*\\n?', 'g'), '');
+  html = html.replace(new RegExp('<link rel="stylesheet" href="' + escapeRe(commonCssPath) + '">\\s*\\n?', 'g'), '');
+  html = html.replace(new RegExp('<link rel="stylesheet" href="' + escapeRe(pageCssPath) + '">\\s*\\n?', 'g'), '');
+  html = html.replace('</head>', `<style>${combinedCss}</style>\n</head>`);
+
+  // ----------------------------------------------------------------
+  // PERF: Remove .reveal class from above-the-fold elements (LCP fix).
+  // The IntersectionObserver delays element rendering until JS runs;
+  // for above-fold elements this costs 5+ seconds on mobile slow 4G.
+  // Apply only to hero copy that's always visible on initial paint.
+  // ----------------------------------------------------------------
+  html = html.replace(/class="hero-eyebrow reveal"/g, 'class="hero-eyebrow"');
+  html = html.replace(/class="reveal hero-eyebrow"/g, 'class="hero-eyebrow"');
+  html = html.replace(/<h1 class="reveal">/g, '<h1>');
+  html = html.replace(/class="lead reveal"/g, 'class="lead"');
+  html = html.replace(/class="reveal lead"/g, 'class="lead"');
 
   // Output path: mirror _src/ structure in repo root (rel computed above)
   const outAbs = path.join(ROOT, rel);
