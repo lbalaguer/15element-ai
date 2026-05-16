@@ -25,11 +25,22 @@
 
 const fs = require('fs');
 const path = require('path');
+const crypto = require('crypto');
 
 const ROOT = __dirname;
 const SRC_DIR = path.join(ROOT, '_src');
 const PARTIALS_DIR = path.join(ROOT, '_partials');
 const STYLES_DIR = path.join(ROOT, '_styles');
+
+// ------------------------------------------------------------
+// Compute SHA-8 hash of CSS files for cache-busting query strings
+// (Netlify serves CSS with long cache; hash changes = browser re-fetches)
+// ------------------------------------------------------------
+function hashFile(absPath) {
+  if (!fs.existsSync(absPath)) return '0';
+  const buf = fs.readFileSync(absPath);
+  return crypto.createHash('sha256').update(buf).digest('hex').slice(0, 8);
+}
 
 const PARTIALS = ['nav', 'footer', 'wa-float', 'theme-script'];
 
@@ -78,8 +89,9 @@ function processFile(srcAbs) {
   let html = fs.readFileSync(srcAbs, 'utf8');
 
   const assetsPath = relativePath(srcAbs, 'assets');
-  const colorsCssPath = relativePath(srcAbs, 'colors_and_type.css');
-  const commonCssPath = relativePath(srcAbs, '_styles/common.css');
+  // Append SHA-8 hash to CSS URLs so browsers re-fetch when content changes
+  const colorsCssPath = relativePath(srcAbs, 'colors_and_type.css') + '?v=' + hashFile(path.join(ROOT, 'colors_and_type.css'));
+  const commonCssPath = relativePath(srcAbs, '_styles/common.css') + '?v=' + hashFile(path.join(ROOT, '_styles', 'common.css'));
 
   // Inject partials
   for (const [name, content] of Object.entries(partialsCache)) {
@@ -104,7 +116,8 @@ function processFile(srcAbs) {
   else if (dirParts[0] === 'blog') slug = 'blog-post'; // all blog posts share the same CSS
   else if (dirParts[0] === 'politica-de-privacidad' || dirParts[0] === 'terminos-de-servicio') slug = 'legal';
   else slug = dirParts.join('-');
-  const pageCssPath = relativePath(srcAbs, `_styles/pages/${slug}.css`);
+  const pageCssAbs = path.join(ROOT, '_styles', 'pages', `${slug}.css`);
+  const pageCssPath = relativePath(srcAbs, `_styles/pages/${slug}.css`) + '?v=' + hashFile(pageCssAbs);
 
   // Page-level token substitutions
   html = html.replace(/\{\{ASSETS\}\}/g, assetsPath);
