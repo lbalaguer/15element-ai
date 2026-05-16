@@ -20,8 +20,20 @@ const ASSETS = path.join(__dirname, 'assets');
 const SOURCE_BACKUP = path.join(ASSETS, 'source');
 
 const TARGETS = [
+  // Photos: 1200px wide preserves og:image rich preview minimum
   { name: 'Luis2.png', width: 1200, quality: 75 },
   { name: 'Luis3.png', width: 1200, quality: 75 },
+
+  // Logos: 3x retina of display size. Quality 90 to preserve crisp edges.
+  // Display: nav 100x34, footer 86x30, drawer 100x34 → 300x105 is plenty
+  { name: 'logo-horizontal-color.png',          width: 300, quality: 90 },
+  { name: 'logo-horizontal-navy.png',           width: 300, quality: 90 },
+  { name: 'logo-horizontal-color-on-navy.png',  width: 300, quality: 90 },
+  { name: 'logo-horizontal-white-on-navy.png',  width: 300, quality: 90 },
+  // Mark logos: largest display ~520px (hero-decor), 600 wide covers all uses
+  { name: 'logo-mark-color.png',          width: 600, quality: 90 },
+  { name: 'logo-mark-navy.png',           width: 600, quality: 90 },
+  { name: 'logo-mark-white-on-navy.png',  width: 600, quality: 90 },
 ];
 
 (async () => {

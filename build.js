@@ -137,13 +137,21 @@ function processFile(srcAbs) {
   // ----------------------------------------------------------------
   // PERF: async-load Google Fonts (non-blocking) — inserta después del
   // preload del woff2. Saves ~750ms LCP on mobile.
+  //
+  // CLS fix: also preload IBM Plex Sans 400 latin (the body font).
+  // Without this preload, when IBM Plex finishes loading async, the body
+  // text re-renders with different metrics → layout shift (~0.2 CLS).
+  // NOTE: Google Fonts versions URLs (v23 etc) — if these expire, re-curl
+  // https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400 to get
+  // the new latin subset woff2 URL and update here.
   // ----------------------------------------------------------------
+  const ibmPlexPreload = `<link rel="preload" href="https://fonts.gstatic.com/s/ibmplexsans/v23/zYXGKVElMYYaJe8bpLHnCwDKr932-G7dytD-Dmu1swZSAXcomDVmadSD6llDB6g4.woff2" as="font" type="font/woff2" crossorigin>`;
   const fontsAsync = `<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@400;500;600;700;800;900&family=IBM+Plex+Sans:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" media="print" onload="this.media='all'">
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@400;500;600;700;800;900&family=IBM+Plex+Sans:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap"></noscript>`;
   // Inserta después del preload de Saira Condensed
   html = html.replace(
     /(<link rel="preload" href="https:\/\/fonts\.gstatic\.com\/s\/sairacondensed[^"]+" as="font"[^>]+>)/,
-    `$1\n${fontsAsync}`
+    `$1\n${ibmPlexPreload}\n${fontsAsync}`
   );
 
   // ----------------------------------------------------------------
