@@ -479,11 +479,13 @@ body { margin: 0; overflow-x: hidden; }
 /* ─── Compare table ─── */
 .compare {
   border-radius: var(--r-lg);
-  overflow: hidden;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
   border: 1px solid var(--border);
   background: var(--bg-elevated);
   box-shadow: var(--shadow-sm);
 }
+.compare table { min-width: 640px; }
 .compare table { width: 100%; border-collapse: collapse; }
 .compare th, .compare td {
   text-align: left;
@@ -759,4 +761,6 @@ footer { background: var(--bg-sunken); padding: 64px 0 40px; border-top: 1px sol
   .hero h1 { font-size: 44px; }
   .cta-band h2, .section-head h2 { font-size: 36px; }
   .hero-decor, .cta-mark, .process-mark { display: none; }
+  .compare th, .compare td { padding: 12px 14px; font-size: 13px; }
+  .compare table { min-width: 540px; }
 }
