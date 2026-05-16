@@ -135,17 +135,19 @@ function processFile(srcAbs) {
   html = html.replace(/\{\{PAGE_CSS\}\}/g, pageCssPath);
 
   // ----------------------------------------------------------------
-  // SEO: Google Search Console verification meta tag (inyectado a TODAS
-  // las páginas para ser robust ante futuras páginas. Google solo lee
-  // el meta tag del URL prefix verificado — https://15element.ai/ —
-  // pero tenerlo en todas no daña y previene errores de verificación
-  // si Google decide re-verificar contra cualquier URL.
+  // SEO: Google Search Console verification meta tag — SOLO en home.
+  // GSC verificó la propiedad URL prefix https://15element.ai/ y solo
+  // necesita el tag en esa página. Tenerlo en todas las páginas era
+  // over-engineering innecesario (cleaned up 2026-05-16).
   // ----------------------------------------------------------------
-  const gscVerification = `<meta name="google-site-verification" content="MJzwxG12ePDeg1KA2sFAtH9QuTXmde9BRXjUCJtLfgI">`;
-  html = html.replace(
-    /(<meta name="viewport"[^>]+>)/,
-    `$1\n${gscVerification}`
-  );
+  const isHome = path.relative(SRC_DIR, srcAbs) === 'index.html';
+  if (isHome) {
+    const gscVerification = `<meta name="google-site-verification" content="MJzwxG12ePDeg1KA2sFAtH9QuTXmde9BRXjUCJtLfgI">`;
+    html = html.replace(
+      /(<meta name="viewport"[^>]+>)/,
+      `$1\n${gscVerification}`
+    );
+  }
 
   // ----------------------------------------------------------------
   // PERF: async-load Google Fonts (non-blocking) — inserta después del
