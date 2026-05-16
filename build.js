@@ -135,6 +135,19 @@ function processFile(srcAbs) {
   html = html.replace(/\{\{PAGE_CSS\}\}/g, pageCssPath);
 
   // ----------------------------------------------------------------
+  // SEO: Google Search Console verification meta tag (inyectado a TODAS
+  // las páginas para ser robust ante futuras páginas. Google solo lee
+  // el meta tag del URL prefix verificado — https://15element.ai/ —
+  // pero tenerlo en todas no daña y previene errores de verificación
+  // si Google decide re-verificar contra cualquier URL.
+  // ----------------------------------------------------------------
+  const gscVerification = `<meta name="google-site-verification" content="MJzwxG12ePDeg1KA2sFAtH9QuTXmde9BRXjUCJtLfgI">`;
+  html = html.replace(
+    /(<meta name="viewport"[^>]+>)/,
+    `$1\n${gscVerification}`
+  );
+
+  // ----------------------------------------------------------------
   // PERF: async-load Google Fonts (non-blocking) — inserta después del
   // preload del woff2. Saves ~750ms LCP on mobile.
   //
