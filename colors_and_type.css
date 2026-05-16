@@ -3,9 +3,9 @@
    ────────────────────────────────────────────────────────────── */
 
 /* Fonts ── Saira Condensed for display (matches the wordmark feel),
-   IBM Plex Sans for body, IBM Plex Mono for code/data. All three live
-   on Google Fonts. */
-@import url('https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@400;500;600;700;800;900&family=IBM+Plex+Sans:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap');
+   IBM Plex Sans for body, IBM Plex Mono for code/data.
+   Google Fonts CSS se carga via <link media="print" onload> en cada HTML
+   para no bloquear render (perf fix). El @import aquí rompería esa estrategia. */
 
 :root {
   /* ── Brand colors (extracted from logo) ───────────────────── */

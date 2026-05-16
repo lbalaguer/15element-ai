@@ -518,21 +518,21 @@ body { margin: 0; overflow-x: hidden; }
 }
 .founder-card {
   display: grid;
-  grid-template-columns: 240px 1fr;
-  gap: 48px;
+  grid-template-columns: 360px 1fr;
+  gap: 56px;
   align-items: start;
-  max-width: 960px;
+  max-width: 1080px;
   margin: 0 auto;
 }
 .founder-avatar {
-  width: 240px; height: 240px;
+  width: 360px; height: 360px;
   border-radius: var(--r-lg);
   background: var(--gradient-element-linear);
   display: flex; align-items: center; justify-content: center;
   font-family: var(--font-display);
   font-weight: 900;
   color: white;
-  font-size: 80px;
+  font-size: 120px;
   letter-spacing: -0.04em;
   box-shadow: var(--shadow-lg);
   position: relative;
@@ -750,8 +750,8 @@ footer { background: var(--bg-sunken); padding: 64px 0 40px; border-top: 1px sol
   .hero-proofs, .pillars, .problems-grid, .process-grid, .cases, .industries-grid, .testimonials-grid, .blog-grid { grid-template-columns: 1fr 1fr; }
   .case.feature { grid-row: auto; }
   .foot-grid { grid-template-columns: 1fr 1fr; }
-  .founder-card { grid-template-columns: 1fr; gap: 24px; }
-  .founder-avatar { width: 160px; height: 160px; font-size: 56px; }
+  .founder-card { grid-template-columns: 1fr; gap: 28px; }
+  .founder-avatar { width: 240px; height: 240px; font-size: 80px; margin: 0 auto; }
 }
 @media (max-width: 640px) {
   .container { padding: 0 20px; }

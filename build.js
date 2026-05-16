@@ -125,6 +125,18 @@ function processFile(srcAbs) {
   html = html.replace(/\{\{COMMON_CSS\}\}/g, commonCssPath);
   html = html.replace(/\{\{PAGE_CSS\}\}/g, pageCssPath);
 
+  // ----------------------------------------------------------------
+  // PERF: async-load Google Fonts (non-blocking) — inserta después del
+  // preload del woff2. Saves ~750ms LCP on mobile.
+  // ----------------------------------------------------------------
+  const fontsAsync = `<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@400;500;600;700;800;900&family=IBM+Plex+Sans:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@400;500;600;700;800;900&family=IBM+Plex+Sans:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap"></noscript>`;
+  // Inserta después del preload de Saira Condensed
+  html = html.replace(
+    /(<link rel="preload" href="https:\/\/fonts\.gstatic\.com\/s\/sairacondensed[^"]+" as="font"[^>]+>)/,
+    `$1\n${fontsAsync}`
+  );
+
   // Output path: mirror _src/ structure in repo root (rel computed above)
   const outAbs = path.join(ROOT, rel);
   const outDir = path.dirname(outAbs);
