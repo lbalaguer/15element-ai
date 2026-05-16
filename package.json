@@ -1,0 +1,13 @@
+{
+  "name": "15element-ai",
+  "version": "1.0.0",
+  "private": true,
+  "description": "15element.ai — agencia SEO B2B + AEO + LinkedIn orgánico. HTML estático con build casero.",
+  "scripts": {
+    "build": "node build.js",
+    "optimize:images": "node optimize-images.js"
+  },
+  "devDependencies": {
+    "sharp": "^0.33.5"
+  }
+}
