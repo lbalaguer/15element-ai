@@ -173,6 +173,10 @@ function processFile(srcAbs) {
   html = html.replace(/<h1 class="reveal">/g, '<h1>');
   html = html.replace(/class="lead reveal"/g, 'class="lead"');
   html = html.replace(/class="reveal lead"/g, 'class="lead"');
+  html = html.replace(/class="hero-ctas reveal"/g, 'class="hero-ctas"');
+  html = html.replace(/class="reveal hero-ctas"/g, 'class="hero-ctas"');
+  html = html.replace(/class="hero-proofs reveal"/g, 'class="hero-proofs"');
+  html = html.replace(/class="reveal hero-proofs"/g, 'class="hero-proofs"');
 
   // Output path: mirror _src/ structure in repo root (rel computed above)
   const outAbs = path.join(ROOT, rel);
