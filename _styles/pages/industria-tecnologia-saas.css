@@ -1,0 +1,70 @@
+/* ============================================================
+   /industrias/tecnologia-saas/ — page-specific styles
+   Chrome lives in _styles/common.css
+   ============================================================ */
+
+/* Challenges (3 cards) */
+.challenges-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.challenge-card { background: var(--bg-elevated); border: 1px solid var(--border); border-radius: var(--r-lg); padding: 32px 28px; border-top: 3px solid var(--brand-red); transition: all var(--dur-base); }
+.challenge-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
+.challenge-card h3 { font-family: var(--font-display); font-weight: 800; font-size: 22px; line-height: 1.15; letter-spacing: -0.01em; color: var(--fg); margin: 0 0 12px; text-transform: none; }
+.challenge-card p { font-size: 14.5px; color: var(--fg-muted); line-height: 1.65; margin: 0; }
+
+/* Services row (2 cards) */
+.services-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.service-block { background: var(--bg-elevated); border: 1px solid var(--border); border-radius: var(--r-lg); padding: 36px 32px; display: flex; flex-direction: column; gap: 14px; border-top: 4px solid; transition: all var(--dur-base); text-decoration: none; }
+.service-block:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
+.service-block .tag { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--brand-teal); font-weight: 600; }
+.service-block h3 { font-family: var(--font-display); font-weight: 800; font-size: 24px; letter-spacing: -0.01em; line-height: 1.15; color: var(--fg); margin: 0; text-transform: none; }
+.service-block p { font-size: 14.5px; color: var(--fg-muted); line-height: 1.65; margin: 0; }
+.service-block p strong { color: var(--fg); }
+.service-block .result { font-family: var(--font-mono); font-size: 12px; color: var(--brand-teal); padding-top: 14px; border-top: 1px solid var(--border); margin-top: auto; }
+.service-block .result b { color: var(--fg); font-weight: 600; }
+
+/* Signals (6 cards) */
+.signals-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+.signal-card { background: var(--bg-elevated); border: 1px solid var(--border); border-radius: var(--r-lg); padding: 32px 30px; border-left: 4px solid var(--brand-teal); transition: all var(--dur-base); }
+.signal-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
+.signal-card h3 { font-family: var(--font-display); font-weight: 800; font-size: 22px; letter-spacing: -0.01em; line-height: 1.15; color: var(--fg); margin: 0 0 14px; text-transform: none; }
+.signal-card p { font-size: 14.5px; color: var(--fg-muted); line-height: 1.7; margin: 0; }
+.signal-card p strong { color: var(--fg); }
+
+/* Case feature */
+.case-feature { background: var(--brand-navy); color: white; border-radius: var(--r-xl); padding: 64px 56px; display: grid; grid-template-columns: 1.4fr 1fr; gap: 56px; align-items: center; position: relative; overflow: hidden; }
+.case-feature::before { content: ''; position: absolute; inset: 0; background: var(--gradient-element); opacity: 0.06; filter: blur(80px); pointer-events: none; }
+.case-feature > * { position: relative; z-index: 2; }
+.case-feature .eyebrow { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--brand-teal-400); margin-bottom: 14px; }
+.case-feature h3 { font-family: var(--font-display); font-weight: 800; font-size: clamp(28px, 3.5vw, 40px); letter-spacing: -0.02em; line-height: 1.05; color: white; margin: 0 0 18px; text-transform: none; }
+.case-feature p { font-size: 15.5px; color: rgba(255,255,255,0.78); line-height: 1.7; margin: 0 0 16px; }
+.case-feature p strong { color: white; }
+.case-feature .quote { font-style: italic; color: rgba(255,255,255,0.85); border-left: 2px solid var(--brand-teal); padding-left: 14px; margin: 18px 0 0; }
+.case-stats { display: grid; gap: 24px; }
+.case-stat .big { font-family: var(--font-display); font-weight: 800; font-size: 56px; line-height: 1; letter-spacing: -0.025em; color: white; }
+.case-stat .big .u { font-size: 0.4em; color: var(--brand-teal-400); margin-left: 4px; }
+.case-stat .lab { font-size: 13px; color: rgba(255,255,255,0.6); margin-top: 8px; }
+
+/* Narrative AEO/GEO */
+.narrative { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: start; }
+.narrative .copy p { font-size: 16.5px; color: var(--fg-muted); line-height: 1.75; margin: 0 0 20px; }
+.narrative .copy p strong { color: var(--fg); }
+.narrative .copy p:last-child { margin-bottom: 0; }
+.narrative .stats { display: flex; flex-direction: column; gap: 14px; position: sticky; top: 96px; }
+.narrative .stat-box { background: var(--bg-elevated); border: 1px solid var(--border); border-radius: var(--r-lg); padding: 28px 26px; border-left: 4px solid var(--brand-teal); }
+.narrative .stat-box .big { font-family: var(--font-display); font-weight: 800; font-size: 38px; line-height: 1.1; letter-spacing: -0.02em; color: var(--fg); }
+.narrative .stat-box .big .u { font-size: 0.5em; color: var(--brand-teal); margin-left: 4px; }
+.narrative .stat-box .lab { font-size: 13px; color: var(--fg-muted); margin-top: 10px; line-height: 1.5; }
+
+/* Decision-makers (4 cards) */
+.dm-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+.dm-card { background: var(--bg-elevated); border: 1px solid var(--border); border-radius: var(--r-lg); padding: 32px 28px; border-top: 3px solid var(--brand-orange); transition: all var(--dur-base); }
+.dm-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
+.dm-card h3 { font-family: var(--font-display); font-weight: 800; font-size: 22px; letter-spacing: -0.01em; line-height: 1.15; color: var(--fg); margin: 0 0 12px; text-transform: none; }
+.dm-card p { font-size: 14px; color: var(--fg-muted); line-height: 1.65; margin: 0 0 12px; }
+.dm-card .palanca { font-family: var(--font-mono); font-size: 11px; color: var(--brand-teal); font-weight: 600; letter-spacing: 0.06em; padding-top: 10px; border-top: 1px solid var(--border); }
+.dm-card .palanca b { color: var(--fg); font-weight: 600; }
+
+@media (max-width: 960px) {
+  .challenges-grid, .services-row, .signals-grid, .dm-grid, .narrative { grid-template-columns: 1fr; }
+  .narrative .stats { position: static; }
+  .case-feature { grid-template-columns: 1fr; padding: 48px 32px; gap: 32px; }
+}

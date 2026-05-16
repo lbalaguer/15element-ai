@@ -1,0 +1,34 @@
+# ─── Design system source (lives in lbalaguer/15element-design) ──────
+preview/
+ui_kits/
+youtube/
+SKILL.md
+
+# ─── Secrets ─────────────────────────────────────────────────────────
+.env
+.env.*
+*.key
+*.pem
+
+# ─── Node / build ────────────────────────────────────────────────────
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.cache/
+dist/
+
+# ─── OS ──────────────────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ─── Editors ─────────────────────────────────────────────────────────
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# ─── Logs ────────────────────────────────────────────────────────────
+*.log

@@ -1,0 +1,41 @@
+<script>
+// Theme toggle (light/dark)
+(function(){
+  const stored = localStorage.getItem('theme');
+  if (stored) document.documentElement.setAttribute('data-theme', stored);
+  const t = document.getElementById('themeToggle');
+  if (t) t.addEventListener('click', () => {
+    const cur = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', cur);
+    localStorage.setItem('theme', cur);
+  });
+})();
+
+// Reveal animations on scroll
+(function(){
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+})();
+
+// Auto active-state in nav based on current URL
+(function(){
+  const path = window.location.pathname;
+  // Top-level nav items
+  document.querySelectorAll('.nav-links [data-section]').forEach(el => {
+    const section = el.getAttribute('data-section');
+    if (path === section || (section !== '/' && path.startsWith(section))) {
+      // For dropdowns the trigger inside
+      const trigger = el.querySelector('.nav-trigger') || el;
+      if (trigger.tagName === 'A') trigger.classList.add('is-active');
+      else trigger.classList.add('is-active');
+    }
+  });
+  // Dropdown items (sub-active)
+  document.querySelectorAll('.nav-menu a').forEach(el => {
+    const href = el.getAttribute('href');
+    if (href === path) el.classList.add('is-active-sub');
+  });
+})();
+</script>

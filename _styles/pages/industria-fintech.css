@@ -1,0 +1,46 @@
+/* ============================================================
+   /industrias/fintech/ — page-specific styles
+   Chrome lives in _styles/common.css
+   ============================================================ */
+
+/* Challenges (3 cards) */
+.challenges-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.challenge-card { background: var(--bg-elevated); border: 1px solid var(--border); border-radius: var(--r-lg); padding: 32px 28px; border-top: 3px solid var(--brand-red); transition: all var(--dur-base); }
+.challenge-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
+.challenge-card h3 { font-family: var(--font-display); font-weight: 800; font-size: 22px; line-height: 1.15; letter-spacing: -0.01em; color: var(--fg); margin: 0 0 12px; text-transform: none; }
+.challenge-card p { font-size: 14.5px; color: var(--fg-muted); line-height: 1.65; margin: 0; }
+
+/* Services row (2 cards) */
+.services-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.service-block { background: var(--bg-elevated); border: 1px solid var(--border); border-radius: var(--r-lg); padding: 36px 32px; display: flex; flex-direction: column; gap: 14px; border-top: 4px solid; transition: all var(--dur-base); text-decoration: none; }
+.service-block:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
+.service-block .tag { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--brand-teal); font-weight: 600; }
+.service-block h3 { font-family: var(--font-display); font-weight: 800; font-size: 24px; letter-spacing: -0.01em; line-height: 1.15; color: var(--fg); margin: 0; text-transform: none; }
+.service-block p { font-size: 14.5px; color: var(--fg-muted); line-height: 1.65; margin: 0; }
+.service-block p strong { color: var(--fg); }
+.service-block .result { font-family: var(--font-mono); font-size: 12px; color: var(--brand-teal); padding-top: 14px; border-top: 1px solid var(--border); margin-top: auto; }
+.service-block .result b { color: var(--fg); font-weight: 600; }
+
+/* Signals (6 cards) */
+.signals-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+.signal-card { background: var(--bg-elevated); border: 1px solid var(--border); border-radius: var(--r-lg); padding: 32px 30px; border-left: 4px solid var(--brand-orange); transition: all var(--dur-base); }
+.signal-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
+.signal-card h3 { font-family: var(--font-display); font-weight: 800; font-size: 22px; letter-spacing: -0.01em; line-height: 1.15; color: var(--fg); margin: 0 0 14px; text-transform: none; }
+.signal-card p { font-size: 14.5px; color: var(--fg-muted); line-height: 1.7; margin: 0; }
+.signal-card p strong { color: var(--fg); }
+
+/* Narrative compliance */
+.narrative { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: start; }
+.narrative .copy p { font-size: 16.5px; color: var(--fg-muted); line-height: 1.75; margin: 0 0 20px; }
+.narrative .copy p strong { color: var(--fg); }
+.narrative .copy p:last-child { margin-bottom: 0; }
+.narrative .stats { display: flex; flex-direction: column; gap: 14px; position: sticky; top: 96px; }
+.narrative .stat-box { background: var(--bg-elevated); border: 1px solid var(--border); border-radius: var(--r-lg); padding: 28px 26px; border-left: 4px solid var(--brand-teal); }
+.narrative .stat-box .big { font-family: var(--font-display); font-weight: 800; font-size: 38px; line-height: 1.1; letter-spacing: -0.02em; color: var(--fg); }
+.narrative .stat-box .big .u { font-size: 0.5em; color: var(--brand-teal); margin-left: 4px; }
+.narrative .stat-box .lab { font-size: 13px; color: var(--fg-muted); margin-top: 10px; line-height: 1.5; }
+
+@media (max-width: 960px) {
+  .challenges-grid, .services-row, .signals-grid, .narrative { grid-template-columns: 1fr; }
+  .narrative .stats { position: static; }
+}

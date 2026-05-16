@@ -1,0 +1,128 @@
+/* ============================================================
+   /blog/ — overview page styles
+   Chrome lives in _styles/common.css
+   ============================================================ */
+
+/* ─── HERO ─── */
+.blog-hero { padding: 48px 0 56px; position: relative; overflow: hidden; }
+.blog-hero::before {
+  content: ''; position: absolute; inset: 0;
+  background: var(--gradient-element);
+  opacity: 0.05; filter: blur(80px); pointer-events: none; z-index: 0;
+}
+.blog-hero .container { position: relative; z-index: 2; }
+.blog-hero h1 {
+  font-family: var(--font-display); font-weight: 800;
+  letter-spacing: -0.025em; line-height: 0.98;
+  font-size: clamp(40px, 5.5vw, 80px);
+  color: var(--fg); margin: 0 0 24px; text-transform: none; max-width: 1000px;
+}
+.blog-hero h1 .accent { color: var(--brand-teal); }
+.blog-hero .lead {
+  font-size: 18px; line-height: 1.7; color: var(--fg-muted);
+  max-width: 760px; margin: 0 0 24px;
+}
+.blog-hero .lead strong { color: var(--fg); }
+
+/* ─── CATEGORY CHIPS ─── */
+.blog-cats { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 8px; }
+.cat-chip {
+  font-family: var(--font-mono);
+  font-size: 11.5px; font-weight: 600; letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 8px 14px; border-radius: var(--r-pill);
+  background: var(--bg-elevated); border: 1px solid var(--border);
+  color: var(--fg-muted);
+  cursor: pointer; transition: all var(--dur-fast);
+  text-decoration: none; border-bottom: 0;
+}
+.cat-chip:hover, .cat-chip.is-active {
+  background: var(--brand-teal); color: white; border-color: var(--brand-teal);
+}
+
+/* ─── POSTS GRID ─── */
+.posts-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+.posts-grid.featured-row { grid-template-columns: 1.6fr 1fr 1fr; margin-bottom: 32px; }
+
+.post-card {
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  padding: 28px;
+  display: flex; flex-direction: column; gap: 14px;
+  transition: all var(--dur-base);
+  text-decoration: none; border-bottom: 0;
+  position: relative;
+  overflow: hidden;
+}
+.post-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); border-color: var(--brand-teal); }
+
+.post-card-meta {
+  display: flex; align-items: center; gap: 10px;
+  font-family: var(--font-mono); font-size: 11px;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--fg-muted);
+}
+.post-card-meta .cat {
+  font-weight: 700;
+  color: var(--brand-teal);
+}
+.post-card-meta .sep { opacity: 0.4; }
+
+.post-card h3 {
+  font-family: var(--font-display); font-weight: 800;
+  font-size: 22px; letter-spacing: -0.01em; line-height: 1.15;
+  color: var(--fg); margin: 0; text-transform: none;
+}
+.post-card.featured h3 { font-size: 30px; }
+.post-card p { font-size: 14.5px; color: var(--fg-muted); line-height: 1.65; margin: 0; flex: 1; }
+.post-card .arrow {
+  font-family: var(--font-mono); font-size: 12px; font-weight: 600;
+  color: var(--brand-teal); letter-spacing: 0.04em;
+  margin-top: 8px;
+}
+
+.post-card.soon {
+  background: var(--bg-sunken);
+  pointer-events: none;
+  opacity: 0.65;
+}
+.post-card.soon::after {
+  content: 'Próximamente';
+  position: absolute;
+  top: 14px; right: 14px;
+  font-family: var(--font-mono); font-size: 10px; font-weight: 700;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  padding: 4px 8px; border-radius: var(--r-sm);
+  background: var(--brand-orange); color: white;
+}
+.post-card.soon h3 { color: var(--fg-muted); }
+
+/* ─── NEWSLETTER ─── */
+.newsletter-band {
+  background: var(--bg-elevated);
+  border: 1px solid var(--border); border-left: 4px solid var(--brand-teal);
+  border-radius: var(--r-lg);
+  padding: 40px 44px;
+  display: grid; grid-template-columns: 1fr auto; gap: 32px;
+  align-items: center;
+  max-width: 920px; margin: 0 auto;
+}
+.newsletter-band .copy h3 {
+  font-family: var(--font-display); font-weight: 800; font-size: 24px;
+  letter-spacing: -0.01em; line-height: 1.15;
+  color: var(--fg); margin: 0 0 8px; text-transform: none;
+}
+.newsletter-band .copy p {
+  font-size: 14.5px; color: var(--fg-muted); margin: 0; line-height: 1.55;
+}
+
+/* ─── Responsive ─── */
+@media (max-width: 960px) {
+  .posts-grid, .posts-grid.featured-row { grid-template-columns: 1fr; }
+  .newsletter-band { grid-template-columns: 1fr; padding: 32px 28px; text-align: center; }
+}

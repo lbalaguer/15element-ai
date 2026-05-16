@@ -1,0 +1,118 @@
+[build]
+  publish = "."
+
+# Security + SEO headers — buenos para Core Web Vitals y trust signals
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    X-Frame-Options = "SAMEORIGIN"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "geolocation=(), microphone=(), camera=()"
+    Strict-Transport-Security = "max-age=63072000; includeSubDomains; preload"
+
+# Cache agresivo para assets
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "*.css"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# HTML — cache corto para que los updates lleguen rápido
+[[headers]]
+  for = "/*.html"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+# Sitemap + robots — content type correcto y cache moderado
+[[headers]]
+  for = "/sitemap.xml"
+  [headers.values]
+    Content-Type = "application/xml"
+    Cache-Control = "public, max-age=3600"
+
+[[headers]]
+  for = "/robots.txt"
+  [headers.values]
+    Content-Type = "text/plain"
+    Cache-Control = "public, max-age=3600"
+
+# Excluir archivos de design system del deploy público (no SEO juice malo)
+[[headers]]
+  for = "/preview/*"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow"
+
+[[headers]]
+  for = "/ui_kits/*"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow"
+
+# Redirect www → apex (canónico)
+[[redirects]]
+  from = "https://www.15element.ai/*"
+  to = "https://15element.ai/:splat"
+  status = 301
+  force = true
+
+# ─── 301 redirects: WordPress legacy URLs → nueva arquitectura /blog/ ───
+# Migración mayo 2026: flat URLs → /blog/[slug]/
+
+[[redirects]]
+  from = "/agencia-b2b-canada-latam-prospeccion-linkedin/"
+  to = "/blog/agencia-b2b-canada-latam-prospeccion-linkedin/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/itechmaint-energia-solar-chile-linkedin/"
+  to = "/blog/itechmaint-energia-solar-chile-linkedin/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/nextco-842-leads-b2b-sin-ads/"
+  to = "/blog/nextco-842-leads-b2b-sin-ads/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/citas-b2b-calificadas-linkedin-proceso/"
+  to = "/blog/citas-b2b-calificadas-linkedin-proceso/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/posicionamiento-perplexity-gemini-b2b-aeo-geo/"
+  to = "/blog/posicionamiento-perplexity-gemini-b2b-aeo-geo/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/generacion-leads-energia-solar-latam/"
+  to = "/blog/generacion-leads-energia-solar-latam/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/como-conseguir-clientes-b2b-mexico-sin-referidos/"
+  to = "/blog/como-conseguir-clientes-b2b-mexico-sin-referidos/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/lead-scoring-automatizado-b2b/"
+  to = "/blog/lead-scoring-automatizado-b2b/"
+  status = 301
+  force = true
+
+# Post descartado (mezcla B2C/B2B en inglés) → consolidar en pillar AEO
+[[redirects]]
+  from = "/seo-aeo-geo-strategy-lead-growth/"
+  to = "/servicios/seo-aeo-geo/"
+  status = 301
+  force = true
