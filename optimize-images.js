@@ -23,6 +23,16 @@ const TARGETS = [
   // Photos: 1200px wide preserves og:image rich preview minimum
   { name: 'Luis2.png', width: 1200, quality: 75 },
   { name: 'Luis3.png', width: 1200, quality: 75 },
+  { name: 'LuisAiStudio1.png', width: 1200, quality: 75 },
+  { name: 'LuisAiStudio2.png', width: 1200, quality: 75 },
+  { name: 'LuisAiStudio3.png', width: 1200, quality: 75 },
+  { name: 'LuisAiStudio4.png', width: 1200, quality: 75 },
+  { name: 'LuisAiStudio5.png', width: 1200, quality: 75 },
+  { name: 'LuisAiStudio6.png', width: 1200, quality: 75 },
+  { name: 'LuisAiStudio7.png', width: 1200, quality: 75 },
+  { name: 'LuisAiStudio8.png', width: 1200, quality: 75 },
+  { name: 'LuisAiStudio9.png', width: 1200, quality: 75 },
+  { name: 'LuisAiStudio10.png', width: 1200, quality: 75 },
 
   // Logos: 3x retina of display size. Quality 90 to preserve crisp edges.
   // Display: nav 100x34, footer 86x30, drawer 100x34 → 300x105 is plenty
