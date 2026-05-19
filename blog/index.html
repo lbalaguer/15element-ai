@@ -919,13 +919,13 @@ footer { background: var(--bg-sunken); padding: 64px 0 40px; border-top: 1px sol
 
 <section class="blog-hero">
   <div class="container">
-    <div class="blog-cats">
-      <span class="cat-chip is-active">Todos</span>
-      <span class="cat-chip">Casos</span>
-      <span class="cat-chip">AEO/GEO</span>
-      <span class="cat-chip">LinkedIn</span>
-      <span class="cat-chip">Metodología</span>
-      <span class="cat-chip">Industrias</span>
+    <div class="blog-cats" id="blog-filter">
+      <button type="button" class="cat-chip is-active" data-filter="all">Todos</button>
+      <button type="button" class="cat-chip" data-filter="casos">Casos</button>
+      <button type="button" class="cat-chip" data-filter="aeo">AEO/GEO</button>
+      <button type="button" class="cat-chip" data-filter="linkedin">LinkedIn</button>
+      <button type="button" class="cat-chip" data-filter="metodologia">Metodología</button>
+      <button type="button" class="cat-chip" data-filter="industrias">Industrias</button>
     </div>
     <h1>Blog SEO B2B + AEO + <span class="accent">LinkedIn orgánico.</span></h1>
     <p class="lead">
@@ -941,7 +941,7 @@ footer { background: var(--bg-sunken); padding: 64px 0 40px; border-top: 1px sol
 
     <!-- FEATURED ROW (1 destacado + 2 cards) -->
     <div class="posts-grid featured-row">
-      <a href="/blog/nextco-842-leads-b2b-sin-ads/" class="post-card featured reveal">
+      <a href="/blog/nextco-842-leads-b2b-sin-ads/" class="post-card featured reveal" data-cat="casos industrias">
         <div class="post-card-meta">
           <span class="cat">Caso</span><span class="sep">·</span><span>Manufactura · MX</span><span class="sep">·</span><span>14 min</span>
         </div>
@@ -950,7 +950,7 @@ footer { background: var(--bg-sunken); padding: 64px 0 40px; border-top: 1px sol
         <span class="arrow">Leer caso →</span>
       </a>
 
-      <a href="/blog/itechmaint-energia-solar-chile-linkedin/" class="post-card reveal">
+      <a href="/blog/itechmaint-energia-solar-chile-linkedin/" class="post-card reveal" data-cat="casos linkedin industrias">
         <div class="post-card-meta">
           <span class="cat">Caso</span><span class="sep">·</span><span>Solar · CL</span>
         </div>
@@ -959,7 +959,7 @@ footer { background: var(--bg-sunken); padding: 64px 0 40px; border-top: 1px sol
         <span class="arrow">Leer caso →</span>
       </a>
 
-      <a href="/blog/agencia-b2b-canada-latam-prospeccion-linkedin/" class="post-card reveal">
+      <a href="/blog/agencia-b2b-canada-latam-prospeccion-linkedin/" class="post-card reveal" data-cat="metodologia linkedin">
         <div class="post-card-meta">
           <span class="cat">Metodología</span><span class="sep">·</span><span>Luis Balaguer</span>
         </div>
@@ -969,9 +969,57 @@ footer { background: var(--bg-sunken); padding: 64px 0 40px; border-top: 1px sol
       </a>
     </div>
 
+    <!-- CASOS RECIENTES ROW (migrated May 2026) -->
+    <div class="posts-grid">
+      <a href="/blog/top-energy-9m-usd-linkedin-organico/" class="post-card reveal" data-cat="casos linkedin industrias">
+        <div class="post-card-meta">
+          <span class="cat">Caso</span><span class="sep">·</span><span>Solar · Multinacional · 9 min</span>
+        </div>
+        <h3>Top Energy: $9M USD cerrados desde un mensaje de LinkedIn orgánico.</h3>
+        <p>3,300 paneles solares + 2 proyectos adicionales en México. Cómo un sistema bien armado convierte un mensaje en un contrato multimillonario.</p>
+        <span class="arrow">Leer caso →</span>
+      </a>
+
+      <a href="/blog/spakio-amazon-oxxo-liverpool-pipeline-b2b/" class="post-card reveal" data-cat="casos industrias linkedin">
+        <div class="post-card-meta">
+          <span class="cat">Caso</span><span class="sep">·</span><span>Manufactura · MX · 9 min</span>
+        </div>
+        <h3>Spakio: pipeline tan saturado que tuvieron que pausar campañas.</h3>
+        <p>Amazon, OXXO y Liverpool cerrados con LinkedIn orgánico. Pipeline B2B arriba de la capacidad operativa de la empresa.</p>
+        <span class="arrow">Leer caso →</span>
+      </a>
+
+      <a href="/blog/mercedes-benz-cinepolis-linkedin-b2b-alto-ticket/" class="post-card reveal" data-cat="casos linkedin">
+        <div class="post-card-meta">
+          <span class="cat">Casos</span><span class="sep">·</span><span>LinkedIn alto ticket · 10 min</span>
+        </div>
+        <h3>Mercedes-Benz $150K USD desde 1 mensaje + Cinépolis B2B con LinkedIn.</h3>
+        <p>Dos casos alto ticket que rompen la lógica de "necesito ads para crecer". Acceso al decision-maker correcto y un mensaje contextual.</p>
+        <span class="arrow">Leer casos →</span>
+      </a>
+
+      <a href="/blog/nova-energia-ecuador-leads-solar-linkedin/" class="post-card reveal" data-cat="casos industrias linkedin">
+        <div class="post-card-meta">
+          <span class="cat">Caso</span><span class="sep">·</span><span>Solar · Ecuador · 9 min</span>
+        </div>
+        <h3>Nova Energía Ecuador: 35.85% de conversión en leads B2B solar.</h3>
+        <p>Más del doble del benchmark del sector. Filtrar por capacidad operativa antes de generar leads, en lugar de filtrar después.</p>
+        <span class="arrow">Leer caso →</span>
+      </a>
+
+      <a href="/blog/oplogistics-pipeline-logistica-b2b-linkedin/" class="post-card reveal" data-cat="casos industrias linkedin">
+        <div class="post-card-meta">
+          <span class="cat">Caso</span><span class="sep">·</span><span>Logística · MX · 9 min</span>
+        </div>
+        <h3>OpLogistics: pipeline B2B logística predecible con LinkedIn orgánico.</h3>
+        <p>De depender de referidos a pipeline mes a mes con cuentas target reales. Por qué la logística B2B es difícil de prospectar tradicionalmente.</p>
+        <span class="arrow">Leer caso →</span>
+      </a>
+    </div>
+
     <!-- CORNERSTONE + TÁCTICOS ROW -->
     <div class="posts-grid">
-      <a href="/blog/como-aparecer-google-ai-overviews-b2b-mexico/" class="post-card reveal">
+      <a href="/blog/como-aparecer-google-ai-overviews-b2b-mexico/" class="post-card reveal" data-cat="aeo">
         <div class="post-card-meta">
           <span class="cat">AI Overviews</span><span class="sep">·</span><span>Guía 2026 · 10 min</span>
         </div>
@@ -980,7 +1028,7 @@ footer { background: var(--bg-sunken); padding: 64px 0 40px; border-top: 1px sol
         <span class="arrow">Leer guía →</span>
       </a>
 
-      <a href="/blog/que-es-aeo/" class="post-card reveal">
+      <a href="/blog/que-es-aeo/" class="post-card reveal" data-cat="aeo metodologia">
         <div class="post-card-meta">
           <span class="cat">AEO</span><span class="sep">·</span><span>Cornerstone · 11 min</span>
         </div>
@@ -989,7 +1037,7 @@ footer { background: var(--bg-sunken); padding: 64px 0 40px; border-top: 1px sol
         <span class="arrow">Leer guía →</span>
       </a>
 
-      <a href="/blog/seo-aeo-geo-por-industria/" class="post-card reveal">
+      <a href="/blog/seo-aeo-geo-por-industria/" class="post-card reveal" data-cat="aeo industrias metodologia">
         <div class="post-card-meta">
           <span class="cat">SEO · AEO · GEO</span><span class="sep">·</span><span>Pillar · 14 min</span>
         </div>
@@ -998,7 +1046,7 @@ footer { background: var(--bg-sunken); padding: 64px 0 40px; border-top: 1px sol
         <span class="arrow">Leer pillar →</span>
       </a>
 
-      <a href="/blog/posicionamiento-perplexity-gemini-b2b-aeo-geo/" class="post-card reveal">
+      <a href="/blog/posicionamiento-perplexity-gemini-b2b-aeo-geo/" class="post-card reveal" data-cat="aeo">
         <div class="post-card-meta">
           <span class="cat">AEO/GEO</span><span class="sep">·</span><span>Cornerstone · 12 min</span>
         </div>
@@ -1007,7 +1055,7 @@ footer { background: var(--bg-sunken); padding: 64px 0 40px; border-top: 1px sol
         <span class="arrow">Leer guía →</span>
       </a>
 
-      <a href="/blog/citas-b2b-calificadas-linkedin-proceso/" class="post-card reveal">
+      <a href="/blog/citas-b2b-calificadas-linkedin-proceso/" class="post-card reveal" data-cat="linkedin metodologia">
         <div class="post-card-meta">
           <span class="cat">LinkedIn</span><span class="sep">·</span><span>Táctico · 11 min</span>
         </div>
@@ -1016,7 +1064,7 @@ footer { background: var(--bg-sunken); padding: 64px 0 40px; border-top: 1px sol
         <span class="arrow">Leer artículo →</span>
       </a>
 
-      <a href="/blog/lead-scoring-automatizado-b2b/" class="post-card reveal">
+      <a href="/blog/lead-scoring-automatizado-b2b/" class="post-card reveal" data-cat="linkedin metodologia">
         <div class="post-card-meta">
           <span class="cat">Señales</span><span class="sep">·</span><span>Táctico · 10 min</span>
         </div>
@@ -1025,7 +1073,7 @@ footer { background: var(--bg-sunken); padding: 64px 0 40px; border-top: 1px sol
         <span class="arrow">Leer artículo →</span>
       </a>
 
-      <a href="/blog/generacion-leads-energia-solar-latam/" class="post-card reveal">
+      <a href="/blog/generacion-leads-energia-solar-latam/" class="post-card reveal" data-cat="industrias casos linkedin">
         <div class="post-card-meta">
           <span class="cat">Industria</span><span class="sep">·</span><span>Solar · LATAM · 10 min</span>
         </div>
@@ -1034,7 +1082,7 @@ footer { background: var(--bg-sunken); padding: 64px 0 40px; border-top: 1px sol
         <span class="arrow">Leer artículo →</span>
       </a>
 
-      <a href="/blog/como-conseguir-clientes-b2b-mexico-sin-referidos/" class="post-card reveal">
+      <a href="/blog/como-conseguir-clientes-b2b-mexico-sin-referidos/" class="post-card reveal" data-cat="metodologia">
         <div class="post-card-meta">
           <span class="cat">Metodología</span><span class="sep">·</span><span>México · 9 min</span>
         </div>
@@ -1112,7 +1160,6 @@ footer { background: var(--bg-sunken); padding: 64px 0 40px; border-top: 1px sol
           <li><a href="/casos/">Casos de éxito</a></li>
           <li><a href="/blog/">Blog</a></li>
           <li><a href="/contacto/">Contacto</a></li>
-          <li><a href="https://15e.ai">AI OS ↗</a></li>
         </ul>
       </div>
       <div>
@@ -1202,6 +1249,26 @@ footer { background: var(--bg-sunken); padding: 64px 0 40px; border-top: 1px sol
 })();
 </script>
 
+
+<script>
+(function(){
+  var filterBar = document.getElementById('blog-filter');
+  if (!filterBar) return;
+  var chips = filterBar.querySelectorAll('.cat-chip');
+  var cards = document.querySelectorAll('.post-card[data-cat]');
+  filterBar.addEventListener('click', function(e){
+    var chip = e.target.closest('.cat-chip');
+    if (!chip) return;
+    var filter = chip.getAttribute('data-filter');
+    chips.forEach(function(c){ c.classList.toggle('is-active', c === chip); });
+    cards.forEach(function(card){
+      var cats = (card.getAttribute('data-cat') || '').split(/\s+/);
+      var match = (filter === 'all') || cats.indexOf(filter) !== -1;
+      card.style.display = match ? '' : 'none';
+    });
+  });
+})();
+</script>
 
 </body>
 </html>
