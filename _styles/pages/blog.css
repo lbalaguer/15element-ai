@@ -25,20 +25,24 @@
 .blog-hero .lead strong { color: var(--fg); }
 
 /* ─── CATEGORY CHIPS ─── */
-.blog-cats { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 8px; }
+.blog-cats { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 8px; }
 .cat-chip {
+  display: inline-flex; align-items: center; justify-content: center;
   font-family: var(--font-mono);
-  font-size: 11.5px; font-weight: 600; letter-spacing: 0.08em;
-  text-transform: uppercase;
-  padding: 8px 14px; border-radius: var(--r-pill);
+  font-size: 12px; font-weight: 600; letter-spacing: 0.08em;
+  text-transform: uppercase; line-height: 1;
+  padding: 12px 22px; min-height: 40px;
+  border-radius: var(--r-pill);
   background: var(--bg-elevated); border: 1px solid var(--border);
   color: var(--fg-muted);
   cursor: pointer; transition: all var(--dur-fast);
   text-decoration: none; border-bottom: 0;
+  user-select: none;
 }
 .cat-chip:hover, .cat-chip.is-active {
   background: var(--brand-teal); color: white; border-color: var(--brand-teal);
 }
+.cat-chip:focus-visible { outline: 2px solid var(--brand-teal); outline-offset: 2px; }
 
 /* ─── POSTS GRID ─── */
 .posts-grid {
