@@ -244,9 +244,10 @@ function processFile(srcAbs) {
   const isHome = path.relative(SRC_DIR, srcAbs) === 'index.html';
   if (isHome) {
     const gscVerification = `<meta name="google-site-verification" content="MJzwxG12ePDeg1KA2sFAtH9QuTXmde9BRXjUCJtLfgI">`;
+    const bingVerification = `<meta name="msvalidate.01" content="EB03E647D23C04F04ECB0DD43A869C1E">`;
     html = html.replace(
       /(<meta name="viewport"[^>]+>)/,
-      `$1\n${gscVerification}`
+      `$1\n${gscVerification}\n${bingVerification}`
     );
   }
 
