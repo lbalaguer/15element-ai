@@ -44,67 +44,7 @@
 }
 .cat-chip:focus-visible { outline: 2px solid var(--brand-teal); outline-offset: 2px; }
 
-/* ─── POSTS GRID ─── */
-.posts-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-}
-.posts-grid.featured-row { grid-template-columns: 1.6fr 1fr 1fr; margin-bottom: 32px; }
-
-.post-card {
-  background: var(--bg-elevated);
-  border: 1px solid var(--border);
-  border-radius: var(--r-lg);
-  padding: 28px;
-  display: flex; flex-direction: column; gap: 14px;
-  transition: all var(--dur-base);
-  text-decoration: none; border-bottom: 0;
-  position: relative;
-  overflow: hidden;
-}
-.post-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); border-color: var(--brand-teal); }
-
-.post-card-meta {
-  display: flex; align-items: center; gap: 10px;
-  font-family: var(--font-mono); font-size: 11px;
-  letter-spacing: 0.08em; text-transform: uppercase;
-  color: var(--fg-muted);
-}
-.post-card-meta .cat {
-  font-weight: 700;
-  color: var(--brand-teal);
-}
-.post-card-meta .sep { opacity: 0.4; }
-
-.post-card h3 {
-  font-family: var(--font-display); font-weight: 800;
-  font-size: 22px; letter-spacing: -0.01em; line-height: 1.15;
-  color: var(--fg); margin: 0; text-transform: none;
-}
-.post-card.featured h3 { font-size: 30px; }
-.post-card p { font-size: 14.5px; color: var(--fg-muted); line-height: 1.65; margin: 0; flex: 1; }
-.post-card .arrow {
-  font-family: var(--font-mono); font-size: 12px; font-weight: 600;
-  color: var(--brand-teal); letter-spacing: 0.04em;
-  margin-top: 8px;
-}
-
-.post-card.soon {
-  background: var(--bg-sunken);
-  pointer-events: none;
-  opacity: 0.65;
-}
-.post-card.soon::after {
-  content: 'Próximamente';
-  position: absolute;
-  top: 14px; right: 14px;
-  font-family: var(--font-mono); font-size: 10px; font-weight: 700;
-  letter-spacing: 0.12em; text-transform: uppercase;
-  padding: 4px 8px; border-radius: var(--r-sm);
-  background: var(--brand-orange); color: white;
-}
-.post-card.soon h3 { color: var(--fg-muted); }
+/* posts-grid + post-card movidos a common.css (reutilizables en cualquier página) */
 
 /* ─── NEWSLETTER ─── */
 .newsletter-band {
@@ -127,6 +67,5 @@
 
 /* ─── Responsive ─── */
 @media (max-width: 960px) {
-  .posts-grid, .posts-grid.featured-row { grid-template-columns: 1fr; }
   .newsletter-band { grid-template-columns: 1fr; padding: 32px 28px; text-align: center; }
 }

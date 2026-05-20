@@ -618,6 +618,111 @@ body.nav-open { overflow: hidden; }
 .faq-body strong { color: var(--fg); }
 
 /* ============================================================
+   Posts grid + post cards (blog index + cross-links en cualquier página)
+   ============================================================ */
+.posts-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+.posts-grid.featured-row { grid-template-columns: 1.6fr 1fr 1fr; margin-bottom: 32px; }
+
+.post-card {
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  padding: 28px;
+  display: flex; flex-direction: column; gap: 14px;
+  transition: all var(--dur-base);
+  text-decoration: none; border-bottom: 0;
+  position: relative;
+  overflow: hidden;
+}
+.post-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); border-color: var(--brand-teal); }
+
+.post-card-meta {
+  display: flex; align-items: center; gap: 10px;
+  font-family: var(--font-mono); font-size: 11px;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--fg-muted);
+}
+.post-card-meta .cat { font-weight: 700; color: var(--brand-teal); }
+.post-card-meta .sep { opacity: 0.4; }
+
+.post-card h3 {
+  font-family: var(--font-display); font-weight: 800;
+  font-size: 22px; letter-spacing: -0.01em; line-height: 1.15;
+  color: var(--fg); margin: 0; text-transform: none;
+}
+.post-card.featured h3 { font-size: 30px; }
+.post-card p { font-size: 14.5px; color: var(--fg-muted); line-height: 1.65; margin: 0; flex: 1; }
+.post-card .arrow {
+  font-family: var(--font-mono); font-size: 12px; font-weight: 600;
+  color: var(--brand-teal); letter-spacing: 0.04em;
+  margin-top: 8px;
+}
+
+.post-card.soon { background: var(--bg-sunken); pointer-events: none; opacity: 0.65; }
+.post-card.soon::after {
+  content: 'Próximamente';
+  position: absolute; top: 14px; right: 14px;
+  font-family: var(--font-mono); font-size: 10px; font-weight: 700;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  padding: 4px 8px; border-radius: var(--r-sm);
+  background: var(--brand-orange); color: white;
+}
+.post-card.soon h3 { color: var(--fg-muted); }
+
+@media (max-width: 960px) {
+  .posts-grid, .posts-grid.featured-row { grid-template-columns: 1fr; }
+}
+
+/* ============================================================
+   Result bands / casos por industria (usado en industrias + casos)
+   ============================================================ */
+.results-list { display: flex; flex-direction: column; gap: 16px; }
+.result-band {
+  background: var(--bg-elevated); border: 1px solid var(--border);
+  border-radius: var(--r-lg); padding: 36px 40px;
+  display: grid; grid-template-columns: 1.6fr 1fr; gap: 40px;
+  align-items: start; transition: all var(--dur-base);
+  border-left: 4px solid;
+}
+.result-band:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
+.result-band .meta {
+  font-family: var(--font-mono); font-size: 11px; color: var(--fg-muted);
+  letter-spacing: 0.04em; text-transform: uppercase; margin-bottom: 10px;
+}
+.result-band h3 {
+  font-family: var(--font-display); font-weight: 800; font-size: 26px;
+  letter-spacing: -0.01em; line-height: 1.15;
+  color: var(--fg); margin: 0 0 14px; text-transform: none;
+}
+.result-band p { font-size: 14.5px; color: var(--fg-muted); line-height: 1.65; margin: 0 0 14px; }
+.result-band p strong { color: var(--fg); }
+.result-band .blockquote {
+  font-style: italic; color: var(--fg-muted); font-size: 14.5px;
+  border-left: 2px solid var(--brand-teal); padding-left: 14px;
+}
+.result-band .stats-mini {
+  display: flex; flex-direction: column; gap: 14px;
+  padding-left: 32px; border-left: 1px solid var(--border);
+}
+.result-band .stats-mini .row { font-size: 13px; color: var(--fg-muted); line-height: 1.5; }
+.result-band .stats-mini .row b {
+  font-family: var(--font-display); font-weight: 800; font-size: 20px;
+  color: var(--fg); letter-spacing: -0.01em;
+  display: block; margin-bottom: 4px;
+}
+@media (max-width: 960px) {
+  .result-band { grid-template-columns: 1fr; gap: 24px; padding: 32px; }
+  .result-band .stats-mini {
+    padding-left: 0; border-left: 0;
+    padding-top: 24px; border-top: 1px solid var(--border);
+  }
+}
+
+/* ============================================================
    CTA band (used on every page)
    ============================================================ */
 .cta-band { background: var(--brand-navy); color: white; padding: 110px 0; position: relative; overflow: hidden; }

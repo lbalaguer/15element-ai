@@ -85,41 +85,8 @@
 }
 .dm-card .palanca b { color: var(--fg); font-weight: 600; }
 
-/* Result cases */
-.results-list { display: flex; flex-direction: column; gap: 16px; }
-.result-band {
-  background: var(--bg-elevated); border: 1px solid var(--border);
-  border-radius: var(--r-lg); padding: 36px 40px;
-  display: grid; grid-template-columns: 1.6fr 1fr; gap: 40px;
-  align-items: start; transition: all var(--dur-base);
-  border-left: 4px solid;
-}
-.result-band:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
-.result-band .meta {
-  font-family: var(--font-mono); font-size: 11px; color: var(--fg-muted);
-  letter-spacing: 0.04em; text-transform: uppercase; margin-bottom: 10px;
-}
-.result-band h3 {
-  font-family: var(--font-display); font-weight: 800; font-size: 26px;
-  letter-spacing: -0.01em; line-height: 1.15;
-  color: var(--fg); margin: 0 0 14px; text-transform: none;
-}
-.result-band p { font-size: 14.5px; color: var(--fg-muted); line-height: 1.65; margin: 0 0 14px; }
-.result-band p strong { color: var(--fg); }
-.result-band .blockquote {
-  font-style: italic; color: var(--fg-muted); font-size: 14.5px;
-  border-left: 2px solid var(--brand-teal); padding-left: 14px;
-}
-.result-band .stats-mini {
-  display: flex; flex-direction: column; gap: 14px;
-  padding-left: 32px; border-left: 1px solid var(--border);
-}
-.result-band .stats-mini .row { font-size: 13px; color: var(--fg-muted); line-height: 1.5; }
-.result-band .stats-mini .row b {
-  font-family: var(--font-display); font-weight: 800; font-size: 20px;
-  color: var(--fg); letter-spacing: -0.01em;
-  display: block; margin-bottom: 4px;
-}
+/* Result cases — .results-list/.result-band/.stats-mini movidos a common.css
+   (los usan las 6 industrias + casos, no solo energía solar) */
 
 /* Narrative AEO/GEO */
 .narrative { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: start; }
@@ -144,9 +111,4 @@
     grid-template-columns: 1fr;
   }
   .narrative .stats { position: static; }
-  .result-band { grid-template-columns: 1fr; gap: 24px; padding: 32px; }
-  .result-band .stats-mini {
-    padding-left: 0; border-left: 0;
-    padding-top: 24px; border-top: 1px solid var(--border);
-  }
 }

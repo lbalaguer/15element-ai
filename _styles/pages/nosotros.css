@@ -235,6 +235,7 @@
 }
 .tl-tag-blue { background: rgba(0, 75, 135, 0.1); color: var(--brand-navy); }
 .tl-tag-teal { background: rgba(34, 168, 168, 0.1); color: var(--brand-teal); }
+.tl-tag-red { background: rgba(213, 31, 38, 0.1); color: var(--brand-red); }
 :root[data-theme="dark"] .tl-tag-blue { background: rgba(255, 255, 255, 0.1); color: #9bb3d0; }
 .tl-body h3 {
   font-family: var(--font-display);

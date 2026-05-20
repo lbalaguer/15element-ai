@@ -51,6 +51,49 @@ function escapeRe(str) {
   return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 }
 
+// ------------------------------------------------------------
+// CSS class validator — BULLETPROOF guard contra clases sin estilo.
+// Atrapa el bug del 2026-05-20 (.post-faqs/.post-quote sin CSS) ANTES
+// del push. Cualquier sesión que cree un blog con una clase que no tiene
+// CSS en colors+common+pageCSS va a ver un WARNING grande en el build.
+// ------------------------------------------------------------
+// Clases que legítimamente NO necesitan CSS propio (hooks JS, markers,
+// o estilizadas solo vía atributo/estado). Si agregas una clase a esta
+// lista, documenta por qué.
+const CLASS_ALLOWLIST = new Set([
+  'reveal',          // IntersectionObserver hook (sí tiene CSS, por si acaso)
+  'is-active',       // estado de filtro/chip
+  'noscript',        // fallback
+  'hero-copy',       // wrapper de layout en /nosotros/ (sin estilo propio necesario)
+  'btn-linkedin',    // modificador sobre .btn .btn-ghost (hereda estilo del botón)
+]);
+function classesInHtml(html) {
+  const set = new Set();
+  const re = /class="([^"]+)"/g;
+  let m;
+  while ((m = re.exec(html))) {
+    m[1].split(/\s+/).forEach(c => { if (c) set.add(c); });
+  }
+  return set;
+}
+function classesInCss(css) {
+  const set = new Set();
+  const re = /\.(-?[_a-zA-Z][_a-zA-Z0-9-]*)/g;
+  let m;
+  while ((m = re.exec(css))) set.add(m[1]);
+  return set;
+}
+function findOrphanClasses(html, combinedCss) {
+  const used = classesInHtml(html);
+  const defined = classesInCss(combinedCss);
+  const orphans = [];
+  for (const c of used) {
+    if (CLASS_ALLOWLIST.has(c)) continue;
+    if (!defined.has(c)) orphans.push(c);
+  }
+  return orphans.sort();
+}
+
 const PARTIALS = ['nav', 'footer', 'wa-float', 'theme-script'];
 
 // ------------------------------------------------------------
@@ -119,11 +162,14 @@ function processFile(srcAbs) {
   const dirParts = path.dirname(rel).split(path.sep).filter(Boolean);
   let slug;
   if (dirParts.length === 0 || dirParts[0] === '.') slug = 'home';
+  // Legal pages share legal.css — evaluar ANTES del catch de length===1
+  // (si no, slug='politica-de-privacidad' busca un CSS inexistente y la página
+  //  se sirve sin estilo. Bug detectado por el validador 2026-05-20.)
+  else if (dirParts[0] === 'politica-de-privacidad' || dirParts[0] === 'terminos-de-servicio') slug = 'legal';
   else if (dirParts.length === 1) slug = dirParts[0]; // 'servicios', 'industrias', 'casos'
   else if (dirParts[0] === 'servicios') slug = 'servicio-' + dirParts.slice(1).join('-');
   else if (dirParts[0] === 'industrias') slug = 'industria-' + dirParts.slice(1).join('-');
   else if (dirParts[0] === 'blog') slug = 'blog-post'; // all blog posts share the same CSS
-  else if (dirParts[0] === 'politica-de-privacidad' || dirParts[0] === 'terminos-de-servicio') slug = 'legal';
   else slug = dirParts.join('-');
   const pageCssAbs = path.join(ROOT, '_styles', 'pages', `${slug}.css`);
   const pageCssPath = relativePath(srcAbs, `_styles/pages/${slug}.css`) + '?v=' + hashFile(pageCssAbs);
@@ -206,7 +252,10 @@ function processFile(srcAbs) {
   const outDir = path.dirname(outAbs);
   fs.mkdirSync(outDir, { recursive: true });
   fs.writeFileSync(outAbs, html, 'utf8');
-  return rel;
+
+  // BULLETPROOF: validar que toda clase usada tenga CSS en el bundle de esta página
+  const orphans = findOrphanClasses(html, combinedCss);
+  return { rel, orphans };
 }
 
 // ------------------------------------------------------------
@@ -219,8 +268,33 @@ if (files.length === 0) {
 }
 
 console.log(`[build] Building ${files.length} page(s)...`);
+const allOrphans = [];
 for (const f of files) {
-  const rel = processFile(f);
-  console.log(`  ✓ ${rel}`);
+  const { rel, orphans } = processFile(f);
+  if (orphans.length) {
+    console.log(`  ⚠ ${rel}  (clases sin CSS: ${orphans.join(', ')})`);
+    allOrphans.push({ rel, orphans });
+  } else {
+    console.log(`  ✓ ${rel}`);
+  }
 }
-console.log(`[build] Done.`);
+
+if (allOrphans.length) {
+  console.log('');
+  console.log('═══════════════════════════════════════════════════════════');
+  console.log('⚠  WARNING: CLASES SIN CSS DETECTADAS');
+  console.log('───────────────────────────────────────────────────────────');
+  console.log('  Estas clases se usan en el HTML pero no tienen estilo en');
+  console.log('  colors_and_type.css + common.css + el page CSS de la página.');
+  console.log('  Se van a ver SIN ESTILO en producción. Arregla antes de pushear:');
+  console.log('  - Agrega el CSS faltante, O');
+  console.log('  - Usa una clase que ya exista, O');
+  console.log('  - Si es un hook JS legítimo sin estilo, agrégala a CLASS_ALLOWLIST en build.js');
+  console.log('───────────────────────────────────────────────────────────');
+  for (const { rel, orphans } of allOrphans) {
+    console.log(`  ${rel}:`);
+    for (const c of orphans) console.log(`      .${c}`);
+  }
+  console.log('═══════════════════════════════════════════════════════════');
+}
+console.log(`[build] Done.${allOrphans.length ? ` (${allOrphans.length} página(s) con clases sin CSS — revisar arriba)` : ''}`);

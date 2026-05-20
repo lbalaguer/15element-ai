@@ -613,6 +613,111 @@ body.nav-open { overflow: hidden; }
 .faq-body strong { color: var(--fg); }
 
 /* ============================================================
+   Posts grid + post cards (blog index + cross-links en cualquier página)
+   ============================================================ */
+.posts-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+.posts-grid.featured-row { grid-template-columns: 1.6fr 1fr 1fr; margin-bottom: 32px; }
+
+.post-card {
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  padding: 28px;
+  display: flex; flex-direction: column; gap: 14px;
+  transition: all var(--dur-base);
+  text-decoration: none; border-bottom: 0;
+  position: relative;
+  overflow: hidden;
+}
+.post-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); border-color: var(--brand-teal); }
+
+.post-card-meta {
+  display: flex; align-items: center; gap: 10px;
+  font-family: var(--font-mono); font-size: 11px;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--fg-muted);
+}
+.post-card-meta .cat { font-weight: 700; color: var(--brand-teal); }
+.post-card-meta .sep { opacity: 0.4; }
+
+.post-card h3 {
+  font-family: var(--font-display); font-weight: 800;
+  font-size: 22px; letter-spacing: -0.01em; line-height: 1.15;
+  color: var(--fg); margin: 0; text-transform: none;
+}
+.post-card.featured h3 { font-size: 30px; }
+.post-card p { font-size: 14.5px; color: var(--fg-muted); line-height: 1.65; margin: 0; flex: 1; }
+.post-card .arrow {
+  font-family: var(--font-mono); font-size: 12px; font-weight: 600;
+  color: var(--brand-teal); letter-spacing: 0.04em;
+  margin-top: 8px;
+}
+
+.post-card.soon { background: var(--bg-sunken); pointer-events: none; opacity: 0.65; }
+.post-card.soon::after {
+  content: 'Próximamente';
+  position: absolute; top: 14px; right: 14px;
+  font-family: var(--font-mono); font-size: 10px; font-weight: 700;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  padding: 4px 8px; border-radius: var(--r-sm);
+  background: var(--brand-orange); color: white;
+}
+.post-card.soon h3 { color: var(--fg-muted); }
+
+@media (max-width: 960px) {
+  .posts-grid, .posts-grid.featured-row { grid-template-columns: 1fr; }
+}
+
+/* ============================================================
+   Result bands / casos por industria (usado en industrias + casos)
+   ============================================================ */
+.results-list { display: flex; flex-direction: column; gap: 16px; }
+.result-band {
+  background: var(--bg-elevated); border: 1px solid var(--border);
+  border-radius: var(--r-lg); padding: 36px 40px;
+  display: grid; grid-template-columns: 1.6fr 1fr; gap: 40px;
+  align-items: start; transition: all var(--dur-base);
+  border-left: 4px solid;
+}
+.result-band:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
+.result-band .meta {
+  font-family: var(--font-mono); font-size: 11px; color: var(--fg-muted);
+  letter-spacing: 0.04em; text-transform: uppercase; margin-bottom: 10px;
+}
+.result-band h3 {
+  font-family: var(--font-display); font-weight: 800; font-size: 26px;
+  letter-spacing: -0.01em; line-height: 1.15;
+  color: var(--fg); margin: 0 0 14px; text-transform: none;
+}
+.result-band p { font-size: 14.5px; color: var(--fg-muted); line-height: 1.65; margin: 0 0 14px; }
+.result-band p strong { color: var(--fg); }
+.result-band .blockquote {
+  font-style: italic; color: var(--fg-muted); font-size: 14.5px;
+  border-left: 2px solid var(--brand-teal); padding-left: 14px;
+}
+.result-band .stats-mini {
+  display: flex; flex-direction: column; gap: 14px;
+  padding-left: 32px; border-left: 1px solid var(--border);
+}
+.result-band .stats-mini .row { font-size: 13px; color: var(--fg-muted); line-height: 1.5; }
+.result-band .stats-mini .row b {
+  font-family: var(--font-display); font-weight: 800; font-size: 20px;
+  color: var(--fg); letter-spacing: -0.01em;
+  display: block; margin-bottom: 4px;
+}
+@media (max-width: 960px) {
+  .result-band { grid-template-columns: 1fr; gap: 24px; padding: 32px; }
+  .result-band .stats-mini {
+    padding-left: 0; border-left: 0;
+    padding-top: 24px; border-top: 1px solid var(--border);
+  }
+}
+
+/* ============================================================
    CTA band (used on every page)
    ============================================================ */
 .cta-band { background: var(--brand-navy); color: white; padding: 110px 0; position: relative; overflow: hidden; }
@@ -942,12 +1047,65 @@ footer { background: var(--bg-sunken); padding: 64px 0 40px; border-top: 1px sol
   margin-top: auto;
 }
 
+/* ─── Blockquote de cita (post-quote) ─── */
+.post-quote {
+  margin: 36px 0; padding: 24px 30px;
+  border-left: 4px solid var(--brand-teal);
+  background: var(--bg-elevated); border-radius: 0 var(--r-md) var(--r-md) 0;
+}
+.post-quote p {
+  margin: 0 0 10px; font-family: var(--font-display); font-weight: 600;
+  font-size: 22px; line-height: 1.4; letter-spacing: -0.01em; color: var(--fg);
+}
+.post-quote cite {
+  font-style: normal; font-family: var(--font-mono); font-size: 12.5px;
+  letter-spacing: 0.04em; color: var(--fg-muted);
+}
+
+/* ─── Título sección "Sigue leyendo" (related-title) ─── */
+.related-title {
+  font-family: var(--font-display); font-weight: 800;
+  font-size: 28px; letter-spacing: -0.02em; color: var(--fg);
+  margin: 0 0 28px; text-transform: none;
+}
+
+/* ─── FAQs visibles (post-faqs) ─── */
+.post-faqs { max-width: 920px; margin: 48px auto 0; }
+.post-faqs > h2 { margin: 0 0 16px; }
+.post-faqs details {
+  background: var(--bg-elevated); border: 1px solid var(--border);
+  border-radius: var(--r-md); overflow: hidden; margin-bottom: 8px;
+  transition: border-color var(--dur-base);
+}
+.post-faqs details:hover { border-color: var(--border-strong); }
+.post-faqs details[open] { border-color: var(--brand-teal); box-shadow: var(--shadow-sm); }
+.post-faqs summary {
+  padding: 22px 26px; cursor: pointer; display: flex;
+  justify-content: space-between; align-items: center; gap: 16px;
+  font-family: var(--font-display); font-weight: 700; font-size: 19px;
+  letter-spacing: -0.01em; color: var(--fg); list-style: none; text-transform: none;
+}
+.post-faqs summary::-webkit-details-marker { display: none; }
+.post-faqs summary::after {
+  content: "+"; color: var(--brand-teal); font-size: 28px; font-weight: 400;
+  line-height: 1; flex-shrink: 0;
+  transition: transform var(--dur-base) var(--ease-emphasized);
+}
+.post-faqs details[open] summary::after { transform: rotate(45deg); }
+.post-faqs details p {
+  padding: 0 26px 26px; margin: 0;
+  font-size: 15.5px; color: var(--fg-muted); line-height: 1.7; max-width: 760px;
+}
+.post-faqs details p strong { color: var(--fg); }
+
 /* ─── Responsive ─── */
 @media (max-width: 960px) {
   .post-meta { flex-wrap: wrap; justify-content: center; gap: 8px; }
   .related-grid { grid-template-columns: 1fr; }
   .inline-cta { padding: 28px 24px; }
   .post-body .stats-grid { grid-template-columns: 1fr 1fr; }
+  .post-faqs summary { font-size: 17px; padding: 18px 20px; }
+  .post-faqs details p { padding: 0 20px 20px; }
 }
 </style>
 </head>
@@ -1089,7 +1247,7 @@ footer { background: var(--bg-sunken); padding: 64px 0 40px; border-top: 1px sol
   <ul>
     <li><strong>SEO (Search Engine Optimization):</strong> optimización para aparecer en resultados de buscadores tradicionales. Google sigue siendo el principal.</li>
     <li><strong>AEO (Answer Engine Optimization):</strong> optimización para aparecer en respuestas de motores de IA conversacionales: ChatGPT, Gemini, Perplexity, You.com, Bing Copilot, entre otros.</li>
-    <li><strong>GEO (Generative Engine Optimization):</strong> término paraguas que incluye AEO más la optimización para componentes generativos integrados en buscadores tradicionales — por ejemplo, los <strong>AI Overviews</strong> que Google muestra arriba de los resultados orgánicos.</li>
+    <li><strong>GEO (Generative Engine Optimization):</strong> término paraguas que incluye AEO más la optimización para componentes generativos integrados en buscadores tradicionales — por ejemplo, los <strong>AI Overviews</strong> y el nuevo <a href="/blog/que-es-ai-mode-google/">Google AI Mode</a> que Google muestra arriba (o en lugar) de los resultados orgánicos.</li>
   </ul>
 
   <p>En la práctica, <strong>AEO y GEO se usan de forma intercambiable.</strong> Lo importante no es el acrónimo — es entender que ahora hay una capa de búsqueda donde tu empresa aparece o no aparece en función de criterios distintos al ranking de Google.</p>

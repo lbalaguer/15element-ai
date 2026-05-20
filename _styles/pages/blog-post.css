@@ -218,10 +218,63 @@
   margin-top: auto;
 }
 
+/* ─── Blockquote de cita (post-quote) ─── */
+.post-quote {
+  margin: 36px 0; padding: 24px 30px;
+  border-left: 4px solid var(--brand-teal);
+  background: var(--bg-elevated); border-radius: 0 var(--r-md) var(--r-md) 0;
+}
+.post-quote p {
+  margin: 0 0 10px; font-family: var(--font-display); font-weight: 600;
+  font-size: 22px; line-height: 1.4; letter-spacing: -0.01em; color: var(--fg);
+}
+.post-quote cite {
+  font-style: normal; font-family: var(--font-mono); font-size: 12.5px;
+  letter-spacing: 0.04em; color: var(--fg-muted);
+}
+
+/* ─── Título sección "Sigue leyendo" (related-title) ─── */
+.related-title {
+  font-family: var(--font-display); font-weight: 800;
+  font-size: 28px; letter-spacing: -0.02em; color: var(--fg);
+  margin: 0 0 28px; text-transform: none;
+}
+
+/* ─── FAQs visibles (post-faqs) ─── */
+.post-faqs { max-width: 920px; margin: 48px auto 0; }
+.post-faqs > h2 { margin: 0 0 16px; }
+.post-faqs details {
+  background: var(--bg-elevated); border: 1px solid var(--border);
+  border-radius: var(--r-md); overflow: hidden; margin-bottom: 8px;
+  transition: border-color var(--dur-base);
+}
+.post-faqs details:hover { border-color: var(--border-strong); }
+.post-faqs details[open] { border-color: var(--brand-teal); box-shadow: var(--shadow-sm); }
+.post-faqs summary {
+  padding: 22px 26px; cursor: pointer; display: flex;
+  justify-content: space-between; align-items: center; gap: 16px;
+  font-family: var(--font-display); font-weight: 700; font-size: 19px;
+  letter-spacing: -0.01em; color: var(--fg); list-style: none; text-transform: none;
+}
+.post-faqs summary::-webkit-details-marker { display: none; }
+.post-faqs summary::after {
+  content: "+"; color: var(--brand-teal); font-size: 28px; font-weight: 400;
+  line-height: 1; flex-shrink: 0;
+  transition: transform var(--dur-base) var(--ease-emphasized);
+}
+.post-faqs details[open] summary::after { transform: rotate(45deg); }
+.post-faqs details p {
+  padding: 0 26px 26px; margin: 0;
+  font-size: 15.5px; color: var(--fg-muted); line-height: 1.7; max-width: 760px;
+}
+.post-faqs details p strong { color: var(--fg); }
+
 /* ─── Responsive ─── */
 @media (max-width: 960px) {
   .post-meta { flex-wrap: wrap; justify-content: center; gap: 8px; }
   .related-grid { grid-template-columns: 1fr; }
   .inline-cta { padding: 28px 24px; }
   .post-body .stats-grid { grid-template-columns: 1fr 1fr; }
+  .post-faqs summary { font-size: 17px; padding: 18px 20px; }
+  .post-faqs details p { padding: 0 20px 20px; }
 }
