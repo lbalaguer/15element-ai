@@ -94,6 +94,61 @@ function findOrphanClasses(html, combinedCss) {
   return orphans.sort();
 }
 
+// ------------------------------------------------------------
+// Guard 2: tokens/includes sin resolver. Si un {{VAR}} o
+// <!-- @include x --> sobrevive al build, queda texto crudo en prod.
+// ------------------------------------------------------------
+function findUnresolvedTokens(html) {
+  const found = new Set();
+  let m;
+  const tokenRe = /\{\{\s*[A-Z_]+\s*\}\}/g;
+  while ((m = tokenRe.exec(html))) found.add(m[0]);
+  const includeRe = /<!--\s*@include\s+[\w-]+\s*-->/g;
+  while ((m = includeRe.exec(html))) found.add(m[0].trim());
+  return [...found];
+}
+
+// ------------------------------------------------------------
+// Guard 3: JSON-LD roto. Google ignora en silencio un schema con
+// JSON inválido → se pierden rich results / citas AEO. Parseamos
+// cada <script type="application/ld+json"> y reportamos los rotos.
+// ------------------------------------------------------------
+function findBrokenJsonLd(html) {
+  const errors = [];
+  const re = /<script[^>]*type=["']application\/ld\+json["'][^>]*>([\s\S]*?)<\/script>/gi;
+  let m, i = 0;
+  while ((m = re.exec(html))) {
+    i++;
+    const raw = m[1].trim();
+    if (!raw) { errors.push(`bloque #${i} vacío`); continue; }
+    try { JSON.parse(raw); }
+    catch (e) { errors.push(`bloque #${i}: ${e.message}`); }
+  }
+  return errors;
+}
+
+// ------------------------------------------------------------
+// Guard 4: links internos rotos (404). Recolecta hrefs absolutos
+// (/blog/..., /servicios/...) para validar al final contra los
+// archivos realmente generados.
+// ------------------------------------------------------------
+function extractInternalLinks(html) {
+  const links = new Set();
+  const re = /href="(\/[^"]*)"/g;
+  let m;
+  while ((m = re.exec(html))) links.add(m[1]);
+  return [...links];
+}
+function internalLinkToFile(href) {
+  let p = href.split('#')[0].split('?')[0];
+  if (!p) return null;            // era solo #ancla
+  if (p === '/') return 'index.html';
+  p = p.replace(/^\//, '');
+  if (p.endsWith('/')) return p + 'index.html';
+  if (!path.extname(p)) return p + '/index.html'; // dir sin slash final
+  return p;                        // archivo con extensión (sitemap.xml, etc.)
+}
+
 const PARTIALS = ['nav', 'footer', 'wa-float', 'theme-script'];
 
 // ------------------------------------------------------------
@@ -253,9 +308,12 @@ function processFile(srcAbs) {
   fs.mkdirSync(outDir, { recursive: true });
   fs.writeFileSync(outAbs, html, 'utf8');
 
-  // BULLETPROOF: validar que toda clase usada tenga CSS en el bundle de esta página
+  // BULLETPROOF: 4 guards que cazan fallas silenciosas antes de prod
   const orphans = findOrphanClasses(html, combinedCss);
-  return { rel, orphans };
+  const unresolvedTokens = findUnresolvedTokens(html);
+  const jsonLdErrors = findBrokenJsonLd(html);
+  const internalLinks = extractInternalLinks(html);
+  return { rel, orphans, unresolvedTokens, jsonLdErrors, internalLinks };
 }
 
 // ------------------------------------------------------------
@@ -269,32 +327,59 @@ if (files.length === 0) {
 
 console.log(`[build] Building ${files.length} page(s)...`);
 const allOrphans = [];
+const allTokens = [];
+const allJsonLd = [];
+const linksByPage = []; // { rel, links: [...] }
 for (const f of files) {
-  const { rel, orphans } = processFile(f);
-  if (orphans.length) {
-    console.log(`  ⚠ ${rel}  (clases sin CSS: ${orphans.join(', ')})`);
-    allOrphans.push({ rel, orphans });
-  } else {
-    console.log(`  ✓ ${rel}`);
+  const { rel, orphans, unresolvedTokens, jsonLdErrors, internalLinks } = processFile(f);
+  const flags = [];
+  if (orphans.length) { allOrphans.push({ rel, orphans }); flags.push(`clases sin CSS: ${orphans.join(', ')}`); }
+  if (unresolvedTokens.length) { allTokens.push({ rel, tokens: unresolvedTokens }); flags.push(`tokens sin resolver: ${unresolvedTokens.join(', ')}`); }
+  if (jsonLdErrors.length) { allJsonLd.push({ rel, errs: jsonLdErrors }); flags.push(`JSON-LD roto`); }
+  linksByPage.push({ rel, links: internalLinks });
+  console.log(flags.length ? `  ⚠ ${rel}  (${flags.join(' | ')})` : `  ✓ ${rel}`);
+}
+
+// Guard 4 (post-loop): validar links internos contra archivos generados
+const brokenLinks = [];
+for (const { rel, links } of linksByPage) {
+  for (const href of links) {
+    const file = internalLinkToFile(href);
+    if (!file) continue;
+    if (!fs.existsSync(path.join(ROOT, file))) brokenLinks.push({ rel, href });
   }
 }
 
-if (allOrphans.length) {
+function banner(title, lines) {
   console.log('');
   console.log('═══════════════════════════════════════════════════════════');
-  console.log('⚠  WARNING: CLASES SIN CSS DETECTADAS');
+  console.log(`⚠  ${title}`);
   console.log('───────────────────────────────────────────────────────────');
-  console.log('  Estas clases se usan en el HTML pero no tienen estilo en');
-  console.log('  colors_and_type.css + common.css + el page CSS de la página.');
-  console.log('  Se van a ver SIN ESTILO en producción. Arregla antes de pushear:');
-  console.log('  - Agrega el CSS faltante, O');
-  console.log('  - Usa una clase que ya exista, O');
-  console.log('  - Si es un hook JS legítimo sin estilo, agrégala a CLASS_ALLOWLIST en build.js');
-  console.log('───────────────────────────────────────────────────────────');
-  for (const { rel, orphans } of allOrphans) {
-    console.log(`  ${rel}:`);
-    for (const c of orphans) console.log(`      .${c}`);
-  }
+  for (const l of lines) console.log(l);
   console.log('═══════════════════════════════════════════════════════════');
 }
-console.log(`[build] Done.${allOrphans.length ? ` (${allOrphans.length} página(s) con clases sin CSS — revisar arriba)` : ''}`);
+
+if (allOrphans.length) {
+  const lines = ['  Clases usadas en HTML sin CSS en colors+common+pageCSS (se ven sin estilo).',
+    '  Arregla: agrega el CSS, usa una clase existente, o métela a CLASS_ALLOWLIST.'];
+  for (const { rel, orphans } of allOrphans) { lines.push(`  ${rel}:`); for (const c of orphans) lines.push(`      .${c}`); }
+  banner('CLASES SIN CSS', lines);
+}
+if (allTokens.length) {
+  const lines = ['  Tokens {{VAR}} o @include que NO se resolvieron (queda texto crudo en prod).'];
+  for (const { rel, tokens } of allTokens) lines.push(`  ${rel}: ${tokens.join(', ')}`);
+  banner('TOKENS / INCLUDES SIN RESOLVER', lines);
+}
+if (allJsonLd.length) {
+  const lines = ['  Schema JSON-LD inválido → Google lo ignora en silencio (pierdes rich results / AEO).'];
+  for (const { rel, errs } of allJsonLd) { lines.push(`  ${rel}:`); for (const e of errs) lines.push(`      ${e}`); }
+  banner('JSON-LD ROTO', lines);
+}
+if (brokenLinks.length) {
+  const lines = ['  Links internos que apuntan a páginas/archivos que NO existen (404 + daño SEO).'];
+  for (const { rel, href } of brokenLinks) lines.push(`  ${rel} → ${href}`);
+  banner('LINKS INTERNOS ROTOS', lines);
+}
+
+const totalIssues = allOrphans.length + allTokens.length + allJsonLd.length + brokenLinks.length;
+console.log(`[build] Done.${totalIssues ? ` (⚠ ${totalIssues} problema(s) — revisar arriba ANTES de pushear)` : ' (4/4 guards OK)'}`);
