@@ -116,3 +116,150 @@
   to = "/servicios/seo-aeo-geo/"
   status = 301
   force = true
+
+# ─── 301 redirects WP legacy (lote 2, detectados en GSC 2026-05-20) ───
+# URLs viejas con impresiones acumuladas que daban 404. Recuperan autoridad
+# y eliminan el 404 mandando a su equivalente nuevo.
+
+# Blog flat URLs viejas → /blog/ nuevo
+[[redirects]]
+  from = "/escalar-pipeline-b2b-sin-mas-vendedores/"
+  to = "/blog/escalar-pipeline-b2b-sin-mas-vendedores/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/nova-energia-ecuador-decision-makers-linkedin/"
+  to = "/blog/nova-energia-ecuador-leads-solar-linkedin/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/mercedes-benz-cinepolis-prospeccion-linkedin-b2b/"
+  to = "/blog/mercedes-benz-cinepolis-linkedin-b2b-alto-ticket/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/como-prospectar-linkedin-sin-anuncios-guia/"
+  to = "/servicios/linkedin-prospecting/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/senales-de-compra-b2b-linkedin/"
+  to = "/servicios/senales-de-compra/"
+  status = 301
+  force = true
+
+# Casos viejos /casos/[slug]/ (estructura WP) → caso en blog si existe, si no a /casos/
+[[redirects]]
+  from = "/casos/nextco/"
+  to = "/blog/nextco-842-leads-b2b-sin-ads/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/casos/op-logistics/"
+  to = "/blog/oplogistics-pipeline-logistica-b2b-linkedin/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/casos/leasemed/"
+  to = "/casos/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/casos/15element-seo-interno/"
+  to = "/casos/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/casos/kol-agency/"
+  to = "/casos/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/casos/histone/"
+  to = "/casos/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/casos/sk-logistics/"
+  to = "/casos/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/casos/family-dentistry/"
+  to = "/casos/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/casos/sport-city/"
+  to = "/casos/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/casos/ricos-pizzeria/"
+  to = "/casos/"
+  status = 301
+  force = true
+
+# Legal en inglés viejo
+[[redirects]]
+  from = "/privacy-policy/"
+  to = "/politica-de-privacidad/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/terms-of-service/"
+  to = "/terminos-de-servicio/"
+  status = 301
+  force = true
+
+# Multiidioma viejo: específicos primero, luego wildcard
+[[redirects]]
+  from = "/es/contacto/"
+  to = "/contacto/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/en/que-es-aeo-geo-chatgpt-empresas-b2b-2026/"
+  to = "/blog/que-es-aeo/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/en/blog/"
+  to = "/blog/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/en/*"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/es/*"
+  to = "/:splat"
+  status = 301
+  force = true
+
+# Categorías WP → blog
+[[redirects]]
+  from = "/category/*"
+  to = "/blog/"
+  status = 301
+  force = true
