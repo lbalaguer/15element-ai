@@ -149,7 +149,7 @@ function internalLinkToFile(href) {
   return p;                        // archivo con extensión (sitemap.xml, etc.)
 }
 
-const PARTIALS = ['nav', 'footer', 'wa-float', 'theme-script'];
+const PARTIALS = ['nav', 'footer', 'wa-float', 'theme-script', 'vt-lightbox'];
 
 // ------------------------------------------------------------
 // Load partials into memory

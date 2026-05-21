@@ -667,6 +667,101 @@ body.nav-open { overflow: hidden; }
 }
 
 /* ============================================================
+   Video testimonials (pleca social proof — lightbox performance-safe)
+   El iframe de YouTube SOLO se inyecta al click (JS en vt-lightbox partial).
+   En carga inicial solo hay thumbnails lazy → cero impacto en LCP.
+   ============================================================ */
+.video-testimonials { padding: 0; }
+.vt-head { text-align: center; max-width: 720px; margin: 0 auto 36px; }
+.vt-head .eyebrow {
+  display: inline-flex; align-items: center; gap: 8px; justify-content: center;
+  font-family: var(--font-mono); font-size: 11px; font-weight: 700;
+  letter-spacing: 0.14em; text-transform: uppercase; color: var(--brand-teal);
+  margin-bottom: 12px;
+}
+.vt-head h2 {
+  font-family: var(--font-display); font-weight: 800;
+  font-size: clamp(26px, 4vw, 36px); letter-spacing: -0.02em; line-height: 1.1;
+  color: var(--fg); margin: 0; text-transform: none;
+}
+.vt-head h2 .accent { color: var(--brand-teal); }
+.vt-head p { font-size: 16px; color: var(--fg-muted); line-height: 1.6; margin: 12px 0 0; }
+
+.vt-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;
+  max-width: 1080px; margin: 0 auto;
+}
+.vt-card {
+  background: var(--bg-elevated); border: 1px solid var(--border);
+  border-radius: var(--r-lg); overflow: hidden; cursor: pointer;
+  display: flex; flex-direction: column; text-decoration: none; border-bottom: 0;
+  transition: transform var(--dur-base), box-shadow var(--dur-base), border-color var(--dur-base);
+}
+.vt-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); border-color: var(--brand-teal); }
+.vt-thumb {
+  position: relative; aspect-ratio: 16 / 9; overflow: hidden;
+  background: var(--bg-sunken) center/cover no-repeat;
+}
+.vt-thumb img {
+  width: 100%; height: 100%; object-fit: cover; display: block;
+  transition: transform var(--dur-base);
+}
+.vt-card:hover .vt-thumb img { transform: scale(1.04); }
+.vt-thumb::before {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(180deg, rgba(11,18,32,0) 40%, rgba(11,18,32,0.55) 100%);
+}
+.vt-play {
+  position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+  width: 56px; height: 56px; border-radius: 50%;
+  background: rgba(255,255,255,0.92); color: var(--brand-navy);
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: var(--shadow-md); transition: transform var(--dur-base), background var(--dur-base);
+}
+.vt-play svg { width: 22px; height: 22px; margin-left: 3px; }
+.vt-card:hover .vt-play { transform: translate(-50%, -50%) scale(1.1); background: var(--brand-teal); color: white; }
+.vt-info { padding: 16px 18px; }
+.vt-name {
+  font-family: var(--font-display); font-weight: 700; font-size: 17px;
+  letter-spacing: -0.01em; color: var(--fg); display: block;
+}
+.vt-tag {
+  font-family: var(--font-mono); font-size: 11.5px; letter-spacing: 0.03em;
+  color: var(--fg-muted); display: block; margin-top: 4px;
+}
+
+/* Lightbox overlay */
+.vt-lightbox {
+  position: fixed; inset: 0; z-index: 9999;
+  background: rgba(8, 13, 24, 0.88); backdrop-filter: blur(8px);
+  display: none; align-items: center; justify-content: center; padding: 24px;
+}
+.vt-lightbox.is-open { display: flex; }
+.vt-lightbox-inner {
+  position: relative; width: min(960px, 100%); aspect-ratio: 16 / 9;
+  background: #000; border-radius: var(--r-lg); overflow: hidden;
+  box-shadow: 0 30px 80px rgba(0,0,0,0.5);
+}
+.vt-frame { width: 100%; height: 100%; }
+.vt-lightbox-inner iframe { width: 100%; height: 100%; border: 0; display: block; }
+.vt-close {
+  position: absolute; top: -48px; right: 0; width: 40px; height: 40px;
+  border-radius: 50%; border: 0; cursor: pointer;
+  background: rgba(255,255,255,0.15); color: white; font-size: 22px; line-height: 1;
+  display: flex; align-items: center; justify-content: center;
+  transition: background var(--dur-fast);
+}
+.vt-close:hover { background: rgba(255,255,255,0.3); }
+
+@media (max-width: 860px) {
+  .vt-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 560px) {
+  .vt-grid { grid-template-columns: 1fr; }
+  .vt-close { top: -44px; }
+}
+
+/* ============================================================
    Result bands / casos por industria (usado en industrias + casos)
    ============================================================ */
 .results-list { display: flex; flex-direction: column; gap: 16px; }
@@ -1319,6 +1414,30 @@ footer { background: var(--bg-sunken); padding: 64px 0 40px; border-top: 1px sol
   </div>
 </section>
 
+<section class="section video-testimonials">
+  <div class="container">
+    <div class="vt-head">
+      <div class="eyebrow">Testimonios reales</div>
+      <h2>Lo que dicen <span class="accent">nuestros clientes de energía solar.</span></h2>
+      <p>Resultados en boca de quienes los vivieron. Sin guion, sin actores.</p>
+    </div>
+    <div class="vt-grid">
+      <a class="vt-card" data-yt="223r5XlYSMg" href="https://www.youtube.com/watch?v=223r5XlYSMg" target="_blank" rel="noopener">
+        <span class="vt-thumb"><img src="https://i.ytimg.com/vi/223r5XlYSMg/hqdefault.jpg" alt="Testimonial Top Energy — energía solar" loading="lazy" width="480" height="360"><span class="vt-play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span></span>
+        <span class="vt-info"><span class="vt-name">Top Energy</span><span class="vt-tag">Energía Solar — proyecto $10M USD</span></span>
+      </a>
+      <a class="vt-card" data-yt="0RTR7BcMItc" href="https://www.youtube.com/watch?v=0RTR7BcMItc" target="_blank" rel="noopener">
+        <span class="vt-thumb"><img src="https://i.ytimg.com/vi/0RTR7BcMItc/hqdefault.jpg" alt="Testimonial Active Energy — energía solar" loading="lazy" width="480" height="360"><span class="vt-play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span></span>
+        <span class="vt-info"><span class="vt-name">Active Energy</span><span class="vt-tag">Energía Solar</span></span>
+      </a>
+      <a class="vt-card" data-yt="FMGqB1MBD78" href="https://www.youtube.com/watch?v=FMGqB1MBD78" target="_blank" rel="noopener">
+        <span class="vt-thumb"><img src="https://i.ytimg.com/vi/FMGqB1MBD78/hqdefault.jpg" alt="Testimonial Kuali Tecnología Solar" loading="lazy" width="480" height="360"><span class="vt-play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span></span>
+        <span class="vt-info"><span class="vt-name">Kuali Tecnología Solar</span><span class="vt-tag">Energía Solar</span></span>
+      </a>
+    </div>
+  </div>
+</section>
+
 <section class="cta-band">
   <div class="container">
     <div>
@@ -1337,6 +1456,41 @@ footer { background: var(--bg-sunken); padding: 64px 0 40px; border-top: 1px sol
     </div>
   </div>
 </section>
+
+<!-- Video testimonials lightbox — overlay + JS. El iframe de YouTube se inyecta
+     SOLO al hacer clic (cero impacto en LCP). Se incluye en páginas con .video-testimonials -->
+<div class="vt-lightbox" id="vtLightbox" aria-hidden="true">
+  <div class="vt-lightbox-inner">
+    <button class="vt-close" type="button" aria-label="Cerrar video">&times;</button>
+    <div class="vt-frame"></div>
+  </div>
+</div>
+<script>
+(function () {
+  var box = document.getElementById('vtLightbox');
+  if (!box) return;
+  var frame = box.querySelector('.vt-frame');
+  function openVideo(id) {
+    frame.innerHTML = '<iframe src="https://www.youtube.com/embed/' + id +
+      '?autoplay=1&rel=0" title="Testimonial 15Element" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>';
+    box.classList.add('is-open');
+    box.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeVideo() {
+    box.classList.remove('is-open');
+    box.setAttribute('aria-hidden', 'true');
+    frame.innerHTML = '';
+    document.body.style.overflow = '';
+  }
+  document.addEventListener('click', function (e) {
+    var card = e.target.closest('.vt-card[data-yt]');
+    if (card) { e.preventDefault(); openVideo(card.getAttribute('data-yt')); return; }
+    if (e.target === box || e.target.closest('.vt-close')) closeVideo();
+  });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeVideo(); });
+})();
+</script>
 
 <footer>
   <div class="container">
