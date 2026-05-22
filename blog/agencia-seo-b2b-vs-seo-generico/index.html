@@ -675,7 +675,7 @@ body.nav-open { overflow: hidden; }
    El iframe de YouTube SOLO se inyecta al click (JS en vt-lightbox partial).
    En carga inicial solo hay thumbnails lazy → cero impacto en LCP.
    ============================================================ */
-.video-testimonials { padding: 0; }
+.video-testimonials { padding: 80px 0; }
 .vt-head { text-align: center; max-width: 720px; margin: 0 auto 36px; }
 .vt-head .eyebrow {
   display: inline-flex; align-items: center; gap: 8px; justify-content: center;
@@ -730,7 +730,7 @@ body.nav-open { overflow: hidden; }
   letter-spacing: -0.01em; color: var(--fg); display: block;
 }
 .vt-tag {
-  font-family: var(--font-mono); font-size: 11.5px; letter-spacing: 0.03em;
+  font-size: 12px; letter-spacing: 0.01em;
   color: var(--fg-muted); display: block; margin-top: 4px;
 }
 
@@ -1486,6 +1486,30 @@ footer { background: var(--bg-sunken); padding: 64px 0 40px; border-top: 1px sol
   </div>
 </section>
 
+<section class="section section-alt video-testimonials">
+  <div class="container">
+    <div class="vt-head reveal">
+      <div class="eyebrow">Testimonios reales</div>
+      <h2>Empresas B2B que ya operan <span class="accent">con SEO que genera pipeline.</span></h2>
+      <p>Resultados en boca de quienes los vivieron. Sin guion, sin actores.</p>
+    </div>
+    <div class="vt-grid">
+      <a class="vt-card reveal" data-yt="223r5XlYSMg" href="https://www.youtube.com/watch?v=223r5XlYSMg" target="_blank" rel="noopener">
+        <span class="vt-thumb"><img src="https://i.ytimg.com/vi/223r5XlYSMg/hqdefault.jpg" alt="Testimonial Top Energy — B2B Solar" loading="lazy" width="480" height="360"><span class="vt-play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span></span>
+        <span class="vt-info"><span class="vt-name">Top Energy</span><span class="vt-tag">Solar · $9M USD orgánico</span></span>
+      </a>
+      <a class="vt-card reveal" data-yt="Piw2vjCxY_w" href="https://www.youtube.com/watch?v=Piw2vjCxY_w" target="_blank" rel="noopener">
+        <span class="vt-thumb"><img src="https://i.ytimg.com/vi/Piw2vjCxY_w/hqdefault.jpg" alt="Testimonial Nextco — manufactura B2B 842 leads" loading="lazy" width="480" height="360"><span class="vt-play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span></span>
+        <span class="vt-info"><span class="vt-name">Nextco</span><span class="vt-tag">Manufactura · 842 leads B2B</span></span>
+      </a>
+      <a class="vt-card reveal" data-yt="mzJnj6mbcnc" href="https://www.youtube.com/watch?v=mzJnj6mbcnc" target="_blank" rel="noopener">
+        <span class="vt-thumb"><img src="https://i.ytimg.com/vi/mzJnj6mbcnc/hqdefault.jpg" alt="Testimonial KOL — Tecnología LATAM" loading="lazy" width="480" height="360"><span class="vt-play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span></span>
+        <span class="vt-info"><span class="vt-name">KOL</span><span class="vt-tag">Tecnología · LATAM</span></span>
+      </a>
+    </div>
+  </div>
+</section>
+
 <!-- CTA -->
 <section class="cta-band">
   <div class="container">
@@ -1499,6 +1523,41 @@ footer { background: var(--bg-sunken); padding: 64px 0 40px; border-top: 1px sol
     </div>
   </div>
 </section>
+
+<!-- Video testimonials lightbox — overlay + JS. El iframe de YouTube se inyecta
+     SOLO al hacer clic (cero impacto en LCP). Se incluye en páginas con .video-testimonials -->
+<div class="vt-lightbox" id="vtLightbox" aria-hidden="true">
+  <div class="vt-lightbox-inner">
+    <button class="vt-close" type="button" aria-label="Cerrar video">&times;</button>
+    <div class="vt-frame"></div>
+  </div>
+</div>
+<script>
+(function () {
+  var box = document.getElementById('vtLightbox');
+  if (!box) return;
+  var frame = box.querySelector('.vt-frame');
+  function openVideo(id) {
+    frame.innerHTML = '<iframe src="https://www.youtube.com/embed/' + id +
+      '?autoplay=1&rel=0" title="Testimonial 15Element" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>';
+    box.classList.add('is-open');
+    box.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeVideo() {
+    box.classList.remove('is-open');
+    box.setAttribute('aria-hidden', 'true');
+    frame.innerHTML = '';
+    document.body.style.overflow = '';
+  }
+  document.addEventListener('click', function (e) {
+    var card = e.target.closest('.vt-card[data-yt]');
+    if (card) { e.preventDefault(); openVideo(card.getAttribute('data-yt')); return; }
+    if (e.target === box || e.target.closest('.vt-close')) closeVideo();
+  });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeVideo(); });
+})();
+</script>
 
 <footer>
   <div class="container">

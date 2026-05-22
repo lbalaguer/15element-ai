@@ -18,11 +18,11 @@ Componente: `.video-testimonials` (CSS en common.css) + `<!-- @include vt-lightb
 | Active Energy | 0RTR7BcMItc | Energía Solar | Energía Solar | ✅ |
 | Fernando (Kuali Tecnología Solar) | FMGqB1MBD78 | Kuali Tecnología Solar | Energía Solar | ✅ |
 | OP Logistics | 6vpbI9SN4XA | Logística B2B | Logística | ✅ |
-| Spakio | ZP7XvNV2SQU | Logística | Manufactura/Logística | ⏳ |
-| Paola Lozano | Pr09d4nvF60 | Gerente · Kawasaki México | Manufactura | ⏳ |
-| Andrés Pérez | BEmPt2wZUZE | Honda Grupo Tec | Manufactura | ⏳ |
-| Carlos Basauri | 4zJW81ez9Dk | Socio fundador · Financiera QuickCap | Fintech | ⏳ |
-| KOL | mzJnj6mbcnc | Caso de éxito B2B | Tech/SaaS | ⏳ |
+| Spakio | ZP7XvNV2SQU | Logística | Manufactura/Logística | ✅ |
+| Paola Lozano | Pr09d4nvF60 | Gerente · Kawasaki México | Automotriz/Manufactura | ✅ |
+| Andrés Pérez | BEmPt2wZUZE | Honda Grupo Tec | Automotriz/Manufactura | ✅ |
+| Carlos Basauri | 4zJW81ez9Dk | Socio fundador · Financiera QuickCap | Fintech | ✅ |
+| KOL | mzJnj6mbcnc | Caso de éxito B2B | Tech/SaaS | ✅ |
 | Brett Dumay | vNIX4eoA_k0 | B2B AI Consultant | Consultoría | ⏳ |
 | Jay Magpantay | IiclcUOYfUA | B2B AI Consultant | Consultoría | ⏳ |
 | Jacob Fidler | RWFO3AlyZTU | B2B AI Consultant | Consultoría | ⏳ |
@@ -41,7 +41,8 @@ Componente: `.video-testimonials` (CSS en common.css) + `<!-- @include vt-lightb
 | Patricio Morales | YDZa4hCdYbE | Consultor B2B | Consultoría | ⏳ |
 | Abraham Cuevas | oCg5UA0dZNk | Programador · Consultor B2B | Consultoría | ⏳ |
 | Roberto Horta | 5crYaU4gOkA | Consultor B2B | Consultoría | ⏳ |
-| Matthew Regan | JufOJ4rKmdc | Royal LePage | Real Estate | ⏳ |
+| Matthew Regan | JufOJ4rKmdc | Royal LePage | Real Estate / B2B Canadá | ✅ |
+| Tarimas Escudero | jpRvLGntDLc | Pallets / Tarimas México | Manufactura | ✅ |
 | Omar Tadaya | hmW6nyW2TYc | Gerente · Tadaya Sushi | B2C/Restaurante | ⏳ |
 | Paul Solanki | fPKMBLkYSE4 | Gerente · Wild Wing | B2C/Restaurante | ⏳ |
 | Shriji Atodaria | bhA0cZBy8uI | Gerente · Wild Wing | B2C/Restaurante | ⏳ |

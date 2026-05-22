@@ -670,7 +670,7 @@ body.nav-open { overflow: hidden; }
    El iframe de YouTube SOLO se inyecta al click (JS en vt-lightbox partial).
    En carga inicial solo hay thumbnails lazy → cero impacto en LCP.
    ============================================================ */
-.video-testimonials { padding: 0; }
+.video-testimonials { padding: 80px 0; }
 .vt-head { text-align: center; max-width: 720px; margin: 0 auto 36px; }
 .vt-head .eyebrow {
   display: inline-flex; align-items: center; gap: 8px; justify-content: center;
@@ -725,7 +725,7 @@ body.nav-open { overflow: hidden; }
   letter-spacing: -0.01em; color: var(--fg); display: block;
 }
 .vt-tag {
-  font-family: var(--font-mono); font-size: 11.5px; letter-spacing: 0.03em;
+  font-size: 12px; letter-spacing: 0.01em;
   color: var(--fg-muted); display: block; margin-top: 4px;
 }
 
@@ -1282,13 +1282,29 @@ footer { background: var(--bg-sunken); padding: 64px 0 40px; border-top: 1px sol
   </div>
 </section>
 
+<section class="section section-alt video-testimonials">
+  <div class="container">
+    <div class="vt-head reveal">
+      <div class="eyebrow">Testimonios reales</div>
+      <h2>Lo que dicen <span class="accent">nuestros clientes de fintech.</span></h2>
+      <p>Resultados en boca de quienes los vivieron. Sin guion, sin actores.</p>
+    </div>
+    <div class="vt-grid" style="grid-template-columns: minmax(0, 400px); justify-content: center;">
+      <a class="vt-card reveal" data-yt="4zJW81ez9Dk" href="https://www.youtube.com/watch?v=4zJW81ez9Dk" target="_blank" rel="noopener">
+        <span class="vt-thumb"><img src="https://i.ytimg.com/vi/4zJW81ez9Dk/hqdefault.jpg" alt="Testimonial Financiera QuickCap — fintech B2B" loading="lazy" width="480" height="360"><span class="vt-play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span></span>
+        <span class="vt-info"><span class="vt-name">Financiera QuickCap</span><span class="vt-tag">Fintech B2B</span></span>
+      </a>
+    </div>
+  </div>
+</section>
+
 <section class="cta-band">
   <div class="container">
     <div>
       <h2>¿Tu fintech tiene inbound <span class="accent">para ciclos de 12-24 meses?</span></h2>
       <p>45 minutos analizamos cómo posicionarte en IA, dónde están tus decisores, y qué buscan en contexto regulatorio. Sin compromiso.</p>
       <div style="display:flex; gap:12px; flex-wrap: wrap;">
-        <a href="https://api.whatsapp.com/send/?phone=5215520063687&text=Hola%2C+quiero+mi+auditor%C3%ADa+de+marketing+B2B+para+fintech+gratuita" class="btn btn-primary btn-lg">Solicita tu auditoría gratuita</a>
+        <a href="/contacto/#agendar" class="btn btn-primary btn-lg">Solicita tu auditoría gratuita</a>
         <a href="/casos/" class="btn btn-ghost btn-lg">Ver más casos fintech</a>
       </div>
       <div class="cta-meta">
@@ -1300,6 +1316,41 @@ footer { background: var(--bg-sunken); padding: 64px 0 40px; border-top: 1px sol
     </div>
   </div>
 </section>
+
+<!-- Video testimonials lightbox — overlay + JS. El iframe de YouTube se inyecta
+     SOLO al hacer clic (cero impacto en LCP). Se incluye en páginas con .video-testimonials -->
+<div class="vt-lightbox" id="vtLightbox" aria-hidden="true">
+  <div class="vt-lightbox-inner">
+    <button class="vt-close" type="button" aria-label="Cerrar video">&times;</button>
+    <div class="vt-frame"></div>
+  </div>
+</div>
+<script>
+(function () {
+  var box = document.getElementById('vtLightbox');
+  if (!box) return;
+  var frame = box.querySelector('.vt-frame');
+  function openVideo(id) {
+    frame.innerHTML = '<iframe src="https://www.youtube.com/embed/' + id +
+      '?autoplay=1&rel=0" title="Testimonial 15Element" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>';
+    box.classList.add('is-open');
+    box.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeVideo() {
+    box.classList.remove('is-open');
+    box.setAttribute('aria-hidden', 'true');
+    frame.innerHTML = '';
+    document.body.style.overflow = '';
+  }
+  document.addEventListener('click', function (e) {
+    var card = e.target.closest('.vt-card[data-yt]');
+    if (card) { e.preventDefault(); openVideo(card.getAttribute('data-yt')); return; }
+    if (e.target === box || e.target.closest('.vt-close')) closeVideo();
+  });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeVideo(); });
+})();
+</script>
 
 <footer>
   <div class="container">
