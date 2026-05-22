@@ -236,6 +236,15 @@ function processFile(srcAbs) {
   html = html.replace(/\{\{PAGE_CSS\}\}/g, pageCssPath);
 
   // ----------------------------------------------------------------
+  // ANALYTICS: Google Tag Manager — inyectado en TODAS las páginas.
+  // Script en <head>, noscript inmediatamente después de <body>.
+  // ----------------------------------------------------------------
+  const gtmHead = `<!-- Google Tag Manager -->\n<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':\nnew Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],\nj=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=\n'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);\n})(window,document,'script','dataLayer','GTM-5H7ZB6GD');</script>\n<!-- End Google Tag Manager -->`;
+  const gtmNoscript = `<!-- Google Tag Manager (noscript) -->\n<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5H7ZB6GD"\nheight="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>\n<!-- End Google Tag Manager (noscript) -->`;
+  html = html.replace('<head>', `<head>\n${gtmHead}`);
+  html = html.replace(/<body([^>]*)>/, `<body$1>\n${gtmNoscript}`);
+
+  // ----------------------------------------------------------------
   // SEO: Google Search Console verification meta tag — SOLO en home.
   // GSC verificó la propiedad URL prefix https://15element.ai/ y solo
   // necesita el tag en esa página. Tenerlo en todas las páginas era
