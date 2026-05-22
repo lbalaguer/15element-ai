@@ -1034,6 +1034,28 @@ footer { background: var(--bg-sunken); padding: 64px 0 40px; border-top: 1px sol
 }
 .post-body ul li strong, .post-body ol li strong { color: var(--fg); }
 
+/* ─── TABLES ─── */
+.post-body .table-wrap { overflow-x: auto; margin: 36px 0; -webkit-overflow-scrolling: touch; }
+.post-body table {
+  width: 100%; border-collapse: collapse;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border); border-radius: var(--r-lg);
+  overflow: hidden; font-size: 16px;
+}
+.post-body thead th {
+  background: var(--brand-navy); color: white;
+  font-family: var(--font-mono); font-size: 11.5px; font-weight: 700;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  text-align: left; padding: 16px 22px; line-height: 1.3;
+}
+.post-body tbody td {
+  padding: 16px 22px; line-height: 1.55; color: var(--fg);
+  border-top: 1px solid var(--border); vertical-align: top;
+}
+.post-body tbody tr:nth-child(even) { background: var(--bg-sunken); }
+.post-body tbody td:first-child { font-weight: 700; color: var(--fg); white-space: nowrap; }
+.post-body tbody td strong { color: var(--brand-teal); }
+
 .post-body blockquote {
   margin: 32px 0;
   padding: 20px 28px;
