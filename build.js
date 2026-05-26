@@ -149,6 +149,33 @@ function internalLinkToFile(href) {
   return p;                        // archivo con extensión (sitemap.xml, etc.)
 }
 
+// ------------------------------------------------------------
+// Guard 5: posts-grid card count. .posts-grid es grid de 3 cols
+// rígido en common.css. Card sola o 2 cards = huecos visuales.
+// Reglas:
+//   - posts-grid featured-row → exactamente 3 cards
+//   - posts-grid (regular)   → múltiplo de 3 (3, 6, 9, 12...)
+// ------------------------------------------------------------
+function findBadPostsGrids(html) {
+  const errors = [];
+  const re = /<div\s+class="posts-grid([^"]*)"[^>]*>([\s\S]*?)<\/div>\s*(?=<(?:div|section|footer|main|aside|nav|article|\/section|!--)|$)/g;
+  let m, i = 0;
+  while ((m = re.exec(html))) {
+    i++;
+    const classExtra = m[1] || '';
+    const isFeatured = /\bfeatured-row\b/.test(classExtra);
+    const inner = m[2];
+    const cards = (inner.match(/<a\s+[^>]*class="[^"]*\bpost-card\b/g) || []).length;
+    if (cards === 0) continue;
+    if (isFeatured && cards !== 3) {
+      errors.push(`grid #${i} (featured-row) tiene ${cards} cards — debe ser 3 exactos`);
+    } else if (!isFeatured && cards % 3 === 1) {
+      errors.push(`grid #${i} (posts-grid) tiene ${cards} cards — 1 card sola en última fila (2 huecos). Agrega 2 o saca 1.`);
+    }
+  }
+  return errors;
+}
+
 const PARTIALS = ['nav', 'footer', 'wa-float', 'theme-script', 'vt-lightbox'];
 
 // ------------------------------------------------------------
@@ -323,7 +350,8 @@ function processFile(srcAbs) {
   const unresolvedTokens = findUnresolvedTokens(html);
   const jsonLdErrors = findBrokenJsonLd(html);
   const internalLinks = extractInternalLinks(html);
-  return { rel, orphans, unresolvedTokens, jsonLdErrors, internalLinks };
+  const postsGridErrors = findBadPostsGrids(html);
+  return { rel, orphans, unresolvedTokens, jsonLdErrors, internalLinks, postsGridErrors };
 }
 
 // ------------------------------------------------------------
@@ -339,13 +367,15 @@ console.log(`[build] Building ${files.length} page(s)...`);
 const allOrphans = [];
 const allTokens = [];
 const allJsonLd = [];
+const allPostsGrids = [];
 const linksByPage = []; // { rel, links: [...] }
 for (const f of files) {
-  const { rel, orphans, unresolvedTokens, jsonLdErrors, internalLinks } = processFile(f);
+  const { rel, orphans, unresolvedTokens, jsonLdErrors, internalLinks, postsGridErrors } = processFile(f);
   const flags = [];
   if (orphans.length) { allOrphans.push({ rel, orphans }); flags.push(`clases sin CSS: ${orphans.join(', ')}`); }
   if (unresolvedTokens.length) { allTokens.push({ rel, tokens: unresolvedTokens }); flags.push(`tokens sin resolver: ${unresolvedTokens.join(', ')}`); }
   if (jsonLdErrors.length) { allJsonLd.push({ rel, errs: jsonLdErrors }); flags.push(`JSON-LD roto`); }
+  if (postsGridErrors.length) { allPostsGrids.push({ rel, errs: postsGridErrors }); flags.push(`posts-grid roto`); }
   linksByPage.push({ rel, links: internalLinks });
   console.log(flags.length ? `  ⚠ ${rel}  (${flags.join(' | ')})` : `  ✓ ${rel}`);
 }
@@ -390,6 +420,14 @@ if (brokenLinks.length) {
   for (const { rel, href } of brokenLinks) lines.push(`  ${rel} → ${href}`);
   banner('LINKS INTERNOS ROTOS', lines);
 }
+if (allPostsGrids.length) {
+  const lines = [
+    '  .posts-grid es grid de 3 columnas. Card sola o 2 cards = huecos visuales en desktop.',
+    '  Reglas: featured-row → 3 exactos | posts-grid regular → múltiplo de 3 (3, 6, 9...).',
+    '  Fix: agrega cards hasta múltiplo de 3, o saca la card a su propio bloque hero.'];
+  for (const { rel, errs } of allPostsGrids) { lines.push(`  ${rel}:`); for (const e of errs) lines.push(`      ${e}`); }
+  banner('POSTS-GRID ROTO', lines);
+}
 
-const totalIssues = allOrphans.length + allTokens.length + allJsonLd.length + brokenLinks.length;
-console.log(`[build] Done.${totalIssues ? ` (⚠ ${totalIssues} problema(s) — revisar arriba ANTES de pushear)` : ' (4/4 guards OK)'}`);
+const totalIssues = allOrphans.length + allTokens.length + allJsonLd.length + brokenLinks.length + allPostsGrids.length;
+console.log(`[build] Done.${totalIssues ? ` (⚠ ${totalIssues} problema(s) — revisar arriba ANTES de pushear)` : ' (5/5 guards OK)'}`);
