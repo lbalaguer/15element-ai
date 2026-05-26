@@ -111,6 +111,29 @@ body { margin: 0; overflow-x: hidden; }
 .case-card .stat .v { font-family: var(--font-display); font-weight: 800; font-size: 16px; color: var(--fg); letter-spacing: -0.01em; min-width: 80px; }
 .case-card .stat .l { font-size: 12px; color: var(--fg-muted); line-height: 1.4; }
 
+/* Badge "Próximamente" — para spokes /casos/<slug>/ aún no publicados */
+.badge-pending {
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: 8px;
+  padding: 3px 9px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: var(--bg-sunken);
+  color: var(--fg-muted);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  white-space: nowrap;
+}
+.hero-case .badge-pending {
+  background: rgba(255,255,255,0.08);
+  color: rgba(255,255,255,0.78);
+  border-color: rgba(255,255,255,0.18);
+}
+
 /* Documentation 3 cards */
 .docs-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
 .doc-card { background: var(--bg-elevated); border: 1px solid var(--border); border-radius: var(--r-lg); padding: 32px 28px; border-top: 4px solid var(--brand-teal); transition: all var(--dur-base); }
@@ -204,3 +227,39 @@ footer { background: var(--bg-sunken); padding: 64px 0 40px; border-top: 1px sol
   .stats-strip, .hero-cases, .cases-grid { grid-template-columns: 1fr; }
   .foot-grid { grid-template-columns: 1fr; }
 }
+
+/* Cards con spoke disponible — visiblemente clickeable */
+a.case-card { text-decoration: none; color: inherit; cursor: pointer; }
+a.case-card.is-linked:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); border-color: var(--brand-teal); }
+a.case-card.is-linked:hover .case-card-cta { color: var(--brand-teal); transform: translateX(2px); }
+.case-card-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px dashed var(--border);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--fg-muted);
+  transition: color var(--dur-fast), transform var(--dur-fast);
+}
+a.hero-case { text-decoration: none; color: inherit; cursor: pointer; display: block; }
+a.hero-case.is-linked { position: relative; }
+a.hero-case.is-linked::after {
+  content: "Ver caso →";
+  position: absolute;
+  bottom: 18px; right: 22px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.7);
+  transition: color var(--dur-fast), transform var(--dur-fast);
+}
+a.hero-case.is-linked:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+a.hero-case.is-linked:hover::after { color: var(--brand-teal-400); transform: translateX(2px); }
