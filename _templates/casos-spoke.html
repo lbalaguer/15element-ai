@@ -1,0 +1,258 @@
+<!--
+PLANTILLA SPOKE — Caso individual /casos/<slug>/
+
+INSTRUCCIONES DE USO:
+1. Copia este archivo a _src/casos/<slug>/index.html
+2. Reemplaza tokens entre {{DOBLE_LLAVE}} con valores reales
+3. Sube evidencia visual a /assets/evidencia/caso-<slug>-NN.png
+4. Build: `node build.js`
+5. Update sitemap.xml con entry: /casos/<slug>/ priority 0.7 weekly
+
+TOKENS A REEMPLAZAR:
+  {{SLUG}}              — kebab-case (ej. "leasemd", "nextco")
+  {{CLIENT_NAME}}       — nombre real del cliente (ej. "LeaseMD")
+  {{INDUSTRIA}}         — vertical (ej. "Leasing equipo médico · Fintech")
+  {{GEO}}               — país (ej. "México", "Canadá")
+  {{TARGET_KW}}         — keyword principal (ej. "leasing equipo medico chatgpt")
+  {{METRIC_HERO}}       — número grande (ej. "#1", "+842 leads", "$9M USD")
+  {{METRIC_HERO_LABEL}} — contexto métrica (ej. "en ChatGPT/Gemini/Perplexity")
+  {{LEAD_PARAGRAPH}}    — respuesta directa a la query (AEO-first)
+  {{CONTEXT}}           — situación del cliente al iniciar
+  {{PROBLEM}}           — qué problema enfrentaban
+  {{SOLUTION}}          — qué hicimos exactamente
+  {{TIMELINE}}          — cuánto tomó
+  {{RESULT_DETAIL}}     — números completos con verificación
+  {{EVIDENCE_IMG_1..N}} — paths a screenshots en /assets/evidencia/
+  {{TESTIMONIAL_QUOTE}} — cita textual cliente (si existe)
+  {{TESTIMONIAL_AUTHOR}}— quién dijo la cita
+  {{CROSS_LINK_1..3}}   — 3 casos similares para related-grid (slug + título)
+  {{CTA_CONTEXT}}       — frase específica a la industria para CTA final
+
+LECTURA MÍNIMA: 1500 palabras (target spoke pillar)
+SCHEMA: BlogPosting + CaseStudy/Article + Review (si testimonial) + ImageObject (si evidencia)
+-->
+<!DOCTYPE html>
+<html lang="es" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>{{CLIENT_NAME}} — Caso de éxito B2B documentado | 15Element AI</title>
+<meta name="description" content="Cómo {{CLIENT_NAME}} ({{INDUSTRIA}} · {{GEO}}) logró {{METRIC_HERO}} {{METRIC_HERO_LABEL}}. Caso documentado con métricas verificables, evidencia visual y testimonios.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://15element.ai/casos/{{SLUG}}/">
+
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://15element.ai/casos/{{SLUG}}/">
+<meta property="og:title" content="{{CLIENT_NAME}}: {{METRIC_HERO}} {{METRIC_HERO_LABEL}} | Caso 15Element AI">
+<meta property="og:description" content="Cómo {{CLIENT_NAME}} ({{INDUSTRIA}}) logró {{METRIC_HERO}} con metodología 15Element AI. Caso documentado.">
+<meta property="og:image" content="https://15element.ai/assets/evidencia/caso-{{SLUG}}-01.png">
+<meta property="og:locale" content="es_MX">
+<meta property="article:author" content="Luis Balaguer">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{CLIENT_NAME}}: {{METRIC_HERO}} {{METRIC_HERO_LABEL}}">
+<meta name="twitter:description" content="Caso B2B documentado · 15Element AI">
+<meta name="twitter:image" content="https://15element.ai/assets/evidencia/caso-{{SLUG}}-01.png">
+
+<link rel="icon" type="image/png" href="{{ASSETS}}/logo-mark-color.png">
+<link rel="apple-touch-icon" href="{{ASSETS}}/logo-mark-color.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" href="https://fonts.gstatic.com/s/sairacondensed/v11/EJROQgErUN8XuHNEtX81i9TmEkrnwetA2omSrzS8.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="{{COLORS_CSS}}">
+<link rel="stylesheet" href="{{COMMON_CSS}}">
+<link rel="stylesheet" href="{{PAGE_CSS}}">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://15element.ai/" },
+        { "@type": "ListItem", "position": 2, "name": "Casos", "item": "https://15element.ai/casos/" },
+        { "@type": "ListItem", "position": 3, "name": "{{CLIENT_NAME}}", "item": "https://15element.ai/casos/{{SLUG}}/" }
+      ]
+    },
+    {
+      "@type": "Article",
+      "@id": "https://15element.ai/casos/{{SLUG}}/#article",
+      "mainEntityOfPage": "https://15element.ai/casos/{{SLUG}}/",
+      "headline": "{{CLIENT_NAME}}: {{METRIC_HERO}} {{METRIC_HERO_LABEL}}",
+      "datePublished": "{{YYYY-MM-DD}}",
+      "dateModified": "{{YYYY-MM-DD}}",
+      "author": { "@type": "Person", "name": "Luis Balaguer", "url": "https://15element.ai/nosotros/" },
+      "publisher": { "@id": "https://15element.ai/#org" },
+      "image": "https://15element.ai/assets/evidencia/caso-{{SLUG}}-01.png",
+      "about": { "@type": "Organization", "name": "{{CLIENT_NAME}}" },
+      "inLanguage": "es"
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+<!-- @include nav -->
+
+<div class="container">
+  <nav class="breadcrumbs" aria-label="breadcrumb">
+    <a href="/">Inicio</a><span class="sep">/</span><a href="/casos/">Casos</a><span class="sep">/</span><span>{{CLIENT_NAME}}</span>
+  </nav>
+</div>
+
+<header class="post-header">
+  <div class="container">
+    <span class="post-cat">Caso documentado · {{INDUSTRIA}}</span>
+    <h1>{{CLIENT_NAME}}: <span class="accent">{{METRIC_HERO}}</span> {{METRIC_HERO_LABEL}}.</h1>
+    <div class="post-meta">
+      <span class="author-name">Luis Balaguer</span>
+      <span class="sep">·</span>
+      <span class="meta-detail">{{DD MMM YYYY}}</span>
+      <span class="sep">·</span>
+      <span class="meta-detail">{{X}} min</span>
+      <span class="sep">·</span>
+      <span class="meta-detail">{{GEO}}</span>
+    </div>
+  </div>
+</header>
+
+<!-- STATS HERO STRIP -->
+<div class="stats-strip">
+  <div class="stat-cell">
+    <div class="big">{{METRIC_1_NUM}}</div>
+    <div class="lab">{{METRIC_1_LABEL}}</div>
+  </div>
+  <div class="stat-cell">
+    <div class="big">{{METRIC_2_NUM}}</div>
+    <div class="lab">{{METRIC_2_LABEL}}</div>
+  </div>
+  <div class="stat-cell">
+    <div class="big">{{METRIC_3_NUM}}</div>
+    <div class="lab">{{METRIC_3_LABEL}}</div>
+  </div>
+</div>
+
+<article class="post-body container">
+
+  <p class="lead">{{LEAD_PARAGRAPH}}</p>
+
+  <h2>El contexto: {{CONTEXT_HEADLINE}}</h2>
+  <p>{{CONTEXT}}</p>
+
+  <h2>El problema que enfrentaban</h2>
+  <p>{{PROBLEM}}</p>
+
+  <!-- EVIDENCE BLOCK 1: situación inicial -->
+  <figure>
+    <img src="/assets/evidencia/caso-{{SLUG}}-01.png" alt="{{CLIENT_NAME}} estado inicial — {{METRIC_HERO}}" loading="lazy" width="1200" height="675" style="width:100%; max-width:880px; height:auto; border-radius:8px;">
+    <figcaption style="text-align:center; color:var(--fg-muted); font-size:14px; margin-top:8px;">{{EVIDENCE_CAPTION_1}}</figcaption>
+  </figure>
+
+  <h2>La solución: {{SOLUTION_HEADLINE}}</h2>
+  <p>{{SOLUTION}}</p>
+
+  <h3>Componentes de la implementación</h3>
+  <ul>
+    <li><strong>{{COMPONENT_1_TITLE}}</strong>: {{COMPONENT_1_DESC}}</li>
+    <li><strong>{{COMPONENT_2_TITLE}}</strong>: {{COMPONENT_2_DESC}}</li>
+    <li><strong>{{COMPONENT_3_TITLE}}</strong>: {{COMPONENT_3_DESC}}</li>
+  </ul>
+
+  <!-- EVIDENCE BLOCK 2: tracking / dashboard -->
+  <figure>
+    <img src="/assets/evidencia/caso-{{SLUG}}-02.png" alt="{{CLIENT_NAME}} dashboard / GSC / SEMrush" loading="lazy" width="1200" height="675" style="width:100%; max-width:880px; height:auto; border-radius:8px;">
+    <figcaption style="text-align:center; color:var(--fg-muted); font-size:14px; margin-top:8px;">{{EVIDENCE_CAPTION_2}}</figcaption>
+  </figure>
+
+  <h2>Timeline y resultados verificables</h2>
+  <p>{{TIMELINE}}</p>
+
+  <table>
+    <thead><tr><th>Mes</th><th>Hito</th><th>Métrica</th></tr></thead>
+    <tbody>
+      <tr><td>{{MONTH_1}}</td><td>{{MILESTONE_1}}</td><td>{{METRIC_M1}}</td></tr>
+      <tr><td>{{MONTH_2}}</td><td>{{MILESTONE_2}}</td><td>{{METRIC_M2}}</td></tr>
+      <tr><td>{{MONTH_3}}</td><td>{{MILESTONE_3}}</td><td>{{METRIC_M3}}</td></tr>
+    </tbody>
+  </table>
+
+  <!-- EVIDENCE BLOCK 3: resultado final -->
+  <figure>
+    <img src="/assets/evidencia/caso-{{SLUG}}-03.png" alt="{{CLIENT_NAME}} resultado final" loading="lazy" width="1200" height="675" style="width:100%; max-width:880px; height:auto; border-radius:8px;">
+    <figcaption style="text-align:center; color:var(--fg-muted); font-size:14px; margin-top:8px;">{{EVIDENCE_CAPTION_3}}</figcaption>
+  </figure>
+
+  <h2>Lo que dijo el cliente</h2>
+  <blockquote style="font-style:italic; border-left:4px solid var(--brand-teal); padding:16px 24px; margin:24px 0; background:var(--bg-sunken); border-radius:0 8px 8px 0;">
+    "{{TESTIMONIAL_QUOTE}}"
+    <footer style="font-style:normal; margin-top:12px; color:var(--fg-muted); font-size:14px;">— {{TESTIMONIAL_AUTHOR}}</footer>
+  </blockquote>
+
+  <h2>Lo que se puede replicar (y lo que no)</h2>
+  <p>{{REPLICABILITY_PARAGRAPH}}</p>
+
+  <h2>Preguntas frecuentes sobre este caso</h2>
+
+  <h3>¿{{FAQ_1_Q}}?</h3>
+  <p>{{FAQ_1_A}}</p>
+
+  <h3>¿{{FAQ_2_Q}}?</h3>
+  <p>{{FAQ_2_A}}</p>
+
+  <h3>¿{{FAQ_3_Q}}?</h3>
+  <p>{{FAQ_3_A}}</p>
+
+  <h2>¿Tu empresa puede replicar esto?</h2>
+  <p>{{CTA_CONTEXT}} En la <a href="/contacto/#agendar">auditoría Mercator 90</a> diagnosticamos si el modelo aplica a tu negocio antes de empezar — y te decimos directo si no encaja.</p>
+
+</article>
+
+<section class="related-section">
+  <div class="container">
+    <div class="related-head">
+      <div class="eyebrow">Más casos similares</div>
+      <h2>Otros casos en <span class="accent">{{INDUSTRIA_FAMILY}}.</span></h2>
+    </div>
+    <div class="related-grid">
+      <a href="/casos/{{CROSS_LINK_1_SLUG}}/" class="related-card">
+        <span class="cat">{{CROSS_LINK_1_CAT}}</span>
+        <h3>{{CROSS_LINK_1_TITLE}}</h3>
+        <span class="arrow">Ver caso →</span>
+      </a>
+      <a href="/casos/{{CROSS_LINK_2_SLUG}}/" class="related-card">
+        <span class="cat">{{CROSS_LINK_2_CAT}}</span>
+        <h3>{{CROSS_LINK_2_TITLE}}</h3>
+        <span class="arrow">Ver caso →</span>
+      </a>
+      <a href="/casos/{{CROSS_LINK_3_SLUG}}/" class="related-card">
+        <span class="cat">{{CROSS_LINK_3_CAT}}</span>
+        <h3>{{CROSS_LINK_3_TITLE}}</h3>
+        <span class="arrow">Ver caso →</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="cta-band">
+  <div class="container">
+    <div>
+      <h2>¿Quieres ser el <span class="accent">próximo caso documentado en {{INDUSTRIA_FAMILY}}?</span></h2>
+      <p>Auditoría Mercator 90 gratis: diagnosticamos tu pipeline, identificamos señales activas en tu industria y mapeamos roadmap específico. Con garantía de resultados a 90 días.</p>
+      <div class="hero-ctas">
+        <a href="/contacto/#agendar" class="btn btn-primary btn-lg">Agenda tu auditoría gratis</a>
+        <a href="/casos/" class="btn btn-ghost btn-lg">Ver todos los casos</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- @include footer -->
+<!-- @include wa-float -->
+<!-- @include theme-script -->
+
+</body>
+</html>
