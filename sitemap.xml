@@ -88,10 +88,11 @@
   <!-- ─── EMPRESA ─── -->
   <url>
     <loc>https://15element.ai/casos/</loc>
-    <lastmod>2026-05-15</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
+    <lastmod>2026-05-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
   </url>
+  <!-- /catalogo/ es pieza interna noindex,nofollow — NO incluida en sitemap -->
   <url>
     <loc>https://15element.ai/nosotros/</loc>
     <lastmod>2026-05-15</lastmod>
