@@ -324,6 +324,168 @@
   </div>
 </section>
 
+<!-- EQUIPO / ORGANIGRAMA -->
+<section class="section" id="equipo">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">El equipo</div>
+      <h2>No estoy <span class="accent">solo en esto</span>.</h2>
+      <p>13 personas con ownership por área. Estructura clara, los mismos rostros del kickoff al QBR — no agencia de freelancers rotativos.</p>
+    </div>
+
+    <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+      <symbol id="li-icon" viewBox="0 0 24 24"><path fill="currentColor" d="M19 3A2 2 0 0 1 21 5V19A2 2 0 0 1 19 21H5A2 2 0 0 1 3 19V5A2 2 0 0 1 5 3H19M18.5 18.5V13.2A3.26 3.26 0 0 0 15.24 9.94C14.39 9.94 13.4 10.46 12.92 11.24V10.13H10.13V18.5H12.92V13.57C12.92 12.8 13.54 12.17 14.31 12.17A1.4 1.4 0 0 1 15.71 13.57V18.5H18.5M6.88 8.56A1.68 1.68 0 0 0 8.56 6.88C8.56 5.95 7.81 5.19 6.88 5.19A1.69 1.69 0 0 0 5.19 6.88C5.19 7.81 5.95 8.56 6.88 8.56M8.27 18.5V10.13H5.5V18.5H8.27Z"/></symbol>
+    </svg>
+
+    <style>
+      .org-block { display:flex; flex-direction:column; align-items:center; gap:36px; }
+      .org-top { display:flex; justify-content:center; }
+      .org-top .org-card { width:240px; }
+      .org-group { width:100%; display:flex; flex-direction:column; align-items:center; gap:16px; }
+      .org-group-label { font-family:"Saira Condensed",sans-serif; font-weight:600; font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--fg-subtle); display:flex; align-items:center; gap:12px; }
+      .org-group-label::before, .org-group-label::after { content:''; display:block; width:48px; height:1px; background:var(--fg-subtle); opacity:.4; }
+      .org-cards { display:grid; grid-template-columns:repeat(3, minmax(0, 1fr)); justify-content:center; align-items:start; gap:14px; width:100%; max-width:760px; }
+      .org-cards.grid { display:grid; grid-template-columns:repeat(4, minmax(0, 1fr)); justify-content:center; align-items:start; gap:14px; max-width:900px; }
+      @media (max-width: 1400px) { .org-cards.grid { max-width:880px; } }
+      @media (max-width: 760px) {
+        .org-cards { grid-template-columns:repeat(2, minmax(0, 1fr)); max-width:480px; }
+        .org-cards.grid { grid-template-columns:repeat(2, minmax(0, 1fr)); max-width:480px; }
+      }
+      .org-card { display:flex; flex-direction:column; align-items:center; text-align:center; padding:16px 14px; border:1px solid var(--fg-subtle); border-radius:14px; background:var(--bg-elevated); width:100%; box-sizing:border-box; transition:transform .15s ease, border-color .15s ease; }
+      .org-card.with-sub { padding-bottom:0; overflow:hidden; order:99; }
+      .org-card:hover { transform:translateY(-2px); border-color:var(--brand-teal); }
+      .org-card-sub { width:calc(100% + 28px); margin:14px -14px 0; padding:12px 14px; border-top:1px solid var(--fg-subtle); display:flex; flex-direction:column; align-items:center; opacity:.95; }
+      .org-card-sub-label { font-size:9.5px; font-weight:600; color:var(--fg-subtle); text-transform:uppercase; letter-spacing:.1em; margin-bottom:10px; }
+      .org-avatar { width:56px; height:56px; border-radius:50%; display:flex; align-items:center; justify-content:center; color:#fff; font-family:"Saira Condensed",sans-serif; font-weight:700; font-size:20px; letter-spacing:.5px; margin-bottom:10px; }
+      .org-avatar-sm { width:44px; height:44px; font-size:16px; margin-bottom:8px; }
+      .av-green { background:var(--brand-green); }
+      .av-red { background:var(--brand-red); }
+      .av-teal { background:var(--brand-teal); }
+      .av-orange { background:var(--brand-orange); }
+      .av-navy { background:var(--brand-navy); border:2px solid var(--fg-subtle); }
+      .org-name { font-family:"Saira Condensed",sans-serif; font-weight:700; font-size:16px; color:var(--fg); line-height:1.15; }
+      .org-name-sm { font-size:14px; }
+      .org-role { font-size:10.5px; font-weight:600; color:var(--brand-teal); text-transform:uppercase; letter-spacing:.06em; margin-top:4px; }
+      .org-bio { font-size:12px; color:var(--fg-muted); margin-top:8px; line-height:1.4; }
+      .org-bio-sm { font-size:11px; margin-top:6px; }
+      .org-li { margin-top:10px; font-size:11px; color:var(--fg-subtle); text-decoration:none; display:inline-flex; align-items:center; gap:4px; }
+      .org-li:hover { color:var(--brand-teal); }
+      .org-li svg { width:12px; height:12px; }
+      @media (max-width: 480px) {
+        .org-card { width:100%; max-width:280px; }
+        .org-group-label::before, .org-group-label::after { width:24px; }
+      }
+    </style>
+
+    <div class="org-block">
+      <div class="org-top">
+        <div class="org-card">
+          <div class="org-avatar av-navy">LB</div>
+          <div class="org-name">Luis Balaguer</div>
+          <div class="org-role">CEO &amp; Founder</div>
+          <div class="org-bio">Fundador. Estrategia, ventas y arquitectura del sistema. Docente IBERO, Humber y Sheridan.</div>
+          <a class="org-li" href="https://www.linkedin.com/in/lfbalaguer/" target="_blank" rel="noopener"><svg><use href="#li-icon"/></svg>LinkedIn</a>
+        </div>
+      </div>
+
+      <div class="org-group">
+        <div class="org-group-label">Reportan a Luis <span style="text-transform:none;letter-spacing:0;font-weight:400;color:var(--fg-subtle);opacity:.75;font-style:italic;margin-left:4px;">(aunque todos sabemos que Lilia manda)</span></div>
+        <div class="org-cards">
+          <div class="org-card">
+            <div class="org-avatar av-teal">LO</div>
+            <div class="org-name">Lilia Olvera</div>
+            <div class="org-role">COO</div>
+            <div class="org-bio">Operaciones, retención y coordinación del equipo de entrega. Background en Scotiabank y Sun Life — rigor de banca aplicado a clientes B2B.</div>
+            <a class="org-li" href="https://www.linkedin.com/in/lilia-olvera/" target="_blank" rel="noopener"><svg><use href="#li-icon"/></svg>LinkedIn</a>
+          </div>
+          <div class="org-card">
+            <div class="org-avatar av-orange">AR</div>
+            <div class="org-name">Alejandra Rosete</div>
+            <div class="org-role">Growth Specialist</div>
+            <div class="org-bio">Prospección B2B + acompañamiento al cliente. Se vuelve parte del proyecto del kickoff en adelante.</div>
+            <a class="org-li" href="https://www.linkedin.com/in/ale-rosete/" target="_blank" rel="noopener"><svg><use href="#li-icon"/></svg>LinkedIn</a>
+          </div>
+          <div class="org-card">
+            <div class="org-avatar av-orange">FV</div>
+            <div class="org-name">Felipe Villanueva</div>
+            <div class="org-role">Growth Specialist</div>
+            <div class="org-bio">Outbound B2B + onboarding y acompañamiento continuo al cliente durante el proyecto.</div>
+            <a class="org-li" href="https://www.linkedin.com/in/felipevillanuevach/" target="_blank" rel="noopener"><svg><use href="#li-icon"/></svg>LinkedIn</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="org-group">
+        <div class="org-group-label">Equipo bajo Lilia</div>
+        <div class="org-cards grid">
+          <div class="org-card with-sub">
+            <div class="org-avatar av-red">CS</div>
+            <div class="org-name">Carlo Sima</div>
+            <div class="org-role">AEO Lead</div>
+            <div class="org-bio">Lidera la operación SEO/AEO/GEO. Define el roadmap orgánico de cada cuenta.</div>
+            <a class="org-li" href="https://www.linkedin.com/in/especialista-seo-aso-carlo-sima-miranda2021/" target="_blank" rel="noopener"><svg><use href="#li-icon"/></svg>LinkedIn</a>
+            <div class="org-card-sub">
+              <div class="org-card-sub-label">Reporta a Carlo</div>
+              <div class="org-avatar av-red org-avatar-sm">JH</div>
+              <div class="org-name org-name-sm">Jano Hinojosa</div>
+              <div class="org-role">AEO Specialist</div>
+              <div class="org-bio org-bio-sm">Ejecución on-page, contenido y schema para AI Overviews.</div>
+              <a class="org-li" href="https://www.linkedin.com/in/jano-hinostroza-especialista-seo/" target="_blank" rel="noopener"><svg><use href="#li-icon"/></svg>LinkedIn</a>
+            </div>
+          </div>
+          <div class="org-card">
+            <div class="org-avatar av-green">SC</div>
+            <div class="org-name">Saulo Castelán</div>
+            <div class="org-role">Web Developer</div>
+            <div class="org-bio">Construye y mantiene los sitios cliente. Performance, deploys y mejoras técnicas.</div>
+            <a class="org-li" href="https://www.linkedin.com/in/saulo-castelan/" target="_blank" rel="noopener"><svg><use href="#li-icon"/></svg>LinkedIn</a>
+          </div>
+          <div class="org-card">
+            <div class="org-avatar av-teal">SM</div>
+            <div class="org-name">Sarai Medina</div>
+            <div class="org-role">Customer Success</div>
+            <div class="org-bio">Punto de contacto directo con el cliente. Onboarding, seguimiento y reportes.</div>
+            <a class="org-li" href="https://www.linkedin.com/in/ana-sarai-medina-arias-b66805236/" target="_blank" rel="noopener"><svg><use href="#li-icon"/></svg>LinkedIn</a>
+          </div>
+          <div class="org-card">
+            <div class="org-avatar av-teal">DG</div>
+            <div class="org-name">Danny Garvizu</div>
+            <div class="org-role">Customer Success</div>
+            <div class="org-bio">Acompañamiento del cliente, coordinación de entregables y seguimiento de pipeline.</div>
+            <a class="org-li" href="https://www.linkedin.com/in/dannygarvizualvarez/" target="_blank" rel="noopener"><svg><use href="#li-icon"/></svg>LinkedIn</a>
+          </div>
+          <div class="org-card">
+            <div class="org-avatar av-orange">JN</div>
+            <div class="org-name">Jennie Nieves</div>
+            <div class="org-role">Customer Success</div>
+            <div class="org-bio">Acompaña cuentas activas. QBR, retención y coordinación con AEO y Web.</div>
+            <a class="org-li" href="https://www.linkedin.com/in/jennienieves/" target="_blank" rel="noopener"><svg><use href="#li-icon"/></svg>LinkedIn</a>
+          </div>
+          <div class="org-card">
+            <div class="org-avatar av-red">ER</div>
+            <div class="org-name">Enriqueta Ruiz</div>
+            <div class="org-role">Outreach Manager</div>
+            <div class="org-bio">Gestiona campañas de outreach B2B. Listas, secuencias y deliverability.</div>
+            <a class="org-li" href="https://www.linkedin.com/in/enriqueta-ruiz-33953932/" target="_blank" rel="noopener"><svg><use href="#li-icon"/></svg>LinkedIn</a>
+          </div>
+          <div class="org-card">
+            <div class="org-avatar av-navy">DH</div>
+            <div class="org-name">Diego Hubscher</div>
+            <div class="org-role">Google Ads Specialist</div>
+            <div class="org-bio">Campañas paid B2B en Google Ads. Optimización de CAC y captura de demanda activa.</div>
+          </div>
+          <div class="org-card">
+            <div class="org-avatar av-green">YM</div>
+            <div class="org-name">Yun Medina</div>
+            <div class="org-role">Executive Assistant</div>
+            <div class="org-bio">Soporte ejecutivo a Lilia. Coordinación interna, agenda y operación del día a día.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- RECOMENDACIONES -->
 <section class="section">
   <div class="container">
