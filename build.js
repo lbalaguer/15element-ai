@@ -31,6 +31,14 @@ const ROOT = __dirname;
 const SRC_DIR = path.join(ROOT, '_src');
 const PARTIALS_DIR = path.join(ROOT, '_partials');
 const STYLES_DIR = path.join(ROOT, '_styles');
+const BASELINE_PATH = path.join(ROOT, '.build-warnings-baseline.json');
+
+// ------------------------------------------------------------
+// CLI flags
+// ------------------------------------------------------------
+const argv = process.argv.slice(2);
+const FLAG_UPDATE_BASELINE = argv.includes('--update-baseline');
+const FLAG_SHOW_BASELINE = argv.includes('--show-baseline');
 
 // ------------------------------------------------------------
 // Compute SHA-8 hash of CSS files for cache-busting query strings
@@ -399,35 +407,184 @@ function banner(title, lines) {
   console.log('═══════════════════════════════════════════════════════════');
 }
 
-if (allOrphans.length) {
-  const lines = ['  Clases usadas en HTML sin CSS en colors+common+pageCSS (se ven sin estilo).',
-    '  Arregla: agrega el CSS, usa una clase existente, o métela a CLASS_ALLOWLIST.'];
-  for (const { rel, orphans } of allOrphans) { lines.push(`  ${rel}:`); for (const c of orphans) lines.push(`      .${c}`); }
-  banner('CLASES SIN CSS', lines);
-}
-if (allTokens.length) {
-  const lines = ['  Tokens {{VAR}} o @include que NO se resolvieron (queda texto crudo en prod).'];
-  for (const { rel, tokens } of allTokens) lines.push(`  ${rel}: ${tokens.join(', ')}`);
-  banner('TOKENS / INCLUDES SIN RESOLVER', lines);
-}
-if (allJsonLd.length) {
-  const lines = ['  Schema JSON-LD inválido → Google lo ignora en silencio (pierdes rich results / AEO).'];
-  for (const { rel, errs } of allJsonLd) { lines.push(`  ${rel}:`); for (const e of errs) lines.push(`      ${e}`); }
-  banner('JSON-LD ROTO', lines);
-}
-if (brokenLinks.length) {
-  const lines = ['  Links internos que apuntan a páginas/archivos que NO existen (404 + daño SEO).'];
-  for (const { rel, href } of brokenLinks) lines.push(`  ${rel} → ${href}`);
-  banner('LINKS INTERNOS ROTOS', lines);
-}
-if (allPostsGrids.length) {
-  const lines = [
-    '  .posts-grid es grid de 3 columnas. Card sola o 2 cards = huecos visuales en desktop.',
-    '  Reglas: featured-row → 3 exactos | posts-grid regular → múltiplo de 3 (3, 6, 9...).',
-    '  Fix: agrega cards hasta múltiplo de 3, o saca la card a su propio bloque hero.'];
-  for (const { rel, errs } of allPostsGrids) { lines.push(`  ${rel}:`); for (const e of errs) lines.push(`      ${e}`); }
-  banner('POSTS-GRID ROTO', lines);
+// ------------------------------------------------------------
+// BASELINE SYSTEM — distingue deuda heredada (aceptada) de deuda nueva.
+// Caso de uso: si tocas /blog/X y el build escupe warnings de /catalogo/ que
+// no son tuyos, el sistema los reconoce como baseline y no te bloquea.
+// Si introduces deuda NUEVA, el build falla con exit 1 y lista solo lo NUEVO.
+// Para aceptar deuda deliberadamente: `node build.js --update-baseline`.
+// ------------------------------------------------------------
+// Normaliza path separators a forward-slash (cross-platform: baseline generado
+// en Windows debe matchear el mismo path comparado en Linux/macOS).
+function normPath(p) { return p.replace(/\\/g, '/'); }
+
+function buildCurrentWarnings() {
+  // Normaliza warnings a estructura comparable: { guard: { file: [items] } }
+  const cur = { orphan_classes: {}, unresolved_tokens: {}, json_ld: {}, broken_links: {}, posts_grid: {} };
+  for (const { rel, orphans } of allOrphans) cur.orphan_classes[normPath(rel)] = orphans.slice().sort();
+  for (const { rel, tokens } of allTokens) cur.unresolved_tokens[normPath(rel)] = tokens.slice().sort();
+  for (const { rel, errs } of allJsonLd) cur.json_ld[normPath(rel)] = errs.slice().sort();
+  for (const { rel, errs } of allPostsGrids) cur.posts_grid[normPath(rel)] = errs.slice().sort();
+  const brokenByFile = {};
+  for (const { rel, href } of brokenLinks) { (brokenByFile[normPath(rel)] ||= []).push(href); }
+  for (const f of Object.keys(brokenByFile)) cur.broken_links[f] = brokenByFile[f].sort();
+  return cur;
 }
 
-const totalIssues = allOrphans.length + allTokens.length + allJsonLd.length + brokenLinks.length + allPostsGrids.length;
-console.log(`[build] Done.${totalIssues ? ` (⚠ ${totalIssues} problema(s) — revisar arriba ANTES de pushear)` : ' (5/5 guards OK)'}`);
+function readBaseline() {
+  if (!fs.existsSync(BASELINE_PATH)) return null;
+  try {
+    return JSON.parse(fs.readFileSync(BASELINE_PATH, 'utf8'));
+  } catch (e) {
+    console.error(`[build] BASELINE corrupto en ${BASELINE_PATH}: ${e.message}`);
+    process.exit(2);
+  }
+}
+
+function writeBaseline(current) {
+  const data = {
+    version: 1,
+    generated_at: new Date().toISOString(),
+    generated_by: 'node build.js --update-baseline',
+    note: 'Deuda técnica conocida y aceptada. El build pasa si los warnings actuales son subset de este file. Si introduces deuda nueva, el build falla. Para regenerar este file deliberadamente: `node build.js --update-baseline`.',
+    guards: current.guards
+  };
+  fs.writeFileSync(BASELINE_PATH, JSON.stringify(data, null, 2) + '\n', 'utf8');
+}
+
+function diffWarnings(current, baseline) {
+  // Retorna { newItems: {guard:{file:[items]}}, resolvedItems: {...}, totalNew, totalResolved, totalKnown }
+  const base = (baseline && baseline.guards) || {};
+  const newItems = {};
+  const resolvedItems = {};
+  let totalNew = 0, totalResolved = 0, totalKnown = 0;
+  const guards = ['orphan_classes', 'unresolved_tokens', 'json_ld', 'broken_links', 'posts_grid'];
+  for (const g of guards) {
+    const curG = current[g] || {};
+    const baseG = base[g] || {};
+    const allFiles = new Set([...Object.keys(curG), ...Object.keys(baseG)]);
+    for (const f of allFiles) {
+      const curSet = new Set(curG[f] || []);
+      const baseSet = new Set(baseG[f] || []);
+      const newOnly = [...curSet].filter(x => !baseSet.has(x));
+      const resolvedOnly = [...baseSet].filter(x => !curSet.has(x));
+      const known = [...curSet].filter(x => baseSet.has(x));
+      if (newOnly.length) {
+        (newItems[g] ||= {})[f] = newOnly.sort();
+        totalNew += newOnly.length;
+      }
+      if (resolvedOnly.length) {
+        (resolvedItems[g] ||= {})[f] = resolvedOnly.sort();
+        totalResolved += resolvedOnly.length;
+      }
+      totalKnown += known.length;
+    }
+  }
+  return { newItems, resolvedItems, totalNew, totalResolved, totalKnown };
+}
+
+const GUARD_LABELS = {
+  orphan_classes: 'CLASES SIN CSS',
+  unresolved_tokens: 'TOKENS / INCLUDES SIN RESOLVER',
+  json_ld: 'JSON-LD ROTO',
+  broken_links: 'LINKS INTERNOS ROTOS',
+  posts_grid: 'POSTS-GRID ROTO'
+};
+
+function printGuardSection(guardKey, byFile, header) {
+  const lines = [header];
+  for (const f of Object.keys(byFile).sort()) {
+    lines.push(`  ${f}:`);
+    for (const item of byFile[f]) {
+      // Para orphan_classes: prefijo "." para legibilidad
+      const display = guardKey === 'orphan_classes' ? `.${item}` : item;
+      lines.push(`      ${display}`);
+    }
+  }
+  banner(GUARD_LABELS[guardKey], lines);
+}
+
+const currentWarnings = { guards: buildCurrentWarnings() };
+
+// Modo --show-baseline: imprime el baseline actual y sale
+if (FLAG_SHOW_BASELINE) {
+  const b = readBaseline();
+  if (!b) { console.log('[build] No hay baseline. Corre `node build.js --update-baseline` para generar.'); process.exit(0); }
+  console.log(JSON.stringify(b, null, 2));
+  process.exit(0);
+}
+
+// Modo --update-baseline: persiste warnings actuales como baseline aceptado
+if (FLAG_UPDATE_BASELINE) {
+  writeBaseline(currentWarnings);
+  const counts = {};
+  for (const g of Object.keys(currentWarnings.guards)) {
+    counts[g] = Object.values(currentWarnings.guards[g]).reduce((acc, arr) => acc + arr.length, 0);
+  }
+  const total = Object.values(counts).reduce((a, b) => a + b, 0);
+  console.log('');
+  console.log('═══════════════════════════════════════════════════════════');
+  console.log(`✓ BASELINE actualizado: ${BASELINE_PATH}`);
+  console.log('───────────────────────────────────────────────────────────');
+  console.log(`  Deuda total registrada: ${total} item(s)`);
+  for (const g of Object.keys(counts)) if (counts[g]) console.log(`    ${GUARD_LABELS[g]}: ${counts[g]}`);
+  console.log('  COMMITEAR ESTE FILE para que el resto del equipo lo respete.');
+  console.log('═══════════════════════════════════════════════════════════');
+  process.exit(0);
+}
+
+// Modo normal: comparar contra baseline
+const baseline = readBaseline();
+
+// Caso 1: NO hay baseline (primera corrida del sistema). Imprime informativo, no falla.
+if (!baseline) {
+  let totalRaw = 0;
+  for (const g of Object.keys(currentWarnings.guards)) {
+    const byFile = currentWarnings.guards[g];
+    if (Object.keys(byFile).length) {
+      totalRaw += Object.values(byFile).reduce((a, arr) => a + arr.length, 0);
+      printGuardSection(g, byFile, '  Deuda actual (no hay baseline para comparar todavía).');
+    }
+  }
+  console.log('');
+  if (totalRaw === 0) {
+    console.log('[build] ✓ 5/5 guards OK. Sin deuda. Para crear snapshot baseline: `node build.js --update-baseline`');
+  } else {
+    console.log(`[build] ⚠  ${totalRaw} warning(s) sin baseline. Para aceptar este estado como deuda conocida: \`node build.js --update-baseline\``);
+  }
+  process.exit(0);
+}
+
+// Caso 2: Hay baseline. Comparar.
+const { newItems, resolvedItems, totalNew, totalResolved, totalKnown } = diffWarnings(currentWarnings.guards, baseline);
+
+if (totalNew > 0) {
+  console.log('');
+  console.log('🚨 DEUDA NUEVA DETECTADA — bloqueando build');
+  for (const g of Object.keys(newItems)) {
+    printGuardSection(g, newItems[g], `  ⚠ NUEVO (no estaba en baseline). Arregla o acepta con \`node build.js --update-baseline\`.`);
+  }
+}
+
+if (totalResolved > 0) {
+  console.log('');
+  console.log(`✓ ${totalResolved} item(s) de deuda RESUELTOS desde el último baseline.`);
+  console.log('  Para limpiar el baseline: `node build.js --update-baseline`');
+  for (const g of Object.keys(resolvedItems)) {
+    const fileCount = Object.keys(resolvedItems[g]).length;
+    const itemCount = Object.values(resolvedItems[g]).reduce((a, arr) => a + arr.length, 0);
+    console.log(`    ${GUARD_LABELS[g]}: ${itemCount} item(s) en ${fileCount} archivo(s)`);
+  }
+}
+
+console.log('');
+if (totalNew > 0) {
+  console.log(`[build] ❌ FAIL — ${totalNew} deuda(s) NUEVA(s). ${totalKnown} item(s) de baseline conocidos.`);
+  process.exit(1);
+} else if (totalKnown > 0) {
+  console.log(`[build] ✓ 5/5 guards OK. (${totalKnown} item(s) de deuda baseline conocidos${totalResolved ? `, ${totalResolved} resuelto(s)` : ''})`);
+  process.exit(0);
+} else {
+  console.log(`[build] ✓ 5/5 guards OK. Sin deuda${totalResolved ? ` (${totalResolved} resuelto(s) desde baseline)` : ''}.`);
+  process.exit(0);
+}
