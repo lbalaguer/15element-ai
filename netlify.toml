@@ -257,9 +257,83 @@
   status = 301
   force = true
 
-# Categorías WP → blog
+# ─── 301 redirects WP legacy (lote 3, audit CSV GSC 2026-05-28) ───
+# URLs viejas con impresiones acumuladas en GSC sin destino.
+
+[[redirects]]
+  from = "/pipeline-b2b-sin-publicidad-vs-meta-ads/"
+  to = "/blog/marketing-b2b-sin-ads/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/email-outreach-b2b-efectivo-sin-templates/"
+  to = "/servicios/email-outreach/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/oplogistics-visibilidad-b2b-logistica-linkedin/"
+  to = "/blog/oplogistics-pipeline-logistica-b2b-linkedin/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/proyecto-9m-usd-linkedin-organico/"
+  to = "/blog/top-energy-9m-usd-linkedin-organico/"
+  status = 301
+  force = true
+
+# Royal LePage: temporal hasta publicar spoke /casos/matthew-regan/ (calendar Ago 19 2026)
+# Cuando se publique el spoke, AJUSTAR este redirect a → /casos/matthew-regan/
+[[redirects]]
+  from = "/royal-lepage-toronto-real-estate-b2b-linkedin/"
+  to = "/casos/"
+  status = 301
+  force = true
+
+# GSC fantasma 2026-05-28: /industrias/fintech-finanzas/ rankea pos 6.67 con 4 impr pero NO existe (carpeta real es /fintech/). Recuperar autoridad.
+[[redirects]]
+  from = "/industrias/fintech-finanzas/"
+  to = "/industrias/fintech/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/industrias/fintech-finanzas"
+  to = "/industrias/fintech/"
+  status = 301
+  force = true
+
+# ─── Fixes específicos previos a wildcards ───
+
+# /en/ pos 1.67 — equity SEO desperdiciada por wildcard /en/* → /. Va específico al cornerstone ES.
+[[redirects]]
+  from = "/en/agencia-b2b-canada-latam-prospeccion-linkedin/"
+  to = "/blog/agencia-b2b-canada-latam-prospeccion-linkedin/"
+  status = 301
+  force = true
+
+# Bug 2026-05-28: /category/* NO atrapa /blog/category/* (8 impr/mes cayendo a 404).
+# DEBE ir antes del wildcard /category/* (Netlify procesa en orden de declaración para wildcards).
+[[redirects]]
+  from = "/blog/category/*"
+  to = "/blog/"
+  status = 301
+  force = true
+
+# Categorías WP genéricas → blog (orden: este wildcard al final, después de específicos arriba)
 [[redirects]]
   from = "/category/*"
   to = "/blog/"
   status = 301
   force = true
+
+# ─── 🚨 NOTA OPERATIVA: redirects /casos/X/ → /casos/ ───
+# Los 8 redirects /casos/leasemed/, /casos/15element-seo-interno/, /casos/kol-agency/,
+# /casos/histone/, /casos/sk-logistics/, /casos/family-dentistry/, /casos/sport-city/,
+# /casos/ricos-pizzeria/ matchean SLUGS LEGADOS de WP (URL antigua "/casos/leasemed/" con "e").
+# Los spokes planeados Jun-Oct 2026 usan SLUGS SEO LARGOS distintos
+# (ej: leasemd-1-en-chatgpt-perplexity-aeo-mexico vs el legado /casos/leasemed/).
+# NO chocan. Pero si en el futuro alguien publica con slug corto, este redirect lo mataría.
+# Documentado para evitar conflict silencioso al publicar spokes.
