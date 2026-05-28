@@ -245,6 +245,13 @@
   status = 301
   force = true
 
+# 2026-05-28: específicos /en/ ANTES del wildcard /en/* (Netlify procesa en orden)
+[[redirects]]
+  from = "/en/agencia-b2b-canada-latam-prospeccion-linkedin/"
+  to = "/blog/agencia-b2b-canada-latam-prospeccion-linkedin/"
+  status = 301
+  force = true
+
 [[redirects]]
   from = "/en/*"
   to = "/"
@@ -306,23 +313,20 @@
   force = true
 
 # ─── Fixes específicos previos a wildcards ───
+# (/en/agencia... movido arriba para preceder /en/* wildcard)
 
-# /en/ pos 1.67 — equity SEO desperdiciada por wildcard /en/* → /. Va específico al cornerstone ES.
-[[redirects]]
-  from = "/en/agencia-b2b-canada-latam-prospeccion-linkedin/"
-  to = "/blog/agencia-b2b-canada-latam-prospeccion-linkedin/"
-  status = 301
-  force = true
+# /blog/category/* bug: el wildcard /category/* NO atrapa paths que empiezan con /blog/.
+# Esta regla ya está colocada ANTES de /category/* (líneas inferiores) por ser específica.
+# NOTA: si /category/* está arriba en el archivo, este específico DEBE ir antes de él.
 
-# Bug 2026-05-28: /category/* NO atrapa /blog/category/* (8 impr/mes cayendo a 404).
-# DEBE ir antes del wildcard /category/* (Netlify procesa en orden de declaración para wildcards).
+# Categorías WP genéricas → blog (orden: este wildcard al final, después de específicos arriba)
+# 2026-05-28: /blog/category/* ANTES del wildcard /category/* (específico primero)
 [[redirects]]
   from = "/blog/category/*"
   to = "/blog/"
   status = 301
   force = true
 
-# Categorías WP genéricas → blog (orden: este wildcard al final, después de específicos arriba)
 [[redirects]]
   from = "/category/*"
   to = "/blog/"
