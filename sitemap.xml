@@ -4,9 +4,17 @@
   <!-- ─── HOME ─── -->
   <url>
     <loc>https://15element.ai/</loc>
-    <lastmod>2026-05-15</lastmod>
+    <lastmod>2026-05-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
+  </url>
+
+  <!-- ─── WAR ROOM CLIENTE (diferenciador único LATAM) ─── -->
+  <url>
+    <loc>https://15element.ai/war-room/</loc>
+    <lastmod>2026-05-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.95</priority>
   </url>
 
   <!-- ─── SERVICIOS ─── -->

@@ -1798,6 +1798,201 @@ footer { background: var(--bg-sunken); padding: 64px 0 40px; border-top: 1px sol
   .compare th, .compare td { padding: 12px 14px; font-size: 13px; }
   .compare table { min-width: 540px; }
 }
+
+/* ──────────────────────────────────────────────────────────────
+   SUB-HERO WAR ROOM (inserción entre PROCESS y CASES)
+   Diferenciador único LATAM — solo se renderiza en el home.
+   ────────────────────────────────────────────────────────────── */
+@keyframes home-wr-pulse {
+  0%   { box-shadow: 0 0 0 0 rgba(126, 183, 73, 0.6); }
+  70%  { box-shadow: 0 0 0 8px rgba(126, 183, 73, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(126, 183, 73, 0); }
+}
+.home-war-room {
+  background: linear-gradient(180deg, var(--bg-elevated) 0%, var(--bg) 100%);
+  padding: 80px 0;
+}
+.home-wr-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 56px;
+  align-items: center;
+  max-width: 1180px;
+  margin: 0 auto;
+}
+.home-wr-copy h2 {
+  font-family: var(--font-display);
+  font-size: clamp(32px, 4vw, 48px);
+  line-height: 1.1;
+  margin: 16px 0 16px;
+  color: var(--fg);
+}
+.home-wr-copy .lead {
+  font-size: 17px;
+  line-height: 1.6;
+  color: var(--fg-muted);
+  margin-bottom: 24px;
+}
+.home-wr-bullets {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 24px;
+}
+.home-wr-bullets li {
+  position: relative;
+  padding-left: 22px;
+  margin-bottom: 10px;
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--fg);
+}
+.home-wr-bullets li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 7px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--brand-teal);
+  box-shadow: 0 0 0 3px rgba(32, 148, 153, 0.15);
+}
+.home-wr-bullets strong { color: var(--fg); }
+
+.home-wr-preview {
+  background: #0F1226;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 20px 50px rgba(20, 22, 42, 0.20), 0 4px 12px rgba(20, 22, 42, 0.10);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+.home-wr-preview-head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  background: #14162A;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+.home-wr-preview-head .dots {
+  display: flex;
+  gap: 5px;
+}
+.home-wr-preview-head .dots span {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.18);
+}
+.home-wr-preview-head .dots span:first-child { background: #ED6A5E; }
+.home-wr-preview-head .dots span:nth-child(2) { background: #F4BF50; }
+.home-wr-preview-head .dots span:nth-child(3) { background: #61C554; }
+.home-wr-preview-head .label {
+  flex: 1;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.55);
+  text-align: center;
+}
+.home-wr-preview-head .live {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--brand-teal-400);
+  letter-spacing: 0.06em;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-left: auto;
+}
+.home-wr-preview-head .live::before {
+  content: '';
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--brand-green);
+  animation: home-wr-pulse 2s ease-out infinite;
+}
+.home-wr-preview-body {
+  padding: 16px 18px 18px;
+}
+.home-wr-preview-tabs {
+  display: flex;
+  gap: 14px;
+  margin-bottom: 14px;
+  font-family: var(--font-body);
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.45);
+}
+.home-wr-preview-tabs span.is-active {
+  color: var(--brand-teal-400);
+  font-weight: 600;
+  border-bottom: 1.5px solid var(--brand-teal-400);
+  padding-bottom: 4px;
+}
+.home-wr-preview-mini {
+  background: rgba(255, 255, 255, 0.03);
+  border-left: 3px solid var(--brand-red);
+  border-radius: 6px;
+  padding: 12px 14px;
+  margin-bottom: 10px;
+}
+.home-wr-preview-mini .rank {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--brand-red-400);
+  letter-spacing: 0.08em;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+.home-wr-preview-mini h5 {
+  font-family: var(--font-display);
+  font-size: 15px;
+  color: rgba(255, 255, 255, 0.95);
+  margin: 0 0 4px;
+  font-weight: 600;
+}
+.home-wr-preview-mini p {
+  font-size: 12px;
+  line-height: 1.45;
+  color: rgba(255, 255, 255, 0.65);
+  margin: 0;
+}
+.home-wr-preview-signal {
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 6px;
+  padding: 10px 14px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.78);
+}
+.home-wr-preview-signal .urg {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--brand-red);
+  box-shadow: 0 0 6px var(--brand-red);
+  flex-shrink: 0;
+}
+.home-wr-preview-signal strong {
+  color: rgba(255, 255, 255, 0.95);
+  font-family: var(--font-display);
+  font-size: 13px;
+}
+.home-wr-preview-signal .tag {
+  margin-left: auto;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--brand-teal-400);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+@media (max-width: 960px) {
+  .home-wr-grid { grid-template-columns: 1fr; gap: 32px; }
+  .home-war-room { padding: 64px 0; }
+}
 </style>
 </head>
 <body>
@@ -2040,6 +2235,55 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <h4>Cita calificada en tu calendario</h4>
         <p>Cuando el prospecto responde con interés, movemos la conversación hacia una reunión con contexto: ya sabemos su empresa, su problema y su momento. La primera llamada no es de descubrimiento genérico — <strong>es de negocio.</strong></p>
         <div class="out">Output: <b>citas B2B calificadas listas para convertir</b></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WAR ROOM SUB-HERO -->
+<section class="home-war-room">
+  <div class="container">
+    <div class="home-wr-grid">
+      <div class="home-wr-copy reveal">
+        <div class="eyebrow"><span>War Room cliente · Único en LATAM</span></div>
+        <h2>Tu propio <span class="accent">War Room</span> operado 24/7 por AI Workforce.</h2>
+        <p class="lead">Lo que ninguna agencia B2B en LATAM te da: panel privado donde ves a 10 agentes especializados entrando diario a GSC, GA4 y herramientas SEO — con señales de compra B2B mapeadas a C-levels, mensajes outbound listos y plan operativo visible.</p>
+        <ul class="home-wr-bullets">
+          <li><strong>Vanadio</strong> escribe tu brief estratégico cada amanecer.</li>
+          <li><strong>Neón</strong> detecta hires, funding y expansiones de tu ICP — con decisores y mensaje listo.</li>
+          <li><strong>Litio</strong> vigila competidores e influencers de tu watchlist.</li>
+          <li><strong>Cerebro editable</strong>: ajustas tu ICP y voz, los agentes obedecen en la siguiente corrida.</li>
+        </ul>
+        <div style="display:flex; gap:12px; flex-wrap: wrap;">
+          <a href="/war-room/" class="btn btn-primary">Conoce el War Room →</a>
+          <a href="/war-room/#workforce" class="btn btn-ghost">Ver al AI Workforce</a>
+        </div>
+      </div>
+      <div class="home-wr-preview reveal" aria-label="Vista previa del War Room cliente">
+        <div class="home-wr-preview-head">
+          <div class="dots"><span></span><span></span><span></span></div>
+          <div class="live">en vivo</div>
+        </div>
+        <div class="home-wr-preview-body">
+          <div class="home-wr-preview-tabs">
+            <span class="is-active">Hoy</span>
+            <span>Plan</span>
+            <span>Pulso</span>
+            <span>Biblioteca</span>
+            <span>Inteligencia</span>
+            <span>Cerebro</span>
+          </div>
+          <div class="home-wr-preview-mini">
+            <div class="rank">P1 · VANADIO</div>
+            <h5>Ventana AEO ChatGPT-5 abierta 7-10 días</h5>
+            <p>Competidor directo perdió pos #1 en "leasing equipo médico". Refuerzo FAQ schema puede capturarla.</p>
+          </div>
+          <div class="home-wr-preview-signal">
+            <span class="urg"></span>
+            <strong>Conekta</strong>
+            <span class="tag">Hire · CMO nuevo</span>
+          </div>
+        </div>
       </div>
     </div>
   </div>
