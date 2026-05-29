@@ -252,6 +252,32 @@
   status = 301
   force = true
 
+# 2026-05-29: Operación Tornado Fase 0 — zombie /en/* URLs con impresiones GSC
+# Destinos provisionales a ES equivalentes. Cambiar a /en/* EN reales cuando Fase 2 termine.
+[[redirects]]
+  from = "/en/email-outreach/"
+  to = "/servicios/email-outreach/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/en/senales-de-compra/"
+  to = "/servicios/senales-de-compra/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/en/category/seo-aeo-geo/"
+  to = "/servicios/seo-aeo-geo/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/en/blog/page/3/"
+  to = "/blog/"
+  status = 301
+  force = true
+
 [[redirects]]
   from = "/en/*"
   to = "/"
