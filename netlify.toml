@@ -293,6 +293,21 @@
 # ─── 301 redirects WP legacy (lote 3, audit CSV GSC 2026-05-28) ───
 # URLs viejas con impresiones acumuladas en GSC sin destino.
 
+# 2026-05-30: era EN "the-elements/*" muerta (404). Solo se rescatan las 2 con ICP
+# consultoría (prospecting + seo). El resto (video/content/ads/academy-ai) se deja morir
+# a propósito: atraía SaaS/DFY seekers, no cliente de consultoría. Decisión Luis 2026-05-30.
+[[redirects]]
+  from = "/the-elements/prospecting-ai/"
+  to = "/servicios/linkedin-prospecting/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/the-elements/seo-ai/"
+  to = "/servicios/seo-aeo-geo/"
+  status = 301
+  force = true
+
 [[redirects]]
   from = "/pipeline-b2b-sin-publicidad-vs-meta-ads/"
   to = "/blog/marketing-b2b-sin-ads/"
