@@ -239,13 +239,9 @@
   status = 301
   force = true
 
-[[redirects]]
-  from = "/en/blog/"
-  to = "/blog/"
-  status = 301
-  force = true
+# 2026-05-30 Tornado Fase 1 MVP: /en/blog/ ahora es página EN REAL — redirect a /blog/ removido.
 
-# 2026-05-28: específicos /en/ ANTES del wildcard /en/* (Netlify procesa en orden)
+# 2026-05-28: específicos /en/ (zombies sin versión EN real → equivalente ES)
 [[redirects]]
   from = "/en/agencia-b2b-canada-latam-prospeccion-linkedin/"
   to = "/blog/agencia-b2b-canada-latam-prospeccion-linkedin/"
@@ -278,11 +274,9 @@
   status = 301
   force = true
 
-[[redirects]]
-  from = "/en/*"
-  to = "/"
-  status = 301
-  force = true
+# 2026-05-30 Tornado Fase 1 MVP: wildcard /en/* → / REMOVIDO. /en/ ahora es un sitio EN real
+# (home + 3 services + case-studies + about + contact + blog). Los /en/* zombie con tráfico
+# mantienen sus redirects específicos arriba; el resto da 404 natural.
 
 [[redirects]]
   from = "/es/*"

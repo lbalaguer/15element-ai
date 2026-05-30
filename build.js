@@ -184,7 +184,35 @@ function findBadPostsGrids(html) {
   return errors;
 }
 
-const PARTIALS = ['nav', 'footer', 'wa-float', 'theme-script', 'vt-lightbox'];
+const PARTIALS = ['nav', 'footer', 'nav-en', 'footer-en', 'wa-float', 'theme-script', 'vt-lightbox'];
+
+// ------------------------------------------------------------
+// i18n — pares hreflang ES↔EN (MVP Tornado Fase 1). Solo las páginas
+// listadas aquí reciben <link hreflang>. El resto del sitio ES no se toca.
+// esRel/enRel = path relativo a _src (con index.html). es/en = URL pública.
+// ------------------------------------------------------------
+const HREFLANG_PAIRS = [
+  { esRel: 'index.html',                              enRel: 'en/index.html',                           es: '/',                             en: '/en/' },
+  { esRel: 'servicios/seo-aeo-geo/index.html',        enRel: 'en/services/aeo-seo/index.html',          es: '/servicios/seo-aeo-geo/',       en: '/en/services/aeo-seo/' },
+  { esRel: 'servicios/linkedin-prospecting/index.html', enRel: 'en/services/linkedin-prospecting/index.html', es: '/servicios/linkedin-prospecting/', en: '/en/services/linkedin-prospecting/' },
+  { esRel: 'servicios/consultoria-b2b/index.html',    enRel: 'en/services/consulting/index.html',       es: '/servicios/consultoria-b2b/',   en: '/en/services/consulting/' },
+  { esRel: 'casos/index.html',                        enRel: 'en/case-studies/index.html',              es: '/casos/',                       en: '/en/case-studies/' },
+  { esRel: 'nosotros/index.html',                     enRel: 'en/about/index.html',                     es: '/nosotros/',                    en: '/en/about/' },
+  { esRel: 'contacto/index.html',                     enRel: 'en/contact/index.html',                   es: '/contacto/',                    en: '/en/contact/' },
+  { esRel: 'blog/index.html',                         enRel: 'en/blog/index.html',                      es: '/blog/',                        en: '/en/blog/' },
+];
+
+// Páginas EN reusan el CSS de su par ES (no duplicamos CSS en MVP).
+const EN_CSS_MAP = {
+  '': 'home',
+  'services/aeo-seo': 'servicio-seo-aeo-geo',
+  'services/linkedin-prospecting': 'servicio-linkedin-prospecting',
+  'services/consulting': 'servicio-consultoria-b2b',
+  'case-studies': 'casos',
+  'about': 'nosotros',
+  'contact': 'contacto',
+  'blog': 'blog',
+};
 
 // ------------------------------------------------------------
 // Load partials into memory
@@ -251,7 +279,12 @@ function processFile(srcAbs) {
   const rel = path.relative(SRC_DIR, srcAbs);
   const dirParts = path.dirname(rel).split(path.sep).filter(Boolean);
   let slug;
-  if (dirParts.length === 0 || dirParts[0] === '.') slug = 'home';
+  if (dirParts[0] === 'en') {
+    // Páginas EN reusan el CSS de su par ES (ver EN_CSS_MAP arriba)
+    const enKey = dirParts.slice(1).join('/');
+    slug = EN_CSS_MAP[enKey] || (enKey.startsWith('blog/') ? 'blog-post' : 'home');
+  }
+  else if (dirParts.length === 0 || dirParts[0] === '.') slug = 'home';
   // Legal pages share legal.css — evaluar ANTES del catch de length===1
   // (si no, slug='politica-de-privacidad' busca un CSS inexistente y la página
   //  se sirve sin estilo. Bug detectado por el validador 2026-05-20.)
@@ -269,6 +302,17 @@ function processFile(srcAbs) {
   html = html.replace(/\{\{COLORS_CSS\}\}/g, colorsCssPath);
   html = html.replace(/\{\{COMMON_CSS\}\}/g, commonCssPath);
   html = html.replace(/\{\{PAGE_CSS\}\}/g, pageCssPath);
+
+  // ----------------------------------------------------------------
+  // i18n: hreflang ES↔EN (MVP Tornado). Solo páginas en HREFLANG_PAIRS.
+  // El resto del sitio no se toca (aditivo, cero riesgo al ES existente).
+  // ----------------------------------------------------------------
+  const relNorm = rel.replace(/\\/g, '/');
+  const hlPair = HREFLANG_PAIRS.find(p => p.esRel === relNorm || p.enRel === relNorm);
+  if (hlPair) {
+    const hl = `<link rel="alternate" hreflang="es" href="https://15element.ai${hlPair.es}">\n<link rel="alternate" hreflang="en" href="https://15element.ai${hlPair.en}">\n<link rel="alternate" hreflang="x-default" href="https://15element.ai${hlPair.es}">`;
+    html = html.replace('</head>', `${hl}\n</head>`);
+  }
 
   // ----------------------------------------------------------------
   // ANALYTICS: Google Tag Manager — inyectado en TODAS las páginas.

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es" data-theme="light">
+<html lang="en" data-theme="light">
 <head>
 <!-- Google Tag Manager -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -11,20 +11,21 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<title>Blog · SEO B2B + AEO + LinkedIn orgánico | 15Element.AI</title>
-<meta name="description" content="Artículos sobre agencia SEO B2B, AEO, GEO y LinkedIn para empresas en LATAM y Norteamérica. Casos reales, tácticas operativas y diagnósticos por industria. Por Luis Balaguer.">
+<title>Contact · Book a Free B2B Diagnosis | 15Element.AI</title>
+<meta name="description" content="Book a free 60-minute B2B diagnosis with 15Element AI. We map your visibility in Google and the AI answer engines and where the opportunities are. Burlington, Ontario · serving Canada &amp; North America.">
+<meta name="author" content="Luis Balaguer · 15Element AI">
 <meta name="robots" content="index, follow">
-<link rel="canonical" href="https://15element.ai/blog/">
+<link rel="canonical" href="https://15element.ai/en/contact/">
 
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://15element.ai/blog/">
-<meta property="og:title" content="Blog · 15Element.AI">
-<meta property="og:description" content="SEO B2B + AEO + LinkedIn orgánico. Casos reales por Luis Balaguer.">
+<meta property="og:url" content="https://15element.ai/en/contact/">
+<meta property="og:title" content="Contact · Book a Free B2B Diagnosis | 15Element.AI">
+<meta property="og:description" content="Book a free 60-minute B2B diagnosis. Burlington, Ontario · Canada &amp; North America.">
 <meta property="og:image" content="https://15element.ai/assets/logo-horizontal-color.png">
-<meta property="og:locale" content="es_MX">
+<meta property="og:locale" content="en_CA">
 
-<link rel="icon" type="image/png" href="../assets/logo-mark-color.png">
-<link rel="apple-touch-icon" href="../assets/logo-mark-color.png">
+<link rel="icon" type="image/png" href="../../assets/logo-mark-color.png">
+<link rel="apple-touch-icon" href="../../assets/logo-mark-color.png">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -35,29 +36,21 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "BreadcrumbList",
-      "itemListElement": [
-        { "@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://15element.ai/" },
-        { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://15element.ai/blog/" }
-      ]
-    },
-    {
-      "@type": "Blog",
-      "name": "Blog 15Element AI",
-      "url": "https://15element.ai/blog/",
-      "description": "Artículos sobre SEO B2B, AEO, GEO y LinkedIn orgánico para empresas en LATAM y Norteamérica.",
-      "publisher": { "@id": "https://15element.ai/#org" },
-      "author": { "@type": "Person", "name": "Luis Balaguer", "url": "https://15element.ai/nosotros/" },
-      "inLanguage": "es"
-    }
-  ]
+  "@type": "ContactPage",
+  "url": "https://15element.ai/en/contact/",
+  "mainEntity": {
+    "@type": "Organization",
+    "name": "15Element AI",
+    "email": "luis@15element.ai",
+    "address": { "@type": "PostalAddress", "addressLocality": "Burlington", "addressRegion": "ON", "addressCountry": "CA" },
+    "areaServed": ["Burlington", "Oakville", "Hamilton", "Mississauga", "Toronto", "Ontario", "Canada"]
+  }
 }
 </script>
-<link rel="alternate" hreflang="es" href="https://15element.ai/blog/">
-<link rel="alternate" hreflang="en" href="https://15element.ai/en/blog/">
-<link rel="alternate" hreflang="x-default" href="https://15element.ai/blog/">
+
+<link rel="alternate" hreflang="es" href="https://15element.ai/contacto/">
+<link rel="alternate" hreflang="en" href="https://15element.ai/en/contact/">
+<link rel="alternate" hreflang="x-default" href="https://15element.ai/contacto/">
 <style>/* ──────────────────────────────────────────────────────────────
    15ELEMENT.AI — Colors & Type
    ────────────────────────────────────────────────────────────── */
@@ -908,75 +901,295 @@ footer { background: var(--bg-sunken); padding: 64px 0 40px; border-top: 1px sol
 }
 
 /* ============================================================
-   /blog/ — overview page styles
+   /contacto/ — page-specific styles
    Chrome lives in _styles/common.css
    ============================================================ */
 
-/* ─── HERO ─── */
-.blog-hero { padding: 48px 0 56px; position: relative; overflow: hidden; }
-.blog-hero::before {
-  content: ''; position: absolute; inset: 0;
-  background: var(--gradient-element);
-  opacity: 0.05; filter: blur(80px); pointer-events: none; z-index: 0;
+/* Layout */
+.contact-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.5fr) minmax(320px, 1fr);
+  gap: 48px;
+  align-items: start;
 }
-.blog-hero .container { position: relative; z-index: 2; }
-.blog-hero h1 {
-  font-family: var(--font-display); font-weight: 800;
-  letter-spacing: -0.025em; line-height: 0.98;
-  font-size: clamp(40px, 5.5vw, 80px);
-  color: var(--fg); margin: 0 0 24px; text-transform: none; max-width: 1000px;
-}
-.blog-hero h1 .accent { color: var(--brand-teal); }
-.blog-hero .lead {
-  font-size: 18px; line-height: 1.7; color: var(--fg-muted);
-  max-width: 760px; margin: 0 0 24px;
-}
-.blog-hero .lead strong { color: var(--fg); }
 
-/* ─── CATEGORY CHIPS ─── */
-.blog-cats { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 8px; }
-.cat-chip {
-  display: inline-flex; align-items: center; justify-content: center;
-  font-family: var(--font-mono);
-  font-size: 12px; font-weight: 600; letter-spacing: 0.08em;
-  text-transform: uppercase; line-height: 1;
-  padding: 12px 22px; min-height: 40px;
-  border-radius: var(--r-pill);
-  background: var(--bg-elevated); border: 1px solid var(--border);
-  color: var(--fg-muted);
-  cursor: pointer; transition: all var(--dur-fast);
-  text-decoration: none; border-bottom: 0;
-  user-select: none;
-}
-.cat-chip:hover, .cat-chip.is-active {
-  background: var(--brand-teal); color: white; border-color: var(--brand-teal);
-}
-.cat-chip:focus-visible { outline: 2px solid var(--brand-teal); outline-offset: 2px; }
-
-/* posts-grid + post-card movidos a common.css (reutilizables en cualquier página) */
-
-/* ─── NEWSLETTER ─── */
-.newsletter-band {
+/* ─── FORM ─── */
+.contact-form-wrap {
   background: var(--bg-elevated);
-  border: 1px solid var(--border); border-left: 4px solid var(--brand-teal);
+  border: 1px solid var(--border);
   border-radius: var(--r-lg);
-  padding: 40px 44px;
-  display: grid; grid-template-columns: 1fr auto; gap: 32px;
+  padding: 40px;
+  box-shadow: var(--shadow-sm);
+}
+
+.form-head { margin-bottom: 32px; padding-bottom: 24px; border-bottom: 1px solid var(--border); }
+.form-head .tag {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--brand-teal);
+  margin-bottom: 12px;
+}
+.form-head h2 {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 32px;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  color: var(--fg);
+  margin: 0 0 10px;
+  text-transform: none;
+}
+.form-head p { font-size: 14.5px; color: var(--fg-muted); margin: 0; line-height: 1.55; }
+
+.contact-form { display: flex; flex-direction: column; gap: 18px; }
+.contact-form .row { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+.contact-form label { display: flex; flex-direction: column; gap: 7px; }
+.contact-form label.full { width: 100%; }
+.contact-form label span {
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--fg);
+  letter-spacing: 0.01em;
+}
+.contact-form input,
+.contact-form select,
+.contact-form textarea {
+  font-family: var(--font-body);
+  font-size: 14.5px;
+  padding: 12px 14px;
+  background: var(--bg);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--r-md);
+  color: var(--fg);
+  transition: border-color var(--dur-fast), box-shadow var(--dur-fast);
+  width: 100%;
+}
+.contact-form textarea { resize: vertical; min-height: 100px; font-family: var(--font-body); }
+.contact-form input:focus,
+.contact-form select:focus,
+.contact-form textarea:focus {
+  outline: none;
+  border-color: var(--brand-teal);
+  box-shadow: var(--ring-focus);
+}
+.contact-form .hp { position: absolute; left: -9999px; height: 0; overflow: hidden; }
+
+.submit-row {
+  margin-top: 8px;
+  display: flex;
   align-items: center;
-  max-width: 920px; margin: 0 auto;
+  gap: 18px;
+  flex-wrap: wrap;
 }
-.newsletter-band .copy h3 {
-  font-family: var(--font-display); font-weight: 800; font-size: 24px;
-  letter-spacing: -0.01em; line-height: 1.15;
-  color: var(--fg); margin: 0 0 8px; text-transform: none;
+.submit-note {
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  color: var(--fg-muted);
+  letter-spacing: 0.02em;
 }
-.newsletter-band .copy p {
-  font-size: 14.5px; color: var(--fg-muted); margin: 0; line-height: 1.55;
+
+/* ─── Calendar embed (GHL iframe) ─── */
+.calendar-embed {
+  width: 100%;
+  min-height: 720px;
+  position: relative;
+  margin: 0 -8px;
 }
+.calendar-embed::before {
+  content: 'Cargando calendario…';
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--fg-muted);
+  z-index: 0;
+}
+.calendar-embed iframe {
+  position: relative;
+  z-index: 1;
+  min-height: 720px;
+  width: 100%;
+  border-radius: var(--r-md);
+  background: var(--bg);
+}
+@media (max-width: 640px) {
+  .calendar-embed, .calendar-embed iframe { min-height: 820px; }
+}
+
+/* ─── SIDE INFO ─── */
+.contact-side { display: flex; flex-direction: column; gap: 18px; position: sticky; top: 96px; }
+
+.contact-card {
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  padding: 26px 26px;
+  transition: all var(--dur-base);
+}
+.contact-card:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); }
+
+.contact-card-head { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; }
+.contact-card-head .dot {
+  width: 9px; height: 9px; border-radius: 50%;
+  background: var(--brand-red);
+  box-shadow: 0 0 0 4px rgba(213, 31, 38, 0.12);
+}
+.contact-card-head .dot.dot-teal {
+  background: var(--brand-teal);
+  box-shadow: 0 0 0 4px rgba(34, 168, 168, 0.12);
+}
+.contact-card h3 {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 18px;
+  letter-spacing: -0.01em;
+  line-height: 1.15;
+  color: var(--fg);
+  margin: 0;
+  text-transform: none;
+}
+
+.channels { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 12px; }
+.channels li { display: flex; justify-content: space-between; align-items: center; gap: 14px; font-size: 14px; }
+.channels .ch-label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--fg-muted);
+}
+.channels a { color: var(--brand-teal); font-weight: 600; border-bottom: 0; }
+.channels a:hover { text-decoration: underline; }
+.channels span:not(.ch-label) { color: var(--fg); font-weight: 500; }
+
+.checks { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 12px; }
+.checks li {
+  font-size: 14px;
+  color: var(--fg-muted);
+  line-height: 1.55;
+  padding-left: 26px;
+  position: relative;
+}
+.checks li::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 4px;
+  width: 16px; height: 16px;
+  background: var(--brand-teal);
+  -webkit-mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'><polyline points='20 6 9 17 4 12'/></svg>") no-repeat center / contain;
+          mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'><polyline points='20 6 9 17 4 12'/></svg>") no-repeat center / contain;
+}
+.checks li b { color: var(--fg); font-weight: 600; }
+
+.contact-card-team { background: linear-gradient(180deg, var(--bg-elevated) 0%, var(--bg-sunken) 100%); }
+.team-row { display: flex; gap: 16px; align-items: flex-start; }
+.team-avatar {
+  flex-shrink: 0;
+  width: 56px; height: 56px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px solid var(--brand-teal);
+  position: relative;
+}
+.team-avatar img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.avatar-fallback {
+  width: 100%; height: 100%;
+  background: var(--brand-navy);
+  color: white;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 20px;
+  align-items: center;
+  justify-content: center;
+  letter-spacing: 0;
+}
+.team-row p { font-size: 13.5px; color: var(--fg-muted); line-height: 1.55; margin: 8px 0 0; }
+.team-row p b { color: var(--fg); }
+
+.contact-card-warning { border-left: 3px solid var(--brand-orange); }
+.contact-card-warning h3 u { color: var(--brand-orange); text-decoration: none; border-bottom: 2px solid var(--brand-orange); }
+.warns { list-style: none; padding: 0; margin: 14px 0 0; display: flex; flex-direction: column; gap: 10px; }
+.warns li {
+  font-size: 13.5px;
+  color: var(--fg-muted);
+  line-height: 1.55;
+  padding-left: 22px;
+  position: relative;
+}
+.warns li::before {
+  content: '×';
+  position: absolute;
+  left: 0; top: -2px;
+  color: var(--brand-orange);
+  font-weight: 800;
+  font-size: 18px;
+}
+
+/* ─── TRUST ─── */
+.trust-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.trust-card {
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  padding: 32px 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  transition: all var(--dur-base);
+  border-top: 3px solid var(--brand-teal);
+}
+.trust-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
+.trust-meta {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--brand-teal);
+}
+.trust-card h3 {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 22px;
+  letter-spacing: -0.01em;
+  line-height: 1.15;
+  color: var(--fg);
+  margin: 0;
+  text-transform: none;
+}
+.trust-card p { font-size: 14px; color: var(--fg-muted); line-height: 1.6; margin: 0; flex: 1; }
+.trust-link {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--brand-teal);
+  letter-spacing: 0.04em;
+  border-bottom: 0;
+  margin-top: 6px;
+}
+.trust-link:hover { color: var(--brand-teal-600); }
 
 /* ─── Responsive ─── */
 @media (max-width: 960px) {
-  .newsletter-band { grid-template-columns: 1fr; padding: 32px 28px; text-align: center; }
+  .contact-grid { grid-template-columns: 1fr; gap: 32px; }
+  .contact-side { position: static; }
+  .contact-form-wrap { padding: 32px 24px; }
+  .trust-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 640px) {
+  .contact-form .row { grid-template-columns: 1fr; }
+  .form-head h2 { font-size: 26px; }
+  .submit-row { flex-direction: column; align-items: stretch; }
+  .submit-row .btn { width: 100%; justify-content: center; }
 }
 </style>
 </head>
@@ -988,47 +1201,33 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <nav class="nav">
   <div class="container nav-inner">
-    <a href="/" class="nav-brand" aria-label="15Element.AI — inicio">
-      <img src="../assets/logo-horizontal-color.webp" class="nav-logo nav-logo-light" alt="15Element.AI" width="100" height="34">
-      <img src="../assets/logo-horizontal-navy.webp" class="nav-logo nav-logo-dark" alt="15Element.AI" width="100" height="34">
+    <a href="/en/" class="nav-brand" aria-label="15Element.AI — home">
+      <img src="../../assets/logo-horizontal-color.webp" class="nav-logo nav-logo-light" alt="15Element.AI" width="100" height="34">
+      <img src="../../assets/logo-horizontal-navy.webp" class="nav-logo nav-logo-dark" alt="15Element.AI" width="100" height="34">
     </a>
     <div class="nav-links">
-      <div class="nav-dropdown" data-section="/servicios/">
-        <a href="/servicios/" class="nav-trigger">Servicios <svg class="caret" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"></polyline></svg></a>
+      <div class="nav-dropdown" data-section="/en/services/">
+        <a href="/en/services/aeo-seo/" class="nav-trigger">Services <svg class="caret" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"></polyline></svg></a>
         <div class="nav-menu">
-          <div class="head">Servicios B2B</div>
-          <a href="/servicios/seo-aeo-geo/"><b>SEO · AEO · GEO</b><span>Agencia SEO B2B + posicionamiento en ChatGPT, Gemini, Perplexity</span></a>
-          <a href="/servicios/linkedin-prospecting/"><b>LinkedIn Prospecting</b><span>LinkedIn para empresas B2B con señales de compra</span></a>
-          <a href="/servicios/senales-de-compra/"><b>Señales de compra</b><span>Intent data B2B automático de cualquier fuente</span></a>
-          <a href="/servicios/email-outreach/"><b>Email Outreach B2B</b><span>Generación de leads B2B con contexto real</span></a>
-          <a href="/servicios/" class="footer-link">Ver todos los servicios →</a>
+          <div class="head">B2B services</div>
+          <a href="/en/services/aeo-seo/"><b>AEO &amp; SEO</b><span>Rank in Google + get cited by ChatGPT, Gemini &amp; Perplexity</span></a>
+          <a href="/en/services/linkedin-prospecting/"><b>LinkedIn Prospecting</b><span>B2B LinkedIn driven by real buying signals</span></a>
+          <a href="/en/services/consulting/"><b>B2B Consulting</b><span>Strategy + the system behind the pipeline</span></a>
         </div>
       </div>
-      <div class="nav-dropdown" data-section="/industrias/">
-        <a href="/industrias/" class="nav-trigger">Industrias <svg class="caret" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"></polyline></svg></a>
-        <div class="nav-menu">
-          <div class="head">Industrias verticales B2B</div>
-          <a href="/industrias/manufactura/"><b>Manufactura</b><span>Nearshoring · Industria 4.0 · Supply Chain</span></a>
-          <a href="/industrias/energia-solar/"><b>Energía Solar</b><span>ESG · fondos verdes · CENACE</span></a>
-          <a href="/industrias/logistica/"><b>Logística</b><span>CEDIS · nearshoring · Supply Chain</span></a>
-          <a href="/industrias/tecnologia-saas/"><b>Tecnología · SaaS</b><span>Funding · CTO · stack migration</span></a>
-          <a href="/industrias/consultoria/"><b>Consultoría</b><span>M&amp;A · expansión · compliance</span></a>
-          <a href="/industrias/fintech/"><b>Fintech · Finanzas</b><span>CNBV · open banking · funding</span></a>
-          <a href="/industrias/" class="footer-link">Ver todas las industrias →</a>
-        </div>
-      </div>
-      <a href="/casos/" data-section="/casos/">Casos</a>
-      <a href="/nosotros/" data-section="/nosotros/">Nosotros</a>
-      <a href="/blog/" data-section="/blog/">Blog</a>
-      <a href="/contacto/" data-section="/contacto/">Contacto</a>
+      <a href="/en/case-studies/" data-section="/en/case-studies/">Case studies</a>
+      <a href="/en/about/" data-section="/en/about/">About</a>
+      <a href="/en/blog/" data-section="/en/blog/">Blog</a>
+      <a href="/en/contact/" data-section="/en/contact/">Contact</a>
+      <a href="/" data-section="/" hreflang="es" aria-label="Ver en español">ES</a>
     </div>
     <div class="nav-actions">
-      <button class="theme-toggle" aria-label="Cambiar tema" id="themeToggle">
+      <button class="theme-toggle" aria-label="Toggle theme" id="themeToggle">
         <svg class="moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
         <svg class="sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path></svg>
       </button>
-      <a href="/contacto/#agendar" class="btn btn-primary nav-cta-desktop">Diagnóstico gratis</a>
-      <button class="nav-burger" aria-label="Abrir menú" aria-expanded="false" id="navBurger">
+      <a href="/en/contact/#book" class="btn btn-primary nav-cta-desktop">Free diagnosis</a>
+      <button class="nav-burger" aria-label="Open menu" aria-expanded="false" id="navBurger">
         <span></span><span></span><span></span>
       </button>
     </div>
@@ -1039,430 +1238,83 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <div class="nav-drawer" id="navDrawer" aria-hidden="true">
   <div class="nav-drawer-inner">
     <div class="drawer-section">
-      <div class="drawer-head">Servicios B2B</div>
-      <a href="/servicios/seo-aeo-geo/"><b>SEO · AEO · GEO</b><span>Agencia SEO B2B + posicionamiento en ChatGPT</span></a>
-      <a href="/servicios/linkedin-prospecting/"><b>LinkedIn Prospecting</b><span>LinkedIn para empresas B2B con señales</span></a>
-      <a href="/servicios/senales-de-compra/"><b>Señales de compra</b><span>Intent data B2B automático</span></a>
-      <a href="/servicios/email-outreach/"><b>Email Outreach B2B</b><span>Generación de leads con contexto</span></a>
-      <a href="/servicios/" class="drawer-all">Ver todos los servicios →</a>
+      <div class="drawer-head">B2B services</div>
+      <a href="/en/services/aeo-seo/"><b>AEO &amp; SEO</b><span>Rank in Google + ChatGPT, Gemini, Perplexity</span></a>
+      <a href="/en/services/linkedin-prospecting/"><b>LinkedIn Prospecting</b><span>B2B LinkedIn with buying signals</span></a>
+      <a href="/en/services/consulting/"><b>B2B Consulting</b><span>Strategy + the system behind it</span></a>
     </div>
     <div class="drawer-section">
-      <div class="drawer-head">Industrias verticales</div>
-      <a href="/industrias/manufactura/"><b>Manufactura</b></a>
-      <a href="/industrias/energia-solar/"><b>Energía Solar</b></a>
-      <a href="/industrias/logistica/"><b>Logística</b></a>
-      <a href="/industrias/tecnologia-saas/"><b>Tecnología · SaaS</b></a>
-      <a href="/industrias/consultoria/"><b>Consultoría</b></a>
-      <a href="/industrias/fintech/"><b>Fintech · Finanzas</b></a>
-      <a href="/industrias/" class="drawer-all">Ver todas las industrias →</a>
+      <div class="drawer-head">Company</div>
+      <a href="/en/case-studies/"><b>Case studies</b></a>
+      <a href="/en/about/"><b>About</b></a>
+      <a href="/en/blog/"><b>Blog</b></a>
+      <a href="/en/contact/"><b>Contact</b></a>
+      <a href="/"><b>Español (ES)</b></a>
     </div>
-    <div class="drawer-section">
-      <div class="drawer-head">Empresa</div>
-      <a href="/casos/"><b>Casos de éxito</b></a>
-      <a href="/nosotros/"><b>Nosotros</b></a>
-      <a href="/blog/"><b>Blog</b></a>
-      <a href="/contacto/"><b>Contacto</b></a>
-    </div>
-    <a href="/contacto/#agendar" class="btn btn-primary btn-lg drawer-cta">Diagnóstico gratis →</a>
+    <a href="/en/contact/#book" class="btn btn-primary btn-lg drawer-cta">Get a free diagnosis →</a>
   </div>
 </div>
 
 
-<div class="container">
-  <nav class="breadcrumbs" aria-label="breadcrumb">
-    <a href="/">Inicio</a><span class="sep">/</span><span>Blog</span>
-  </nav>
-</div>
-
-<section class="blog-hero">
+<section class="hero" id="book">
   <div class="container">
-    <div class="blog-cats" id="blog-filter">
-      <button type="button" class="cat-chip is-active" data-filter="all">Todos</button>
-      <button type="button" class="cat-chip" data-filter="casos">Casos</button>
-      <button type="button" class="cat-chip" data-filter="aeo">AEO/GEO</button>
-      <button type="button" class="cat-chip" data-filter="linkedin">LinkedIn</button>
-      <button type="button" class="cat-chip" data-filter="metodologia">Metodología</button>
-      <button type="button" class="cat-chip" data-filter="industrias">Industrias</button>
+    <div class="hero-eyebrow">Contact · Burlington, Ontario</div>
+    <h1>Book a free <span class="accent">B2B diagnosis.</span></h1>
+    <p class="lead">60 minutes, no cost: we map how visible your company is in Google and the AI answer engines (ChatGPT, Gemini, Perplexity), and where the opportunities are for your industry in Burlington, the GTA and beyond.</p>
+    <div class="hero-ctas">
+      <a href="mailto:luis@15element.ai" class="btn btn-primary btn-lg">Email luis@15element.ai →</a>
+      <a href="https://api.whatsapp.com/send/?phone=5215520063687" class="btn btn-ghost btn-lg">WhatsApp</a>
     </div>
-    <h1>Blog SEO B2B + AEO + <span class="accent">LinkedIn orgánico.</span></h1>
-    <p class="lead">
-      <strong>Sin teoría.</strong> Lo que estamos viendo funcionar en producción
-      con clientes B2B en México, Chile, Colombia, Ecuador, Estados Unidos y Canadá esta semana.
-      Casos reales con números verificables, tácticas operativas y diagnósticos por industria.
-    </p>
+    <p class="lead">Based in Burlington, ON · serving Oakville, Hamilton, Mississauga, Toronto &amp; English-speaking North America.</p>
   </div>
 </section>
-
-<section class="section" style="padding-top: 0;">
-  <div class="container">
-
-    <!-- FEATURED ROW (1 destacado + 2 cards) -->
-    <div class="posts-grid featured-row">
-      <a href="/blog/nextco-842-leads-b2b-sin-ads/" class="post-card featured reveal" data-cat="casos industrias">
-        <div class="post-card-meta">
-          <span class="cat">Caso</span><span class="sep">·</span><span>Manufactura · MX</span><span class="sep">·</span><span>14 min</span>
-        </div>
-        <h3>Cómo Nextco generó 842 leads B2B en 10 meses sin invertir en ads.</h3>
-        <p>Tres problemas: pipeline vacío, costo por lead arriba de $180 USD, cero visibilidad de señales de compra. Sistema de 3 capas, 10 meses después: BOSCH, Continental y SuKarne en pipeline. El método exacto.</p>
-        <span class="arrow">Leer caso →</span>
-      </a>
-
-      <a href="/blog/itechmaint-energia-solar-chile-linkedin/" class="post-card reveal" data-cat="casos linkedin industrias">
-        <div class="post-card-meta">
-          <span class="cat">Caso</span><span class="sep">·</span><span>Solar · CL</span>
-        </div>
-        <h3>Itechmaint: 59.9% de aceptación en LinkedIn vendiendo solar a mineras.</h3>
-        <p>1,914 invitaciones, 1,144 conexiones, 106 leads. Costo por lead bajó de $340 a $35 USD.</p>
-        <span class="arrow">Leer caso →</span>
-      </a>
-
-      <a href="/blog/agencia-b2b-canada-latam-prospeccion-linkedin/" class="post-card reveal" data-cat="metodologia linkedin">
-        <div class="post-card-meta">
-          <span class="cat">Metodología</span><span class="sep">·</span><span>Luis Balaguer</span>
-        </div>
-        <h3>Agencia B2B Canada-LATAM: prospección cross-border por LinkedIn.</h3>
-        <p>Por qué 15Element opera desde Canadá con clientes en MX, Chile, Colombia, Ecuador y Estados Unidos. Las 3 diferencias que importan.</p>
-        <span class="arrow">Leer artículo →</span>
-      </a>
-    </div>
-
-    <!-- CORNERSTONE NUEVO — Marketing B2B sin ads -->
-    <div class="posts-grid featured-row">
-      <a href="/blog/marketing-b2b-sin-ads/" class="post-card featured reveal" data-cat="metodologia">
-        <div class="post-card-meta">
-          <span class="cat">Cornerstone · Pipeline orgánico B2B</span><span class="sep">·</span><span>27 MAY 2026</span><span class="sep">·</span><span>12 min</span>
-        </div>
-        <h3>Marketing B2B sin Meta ni Google Ads: cómo generar pipeline 100% orgánico en LATAM.</h3>
-        <p>El sistema de 3 pilares orgánicos (LinkedIn con señales + SEO/AEO/GEO + email contexto) que está reemplazando a los ads en B2B LATAM. Casos verificables: Nextco, Top Energy, Spakio. Roadmap real de 90 días.</p>
-        <span class="arrow">Leer cornerstone →</span>
-      </a>
-
-      <a href="/blog/agencia-seo-b2b-vs-seo-generico/" class="post-card reveal" data-cat="metodologia aeo">
-        <div class="post-card-meta">
-          <span class="cat">Cornerstone · SEO B2B</span><span class="sep">·</span><span>14 min</span>
-        </div>
-        <h3>Agencia SEO B2B vs agencia SEO genérica: qué cambia en LATAM.</h3>
-        <p>Comparativa por capas + 7 preguntas para evaluar antes de firmar. Pillar SEO B2B.</p>
-        <span class="arrow">Leer guía →</span>
-      </a>
-
-      <a href="/blog/que-es-aeo/" class="post-card reveal" data-cat="aeo metodologia">
-        <div class="post-card-meta">
-          <span class="cat">Cornerstone · AEO</span><span class="sep">·</span><span>11 min</span>
-        </div>
-        <h3>¿Qué es AEO? La nueva capa de búsqueda B2B en 2026.</h3>
-        <p>Por qué AEO importa más que SEO clásico, las 4 señales que priorizan los motores de IA, las 5 acciones para arrancar.</p>
-        <span class="arrow">Leer guía →</span>
-      </a>
-    </div>
-
-    <!-- NEWSJACKING ROW — Core Update + 2 casos -->
-    <div class="posts-grid featured-row">
-      <a href="/blog/google-core-update-mayo-2026/" class="post-card featured reveal" data-cat="aeo metodologia">
-        <div class="post-card-meta">
-          <span class="cat">Newsjacking · Core Update</span><span class="sep">·</span><span>27 MAY 2026</span><span class="sep">·</span><span>9 min</span>
-        </div>
-        <h3>Google Core Update mayo 2026: 3 cambios que están destruyendo el tráfico B2B en México.</h3>
-        <p>Core Update + rediseño de AI Mode (1B MAU) están destruyendo el CTR aunque rankees #1. Lo que vimos en nuestra propia data: +400% impresiones, 0.3% CTR. Qué hacer esta semana para defender tu pipeline.</p>
-        <span class="arrow">Leer análisis →</span>
-      </a>
-
-      <a href="/blog/top-energy-9m-usd-linkedin-organico/" class="post-card reveal" data-cat="casos linkedin industrias">
-        <div class="post-card-meta">
-          <span class="cat">Caso</span><span class="sep">·</span><span>Solar · Multinacional · 9 min</span>
-        </div>
-        <h3>Top Energy: $9M USD cerrados desde un mensaje de LinkedIn orgánico.</h3>
-        <p>3,300 paneles solares + 2 proyectos adicionales en México. Cómo un sistema bien armado convierte un mensaje en un contrato multimillonario.</p>
-        <span class="arrow">Leer caso →</span>
-      </a>
-
-      <a href="/blog/spakio-amazon-oxxo-liverpool-pipeline-b2b/" class="post-card reveal" data-cat="casos industrias linkedin">
-        <div class="post-card-meta">
-          <span class="cat">Caso</span><span class="sep">·</span><span>Manufactura · MX · 9 min</span>
-        </div>
-        <h3>Spakio: pipeline tan saturado que tuvieron que pausar campañas.</h3>
-        <p>Amazon, OXXO y Liverpool cerrados con LinkedIn orgánico. Pipeline B2B arriba de la capacidad operativa de la empresa.</p>
-        <span class="arrow">Leer caso →</span>
-      </a>
-    </div>
-
-    <!-- CASOS RECIENTES ROW (migrated May 2026) -->
-    <div class="posts-grid">
-      <a href="/blog/mercedes-benz-cinepolis-linkedin-b2b-alto-ticket/" class="post-card reveal" data-cat="casos linkedin">
-        <div class="post-card-meta">
-          <span class="cat">Casos</span><span class="sep">·</span><span>LinkedIn alto ticket · 10 min</span>
-        </div>
-        <h3>Mercedes-Benz $150K USD desde 1 mensaje + Cinépolis B2B con LinkedIn.</h3>
-        <p>Dos casos alto ticket que rompen la lógica de "necesito ads para crecer". Acceso al decision-maker correcto y un mensaje contextual.</p>
-        <span class="arrow">Leer casos →</span>
-      </a>
-
-      <a href="/blog/nova-energia-ecuador-leads-solar-linkedin/" class="post-card reveal" data-cat="casos industrias linkedin">
-        <div class="post-card-meta">
-          <span class="cat">Caso</span><span class="sep">·</span><span>Solar · Ecuador · 9 min</span>
-        </div>
-        <h3>Nova Energía Ecuador: 35.85% de conversión en leads B2B solar.</h3>
-        <p>Más del doble del benchmark del sector. Filtrar por capacidad operativa antes de generar leads, en lugar de filtrar después.</p>
-        <span class="arrow">Leer caso →</span>
-      </a>
-
-      <a href="/blog/oplogistics-pipeline-logistica-b2b-linkedin/" class="post-card reveal" data-cat="casos industrias linkedin">
-        <div class="post-card-meta">
-          <span class="cat">Caso</span><span class="sep">·</span><span>Logística · MX · 9 min</span>
-        </div>
-        <h3>OpLogistics: pipeline B2B logística predecible con LinkedIn orgánico.</h3>
-        <p>De depender de referidos a pipeline mes a mes con cuentas target reales. Por qué la logística B2B es difícil de prospectar tradicionalmente.</p>
-        <span class="arrow">Leer caso →</span>
-      </a>
-
-      <a href="/blog/escalar-pipeline-b2b-sin-mas-vendedores/" class="post-card reveal" data-cat="metodologia linkedin">
-        <div class="post-card-meta">
-          <span class="cat">Metodología · Pipeline B2B</span><span class="sep">·</span><span>11 min</span>
-        </div>
-        <h3>Cómo escalar tu pipeline B2B sin contratar más vendedores.</h3>
-        <p>El cuello de botella no es cuánta gente tienes — es cuánto tiempo pierde tu equipo en leads malos. El sistema para escalar sin headcount. Caso Nextco: 842 leads, mismo equipo.</p>
-        <span class="arrow">Leer guía →</span>
-      </a>
-
-      <a href="/blog/que-es-ai-mode-google/" class="post-card reveal" data-cat="aeo metodologia">
-        <div class="post-card-meta">
-          <span class="cat">AEO · Búsqueda con IA</span><span class="sep">·</span><span>10 min</span>
-        </div>
-        <h3>Google AI Mode: qué es y qué cambia para el SEO B2B en México.</h3>
-        <p>La búsqueda conversacional de Google dejó de ser experimento en I/O 2026. El juego B2B ya no es el link azul — es ser la fuente que la IA cita. Qué hacer.</p>
-        <span class="arrow">Leer guía →</span>
-      </a>
-
-      <a href="/blog/agencia-seo-b2b-vs-seo-generico/" class="post-card reveal" data-cat="metodologia aeo">
-        <div class="post-card-meta">
-          <span class="cat">Cornerstone · SEO B2B</span><span class="sep">·</span><span>14 min</span>
-        </div>
-        <h3>Agencia SEO B2B vs agencia SEO genérica: qué cambia en LATAM.</h3>
-        <p>La diferencia entre una agencia SEO B2B real y una agencia SEO que cubre B2B en el discurso. Comparativa por capas + 7 preguntas para evaluar antes de firmar.</p>
-        <span class="arrow">Leer guía →</span>
-      </a>
-
-      <a href="/blog/como-aparecer-google-ai-overviews-b2b-mexico/" class="post-card reveal" data-cat="aeo">
-        <div class="post-card-meta">
-          <span class="cat">AI Overviews</span><span class="sep">·</span><span>Guía 2026 · 10 min</span>
-        </div>
-        <h3>Cómo aparecer en Google AI Overviews para queries B2B en México en 2026.</h3>
-        <p>AI Overviews cubre 82% de queries B2B tech. Marcas citadas registran +35% clicks orgánicos. Las 5 tácticas verificadas y el roadmap de 6 semanas.</p>
-        <span class="arrow">Leer guía →</span>
-      </a>
-
-      <a href="/blog/que-es-aeo/" class="post-card reveal" data-cat="aeo metodologia">
-        <div class="post-card-meta">
-          <span class="cat">AEO</span><span class="sep">·</span><span>Cornerstone · 11 min</span>
-        </div>
-        <h3>¿Qué es AEO? La nueva capa de búsqueda B2B que reemplaza al SEO en 2026.</h3>
-        <p>Qué significa AEO, por qué importa más que SEO clásico para B2B, las 4 señales que priorizan los motores de IA, y las 5 acciones para empezar hoy.</p>
-        <span class="arrow">Leer guía →</span>
-      </a>
-
-
-<a href="/blog/posicionamiento-perplexity-gemini-b2b-aeo-geo/" class="post-card reveal" data-cat="aeo">
-        <div class="post-card-meta">
-          <span class="cat">AEO/GEO</span><span class="sep">·</span><span>Cornerstone · 12 min</span>
-        </div>
-        <h3>Cómo posicionarse en Perplexity y Gemini para B2B: guía práctica AEO/GEO.</h3>
-        <p>6 acciones técnicas para aparecer en respuestas de IA. Las diferencias entre Perplexity, Gemini y ChatGPT explicadas.</p>
-        <span class="arrow">Leer guía →</span>
-      </a>
-
-      <a href="/blog/citas-b2b-calificadas-linkedin-proceso/" class="post-card reveal" data-cat="linkedin metodologia">
-        <div class="post-card-meta">
-          <span class="cat">LinkedIn</span><span class="sep">·</span><span>Táctico · 11 min</span>
-        </div>
-        <h3>Citas B2B calificadas en LinkedIn: el proceso de conexión a reunión.</h3>
-        <p>5 etapas con ratios reales del funnel. Ejemplos de mensajes que funcionan y los que no.</p>
-        <span class="arrow">Leer artículo →</span>
-      </a>
-
-      <a href="/blog/lead-scoring-automatizado-b2b/" class="post-card reveal" data-cat="linkedin metodologia">
-        <div class="post-card-meta">
-          <span class="cat">Señales</span><span class="sep">·</span><span>Táctico · 10 min</span>
-        </div>
-        <h3>Lead scoring automatizado B2B: calificar sin perder tiempo.</h3>
-        <p>Fit Score + Intent Score con matriz. Resultados: de 35 a 5 min de calificación, +45% revenue/vendedor.</p>
-        <span class="arrow">Leer artículo →</span>
-      </a>
-
-      <a href="/blog/generacion-leads-energia-solar-latam/" class="post-card reveal" data-cat="industrias casos linkedin">
-        <div class="post-card-meta">
-          <span class="cat">Industria</span><span class="sep">·</span><span>Solar · LATAM · 10 min</span>
-        </div>
-        <h3>Generación de leads para energía solar en LATAM: el método que funciona.</h3>
-        <p>4 segmentos top de conversión, 4 señales de compra del sector, caso Nova Solar con 35.85% de conversión.</p>
-        <span class="arrow">Leer artículo →</span>
-      </a>
-
-      <a href="/blog/como-conseguir-clientes-b2b-mexico-sin-referidos/" class="post-card reveal" data-cat="metodologia">
-        <div class="post-card-meta">
-          <span class="cat">Metodología</span><span class="sep">·</span><span>México · 9 min</span>
-        </div>
-        <h3>Cómo conseguir clientes B2B en México sin depender de referidos.</h3>
-        <p>3 componentes para romper la dependencia. Timeline mes a mes + caso Sabrina: de 100% referidos a 40% en 90 días.</p>
-        <span class="arrow">Leer artículo →</span>
-      </a>
-
-      <a href="/blog/seo-aeo-geo-por-industria/" class="post-card reveal" data-cat="aeo metodologia industrias">
-        <div class="post-card-meta">
-          <span class="cat">SEO · AEO · GEO</span><span class="sep">·</span><span>Por industria · 12 min</span>
-        </div>
-        <h3>SEO + AEO + GEO por industria B2B: qué cambia entre solar, manufactura, fintech y consultoría.</h3>
-        <p>Las 3 capas de búsqueda combinadas y cómo se aplican distinto por sector. Con ejemplos reales de clientes 15Element.</p>
-        <span class="arrow">Leer guía →</span>
-      </a>
-    </div>
-
-  </div>
-</section>
-
-<!-- NEWSLETTER -->
-<section class="section section-alt">
-  <div class="container">
-    <div class="newsletter-band">
-      <div class="copy">
-        <h3>Recibe los artículos nuevos por email</h3>
-        <p>Una vez al mes. Solo artículos publicados, ningún pitch. Cancelas cuando quieras.</p>
-      </div>
-      <a href="/contacto/#agendar" class="btn btn-primary btn-lg">Suscribirme →</a>
-    </div>
-  </div>
-</section>
-
-<section class="section section-alt video-testimonials">
-  <div class="container">
-    <div class="vt-head reveal">
-      <div class="eyebrow">Testimonios reales</div>
-      <h2>Estos resultados no son artículos — <span class="accent">son clientes reales.</span></h2>
-      <p>Sin guion, sin actores. Lo que pasa cuando el sistema opera en producción.</p>
-    </div>
-    <div class="vt-grid">
-      <a class="vt-card reveal" data-yt="Piw2vjCxY_w" href="https://www.youtube.com/watch?v=Piw2vjCxY_w" target="_blank" rel="noopener">
-        <span class="vt-thumb"><img src="https://i.ytimg.com/vi/Piw2vjCxY_w/hqdefault.jpg" alt="Testimonial Nextco — manufactura B2B" loading="lazy" width="480" height="360"><span class="vt-play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span></span>
-        <span class="vt-info"><span class="vt-name">Nextco · Miguel Flores</span><span class="vt-tag">842 leads · Manufactura B2B</span></span>
-      </a>
-      <a class="vt-card reveal" data-yt="223r5XlYSMg" href="https://www.youtube.com/watch?v=223r5XlYSMg" target="_blank" rel="noopener">
-        <span class="vt-thumb"><img src="https://i.ytimg.com/vi/223r5XlYSMg/hqdefault.jpg" alt="Testimonial Top Energy — SEO AEO energía solar" loading="lazy" width="480" height="360"><span class="vt-play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span></span>
-        <span class="vt-info"><span class="vt-name">Top Energy</span><span class="vt-tag">SEO · AEO · $9M USD</span></span>
-      </a>
-      <a class="vt-card reveal" data-yt="mzJnj6mbcnc" href="https://www.youtube.com/watch?v=mzJnj6mbcnc" target="_blank" rel="noopener">
-        <span class="vt-thumb"><img src="https://i.ytimg.com/vi/mzJnj6mbcnc/hqdefault.jpg" alt="Testimonial KOL — Tech SaaS B2B" loading="lazy" width="480" height="360"><span class="vt-play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span></span>
-        <span class="vt-info"><span class="vt-name">KOL</span><span class="vt-tag">Tech SaaS B2B · LATAM</span></span>
-      </a>
-    </div>
-  </div>
-</section>
-
-<!-- CTA -->
-<section class="cta-band">
-  <div class="container">
-    <div>
-      <h2>Antes de leer más artículos, <span class="accent">agenda tu diagnóstico.</span></h2>
-      <p>60 minutos. Sin pitch. Diagnóstico real sobre tu SEO + AEO + LinkedIn orgánico — para que decidas qué hacer.</p>
-      <div class="hero-ctas">
-        <a href="/contacto/#agendar" class="btn btn-primary btn-lg">Diagnóstico gratis</a>
-        <a href="/casos/" class="btn btn-ghost btn-lg">Ver casos primero</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Video testimonials lightbox — overlay + JS. El iframe de YouTube se inyecta
-     SOLO al hacer clic (cero impacto en LCP). Se incluye en páginas con .video-testimonials -->
-<div class="vt-lightbox" id="vtLightbox" aria-hidden="true">
-  <div class="vt-lightbox-inner">
-    <button class="vt-close" type="button" aria-label="Cerrar video">&times;</button>
-    <div class="vt-frame"></div>
-  </div>
-</div>
-<script>
-(function () {
-  var box = document.getElementById('vtLightbox');
-  if (!box) return;
-  var frame = box.querySelector('.vt-frame');
-  function openVideo(id) {
-    frame.innerHTML = '<iframe src="https://www.youtube.com/embed/' + id +
-      '?autoplay=1&rel=0" title="Testimonial 15Element" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>';
-    box.classList.add('is-open');
-    box.setAttribute('aria-hidden', 'false');
-    document.body.style.overflow = 'hidden';
-  }
-  function closeVideo() {
-    box.classList.remove('is-open');
-    box.setAttribute('aria-hidden', 'true');
-    frame.innerHTML = '';
-    document.body.style.overflow = '';
-  }
-  document.addEventListener('click', function (e) {
-    var card = e.target.closest('.vt-card[data-yt]');
-    if (card) { e.preventDefault(); openVideo(card.getAttribute('data-yt')); return; }
-    if (e.target === box || e.target.closest('.vt-close')) closeVideo();
-  });
-  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeVideo(); });
-})();
-</script>
 
 <footer>
   <div class="container">
     <div class="foot-grid">
       <div>
-        <a href="/" class="foot-brand">
-          <img src="../assets/logo-horizontal-color.webp" class="foot-logo foot-logo-light" alt="15Element.AI" width="86" height="30">
-          <img src="../assets/logo-horizontal-navy.webp" class="foot-logo foot-logo-dark" alt="15Element.AI" width="86" height="30">
+        <a href="/en/" class="foot-brand">
+          <img src="../../assets/logo-horizontal-color.webp" class="foot-logo foot-logo-light" alt="15Element.AI" width="86" height="30">
+          <img src="../../assets/logo-horizontal-navy.webp" class="foot-logo foot-logo-dark" alt="15Element.AI" width="86" height="30">
         </a>
-        <p class="foot-tag">Agencia SEO B2B + AEO + LinkedIn orgánico. Pipeline B2B que no depende de ads.</p>
+        <p class="foot-tag">B2B SEO + AEO + LinkedIn. Organic pipeline that doesn't depend on ads. Burlington &amp; the GTA.</p>
       </div>
       <div>
-        <h4>Servicios</h4>
+        <h4>Services</h4>
         <ul>
-          <li><a href="/servicios/seo-aeo-geo/">SEO · AEO · GEO</a></li>
-          <li><a href="/servicios/senales-de-compra/">Señales LinkedIn</a></li>
-          <li><a href="/servicios/linkedin-prospecting/">LinkedIn Prospecting</a></li>
-          <li><a href="/servicios/email-outreach/">Email outreach B2B</a></li>
-          <li><a href="/war-room/">War Room cliente</a></li>
-          <li><a href="/contacto/#agendar">Diagnóstico gratuito</a></li>
+          <li><a href="/en/services/aeo-seo/">AEO &amp; SEO</a></li>
+          <li><a href="/en/services/linkedin-prospecting/">LinkedIn Prospecting</a></li>
+          <li><a href="/en/services/consulting/">B2B Consulting</a></li>
+          <li><a href="/en/contact/#book">Free diagnosis</a></li>
         </ul>
       </div>
       <div>
-        <h4>Industrias</h4>
+        <h4>Company</h4>
         <ul>
-          <li><a href="/industrias/manufactura/">Manufactura</a></li>
-          <li><a href="/industrias/energia-solar/">Energía Solar</a></li>
-          <li><a href="/industrias/logistica/">Logística</a></li>
-          <li><a href="/industrias/tecnologia-saas/">Tech / SaaS</a></li>
-          <li><a href="/industrias/consultoria/">Consultoría</a></li>
-          <li><a href="/industrias/fintech/">Fintech</a></li>
+          <li><a href="/en/about/">About</a></li>
+          <li><a href="/en/case-studies/">Case studies</a></li>
+          <li><a href="/en/blog/">Blog</a></li>
+          <li><a href="/en/contact/">Contact</a></li>
         </ul>
       </div>
       <div>
-        <h4>Empresa</h4>
-        <ul>
-          <li><a href="/nosotros/">Nosotros</a></li>
-          <li><a href="/casos/">Casos de éxito</a></li>
-          <li><a href="/blog/">Blog</a></li>
-          <li><a href="/contacto/">Contacto</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4>Contacto</h4>
+        <h4>Contact</h4>
         <ul>
           <li><a href="mailto:luis@15element.ai">luis@15element.ai</a></li>
           <li><a href="https://api.whatsapp.com/send/?phone=5215520063687">WhatsApp</a></li>
-          <li><a href="/contacto/#agendar">Agenda una llamada</a></li>
+          <li><a href="/en/contact/#book">Book a call</a></li>
+          <li><a href="/">Español (ES)</a></li>
         </ul>
       </div>
     </div>
     <div class="foot-bottom">
-      <span>© 2026 15Element AI · Todos los derechos reservados</span>
+      <span>© 2026 15Element AI · All rights reserved</span>
       <span class="foot-legal">
-        <a href="/politica-de-privacidad/">Privacidad</a>
+        <a href="/politica-de-privacidad/">Privacy</a>
         <span class="dot">·</span>
-        <a href="/terminos-de-servicio/">Términos</a>
+        <a href="/terminos-de-servicio/">Terms</a>
       </span>
-      <span>LATAM · Norteamérica · 100% orgánico</span>
+      <span>Burlington · GTA · North America · 100% organic</span>
     </div>
   </div>
 </footer>
@@ -1530,27 +1382,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   document.addEventListener('keydown', (e) => { if (e.key === 'Escape') toggle(false); });
   // Cierra si la viewport pasa a desktop (resize)
   window.addEventListener('resize', () => { if (window.innerWidth > 960) toggle(false); });
-})();
-</script>
-
-
-<script>
-(function(){
-  var filterBar = document.getElementById('blog-filter');
-  if (!filterBar) return;
-  var chips = filterBar.querySelectorAll('.cat-chip');
-  var cards = document.querySelectorAll('.post-card[data-cat]');
-  filterBar.addEventListener('click', function(e){
-    var chip = e.target.closest('.cat-chip');
-    if (!chip) return;
-    var filter = chip.getAttribute('data-filter');
-    chips.forEach(function(c){ c.classList.toggle('is-active', c === chip); });
-    cards.forEach(function(card){
-      var cats = (card.getAttribute('data-cat') || '').split(/\s+/);
-      var match = (filter === 'all') || cats.indexOf(filter) !== -1;
-      card.style.display = match ? '' : 'none';
-    });
-  });
 })();
 </script>
 
