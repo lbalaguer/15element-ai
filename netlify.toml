@@ -308,6 +308,15 @@
   status = 301
   force = true
 
+# 2026-05-30: blog Canadá (5,686 imp, rankeaba pos 3-7 en queries Canadá/SEO) está 404.
+# 301 a /blog/seo-aeo-geo-por-industria/ (blog vivo similar: SEO/AEO por industria, indexa
+# clientes). Temporal mientras Luis recupera el contenido original para republicar en ESTA URL.
+[[redirects]]
+  from = "/blog/seo-case-studies-2025-canada/"
+  to = "/blog/seo-aeo-geo-por-industria/"
+  status = 301
+  force = true
+
 [[redirects]]
   from = "/pipeline-b2b-sin-publicidad-vs-meta-ads/"
   to = "/blog/marketing-b2b-sin-ads/"
