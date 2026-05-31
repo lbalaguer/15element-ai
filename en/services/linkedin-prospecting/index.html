@@ -36,11 +36,40 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "Service",
-  "serviceType": "B2B LinkedIn Prospecting",
-  "provider": { "@type": "Organization", "name": "15Element AI", "url": "https://15element.ai" },
-  "areaServed": ["Burlington", "Oakville", "Hamilton", "Mississauga", "Toronto", "Ontario", "Canada"],
-  "description": "Organic B2B LinkedIn prospecting based on real buying signals — role changes, expansions, hiring — so every conversation is with a decision-maker who has the problem today."
+  "@graph": [
+    {
+      "@type": "Service",
+      "serviceType": "B2B LinkedIn Prospecting",
+      "provider": { "@type": "Organization", "name": "15Element AI", "url": "https://15element.ai" },
+      "areaServed": ["Burlington", "Oakville", "Hamilton", "Mississauga", "Toronto", "Ontario", "Canada"],
+      "description": "Organic B2B LinkedIn prospecting based on real buying signals — role changes, expansions, hiring — so every conversation is with a decision-maker who has the problem today."
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What are buying signals in B2B LinkedIn prospecting?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Buying signals are observable changes that mean a company is more likely to need what you sell right now: a new decision-maker in a relevant role, an expansion or new location, active hiring on a team you serve, funding, or a public initiative. Instead of blasting a static list, we monitor for these signals and reach out the moment the context is right — to the person who has the problem today." }
+        },
+        {
+          "@type": "Question",
+          "name": "How is this different from mass LinkedIn outreach or Sales Navigator spam?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Mass outreach sends the same template to thousands and hopes. We start from a real signal, qualify each company against your ICP, map the actual decision-maker, and write the message around their specific context — so reply rates run far higher and only qualified prospects with decision authority reach your sales team. Quality over volume: in B2B the right ten beat ten thousand wrong ones." }
+        },
+        {
+          "@type": "Question",
+          "name": "Will this get my LinkedIn account restricted?",
+          "acceptedAnswer": { "@type": "Answer", "text": "No. Because we work from signals and qualify tightly, volumes stay within safe, human limits and messages are relevant rather than spammy — which is exactly what keeps accounts healthy. We're not running a blast tool; we're running targeted, contextual outreach that looks like what it is: a real person reaching out with a reason." }
+        },
+        {
+          "@type": "Question",
+          "name": "How fast do qualified calls show up?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Typically the first qualified conversations appear within weeks 3-6 of an active campaign. A Toronto Royal LePage broker saw +310% qualified consultations; Mercedes-Benz closed three $50K Sprinters from a single LinkedIn message. Timing depends on your ticket, sales cycle and how active your buying signals are — we set an honest expectation in the diagnosis." }
+        }
+      ]
+    }
+  ]
 }
 </script>
 
@@ -348,6 +377,9 @@ body { margin: 0; overflow-x: hidden; }
 .nav-links a.is-active { color: var(--brand-teal); }
 
 .nav-dropdown { position: relative; display: inline-flex; align-items: center; }
+/* Invisible bridge over the trigger→menu gap so hover doesn't flicker */
+.nav-dropdown::after { content: ''; position: absolute; top: 100%; left: -20px; width: 380px; height: 16px; pointer-events: none; }
+.nav-dropdown:hover::after { pointer-events: auto; }
 .nav-trigger {
   display: inline-flex; align-items: center; gap: 6px; cursor: pointer;
   color: var(--fg); border-bottom: 0; font-weight: 500;
@@ -897,6 +929,89 @@ footer { background: var(--bg-sunken); padding: 64px 0 40px; border-top: 1px sol
 }
 
 /* ============================================================
+   Shared components (promoted to common so EN pages + any page
+   can reuse them) — stats strip, case cards grid, cta mark.
+   FAQs (.faqs-list/.faq) and .cta-band already live above.
+   ============================================================ */
+
+/* Stat strip */
+.stats-strip { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); background: var(--bg-elevated); }
+.stat-cell { padding: 36px 28px; border-right: 1px solid var(--border); transition: background var(--dur-fast); }
+.stat-cell:last-child { border-right: 0; }
+.stat-cell:hover { background: var(--bg-sunken); }
+.stat-cell .big { font-family: var(--font-display); font-weight: 800; font-size: clamp(36px, 4vw, 56px); line-height: 1; letter-spacing: -0.025em; color: var(--fg); }
+.stat-cell .big .u { font-size: 0.45em; color: var(--brand-teal); margin-left: 4px; }
+.stat-cell .lab { font-size: 13px; color: var(--fg-muted); margin-top: 10px; line-height: 1.5; }
+
+/* Case cards grid */
+.cases-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.cases-grid.cols-4 { grid-template-columns: repeat(4, 1fr); }
+.case-card { background: var(--bg-elevated); border: 1px solid var(--border); border-radius: var(--r-lg); padding: 26px 24px; display: flex; flex-direction: column; gap: 12px; transition: all var(--dur-base); border-top: 3px solid; text-decoration: none; }
+.case-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); border-color: var(--border-strong); }
+.case-card .tag-row { display: flex; justify-content: space-between; align-items: center; font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; }
+.case-card .tag-svc { color: var(--brand-teal); font-weight: 600; }
+.case-card .tag-geo { color: var(--fg-muted); }
+.case-card h3 { font-family: var(--font-display); font-weight: 800; font-size: 22px; letter-spacing: -0.01em; line-height: 1.1; color: var(--fg); margin: 0; text-transform: none; }
+.case-card .desc { font-size: 13.5px; color: var(--fg-muted); line-height: 1.55; margin: 0; flex: 1; }
+.case-card .stats { display: flex; flex-direction: column; gap: 6px; padding-top: 12px; border-top: 1px solid var(--border); margin-top: auto; }
+.case-card .stat { display: flex; align-items: baseline; gap: 8px; }
+.case-card .stat .v { font-family: var(--font-display); font-weight: 800; font-size: 16px; color: var(--fg); letter-spacing: -0.01em; min-width: 80px; }
+.case-card .stat .l { font-size: 12px; color: var(--fg-muted); line-height: 1.4; }
+
+/* Linkable case cards */
+a.case-card { text-decoration: none; color: inherit; cursor: pointer; }
+a.case-card.is-linked:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); border-color: var(--brand-teal); }
+a.case-card.is-linked:hover .case-card-cta { color: var(--brand-teal); transform: translateX(2px); }
+.case-card-cta { display: inline-flex; align-items: center; gap: 4px; margin-top: 14px; padding-top: 12px; border-top: 1px dashed var(--border); font-family: var(--font-mono); font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--fg-muted); transition: color var(--dur-fast), transform var(--dur-fast); }
+
+/* CTA decorative mark (cta-band reused across pages) */
+.cta-mark { position: absolute; right: -120px; top: 50%; transform: translateY(-50%); width: 560px; opacity: 0.06; z-index: 1; }
+
+/* War Room preview component (promoted from home so any page can reuse) */
+@keyframes home-wr-pulse { 0% { opacity: 1; } 50% { opacity: 0.3; } 100% { opacity: 1; } }
+.home-war-room { background: linear-gradient(180deg, var(--bg-elevated) 0%, var(--bg) 100%); padding: 80px 0; }
+.home-wr-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 56px; align-items: center; max-width: 1180px; margin: 0 auto; }
+.home-wr-copy h2 { font-family: var(--font-display); font-size: clamp(32px, 4vw, 48px); line-height: 1.1; margin: 16px 0 16px; color: var(--fg); }
+.home-wr-copy .lead { font-size: 17px; line-height: 1.6; color: var(--fg-muted); margin-bottom: 24px; }
+.home-wr-bullets { list-style: none; padding: 0; margin: 0 0 24px; }
+.home-wr-bullets li { position: relative; padding-left: 22px; margin-bottom: 10px; font-size: 15px; line-height: 1.5; color: var(--fg); }
+.home-wr-bullets li::before { content: ''; position: absolute; left: 0; top: 7px; width: 10px; height: 10px; border-radius: 50%; background: var(--brand-teal); box-shadow: 0 0 0 3px rgba(32, 148, 153, 0.15); }
+.home-wr-bullets strong { color: var(--fg); }
+.home-wr-preview { background: #0F1226; border-radius: 12px; overflow: hidden; box-shadow: 0 20px 50px rgba(20, 22, 42, 0.20), 0 4px 12px rgba(20, 22, 42, 0.10); border: 1px solid rgba(255, 255, 255, 0.06); }
+.home-wr-preview-head { display: flex; align-items: center; gap: 10px; padding: 10px 14px; background: #14162A; border-bottom: 1px solid rgba(255, 255, 255, 0.05); }
+.home-wr-preview-head .dots { display: flex; gap: 5px; }
+.home-wr-preview-head .dots span { width: 9px; height: 9px; border-radius: 50%; background: rgba(255, 255, 255, 0.18); }
+.home-wr-preview-head .dots span:first-child { background: #ED6A5E; }
+.home-wr-preview-head .dots span:nth-child(2) { background: #F4BF50; }
+.home-wr-preview-head .dots span:nth-child(3) { background: #61C554; }
+.home-wr-preview-head .label { flex: 1; font-family: var(--font-mono); font-size: 11px; color: rgba(255, 255, 255, 0.55); text-align: center; }
+.home-wr-preview-head .live { font-family: var(--font-mono); font-size: 10px; color: var(--brand-teal-400); letter-spacing: 0.06em; display: inline-flex; align-items: center; gap: 6px; margin-left: auto; }
+.home-wr-preview-head .live::before { content: ''; width: 7px; height: 7px; border-radius: 50%; background: var(--brand-green); animation: home-wr-pulse 2s ease-out infinite; }
+.home-wr-preview-body { padding: 16px 18px 18px; }
+.home-wr-preview-tabs { display: flex; gap: 14px; margin-bottom: 14px; font-family: var(--font-body); font-size: 11px; color: rgba(255, 255, 255, 0.45); }
+.home-wr-preview-tabs span.is-active { color: var(--brand-teal-400); font-weight: 600; border-bottom: 1.5px solid var(--brand-teal-400); padding-bottom: 4px; }
+.home-wr-preview-mini { background: rgba(255, 255, 255, 0.03); border-left: 3px solid var(--brand-red); border-radius: 6px; padding: 12px 14px; margin-bottom: 10px; }
+.home-wr-preview-mini .rank { font-family: var(--font-mono); font-size: 10px; color: var(--brand-red-400); letter-spacing: 0.08em; font-weight: 700; margin-bottom: 4px; }
+.home-wr-preview-mini h5 { font-family: var(--font-display); font-size: 15px; color: rgba(255, 255, 255, 0.95); margin: 0 0 4px; font-weight: 600; }
+.home-wr-preview-mini p { font-size: 12px; line-height: 1.45; color: rgba(255, 255, 255, 0.65); margin: 0; }
+.home-wr-preview-signal { background: rgba(255, 255, 255, 0.03); border-radius: 6px; padding: 10px 14px; display: flex; align-items: center; gap: 10px; font-size: 12px; color: rgba(255, 255, 255, 0.78); }
+.home-wr-preview-signal .urg { width: 9px; height: 9px; border-radius: 50%; background: var(--brand-red); box-shadow: 0 0 6px var(--brand-red); flex-shrink: 0; }
+.home-wr-preview-signal strong { color: rgba(255, 255, 255, 0.95); font-family: var(--font-display); font-size: 13px; }
+.home-wr-preview-signal .tag { margin-left: auto; font-family: var(--font-mono); font-size: 10px; color: var(--brand-teal-400); letter-spacing: 0.04em; text-transform: uppercase; }
+@media (max-width: 960px) { .home-wr-grid { grid-template-columns: 1fr; } }
+
+@media (max-width: 960px) {
+  .stats-strip { grid-template-columns: 1fr 1fr; }
+  .stat-cell { border-right: 0; border-bottom: 1px solid var(--border); }
+  .stat-cell:nth-child(2) { border-right: 1px solid var(--border); }
+  .cases-grid, .cases-grid.cols-4 { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 640px) {
+  .stats-strip, .cases-grid, .cases-grid.cols-4 { grid-template-columns: 1fr; }
+  .cta-mark { display: none; }
+}
+
+/* ============================================================
    _src\servicios\linkedin-prospecting\index.html — page-specific styles
    Chrome (nav/footer/etc.) lives in _styles/common.css
    ============================================================ */
@@ -1144,9 +1259,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="nav-dropdown" data-section="/en/services/">
         <a href="/en/services/aeo-seo/" class="nav-trigger">Services <svg class="caret" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"></polyline></svg></a>
         <div class="nav-menu">
-          <div class="head">B2B services</div>
-          <a href="/en/services/aeo-seo/"><b>AEO &amp; SEO</b><span>Rank in Google + get cited by ChatGPT, Gemini &amp; Perplexity</span></a>
+          <div class="head">Services</div>
+          <a href="/en/services/aeo-seo/"><b>AEO &amp; SEO</b><span>Rank in Google + get cited by ChatGPT, Claude, Gemini &amp; Perplexity</span></a>
           <a href="/en/services/linkedin-prospecting/"><b>LinkedIn Prospecting</b><span>B2B LinkedIn driven by real buying signals</span></a>
+          <a href="/en/services/buying-signals/"><b>Buying Signals</b><span>B2B intent data from any source — automatic</span></a>
           <a href="/en/services/consulting/"><b>B2B Consulting</b><span>Strategy + the system behind the pipeline</span></a>
         </div>
       </div>
@@ -1173,9 +1289,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <div class="nav-drawer" id="navDrawer" aria-hidden="true">
   <div class="nav-drawer-inner">
     <div class="drawer-section">
-      <div class="drawer-head">B2B services</div>
-      <a href="/en/services/aeo-seo/"><b>AEO &amp; SEO</b><span>Rank in Google + ChatGPT, Gemini, Perplexity</span></a>
+      <div class="drawer-head">Services</div>
+      <a href="/en/services/aeo-seo/"><b>AEO &amp; SEO</b><span>Rank in Google + ChatGPT, Claude, Gemini, Perplexity</span></a>
       <a href="/en/services/linkedin-prospecting/"><b>LinkedIn Prospecting</b><span>B2B LinkedIn with buying signals</span></a>
+      <a href="/en/services/buying-signals/"><b>Buying Signals</b><span>B2B intent data, automatic</span></a>
       <a href="/en/services/consulting/"><b>B2B Consulting</b><span>Strategy + the system behind it</span></a>
     </div>
     <div class="drawer-section">
@@ -1203,12 +1320,198 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 </section>
 
+<!-- PROOF STRIP -->
+<div class="stats-strip">
+  <div class="stat-cell">
+    <div class="big">+310<span class="u">%</span></div>
+    <div class="lab">Qualified consultations — Royal LePage broker, Toronto</div>
+  </div>
+  <div class="stat-cell">
+    <div class="big">$150K<span class="u">USD</span></div>
+    <div class="lab">3 deals closed from a single LinkedIn message — Mercedes-Benz</div>
+  </div>
+  <div class="stat-cell">
+    <div class="big">59.9<span class="u">%</span></div>
+    <div class="lab">Peak connection rate across B2B campaigns</div>
+  </div>
+  <div class="stat-cell">
+    <div class="big">100<span class="u">%</span></div>
+    <div class="lab">Organic — 0 ad spend, every campaign</div>
+  </div>
+</div>
+
+<!-- WHY SIGNALS -->
 <section class="section">
   <div class="container">
-    <h2>How it works</h2>
-    <p class="lead">We detect the signal, qualify against your ICP, reach out with real context, and hand you a qualified call — not a generic discovery chat. You run the system through one dashboard; we operate it.</p>
-    <div class="hero-ctas">
-      <a href="/en/contact/#book" class="btn btn-primary">Book your free diagnosis →</a>
+    <div class="section-head reveal">
+      <div class="eyebrow">Why signals beat volume</div>
+      <h2>The right message to the right buyer — <span class="accent">at the right moment.</span></h2>
+    </div>
+    <p class="lead">Most B2B LinkedIn outreach is a numbers game: the same template fired at thousands, hoping a few reply. It trains your buyers to ignore you and it puts your account at risk. We do the opposite. We watch for <strong>real buying signals</strong> — a new VP in a role you serve, an expansion, a hiring spree, funding — and reach out the moment the company actually has the problem you solve.</p>
+    <p class="lead">That timing changes everything. The message lands as relevant instead of random, reply rates climb, and your sales team only ever talks to prospects with genuine interest and the authority to decide. It's not a bigger list — it's the right people, contacted with context, at the moment it matters.</p>
+  </div>
+</section>
+
+<!-- RESULTS -->
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="eyebrow">Documented results</div>
+      <h2>What signal-driven LinkedIn <span class="accent">actually closes.</span></h2>
+      <p>Real numbers, referenceable clients — no projections.</p>
+    </div>
+    <div class="cases-grid">
+      <div class="case-card reveal" style="border-top-color: var(--brand-orange)">
+        <div class="tag-row"><span class="tag-svc">Real estate · B2B</span><span class="tag-geo">Toronto</span></div>
+        <h3>Matthew Regan · Royal LePage</h3>
+        <p class="desc">Top broker, 20+ years in Toronto, nationally ranked. Signal-driven prospecting plus constant nurturing produced <strong>warm introductions and +310% qualified consultations</strong> — clear, measurable ROI to scale.</p>
+        <div class="stats">
+          <div class="stat"><span class="v">+310%</span><span class="l">qualified consultations</span></div>
+          <div class="stat"><span class="v">Warm intros</span><span class="l">constant, measurable ROI</span></div>
+        </div>
+      </div>
+      <div class="case-card reveal" style="border-top-color: var(--brand-navy)">
+        <div class="tag-row"><span class="tag-svc">High ticket</span><span class="tag-geo">Mexico</span></div>
+        <h3>Mercedes-Benz</h3>
+        <p class="desc">Executives for high-ticket vehicles and corporate fleets. <strong>3 Sprinters of $50K USD closed from one LinkedIn message to a hotel</strong>, on top of a 500+ VIP profile base built on the operation.</p>
+        <div class="stats">
+          <div class="stat"><span class="v">$150K USD</span><span class="l">3 deals, 1 message</span></div>
+          <div class="stat"><span class="v">600+</span><span class="l">qualified B2B + fleet leads</span></div>
+        </div>
+      </div>
+      <div class="case-card reveal" style="border-top-color: var(--brand-teal)">
+        <div class="tag-row"><span class="tag-svc">Across B2B campaigns</span><span class="tag-geo">North America + LATAM</span></div>
+        <h3>Proven at scale</h3>
+        <p class="desc">The same signal-driven method across 15+ documented B2B campaigns — manufacturing, logistics, SaaS, solar and professional services. <strong>Peak 59.9% connection rate</strong>, qualified-only handoff every time.</p>
+        <div class="stats">
+          <div class="stat"><span class="v">59.9%</span><span class="l">peak connection rate</span></div>
+          <div class="stat"><span class="v">Qualified only</span><span class="l">reaches your sales team</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-ctas" style="margin-top: 28px;">
+      <a href="/en/case-studies/" class="btn btn-ghost btn-lg">See all case studies →</a>
+    </div>
+  </div>
+</section>
+
+<!-- THE PROCESS -->
+<section class="section">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="eyebrow">The process</div>
+      <h2>From a buying signal <span class="accent">to a qualified call.</span></h2>
+    </div>
+    <div class="cases-grid cols-4">
+      <div class="case-card reveal" style="border-top-color: var(--brand-teal)">
+        <h3>1 · Detect the signal</h3>
+        <p class="desc">We monitor LinkedIn for the changes that mean a company needs you now — role moves, expansions, hiring, funding — across the accounts and roles that fit your ICP.</p>
+      </div>
+      <div class="case-card reveal" style="border-top-color: var(--brand-orange)">
+        <h3>2 · Qualify &amp; map</h3>
+        <p class="desc">Each signal is checked against your ICP, and we map the actual decision-maker — the person with the problem and the authority to fix it, not a gatekeeper.</p>
+      </div>
+      <div class="case-card reveal" style="border-top-color: var(--brand-green)">
+        <h3>3 · Reach out with context</h3>
+        <p class="desc">A message built on the specific signal and the buyer's real situation. It reads like a person with a reason, because it is — which is why it gets answered.</p>
+      </div>
+      <div class="case-card reveal" style="border-top-color: var(--brand-navy)">
+        <h3>4 · Hand off qualified</h3>
+        <p class="desc">Only prospects with genuine interest and decision authority reach your sales team — synced to your CRM, with the full context, visible live in your War Room.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DELIVERABLES -->
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="eyebrow">What's included</div>
+      <h2>What the LinkedIn Prospecting service <span class="accent">delivers.</span></h2>
+    </div>
+    <div class="cases-grid">
+      <div class="case-card reveal" style="border-top-color: var(--brand-teal)">
+        <h3>Signal monitoring</h3>
+        <p class="desc">Ongoing detection of buying signals across the companies and roles that fit your ICP.</p>
+      </div>
+      <div class="case-card reveal" style="border-top-color: var(--brand-orange)">
+        <h3>ICP &amp; decision-maker map</h3>
+        <p class="desc">The accounts worth pursuing and the real decision-makers inside them — kept current.</p>
+      </div>
+      <div class="case-card reveal" style="border-top-color: var(--brand-green)">
+        <h3>Contextual messaging</h3>
+        <p class="desc">Outreach written around each signal and buyer — no templates, in your voice.</p>
+      </div>
+      <div class="case-card reveal" style="border-top-color: var(--brand-navy)">
+        <h3>Qualified-only handoff</h3>
+        <p class="desc">Your team only talks to prospects with real interest and authority to decide.</p>
+      </div>
+      <div class="case-card reveal" style="border-top-color: var(--brand-red)">
+        <h3>CRM integration</h3>
+        <p class="desc">Every conversation and lead synced to your CRM with full context, no manual logging.</p>
+      </div>
+      <div class="case-card reveal" style="border-top-color: var(--brand-teal)">
+        <h3>Live War Room</h3>
+        <p class="desc">This week's signals, the funnel and every qualified lead visible to you in real time.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section" id="faqs">
+  <div class="container">
+    <div class="section-head reveal" style="text-align:center; margin-left:auto; margin-right:auto;">
+      <div class="eyebrow" style="justify-content:center;">Frequently asked</div>
+      <h2>B2B LinkedIn prospecting <span class="accent">with buying signals.</span></h2>
+    </div>
+    <div class="faqs-list">
+      <details class="faq reveal" open>
+        <summary>What are buying signals in B2B LinkedIn prospecting?
+          <span class="faq-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </summary>
+        <div class="faq-body">Buying signals are observable changes that mean a company is more likely to need what you sell right now: a new decision-maker in a relevant role, an expansion or new location, active hiring on a team you serve, funding, or a public initiative. Instead of blasting a static list, we monitor for these signals and reach out the moment the context is right — to the person who has the problem today.</div>
+      </details>
+      <details class="faq reveal">
+        <summary>How is this different from mass LinkedIn outreach or Sales Navigator spam?
+          <span class="faq-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </summary>
+        <div class="faq-body">Mass outreach sends the same template to thousands and hopes. We start from a real signal, qualify each company against your ICP, map the actual decision-maker, and write the message around their specific context — so reply rates run far higher and only qualified prospects with decision authority reach your sales team. Quality over volume: in B2B the right ten beat ten thousand wrong ones.</div>
+      </details>
+      <details class="faq reveal">
+        <summary>Will this get my LinkedIn account restricted?
+          <span class="faq-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </summary>
+        <div class="faq-body">No. Because we work from signals and qualify tightly, volumes stay within safe, human limits and messages are relevant rather than spammy — which is exactly what keeps accounts healthy. We're not running a blast tool; we're running targeted, contextual outreach that looks like what it is: a real person reaching out with a reason.</div>
+      </details>
+      <details class="faq reveal">
+        <summary>How fast do qualified calls show up?
+          <span class="faq-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </summary>
+        <div class="faq-body">Typically the first qualified conversations appear within weeks 3-6 of an active campaign. A Toronto Royal LePage broker saw +310% qualified consultations; Mercedes-Benz closed three $50K Sprinters from a single LinkedIn message. Timing depends on your ticket, sales cycle and how active your buying signals are — we set an honest expectation in the diagnosis.</div>
+      </details>
+      <details class="faq reveal">
+        <summary>Does this pair with your SEO &amp; AEO work?
+          <span class="faq-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </summary>
+        <div class="faq-body">That's the strongest setup. <a href="/en/services/aeo-seo/">SEO &amp; AEO</a> makes you the company buyers find and AI engines recommend; LinkedIn prospecting opens the accounts showing intent right now. Inbound visibility plus outbound timing means you're present at every step of the buyer's decision — which is exactly how Top Energy's $9M USD deal came together.</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-band">
+  <img src="../../../assets/logo-mark-white-on-navy.webp" class="cta-mark" alt="" aria-hidden="true">
+  <div class="container">
+    <div>
+      <h2>Find the buyers who have the problem <span class="accent">today.</span></h2>
+      <p>A free 60-minute diagnosis: we map the buying signals active in your vertical, who the decision-makers are, and what a signal-driven LinkedIn pipeline would look like for you. If we're a fit, you leave with a plan.</p>
+      <div style="display:flex; gap:12px; flex-wrap: wrap;">
+        <a href="/en/contact/#book" class="btn btn-primary btn-lg">Book your free diagnosis →</a>
+        <a href="/en/case-studies/" class="btn btn-ghost btn-lg">See results first</a>
+      </div>
     </div>
   </div>
 </section>
@@ -1228,6 +1531,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <ul>
           <li><a href="/en/services/aeo-seo/">AEO &amp; SEO</a></li>
           <li><a href="/en/services/linkedin-prospecting/">LinkedIn Prospecting</a></li>
+          <li><a href="/en/services/buying-signals/">Buying Signals</a></li>
           <li><a href="/en/services/consulting/">B2B Consulting</a></li>
           <li><a href="/en/contact/#book">Free diagnosis</a></li>
         </ul>
@@ -1235,6 +1539,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div>
         <h4>Company</h4>
         <ul>
+          <li><a href="/en/war-room/">Client War Room</a></li>
           <li><a href="/en/about/">About</a></li>
           <li><a href="/en/case-studies/">Case studies</a></li>
           <li><a href="/en/blog/">Blog</a></li>

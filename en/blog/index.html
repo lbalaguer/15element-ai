@@ -348,6 +348,9 @@ body { margin: 0; overflow-x: hidden; }
 .nav-links a.is-active { color: var(--brand-teal); }
 
 .nav-dropdown { position: relative; display: inline-flex; align-items: center; }
+/* Invisible bridge over the trigger→menu gap so hover doesn't flicker */
+.nav-dropdown::after { content: ''; position: absolute; top: 100%; left: -20px; width: 380px; height: 16px; pointer-events: none; }
+.nav-dropdown:hover::after { pointer-events: auto; }
 .nav-trigger {
   display: inline-flex; align-items: center; gap: 6px; cursor: pointer;
   color: var(--fg); border-bottom: 0; font-weight: 500;
@@ -897,6 +900,89 @@ footer { background: var(--bg-sunken); padding: 64px 0 40px; border-top: 1px sol
 }
 
 /* ============================================================
+   Shared components (promoted to common so EN pages + any page
+   can reuse them) — stats strip, case cards grid, cta mark.
+   FAQs (.faqs-list/.faq) and .cta-band already live above.
+   ============================================================ */
+
+/* Stat strip */
+.stats-strip { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); background: var(--bg-elevated); }
+.stat-cell { padding: 36px 28px; border-right: 1px solid var(--border); transition: background var(--dur-fast); }
+.stat-cell:last-child { border-right: 0; }
+.stat-cell:hover { background: var(--bg-sunken); }
+.stat-cell .big { font-family: var(--font-display); font-weight: 800; font-size: clamp(36px, 4vw, 56px); line-height: 1; letter-spacing: -0.025em; color: var(--fg); }
+.stat-cell .big .u { font-size: 0.45em; color: var(--brand-teal); margin-left: 4px; }
+.stat-cell .lab { font-size: 13px; color: var(--fg-muted); margin-top: 10px; line-height: 1.5; }
+
+/* Case cards grid */
+.cases-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.cases-grid.cols-4 { grid-template-columns: repeat(4, 1fr); }
+.case-card { background: var(--bg-elevated); border: 1px solid var(--border); border-radius: var(--r-lg); padding: 26px 24px; display: flex; flex-direction: column; gap: 12px; transition: all var(--dur-base); border-top: 3px solid; text-decoration: none; }
+.case-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); border-color: var(--border-strong); }
+.case-card .tag-row { display: flex; justify-content: space-between; align-items: center; font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; }
+.case-card .tag-svc { color: var(--brand-teal); font-weight: 600; }
+.case-card .tag-geo { color: var(--fg-muted); }
+.case-card h3 { font-family: var(--font-display); font-weight: 800; font-size: 22px; letter-spacing: -0.01em; line-height: 1.1; color: var(--fg); margin: 0; text-transform: none; }
+.case-card .desc { font-size: 13.5px; color: var(--fg-muted); line-height: 1.55; margin: 0; flex: 1; }
+.case-card .stats { display: flex; flex-direction: column; gap: 6px; padding-top: 12px; border-top: 1px solid var(--border); margin-top: auto; }
+.case-card .stat { display: flex; align-items: baseline; gap: 8px; }
+.case-card .stat .v { font-family: var(--font-display); font-weight: 800; font-size: 16px; color: var(--fg); letter-spacing: -0.01em; min-width: 80px; }
+.case-card .stat .l { font-size: 12px; color: var(--fg-muted); line-height: 1.4; }
+
+/* Linkable case cards */
+a.case-card { text-decoration: none; color: inherit; cursor: pointer; }
+a.case-card.is-linked:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); border-color: var(--brand-teal); }
+a.case-card.is-linked:hover .case-card-cta { color: var(--brand-teal); transform: translateX(2px); }
+.case-card-cta { display: inline-flex; align-items: center; gap: 4px; margin-top: 14px; padding-top: 12px; border-top: 1px dashed var(--border); font-family: var(--font-mono); font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--fg-muted); transition: color var(--dur-fast), transform var(--dur-fast); }
+
+/* CTA decorative mark (cta-band reused across pages) */
+.cta-mark { position: absolute; right: -120px; top: 50%; transform: translateY(-50%); width: 560px; opacity: 0.06; z-index: 1; }
+
+/* War Room preview component (promoted from home so any page can reuse) */
+@keyframes home-wr-pulse { 0% { opacity: 1; } 50% { opacity: 0.3; } 100% { opacity: 1; } }
+.home-war-room { background: linear-gradient(180deg, var(--bg-elevated) 0%, var(--bg) 100%); padding: 80px 0; }
+.home-wr-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 56px; align-items: center; max-width: 1180px; margin: 0 auto; }
+.home-wr-copy h2 { font-family: var(--font-display); font-size: clamp(32px, 4vw, 48px); line-height: 1.1; margin: 16px 0 16px; color: var(--fg); }
+.home-wr-copy .lead { font-size: 17px; line-height: 1.6; color: var(--fg-muted); margin-bottom: 24px; }
+.home-wr-bullets { list-style: none; padding: 0; margin: 0 0 24px; }
+.home-wr-bullets li { position: relative; padding-left: 22px; margin-bottom: 10px; font-size: 15px; line-height: 1.5; color: var(--fg); }
+.home-wr-bullets li::before { content: ''; position: absolute; left: 0; top: 7px; width: 10px; height: 10px; border-radius: 50%; background: var(--brand-teal); box-shadow: 0 0 0 3px rgba(32, 148, 153, 0.15); }
+.home-wr-bullets strong { color: var(--fg); }
+.home-wr-preview { background: #0F1226; border-radius: 12px; overflow: hidden; box-shadow: 0 20px 50px rgba(20, 22, 42, 0.20), 0 4px 12px rgba(20, 22, 42, 0.10); border: 1px solid rgba(255, 255, 255, 0.06); }
+.home-wr-preview-head { display: flex; align-items: center; gap: 10px; padding: 10px 14px; background: #14162A; border-bottom: 1px solid rgba(255, 255, 255, 0.05); }
+.home-wr-preview-head .dots { display: flex; gap: 5px; }
+.home-wr-preview-head .dots span { width: 9px; height: 9px; border-radius: 50%; background: rgba(255, 255, 255, 0.18); }
+.home-wr-preview-head .dots span:first-child { background: #ED6A5E; }
+.home-wr-preview-head .dots span:nth-child(2) { background: #F4BF50; }
+.home-wr-preview-head .dots span:nth-child(3) { background: #61C554; }
+.home-wr-preview-head .label { flex: 1; font-family: var(--font-mono); font-size: 11px; color: rgba(255, 255, 255, 0.55); text-align: center; }
+.home-wr-preview-head .live { font-family: var(--font-mono); font-size: 10px; color: var(--brand-teal-400); letter-spacing: 0.06em; display: inline-flex; align-items: center; gap: 6px; margin-left: auto; }
+.home-wr-preview-head .live::before { content: ''; width: 7px; height: 7px; border-radius: 50%; background: var(--brand-green); animation: home-wr-pulse 2s ease-out infinite; }
+.home-wr-preview-body { padding: 16px 18px 18px; }
+.home-wr-preview-tabs { display: flex; gap: 14px; margin-bottom: 14px; font-family: var(--font-body); font-size: 11px; color: rgba(255, 255, 255, 0.45); }
+.home-wr-preview-tabs span.is-active { color: var(--brand-teal-400); font-weight: 600; border-bottom: 1.5px solid var(--brand-teal-400); padding-bottom: 4px; }
+.home-wr-preview-mini { background: rgba(255, 255, 255, 0.03); border-left: 3px solid var(--brand-red); border-radius: 6px; padding: 12px 14px; margin-bottom: 10px; }
+.home-wr-preview-mini .rank { font-family: var(--font-mono); font-size: 10px; color: var(--brand-red-400); letter-spacing: 0.08em; font-weight: 700; margin-bottom: 4px; }
+.home-wr-preview-mini h5 { font-family: var(--font-display); font-size: 15px; color: rgba(255, 255, 255, 0.95); margin: 0 0 4px; font-weight: 600; }
+.home-wr-preview-mini p { font-size: 12px; line-height: 1.45; color: rgba(255, 255, 255, 0.65); margin: 0; }
+.home-wr-preview-signal { background: rgba(255, 255, 255, 0.03); border-radius: 6px; padding: 10px 14px; display: flex; align-items: center; gap: 10px; font-size: 12px; color: rgba(255, 255, 255, 0.78); }
+.home-wr-preview-signal .urg { width: 9px; height: 9px; border-radius: 50%; background: var(--brand-red); box-shadow: 0 0 6px var(--brand-red); flex-shrink: 0; }
+.home-wr-preview-signal strong { color: rgba(255, 255, 255, 0.95); font-family: var(--font-display); font-size: 13px; }
+.home-wr-preview-signal .tag { margin-left: auto; font-family: var(--font-mono); font-size: 10px; color: var(--brand-teal-400); letter-spacing: 0.04em; text-transform: uppercase; }
+@media (max-width: 960px) { .home-wr-grid { grid-template-columns: 1fr; } }
+
+@media (max-width: 960px) {
+  .stats-strip { grid-template-columns: 1fr 1fr; }
+  .stat-cell { border-right: 0; border-bottom: 1px solid var(--border); }
+  .stat-cell:nth-child(2) { border-right: 1px solid var(--border); }
+  .cases-grid, .cases-grid.cols-4 { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 640px) {
+  .stats-strip, .cases-grid, .cases-grid.cols-4 { grid-template-columns: 1fr; }
+  .cta-mark { display: none; }
+}
+
+/* ============================================================
    /blog/ — overview page styles
    Chrome lives in _styles/common.css
    ============================================================ */
@@ -985,9 +1071,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="nav-dropdown" data-section="/en/services/">
         <a href="/en/services/aeo-seo/" class="nav-trigger">Services <svg class="caret" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"></polyline></svg></a>
         <div class="nav-menu">
-          <div class="head">B2B services</div>
-          <a href="/en/services/aeo-seo/"><b>AEO &amp; SEO</b><span>Rank in Google + get cited by ChatGPT, Gemini &amp; Perplexity</span></a>
+          <div class="head">Services</div>
+          <a href="/en/services/aeo-seo/"><b>AEO &amp; SEO</b><span>Rank in Google + get cited by ChatGPT, Claude, Gemini &amp; Perplexity</span></a>
           <a href="/en/services/linkedin-prospecting/"><b>LinkedIn Prospecting</b><span>B2B LinkedIn driven by real buying signals</span></a>
+          <a href="/en/services/buying-signals/"><b>Buying Signals</b><span>B2B intent data from any source — automatic</span></a>
           <a href="/en/services/consulting/"><b>B2B Consulting</b><span>Strategy + the system behind the pipeline</span></a>
         </div>
       </div>
@@ -1014,9 +1101,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <div class="nav-drawer" id="navDrawer" aria-hidden="true">
   <div class="nav-drawer-inner">
     <div class="drawer-section">
-      <div class="drawer-head">B2B services</div>
-      <a href="/en/services/aeo-seo/"><b>AEO &amp; SEO</b><span>Rank in Google + ChatGPT, Gemini, Perplexity</span></a>
+      <div class="drawer-head">Services</div>
+      <a href="/en/services/aeo-seo/"><b>AEO &amp; SEO</b><span>Rank in Google + ChatGPT, Claude, Gemini, Perplexity</span></a>
       <a href="/en/services/linkedin-prospecting/"><b>LinkedIn Prospecting</b><span>B2B LinkedIn with buying signals</span></a>
+      <a href="/en/services/buying-signals/"><b>Buying Signals</b><span>B2B intent data, automatic</span></a>
       <a href="/en/services/consulting/"><b>B2B Consulting</b><span>Strategy + the system behind it</span></a>
     </div>
     <div class="drawer-section">
@@ -1058,6 +1146,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <ul>
           <li><a href="/en/services/aeo-seo/">AEO &amp; SEO</a></li>
           <li><a href="/en/services/linkedin-prospecting/">LinkedIn Prospecting</a></li>
+          <li><a href="/en/services/buying-signals/">Buying Signals</a></li>
           <li><a href="/en/services/consulting/">B2B Consulting</a></li>
           <li><a href="/en/contact/#book">Free diagnosis</a></li>
         </ul>
@@ -1065,6 +1154,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div>
         <h4>Company</h4>
         <ul>
+          <li><a href="/en/war-room/">Client War Room</a></li>
           <li><a href="/en/about/">About</a></li>
           <li><a href="/en/case-studies/">Case studies</a></li>
           <li><a href="/en/blog/">Blog</a></li>

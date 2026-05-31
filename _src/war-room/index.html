@@ -853,21 +853,33 @@
 </section>
 
 <script>
-// War Room mockup MVP — tab switcher (desktop only, mobile mantiene HTML inline)
+// War Room mockup — auto-rotación de tabs (desktop). Pausa al hover; el click reinicia el ciclo.
 (function(){
-  var tabs = document.querySelectorAll('.wr-mockup-tabs .wr-tab');
-  var panels = document.querySelectorAll('.wr-mvp-desktop [data-panel]');
+  var root = document.querySelector('.wr-mockup');
+  if(!root) return;
+  var tabs = root.querySelectorAll('.wr-mockup-tabs .wr-tab');
+  var panels = root.querySelectorAll('.wr-mvp-desktop [data-panel]');
   if (!tabs.length || !panels.length) return;
+  var order = Array.prototype.map.call(tabs, function(t){ return t.dataset.tab; });
+  var idx = 0, timer = null, paused = false;
   function activate(name){
+    idx = order.indexOf(name);
     tabs.forEach(function(t){ t.classList.toggle('is-active', t.dataset.tab === name); });
     panels.forEach(function(p){ p.classList.toggle('is-active', p.dataset.panel === name); });
   }
+  function next(){ if(paused) return; idx = (idx + 1) % order.length; activate(order[idx]); }
+  function start(){ stop(); timer = setInterval(next, 3500); }
+  function stop(){ if(timer){ clearInterval(timer); timer = null; } }
   tabs.forEach(function(t){
-    t.addEventListener('click', function(){ activate(t.dataset.tab); });
+    t.addEventListener('click', function(){ activate(t.dataset.tab); start(); });
     t.addEventListener('keydown', function(e){
-      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); activate(t.dataset.tab); }
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); activate(t.dataset.tab); start(); }
     });
   });
+  root.addEventListener('mouseenter', function(){ paused = true; });
+  root.addEventListener('mouseleave', function(){ paused = false; });
+  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  start();
 })();
 </script>
 

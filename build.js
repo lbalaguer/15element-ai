@@ -207,11 +207,13 @@ const EN_CSS_MAP = {
   '': 'home',
   'services/aeo-seo': 'servicio-seo-aeo-geo',
   'services/linkedin-prospecting': 'servicio-linkedin-prospecting',
+  'services/buying-signals': 'servicio-senales-de-compra',
   'services/consulting': 'servicio-consultoria-b2b',
   'case-studies': 'casos',
   'about': 'nosotros',
   'contact': 'contacto',
   'blog': 'blog',
+  'war-room': 'war-room',
 };
 
 // ------------------------------------------------------------

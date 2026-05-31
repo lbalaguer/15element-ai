@@ -1,11 +1,36 @@
 {
   "version": 1,
-  "generated_at": "2026-05-28T02:03:01.275Z",
+  "generated_at": "2026-05-31T01:43:00.379Z",
   "generated_by": "node build.js --update-baseline",
   "note": "Deuda técnica conocida y aceptada. El build pasa si los warnings actuales son subset de este file. Si introduces deuda nueva, el build falla. Para regenerar este file deliberadamente: `node build.js --update-baseline`.",
   "guards": {
     "orphan_classes": {
       "catalogo/index.html": [
+        "av-green",
+        "av-navy",
+        "av-orange",
+        "av-red",
+        "av-teal",
+        "grid",
+        "org-avatar",
+        "org-avatar-sm",
+        "org-bio",
+        "org-bio-sm",
+        "org-block",
+        "org-card",
+        "org-card-sub",
+        "org-card-sub-label",
+        "org-cards",
+        "org-group",
+        "org-group-label",
+        "org-li",
+        "org-name",
+        "org-name-sm",
+        "org-role",
+        "org-top",
+        "with-sub"
+      ],
+      "en/about/index.html": [
         "av-green",
         "av-navy",
         "av-orange",
