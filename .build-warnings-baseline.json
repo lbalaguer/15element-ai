@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generated_at": "2026-05-31T01:43:00.379Z",
+  "generated_at": "2026-05-31T01:48:30.382Z",
   "generated_by": "node build.js --update-baseline",
   "note": "Deuda técnica conocida y aceptada. El build pasa si los warnings actuales son subset de este file. Si introduces deuda nueva, el build falla. Para regenerar este file deliberadamente: `node build.js --update-baseline`.",
   "guards": {
