@@ -233,6 +233,34 @@
   status = 301
   force = true
 
+# 2026-05-31: bug encontrado en audit GSC — el wildcard /es/* → /:splat mandaba estos
+# paths WP legacy a destinos 404 (/inicio/, /los-elementos/, /blog/<slug-viejo>/ no existen),
+# tirando equity igual que un 404 directo. Específicos primero para preservar el ranking.
+[[redirects]]
+  from = "/es/inicio/"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/es/los-elementos/"
+  to = "/servicios/"
+  status = 301
+  force = true
+
+# Posts WP viejos sin equivalente actual → destino topical más cercano (puente; evaluar recrear).
+[[redirects]]
+  from = "/es/blog/que-es-15element-ai-y-por-que-esta-revolucionando-el-marketing-impulsado-por-ia/"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/es/blog/ia-vs-automatizacion-cual-es-la-diferencia-y-por-que-es-importante-para-su-negocio/"
+  to = "/blog/"
+  status = 301
+  force = true
+
 [[redirects]]
   from = "/en/que-es-aeo-geo-chatgpt-empresas-b2b-2026/"
   to = "/blog/que-es-aeo/"
