@@ -292,28 +292,29 @@
 # se deja morir a propósito: atraía SaaS/DFY seekers, no cliente de consultoría. Decisión Luis 2026-05-30.
 [[redirects]]
   from = "/the-elements/prospecting-ai/"
-  to = "/servicios/linkedin-prospecting/"
+  to = "/en/services/linkedin-prospecting/"
   status = 301
   force = true
 
 [[redirects]]
   from = "/the-elements/seo-ai/"
-  to = "/servicios/seo-aeo-geo/"
+  to = "/en/services/aeo-seo/"
   status = 301
   force = true
 
 [[redirects]]
   from = "/the-elements/consulting-ai/"
-  to = "/servicios/consultoria-b2b/"
+  to = "/en/services/consulting/"
   status = 301
   force = true
 
-# 2026-05-30: blog Canadá (5,686 imp, rankeaba pos 3-7 en queries Canadá/SEO) está 404.
-# 301 a /blog/seo-aeo-geo-por-industria/ (blog vivo similar: SEO/AEO por industria, indexa
-# clientes). Temporal mientras Luis recupera el contenido original para republicar en ESTA URL.
+# 2026-05-30: blog Canadá (5,686 imp, rankeaba pos 3-7 en queries Canadá/SEO) estaba 404.
+# Re-apuntado al hub EN /en/case-studies/ que ahora contiene los casos Canadá reales
+# (MCS Burlington, Oakville, Family Dentistry Hamilton, BCS, Proforma...). Destino EN
+# temáticamente equivalente a "seo case studies canada" → recupera el equity al idioma correcto.
 [[redirects]]
   from = "/blog/seo-case-studies-2025-canada/"
-  to = "/blog/seo-aeo-geo-por-industria/"
+  to = "/en/case-studies/"
   status = 301
   force = true
 
