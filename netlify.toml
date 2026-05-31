@@ -52,6 +52,14 @@
   [headers.values]
     X-Robots-Tag = "noindex, nofollow"
 
+# 2026-05-31: deflectar dominio default de Netlify (duplicado SEO indexable).
+# Servia el sitio completo con robots=index + GPTBot allow -> competia con el apex.
+[[redirects]]
+  from = "https://15element-ai.netlify.app/*"
+  to = "https://15element.ai/:splat"
+  status = 301
+  force = true
+
 # Redirect www → apex (canónico)
 [[redirects]]
   from = "https://www.15element.ai/*"
