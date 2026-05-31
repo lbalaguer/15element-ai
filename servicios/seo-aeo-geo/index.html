@@ -1054,6 +1054,31 @@ a.case-card.is-linked:hover .case-card-cta { color: var(--brand-teal); transform
 html { scroll-behavior: smooth; }
 body { margin: 0; overflow-x: hidden; }
 ::selection { background: var(--brand-teal); color: white; }
+
+/* ── Garantía inline en CTAs (decisión Tornado 31-may: inline, condicional
+   al diagnóstico/auditoría accionable, solo en páginas SEO/AEO + city-pages).
+   Compartido por la página ES y su par EN (services/aeo-seo) vía EN_CSS_MAP,
+   y por la city-page EN seo-agency-mississauga. ── */
+.hero-guarantee {
+  margin: 18px 0 0;
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--fg-muted, #5b6470);
+  max-width: 640px;
+}
+.hero-guarantee strong { color: var(--brand-teal, #0f9b8e); }
+
+/* Sobre la banda navy del CTA final: texto claro, acento teal-400. */
+.cta-band .cta-guarantee {
+  margin: 18px 0 0;
+  font-size: 15px;
+  line-height: 1.5;
+  color: rgba(255,255,255,0.80);
+  max-width: 600px;
+  position: relative;
+  z-index: 2;
+}
+.cta-band .cta-guarantee strong { color: var(--brand-teal-400, #4fd1c5); }
 .container { max-width: 1200px; margin: 0 auto; padding: 0 32px; }
 
 /* Theme toggle */
@@ -1379,6 +1404,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </a>
       <a href="#resultados" class="btn btn-ghost btn-lg">Ver resultados reales</a>
     </div>
+    <p class="hero-guarantee reveal"><strong>Auditoría accionable y garantía de 90 días.</strong> Tu diagnóstico gratis es una auditoría accionable de tu empresa — y si calificas, trabajamos con garantía de 90 días o seguimos sin cobrarte.</p>
   </div>
 </section>
 
@@ -1745,6 +1771,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <a href="/contacto/#agendar" class="btn btn-primary btn-lg">Agenda tu diagnóstico — es gratis</a>
         <a href="/casos/" class="btn btn-ghost btn-lg">Ver más casos</a>
       </div>
+      <p class="cta-guarantee"><strong>Garantía de 90 días.</strong> El diagnóstico gratis es una auditoría accionable de tu empresa — y si calificas, el trabajo va con garantía de 90 días o seguimos sin cobrarte.</p>
       <div class="cta-meta">
         <span>60 minutos</span>
         <span>Sin compromiso</span>

@@ -7,6 +7,31 @@
 html { scroll-behavior: smooth; }
 body { margin: 0; overflow-x: hidden; }
 ::selection { background: var(--brand-teal); color: white; }
+
+/* ── Garantía inline en CTAs (decisión Tornado 31-may: inline, condicional
+   al diagnóstico/auditoría accionable, solo en páginas SEO/AEO + city-pages).
+   Compartido por la página ES y su par EN (services/aeo-seo) vía EN_CSS_MAP,
+   y por la city-page EN seo-agency-mississauga. ── */
+.hero-guarantee {
+  margin: 18px 0 0;
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--fg-muted, #5b6470);
+  max-width: 640px;
+}
+.hero-guarantee strong { color: var(--brand-teal, #0f9b8e); }
+
+/* Sobre la banda navy del CTA final: texto claro, acento teal-400. */
+.cta-band .cta-guarantee {
+  margin: 18px 0 0;
+  font-size: 15px;
+  line-height: 1.5;
+  color: rgba(255,255,255,0.80);
+  max-width: 600px;
+  position: relative;
+  z-index: 2;
+}
+.cta-band .cta-guarantee strong { color: var(--brand-teal-400, #4fd1c5); }
 .container { max-width: 1200px; margin: 0 auto; padding: 0 32px; }
 
 /* Theme toggle */

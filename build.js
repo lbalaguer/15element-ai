@@ -209,6 +209,8 @@ const EN_CSS_MAP = {
   'services/linkedin-prospecting': 'servicio-linkedin-prospecting',
   'services/buying-signals': 'servicio-senales-de-compra',
   'services/consulting': 'servicio-consultoria-b2b',
+  'seo-agency-mississauga': 'servicio-seo-aeo-geo',
+  'seo-agency-ottawa': 'servicio-seo-aeo-geo',
   'case-studies': 'casos',
   'about': 'nosotros',
   'contact': 'contacto',
