@@ -199,6 +199,14 @@ if (fs.existsSync(CASES_DATA_PATH)) {
   catch (e) { console.error(`[build] ERROR: _data/cases.json invalid JSON: ${e.message}`); }
 }
 
+const CASES_DATA_EN_PATH = path.join(ROOT, '_data', 'cases-en.json');
+let CASES_DATA_EN_JSON = '{}';
+if (fs.existsSync(CASES_DATA_EN_PATH)) {
+  const raw = fs.readFileSync(CASES_DATA_EN_PATH, 'utf8').trim();
+  try { JSON.parse(raw); CASES_DATA_EN_JSON = raw; }
+  catch (e) { console.error(`[build] ERROR: _data/cases-en.json invalid JSON: ${e.message}`); }
+}
+
 // ------------------------------------------------------------
 // i18n — pares hreflang ES↔EN (MVP Tornado Fase 1). Solo las páginas
 // listadas aquí reciben <link hreflang>. El resto del sitio ES no se toca.
@@ -320,6 +328,7 @@ function processFile(srcAbs) {
   html = html.replace(/\{\{COMMON_CSS\}\}/g, commonCssPath);
   html = html.replace(/\{\{PAGE_CSS\}\}/g, pageCssPath);
   html = html.replace(/\{\{CASES_DATA\}\}/g, CASES_DATA_JSON);
+  html = html.replace(/\{\{CASES_DATA_EN\}\}/g, CASES_DATA_EN_JSON);
 
   // ----------------------------------------------------------------
   // i18n: hreflang ES↔EN (MVP Tornado). Solo páginas en HREFLANG_PAIRS.

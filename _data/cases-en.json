@@ -1,0 +1,637 @@
+{
+  "leasemd": {
+    "year": "2024-2025", "duration": "6 months", "ref": "Referenceable client",
+    "contexto": "B2B medical equipment leasing company in Mexico. Aggressive competition on search engines and zero visibility inside LLMs. B2B medical equipment research is moving from Google to ChatGPT/Gemini/Perplexity as the first evaluation step.",
+    "accion": "AEO/GEO diagnosis + site restructure + content stack built for Answer Engines (FAQ schema, comparisons, glossary, case proof). Citation Share tracked across the 3 main LLMs.",
+    "resultados": [
+      "<strong>Rank #1</strong> across ChatGPT, Gemini and Perplexity for \"best medical equipment leasing Mexico\"",
+      "<strong>+320% qualified inbound</strong> in 6 months (Google + LLMs combined)",
+      "Dominant Citation Share vs Lendar/Konfío and national competitors",
+      "Average inbound lead = decision-maker (CMO/CFO of a private hospital)"
+    ],
+    "quote": "People used to ask Google. Now they ask ChatGPT — and we show up first. It's a different game.",
+    "images": ["caso-leasemd-12.webp","caso-leasemd-13.webp"]
+  },
+  "nextco": {
+    "year": "2024-2025", "duration": "10 months", "ref": "Referenceable client",
+    "contexto": "Mexican B2B manufacturer. Small sales team. Burning $180 USD per cold lead on Google/Meta Ads with no predictable pipeline. Needed to break the capacity ceiling without hiring more reps.",
+    "accion": "3-layer system: (1) Magallanes — B2B buying signals across 800+ target accounts. (2) Contextual LinkedIn outreach triggered by verified signal. (3) Automated qualification before handing the lead to Carlo. Zero ad spend.",
+    "resultados": [
+      "<strong>842 qualified leads</strong> in 10 months, $0 USD in ads",
+      "BOSCH · Continental · SuKarne in active pipeline",
+      "<strong>CPL: $180 USD → $0</strong> (pure organic)",
+      "Sales team now only works pre-qualified leads"
+    ],
+    "quote": "We went from chasing to closing. Leads arrive warm, with context, and my team stopped burning time on cold prospects."
+  },
+  "top-energy": {
+    "year": "2024", "duration": "Active pipeline", "ref": "Referenceable client · Video testimonial",
+    "contexto": "Industrial solar / multinational. Long sales cycle (6-18 months) on $1M-$10M USD tickets. Impossible to compete with traditional ads for the specific intent of industrial plants.",
+    "accion": "Ultra-targeted organic LinkedIn aimed at Plant Managers / Sustainability Directors in energy-intensive industries. Contextual messaging tied to publicly announced expansion projects + ESG commitments. No cold pitch.",
+    "resultados": [
+      "<strong>$9M USD</strong> project closed from ONE LinkedIn message",
+      "3,300 solar panels + carport + 3 battery containers",
+      "2 additional projects in Mexico after the initial close",
+      "Sustained pipeline — no volume, just precision"
+    ],
+    "quote": "One message. Nine million dollars. That's the day I understood how powerful LinkedIn is when used right.",
+    "videoId": "223r5XlYSMg"
+  },
+  "seidor": {
+    "year": "2024", "duration": "Weeks", "ref": "Referenceable client",
+    "contexto": "International tech consultancy with a cybersecurity practice in Mexico. Competing against the Big 4 (Deloitte/PwC/EY/KPMG) who dominate SERP with historical authority and massive content libraries.",
+    "accion": "Technical SEO content built around transactional B2B cybersecurity keywords in Mexico. FAQ schema + author E-E-A-T. Strategic internal linking + vertical content outreach.",
+    "resultados": [
+      "Google Page 1 <strong>above Deloitte</strong> on strategic keywords",
+      "Position won in <strong>weeks, not years</strong>",
+      "Qualified inbound pipeline activated for cyber services",
+      "SEIDOR established as technical authority on Mexican search"
+    ],
+    "images": ["caso-seidor-01.webp"]
+  },
+  "mercedes-benz": {
+    "year": "2024", "duration": "Active pipeline", "ref": "Referenceable client",
+    "contexto": "Mercedes-Benz Mexico dealer selling Sprinters and fleets to hotels, transport companies and premium F&B. Digital ads saturated, low-quality leads mixed with consumer traffic.",
+    "accion": "Exclusive base of 500+ VIP profiles built from scratch (hotel decision-makers, fleet owners, premium F&B). 1:1 LinkedIn outreach with industry-specific proposals. Zero digital ads.",
+    "resultados": [
+      "<strong>$150K USD</strong> closed from ONE LinkedIn message to a hotel (3 Sprinters at $50K each)",
+      "Exclusive base of 500+ B2B VIP profiles active",
+      "<strong>600+ qualified leads</strong> B2B + fleet",
+      "Zero consumer noise in the funnel"
+    ]
+  },
+  "dcatala": {
+    "year": "2024", "duration": "Active pipeline", "ref": "Referenceable client",
+    "contexto": "B2B office furniture and acoustic booth manufacturer in Mexico. Competing in SERP against marketplace giants (Amazon, Mercado Libre) that dominate transactional keywords through domain authority.",
+    "accion": "Technical SEO + B2B-specific content (not consumer) for high commercial intent keywords. Product schema + technical comparisons + enterprise install case studies.",
+    "resultados": [
+      "Ranked above <strong>Amazon and Mercado Libre</strong> on \"meeting rooms\" and \"acoustic booths\"",
+      "High commercial intent B2B keywords won",
+      "Corporate inbound activated (vs consumer leads from marketplaces)"
+    ],
+    "images": ["caso-dcatala-01.webp"]
+  },
+  "pazz-leasing": {
+    "year": "2024", "duration": "Active", "ref": "Referenceable client",
+    "contexto": "Auto leasing company in Mexico competing against the official manufacturer sites (Peugeot, Renault) that normally dominate SERP via brand and authority.",
+    "accion": "Technical SEO + model-specific landings with Product schema + leasing-vs-purchase comparisons + financial breakdowns. Outranking the official site with actual user utility.",
+    "resultados": [
+      "<strong>Rank #1</strong> above the official Peugeot Mexico site on \"leasing peugeot partner\"",
+      "High commercial intent keywords taken from the manufacturer",
+      "B2B leasing inbound pipeline activated"
+    ],
+    "images": ["caso-pazz-leasing-01.webp","caso-pazz-leasing-02.webp"]
+  },
+  "tarimas-escudero": {
+    "year": "2024", "duration": "45 days + 3 months", "ref": "Referenceable client · Video testimonial",
+    "contexto": "Industrial pallet manufacturer in Mexico. Hyper-competitive category — domestic + international suppliers fighting over the core keyword. Zero prior digital presence.",
+    "accion": "Fast-ramp technical SEO + complementary LinkedIn targeting Procurement / Buying teams at global brands operating in Mexico. Combined SEO + LinkedIn = one brand, two channels.",
+    "resultados": [
+      "\"pallets Mexico\" from <strong>nothing to Top 10</strong> in under 45 days",
+      "<strong>#7 on Google</strong> on a highly contested core keyword",
+      "<strong>Revlon closed in 3 months</strong> via LinkedIn (global account)",
+      "Brand converted into a recurring B2B supplier"
+    ],
+    "videoId": "jpRvLGntDLc",
+    "images": ["caso-tarimas-escudero-01.webp"]
+  },
+  "sk-logistics": {
+    "year": "2024", "duration": "12 months", "ref": "Referenceable client",
+    "contexto": "B2B logistics operator running supply chain for industrial brands in Mexico. Needed to scale SEO authority without ad budget and build a defensible digital asset.",
+    "accion": "Technical audit + vertical logistics content stack + outreach link building + on-page optimization across 200+ pages.",
+    "resultados": [
+      "<strong>+500 new keywords</strong> ranking (1,000 → 1,500)",
+      "<strong>29 keywords in Google Top 5</strong>",
+      "<strong>+25% organic traffic</strong> sustained month over month",
+      "<strong>+400 backlinks</strong> from 16 new referring domains"
+    ],
+    "images": ["caso-sk-logistics-01.webp"]
+  },
+  "plaxma": {
+    "year": "2024", "duration": "6 months", "ref": "Referenceable client",
+    "contexto": "B2B digital signage company in Mexico. Technical category with specialized buyers (retail managers, F&B chains). Zero prior SEO, 100% dependent on ads + cold outbound.",
+    "accion": "Accelerated technical SEO + AEO (FAQ + Schema) + complementary LinkedIn prospecting across retail brands.",
+    "resultados": [
+      "Google Page 1 in <strong>under 30 days</strong>",
+      "Organic clicks: <strong>102 → 428 (+319%)</strong>",
+      "Impressions: <strong>530 → 4,130 (+679%)</strong>",
+      "Surfaced inside AI answers (AEO working)",
+      "<strong>+95% projects closed</strong> via complementary LinkedIn"
+    ],
+    "images": ["caso-plaxma-02.webp","caso-plaxma-03.webp"]
+  },
+  "spakio": {
+    "year": "2023-2024", "duration": "Active", "ref": "Referenceable client · Video testimonial",
+    "contexto": "Mexico-based logistics and warehousing operator with large industrial warehouses that needed international importers as anchor tenants to fill capacity. Zero budget for international ads — and ads in China aren't an option (Google blocked, closed ecosystem). The challenge: how to show up in front of a Chinese buyer without paying.",
+    "accion": "Technical SEO targeting English and Simplified Chinese queries for logistics/warehousing/3PL Mexico. Service schema + bilingual landings (EN/中文) + AEO with FAQs covering import flows, certifications and cross-docking. The Chinese buyer finds Spakio on Google/Baidu before flying to Mexico.",
+    "resultados": [
+      "<strong>Chinese importer</strong> found Spakio via pure organic SEO — zero ad spend",
+      "Warehouses <strong>full and operating</strong> (photo attached)",
+      "The Chinese importer landed in CDMX to close <strong>Amazon, OXXO and Liverpool</strong> inside the operation",
+      "Recurring client + referrals across LATAM import circles post-landing"
+    ],
+    "videoId": "ZP7XvNV2SQU",
+    "images": ["caso-spakio-01.webp"]
+  },
+  "15element-ai": {
+    "year": "2024-2025", "duration": "12 months (our own case)", "ref": "Methodology proof",
+    "contexto": "Same playbook applied to our own site. \"LATAM AEO agency\" wasn't a category — we created it. Competing against traditional SEO agencies that still don't operate inside LLMs.",
+    "accion": "Category defined + AEO content stack + measurable Citation Share inside ChatGPT/Gemini/Perplexity + founder organic LinkedIn as technical authority.",
+    "resultados": [
+      "<strong>Top 3 across the 3 LLMs</strong> for \"LATAM AEO agency\" and \"B2B AI marketing\"",
+      "<strong>+400% qualified inbound</strong> monthly",
+      "\"LATAM AEO\" category defined and owned",
+      "If it works here — it works for you"
+    ],
+    "images": ["caso-15element-ai-01.webp"]
+  },
+  "proforma-battlefield": {
+    "year": "2024-2025", "duration": "Active", "ref": "Referenceable client · Visual evidence",
+    "contexto": "Promotional products / merchandise B2B in Canada. Industry with thousands of local + national competitors. Showing up in AI Overview = instant filter into the buyer's short list.",
+    "accion": "Technical AEO + on-page FAQPage schema + vertical fulfillment content + strengthened reviews / E-E-A-T.",
+    "resultados": [
+      "Cited in <strong>Google AI Overview</strong> for \"promotional fulfillment services\"",
+      "<strong>#3 organic</strong> on \"define promotional items\"",
+      "AI visibility = automatic short list for the prospect",
+      "Visual evidence available (screenshots)"
+    ],
+    "images": ["caso-proforma-battlefield-01.webp","caso-proforma-battlefield-02.webp"]
+  },
+  "alaia-crossing": {
+    "year": "2024", "duration": "Active", "ref": "Referenceable client",
+    "contexto": "Premium real estate development in Houston, TX. Competing against Realtor, Zillow, Yelp for transactional gated-community keywords — portals with massive authority.",
+    "accion": "Local SEO + vertical content + RealEstate schema + accumulated reviews + neighborhood reputation.",
+    "resultados": [
+      "<strong>#1 organic</strong> on \"best gated communities in Houston\"",
+      "<strong>#1 organic</strong> on \"affordable custom home builders gated community Houston\"",
+      "Outranking <strong>Realtor and Yelp</strong> with an owned asset",
+      "Pipeline of highly qualified prospects"
+    ],
+    "images": ["caso-alaia-crossing-02.webp","caso-alaia-crossing-03.webp","caso-alaia-crossing-04.webp","caso-alaia-crossing-05.webp"]
+  },
+  "penwood-furniture": {
+    "year": "2024", "duration": "Active", "ref": "Referenceable client · Visual evidence",
+    "contexto": "Artisan furniture maker in Canada. Local category with proximity buyers. No Maps = no business — competing against larger, cheaper chains.",
+    "accion": "Intensive local SEO + optimized GBP + content + systematic 5★ review accumulation + on-page for \"near me\" keywords.",
+    "resultados": [
+      "<strong>#1 on Google Maps</strong> for \"pine furniture near me\"",
+      "<strong>#1 organic</strong> on \"furniture builders near me\"",
+      "<strong>4.5★ with 60 reviews</strong> accumulated",
+      "Sustained local pipeline with zero ad spend"
+    ],
+    "images": ["caso-penwood-furniture-01.webp","caso-penwood-furniture-02.webp","caso-penwood-furniture-04.webp","caso-penwood-furniture-05.webp"]
+  },
+  "bcs-bioclean": {
+    "year": "2024-2025", "duration": "Active", "ref": "Referenceable client",
+    "contexto": "Industrial passivation, pickling, derouging and electropolishing in Canada. Ultra-technical B2B niche — buyers are maintenance engineers at pharma, biotech and critical-process plants. Competing against providers with decades of authority (Astro Pak, Purepass, Electro-Max). In this market the buyer doesn't shortlist 30 options — they open Google or ChatGPT, read the AI Overview, and the short list is locked right there. Showing up in that AI Overview = sitting at the evaluation table. Not showing up = not existing.",
+    "accion": "AEO + technical SEO across the full service cluster (passivation, pickling, derouging, electropolishing, chemical cleaning) + deep process content with technical comparisons (passivation vs pickling, ASTM A967 vs A380) that AI engines cite as authoritative sources + FAQPage schema + Oakville/Burlington GBP optimization to capture the Top Providers Canada geo filter.",
+    "resultados": [
+      "Cited in <strong>AI Overview</strong> for \"industrial passivation services\"",
+      "Cited in <strong>Canada AI Overview</strong> for \"best passivation services Canada\" (Top Providers list)",
+      "Cited in <strong>AI Overview</strong> for \"bio-processing passivation services\" (sidebar + list)",
+      "<strong>#1 organic</strong> on \"passivation vs pickling steel systems Canada\"",
+      "<strong>Top 5 organic</strong> on \"derouging services\" and \"derouging and passivation Canada\" (two BCS results in SERP)",
+      "<strong>Top 5 organic</strong> on \"electrochemical polishing Canada\"",
+      "<strong>Top 3 organic</strong> on \"ASTM A967 vs ASTM A380\" (ultra-technical spec term)",
+      "<strong>Top 3 organic</strong> on \"best passivation services Canada\" and \"bio clean services\"",
+      "<strong>#2 organic</strong> on \"chemical cleaning services\"",
+      "<strong>5.0★ local pack</strong> with full GBP panel on \"bio clean services\" (Oakville)",
+      "Full technical cluster owned: passivation · pickling · derouging · electropolishing · chemical cleaning"
+    ],
+    "images": ["caso-bcs-bioclean-01.webp","caso-bcs-bioclean-02.webp","caso-bcs-bioclean-03.webp","caso-bcs-bioclean-04.webp","caso-bcs-bioclean-05.webp","caso-bcs-bioclean-06.webp","caso-bcs-bioclean-07.webp","caso-bcs-bioclean-08.webp","caso-bcs-bioclean-09.webp","caso-bcs-bioclean-10.webp","caso-bcs-bioclean-11.webp","caso-bcs-bioclean-12.webp","caso-bcs-bioclean-13.webp"]
+  },
+  "two-guys-shovel": {
+    "year": "2024-2025", "duration": "Active", "ref": "Verified testimonial",
+    "contexto": "Landscaping / turf services in Canada. Local business 100% search-dependent. ChatGPT started recommending local services — whoever shows up there wins the lead.",
+    "accion": "AEO + on-page + reviews + GBP. Optimization so LLMs name the business when a local searches \"landscaper near me\".",
+    "resultados": [
+      "Verified owner testimonial: <strong>\"Customer said they found us through CHAT GPT!\"</strong>",
+      "Pure AEO in action — measurable LLM-to-local-service traffic",
+      "Reproducible playbook for any local service business"
+    ],
+    "quote": "Customer said they found us through CHAT GPT! — David Vella, owner",
+    "images": ["caso-two-guys-shovel-01.webp","caso-two-guys-shovel-02.webp","caso-two-guys-shovel-03.webp","caso-two-guys-shovel-04.webp"]
+  },
+  "oakville-sight-sound": {
+    "year": "2024", "duration": "Active", "ref": "Referenceable client",
+    "contexto": "AV / Home Theater in Oakville, Canada. Saturated local market. Total local SERP dominance = business dominance in the zone.",
+    "accion": "Hyper-intensive local SEO + 39 GBP locations + content + reviews + granular geo optimization.",
+    "resultados": [
+      "<strong>100%</strong> of keywords ranking Top 1-3 on Google",
+      "<strong>39 locations at #1</strong> on Google Maps Oakville",
+      "Full coverage of the target zone",
+      "Competition pushed off the local SERP"
+    ],
+    "images": ["caso-oakville-sight-sound-01.webp"]
+  },
+  "propel-active-health": {
+    "year": "2024-2025", "duration": "Active", "ref": "Referenceable client",
+    "contexto": "Physiotherapy + chiropractic in Burlington, Canada. Local SEO + AEO + Paid working together — the patient searches by symptom, decides by reviews + AI presence.",
+    "accion": "Local SEO + AEO (FAQ + cases) + complementary Paid Ads (Google + Meta) targeting wellness maintenance audiences.",
+    "resultados": [
+      "<strong>494 active keywords</strong> in SERP",
+      "<strong>42 keywords in organic Top 3</strong>",
+      "<strong>47 keywords inside AI Overviews</strong>",
+      "<strong>5.0★ with 185 reviews</strong> accumulated",
+      "<strong>−55% acquisition cost</strong>"
+    ],
+    "images": ["caso-propel-active-health-01.webp","caso-propel-active-health-02.webp","caso-propel-active-health-03.webp","caso-propel-active-health-04.webp","caso-propel-active-health-05.webp","caso-propel-active-health-06.webp","caso-propel-active-health-07.webp"]
+  },
+  "priority-one-osteopathy": {
+    "year": "2024-2025", "duration": "Active", "ref": "Referenceable client",
+    "contexto": "Osteopathy in Burlington, Canada. The practitioner's name is the brand. SEO/AEO/Paid combo built to capture new patients.",
+    "accion": "AEO with strong practitioner E-E-A-T + content + reviews + complementary high-intent Paid Ads.",
+    "resultados": [
+      "Sarah Howorth <strong>named in Google AI Overview</strong> as top osteopath Burlington",
+      "<strong>#1 organic</strong> on \"indian head massage Burlington\"",
+      "<strong>+195% new consultations</strong> (Paid)",
+      "<strong>3.6× ROAS</strong> sustained"
+    ],
+    "images": ["caso-priority-one-osteopathy-01.webp","caso-priority-one-osteopathy-02.webp","caso-priority-one-osteopathy-03.webp","caso-priority-one-osteopathy-04.webp","caso-priority-one-osteopathy-05.webp","caso-priority-one-osteopathy-06.webp","caso-priority-one-osteopathy-07.webp","caso-priority-one-osteopathy-08.webp","caso-priority-one-osteopathy-09.webp"]
+  },
+  "cinepolis": {
+    "year": "2024", "duration": "Active", "ref": "Referenceable client",
+    "contexto": "Cinépolis sells in-theater ad slots to premium brands (B2B advertisers, not consumer). Ultra-narrow audience: CMOs and heads of media at Fortune 500 companies.",
+    "accion": "100% B2B LinkedIn outreach + curated base of premium advertisers + brand/category-specific proposals. Zero ad spend.",
+    "resultados": [
+      "<strong>Tesla · Maserati · Monte de Piedad</strong> closed as advertisers",
+      "<strong>1,914 invites</strong> sent",
+      "<strong>59.9% acceptance rate</strong>",
+      "<strong>23.19% conversion</strong> to qualified lead",
+      "<strong>$0 USD</strong> in ads"
+    ]
+  },
+  "itechmaint": {
+    "year": "2024", "duration": "Active", "ref": "Referenceable client · Video testimonial",
+    "contexto": "Industrial solar selling to mining companies in Chile. Small market, limited decision-makers (Sustainability + Operations Directors). Cold calling burned out the team with no pipeline.",
+    "accion": "Hyper-targeted 1:1 LinkedIn outreach to mining ops decision-makers. Context tied to announced ESG projects. CPL moved from cold to contextual.",
+    "resultados": [
+      "<strong>1,914 invites</strong> · 1,144 connections · <strong>106 qualified leads</strong>",
+      "<strong>59.9% acceptance</strong>",
+      "<strong>CPL: $340 → $35 USD</strong>",
+      "Sustained industrial solar pipeline"
+    ],
+    "videoId": "FMGqB1MBD78"
+  },
+  "sport-city": {
+    "year": "2024", "duration": "Active", "ref": "Referenceable client",
+    "contexto": "Gym chain in Mexico needing strategic B2B alliances (not consumer members). Target = marketing departments at major brands for co-branding and events.",
+    "accion": "Organic LinkedIn targeted at Brand / Partnership Managers of premium brands. Collaboration + events proposal.",
+    "resultados": [
+      "<strong>49.37%</strong> qualified prospect rate",
+      "<strong>5,300+ invites</strong>",
+      "<strong>700 qualified prospects</strong>",
+      "Alliance with <strong>Grupo Martí</strong> and other top brands"
+    ]
+  },
+  "itesm": {
+    "year": "2024", "duration": "Active", "ref": "Referenceable client",
+    "contexto": "Tec de Monterrey executive programs competing for C-suite attention (CEO/CFO/COO) who get dozens of education offers per month. Ultra-selective audience with long decision cycles. Cold email + conventional ads saturated.",
+    "accion": "1:1 LinkedIn outreach hyper-segmented by C-suite role + industry + company size. Contextual messaging tied to sector-specific transformations. Funnel into info sessions with the academic director.",
+    "resultados": [
+      "<strong>1,270 qualified C-suite leads</strong> generated",
+      "<strong>87 leads/month</strong> sustained throughout the campaign",
+      "<strong>30% conversion</strong> from lead to info meeting",
+      "Consistent premium pipeline for executive programs"
+    ]
+  },
+  "family-dentistry": {
+    "year": "2024-2025", "duration": "Active", "ref": "Referenceable client · Visual evidence",
+    "contexto": "Family dental clinic in Hamilton, Ontario. Saturated local market. 100% dependent on local search — no Google Maps means no new patients.",
+    "accion": "Intensive local SEO + optimized GBP + reviews + service content + on-page for near-me keywords + local authority building.",
+    "resultados": [
+      "<strong>#1 on Google Maps</strong> for \"hess village dental\" Hamilton",
+      "Top organic results across Hamilton dental keywords",
+      "Double presence: <strong>Local Pack + organic</strong>",
+      "<strong>+240% new patients</strong> per month"
+    ],
+    "images": ["caso-family-dentistry-locke-01.webp","caso-family-dentistry-locke-02.webp","caso-family-dentistry-locke-03.webp","caso-family-dentistry-locke-04.webp","caso-family-dentistry-locke-05.webp","caso-family-dentistry-locke-07.webp","caso-family-dentistry-locke-08.webp"]
+  },
+  "capillary-wave": {
+    "year": "2024-2025", "duration": "Active", "ref": "Referenceable client · Visual evidence",
+    "contexto": "Mental health community for men and women in Burlington, Canada. Sensitive emotional-wellness searches — the user searching has urgency. Whoever shows up first (Google + AI) gets the patient.",
+    "accion": "SEO + AEO + topical authority + sensitive, respectful content with practitioner E-E-A-T + reviews + local GBP.",
+    "resultados": [
+      "<strong>Local reference</strong> for mental health in Burlington",
+      "Ranked across <strong>AI + Google</strong> simultaneously",
+      "Visibility on <strong>high-emotional-intent</strong> searches",
+      "Sustained pipeline of new patients"
+    ],
+    "images": ["caso-capillary-wave-01.webp","caso-capillary-wave-02.webp","caso-capillary-wave-03.webp"]
+  },
+  "mcs-electrical": {
+    "year": "2024-2025", "duration": "3 months + active", "ref": "Referenceable client · Visual evidence",
+    "contexto": "Electrical contractor in Burlington, Canada. Stuck at position 23 for \"electrician Burlington\" — invisible to the user. Saturated local market with established digital competitors.",
+    "accion": "Local SEO + on-page + optimized GBP + reviews + vertical content across electrical service types + technical authority + AEO.",
+    "resultados": [
+      "\"electrician Burlington\" from <strong>pos 23 → Top 10</strong> in 3 months",
+      "<strong>Top 5 on ChatGPT</strong> for its category",
+      "Visibility across AI answers + Google simultaneously",
+      "Sustained local pipeline from search"
+    ],
+    "images": ["caso-mcs-electrical-01.webp","caso-mcs-electrical-02.webp","caso-mcs-electrical-03.webp","caso-mcs-electrical-04.webp"]
+  },
+  "active-energy": {
+    "year": "2024-2025", "duration": "Active", "ref": "Referenceable client · Video testimonial",
+    "contexto": "B2B solar in Mexico. Years of social media spend with no real closes. The real bottleneck was access to Plant Managers + Sustainability Directors at companies with high electrical consumption — not awareness.",
+    "accion": "Full stack overhaul: conversion-optimized site + advanced CRM with scoring + LinkedIn targeted at industrial decision-makers. 1:1 outreach against accounts with verifiable consumption.",
+    "resultados": [
+      "<strong>First close in month 1</strong> after years without traction",
+      "Triple-A leads (Plant Managers, Sustainability Directors)",
+      "National strategic alliances activated",
+      "Sustained B2B solar pipeline with zero ad spend"
+    ],
+    "videoId": "0RTR7BcMItc"
+  },
+  "kuali-solar": {
+    "year": "2024", "duration": "Active", "ref": "Referenceable client · Video testimonial",
+    "contexto": "B2B solar in Mexico. Sales team burned out on cold calling with low conversion. Need: predictable pipeline system without relying on cold calls.",
+    "accion": "Automated LinkedIn outreach + targeting of high-consumption companies + nurturing on expansion signals. Complete cold-call replacement.",
+    "resultados": [
+      "<strong>Cold calling → automated pipeline</strong>",
+      "Predictable system that fills pipeline on its own",
+      "Sales team freed from cold calls",
+      "Replicable Mexico B2B solar case"
+    ],
+    "quote": "We went from exhausting cold calling to a system that fills our pipeline by itself. — Fernando, Kuali Tecnología Solar",
+    "videoId": "FMGqB1MBD78"
+  },
+  "nova-energia": {
+    "year": "2024", "duration": "Active", "ref": "Referenceable client",
+    "contexto": "Industrial solar in Ecuador. Factory and agro decision-makers buy on cost + payback. Virtual assistant + LinkedIn = double inbound+outbound funnel.",
+    "accion": "LinkedIn outreach + virtual assistant on the electric bill to pre-qualify (consumption > X kWh). Bot requests bill photo → analyzes → books meeting.",
+    "resultados": [
+      "<strong>635 requests</strong> · <strong>53 conversations</strong> · <strong>19 qualified leads</strong>",
+      "<strong>35.85% conversion</strong>",
+      "Virtual assistant: 219 contacts, <strong>47% shared their bill</strong>",
+      "<strong>26% booked a consultation call</strong>"
+    ]
+  },
+  "quickcap": {
+    "year": "2024", "duration": "Active", "ref": "Referenceable client · Video testimonial",
+    "contexto": "Mexican fintech raising capital from institutional investors. Ultra-narrow audience, high confidentiality. Consumer ads don't apply.",
+    "accion": "1:1 LinkedIn outreach to institutional investors (family offices, VCs, PE). Data room proposal + direct booking with Carlos.",
+    "resultados": [
+      "<strong>Institutional investors</strong> reached directly",
+      "Key channel for active capital raise",
+      "Filtered, on-target reach with the right audience",
+      "Zero consumer market noise"
+    ],
+    "quote": "The reach is direct, filtered and dead-on with the target audience. — Carlos Basauri, founding partner",
+    "videoId": "4zJW81ez9Dk"
+  },
+  "kol-agency": {
+    "year": "2024", "duration": "Active", "ref": "Referenceable client · Video testimonial",
+    "contexto": "Vertical pharma LMS SaaS expanding into LATAM. Decision-makers are Training Directors + Compliance Heads at global pharma companies — ultra-technical, heavily regulated audience.",
+    "accion": "1:1 LinkedIn outreach + curated base of pharma multinational Training Directors + compliance-first proposal.",
+    "resultados": [
+      "<strong>3 markets opened</strong>: Mexico, LATAM, Central America",
+      "Pharma decision-makers opened without cold calls",
+      "Commercial expansion activated in months, not years",
+      "Replicable pipeline across global pharma"
+    ],
+    "videoId": "mzJnj6mbcnc"
+  },
+  "histone": {
+    "year": "2024", "duration": "Active", "ref": "Referenceable client",
+    "contexto": "Retail Tech in LATAM. Buyers = IT Directors at the largest retail chains. Complex sales cycle, committee decisions.",
+    "accion": "Hyper-targeted LinkedIn outreach to IT/Innovation Directors at retail multinationals + tech proposal specific to each vertical.",
+    "resultados": [
+      "<strong>Walmart · OXXO · 7-Eleven · Grupo Xcaret · Hyundai</strong> connected",
+      "<strong>2,459 invites → 998 connections → 335 replies → 19 leads → 9 meetings</strong>",
+      "IT Directors actively in pipeline",
+      "Predictable enterprise retail funnel"
+    ]
+  },
+  "xhamber": {
+    "year": "2024", "duration": "Active", "ref": "Referenceable client",
+    "contexto": "Manufacturer of industrial climatic chambers (testing chambers) for labs and pharma in Mexico. Extreme technical buyer (lab managers, R&D engineers). Cold outreach fails on irrelevance.",
+    "accion": "LinkedIn outreach segmented by technical-search timing signals (publications, job posts, in-progress certifications) + targeted proposal.",
+    "resultados": [
+      "<strong>+190% qualified requests</strong>",
+      "Engineers caught at the moment of technical search",
+      "Active labs + pharma in pipeline",
+      "High-ticket equipment sold to a specialized market"
+    ]
+  },
+  "oplogistics": {
+    "year": "2024", "duration": "Active", "ref": "Referenceable client · Video testimonial",
+    "contexto": "B2B logistics in Mexico with a small sales team. Cold outbound saturated, team burned out with no predictable pipeline.",
+    "accion": "LinkedIn + digital strategy identifying Supply Chain / Operations decision-makers at mid + large companies with Mexico operations.",
+    "resultados": [
+      "<strong>Predictable pipeline system</strong> (vs erratic cold)",
+      "Key decision-makers identified and open",
+      "Cold outbound replaced by a 1:1 contextual system",
+      "Sales team working pre-qualified leads"
+    ],
+    "videoId": "6vpbI9SN4XA"
+  },
+  "tequila-design": {
+    "year": "2024", "duration": "First week", "ref": "Referenceable client",
+    "contexto": "B2B design agency in Mexico. Aggressive competition, decisions made on relationship + portfolio. Cyclical pipeline, variable sales cycle.",
+    "accion": "1:1 LinkedIn outreach with a tight ICP targeting Marketing / Brand Managers in active creative-search moments (launches, rebrands).",
+    "resultados": [
+      "<strong>8 qualified leads in 1 week</strong>",
+      "<strong>25.81% conversion rate</strong>",
+      "<strong>Sales cycle 40% shorter</strong>",
+      "No volume — just precision on buyer timing"
+    ]
+  },
+  "estrategics": {
+    "year": "2024", "duration": "7 months", "ref": "Referenceable client",
+    "contexto": "B2B strategic consultancy in Mexico. Buyers are C-suite. Access to CEO/CFO is the business bottleneck. Conferences and referrals are expensive and don't scale.",
+    "accion": "LinkedIn outreach to 205 C-suite decision-makers with a pipeline + expansion-signals proposal.",
+    "resultados": [
+      "<strong>205 decision-makers</strong> reached directly",
+      "C-suite opened as a consistent prospecting channel",
+      "<strong>+120% qualified leads</strong>",
+      "Active pipeline with expansion signals"
+    ]
+  },
+  "rivus-industrial": {
+    "year": "2024", "duration": "Active", "ref": "Referenceable client",
+    "contexto": "Industrial B2B / manufacturing in Mexico. Buyers are Plant Managers + Procurement at key accounts. Open RFQ = price war. Pre-RFQ = win by relationship.",
+    "accion": "Organic outreach pipeline + signals on accounts in the moment before an RFQ. Position as recommended supplier before the formal process starts.",
+    "resultados": [
+      "Key accounts opened <strong>pre-RFQ</strong>",
+      "<strong>+130% pipeline</strong>",
+      "Outreach timed correctly against need signals",
+      "Recommended-supplier position locked before the RFQ"
+    ]
+  },
+  "argos-freight": {
+    "year": "2024", "duration": "Active", "ref": "Verified WhatsApp testimonial",
+    "contexto": "Freight / B2B logistics in Mexico. Buyer = Logistics Managers + COOs. Needed predictable pipeline + full lead management.",
+    "accion": "LinkedIn outreach + active pipeline management + lead nurturing through to booked meeting.",
+    "resultados": [
+      "Verified WhatsApp from Pablo Baltierra: <strong>\"we're going all in with the leads\"</strong>",
+      "B2B outreach + full management working",
+      "Visual evidence available (WhatsApp screenshots)"
+    ],
+    "quote": "Hi Luis, yes we're working all in with the leads. — Pablo Baltierra",
+    "images": ["caso-testimonio-whatsapp-01.webp"]
+  },
+  "matthew-regan": {
+    "year": "2024", "duration": "Active", "ref": "Referenceable client · Video testimonial",
+    "contexto": "Top premium residential real estate broker in Toronto. 20+ years. Top 17 of 40,000 TREB agents. Needed constant warm introductions, not cold leads.",
+    "accion": "1:1 LinkedIn prospecting + constant nurturing of high-net-worth audiences + real estate authority content + referral-based introductions.",
+    "resultados": [
+      "Top <strong>17 of 40,000</strong> TREB agents sustained",
+      "<strong>Constant warm introductions</strong>",
+      "<strong>+310% qualified consultations</strong>",
+      "Sustained premium pipeline"
+    ],
+    "quote": "Absolute gold. Tremendous ROI. — Matthew Regan, Royal LePage",
+    "videoId": "JufOJ4rKmdc"
+  },
+  "emotion-group": {
+    "year": "2024", "duration": "Month 1", "ref": "Referenceable client",
+    "contexto": "High-ticket B2B services in Mexico. Small sales team. Every meeting counts — can't burn rep time on low-quality leads.",
+    "accion": "AI-powered prospecting with a sharp ICP from day 1 + contextual LinkedIn outreach + automated lead filtering.",
+    "resultados": [
+      "<strong>Month 1</strong>: meetings with high-value clients",
+      "Sales team time optimized",
+      "Opportunity quality lifted from the start",
+      "Premium pipeline without a long warmup"
+    ]
+  },
+  "smx": {
+    "year": "2024", "duration": "4 months", "ref": "Referenceable client",
+    "contexto": "B2B factoring / lending in Mexico. Buyers are CFOs + Treasurers with cyclical liquidity needs. Generic outreach fails — timing is everything.",
+    "accion": "LinkedIn outreach driven by intent signals (CFO movements, funding rounds, growth signals) + targeted liquidity proposal.",
+    "resultados": [
+      "<strong>315 leads in 4 months</strong>",
+      "<strong>57% acceptance · 45% response · 18% conversion</strong>",
+      "<strong>74 prospects/month</strong> on average",
+      "<strong>+95% response rate</strong> on contextual outreach"
+    ]
+  },
+  "wild-wing-st-catharines": {
+    "year": "2023-2024", "duration": "Active", "ref": "Referenceable client",
+    "contexto": "Restaurant franchise in Canada. Location competing with the chain itself + local rivals for share of stomach. Need: sustained capacity, not spikes.",
+    "accion": "Integrated digital strategy: Meta Ads + Google + email + loyalty + authentic multi-touchpoint creative.",
+    "resultados": [
+      "<strong>$9M+ annual sales</strong>",
+      "<strong>Most profitable</strong> Wild Wing location in the region",
+      "<strong>100% capacity</strong> sustained",
+      "Model replicable across other locations"
+    ]
+  },
+  "wild-wing-alliston": {
+    "year": "2024", "duration": "Peak season", "ref": "Referenceable client",
+    "contexto": "Restaurant in Canada competing in a local market. Seasonal peak = short window to capture volume and new customers.",
+    "accion": "Geo-targeted Meta + Google Ads inside an 8 km radius + trackable offers + dedicated seasonal landing.",
+    "resultados": [
+      "<strong>2.67× ROI</strong> in peak season",
+      "<strong>$6,838 sales</strong> tracked directly",
+      "<strong>20.28% redemption rate</strong>",
+      "<strong>113 new visitors</strong> (72% of total)",
+      "<strong>+145% delivery orders</strong>"
+    ]
+  },
+  "sushi-one": {
+    "year": "2024", "duration": "Active", "ref": "Referenceable client",
+    "contexto": "Sushi restaurant in Mexico. Saturated local market, thin margins. Need: multiply sales without massive operational cost increases.",
+    "accion": "Meta Ads + automated Messenger bot + authentic creative (food porn + owner on camera) + redemption tracking.",
+    "resultados": [
+      "<strong>4.37× ROI</strong>",
+      "Revenue: <strong>$4,412 → $19,304</strong>",
+      "<strong>47 promo redemptions</strong>",
+      "<strong>+337% revenue growth</strong>",
+      "Sales multiplied 4× in a few months"
+    ]
+  },
+  "ricos-pizzeria": {
+    "year": "2024", "duration": "6 months", "ref": "Referenceable client",
+    "contexto": "Local pizzeria in Canada. Buyer = recurring local families. Need: build a list of loyal ambassadors for predictable sales, not one-off campaigns.",
+    "accion": "Email marketing + Meta Ads + authentic creative + loyalty + Messenger bot for email capture + exclusive offers.",
+    "resultados": [
+      "Email list: <strong>400 → 1,000+</strong> subscribers",
+      "<strong>5-10 new customers daily</strong>",
+      "<strong>42% email open rate</strong>",
+      "<strong>+150% list growth</strong> in 6 months",
+      "Loyal ambassador base built"
+    ]
+  },
+  "la-fromagerie": {
+    "year": "2024", "duration": "Active", "ref": "Referenceable client",
+    "contexto": "Niche gourmet cheese shop in Canada. Small, specific audience (foodies, fine-dining home cooks). Need: turn the physical store into a regional destination.",
+    "accion": "Meta Ads + food-content creative + local partnerships + redemption tracking + positioning as a culinary destination.",
+    "resultados": [
+      "<strong>171 new customers</strong> onboarded",
+      "<strong>+280% organic reach</strong>",
+      "<strong>$7,934 sales</strong> tracked directly",
+      "<strong>4.95% redemption rate</strong>",
+      "Store transformed into a regional culinary destination"
+    ]
+  },
+  "sams-tire-shop": {
+    "year": "2023-2024", "duration": "<12 months", "ref": "Documented historical case",
+    "contexto": "Family tire shop in the US. Founder-run 1-man-band business. Goal: triple sales to make the business sellable so the founder could retire.",
+    "accion": "Meta + high-intent Google Ads + reviews + email loyalty + operational capacity scaling coordinated with marketing.",
+    "resultados": [
+      "<strong>3× sales</strong> in under a year",
+      "Peak months at <strong>$100K</strong>",
+      "Team grew from <strong>2 → 6 employees</strong>",
+      "<strong>Business sold + founder retired</strong>",
+      "Full exit case enabled by marketing"
+    ]
+  },
+  "honda-grupo-tec": {
+    "year": "2024", "duration": "Active", "ref": "Referenceable client · Video testimonial",
+    "contexto": "Honda auto dealer in Mexico. Internal competition between national dealerships for sales share. Need: become #1 nationally inside the network.",
+    "accion": "Continuous rapid A/B testing + data analysis validating which messages get real traction + constant iteration on what works.",
+    "resultados": [
+      "<strong>#1 in national sales</strong> inside their dealership network",
+      "Continuous testing system implemented",
+      "Messages validated by real data, not hunches",
+      "Model replicable across other dealers"
+    ],
+    "videoId": "BEmPt2wZUZE"
+  },
+  "pmc-tire": {
+    "year": "2024", "duration": "Active", "ref": "Referenceable client",
+    "contexto": "Tires / 4×4 in Canada. Technical product with specific buyers (off-roaders + daily drivers). Competitive market against larger chains.",
+    "accion": "Google + Facebook/Instagram dual-funnel + category-specific landings + retargeting + authentic multi-touchpoint creative.",
+    "resultados": [
+      "<strong>$204,626 sales</strong> tracked",
+      "<strong>4,179 leads</strong> generated",
+      "<strong>740 qualified</strong>",
+      "<strong>CPL $4.54</strong>",
+      "Sustained volume with no seasonal volatility"
+    ]
+  },
+  "underdog-motorsports": {
+    "year": "2024", "duration": "Active", "ref": "Referenceable client",
+    "contexto": "Motorsports accessories shop in the US. Hyper-engaged enthusiast audience. Category with high purchase intent in specific moments of the year.",
+    "accion": "High-intent Google Ads + Meta Ads across motorsports communities + authentic native creative + structured retargeting.",
+    "resultados": [
+      "<strong>3.2× ROAS</strong> sustained",
+      "<strong>+180% qualified traffic</strong>",
+      "Enthusiast communities activated as a predictable channel",
+      "High-value customer pipeline"
+    ]
+  },
+  "lonestar-offroad": {
+    "year": "2024", "duration": "Active", "ref": "Referenceable client",
+    "contexto": "Off-road accessories specialist in the US. Buyers are enthusiasts with high purchase intent — every visit qualifies as a serious prospect. Need: triple qualified volume without losing ROAS.",
+    "accion": "High-intent Google Ads + Meta segmented to communities + product-category landings + cross-channel retargeting.",
+    "resultados": [
+      "<strong>3.8× ROAS</strong> sustained",
+      "<strong>124 conversions</strong> in cycle",
+      "<strong>+210% qualified traffic</strong>",
+      "Traffic tripled without sacrificing ROAS"
+    ]
+  },
+  "jeepers-4x4": {
+    "year": "2024", "duration": "Active", "ref": "Referenceable client",
+    "contexto": "4×4 accessories shop in the US. Active, loyal off-road community. Need: low CPL + high lead-to-sale rate.",
+    "accion": "Meta Ads across off-road communities + high-intent Google + product-in-real-use creative + email nurturing.",
+    "resultados": [
+      "<strong>443 leads at $5.68 USD CPL</strong>",
+      "<strong>+320% qualified inquiries</strong>",
+      "<strong>28% lead-to-sale rate</strong>",
+      "Low CPL + high post-lead conversion"
+    ]
+  }
+}

@@ -5,7 +5,7 @@
      y atributo data-case="<slug>" abre el modal con la data del slug.
      Soporta deep-link ?case=<slug> en URL (auto-abre al cargar).
      CSS: en _styles/common.css (.case-lightbox, .clb-*).
-     Data: _data/cases.json (inyectada via token {{CASES_DATA}} en build).
+     Data: _data/cases-en.json (inyectada via token {{CASES_DATA_EN}} en build).
      ════════════════════════════════════════════════════════════ -->
 <div class="case-lightbox" id="caseLightbox" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="clbTitle">
   <div class="case-lightbox-overlay" data-close-lightbox></div>
@@ -66,7 +66,7 @@
   </div>
 </div>
 
-<script id="casesData" type="application/json">{{CASES_DATA}}</script>
+<script id="casesData" type="application/json">{{CASES_DATA_EN}}</script>
 
 <script>
 (function(){
