@@ -489,3 +489,32 @@
   to = "/"
   status = 410
   force = true
+
+# 2026-06-01: Hostinger legacy /use-cases/ + /retail/ recovery (~238 imps/90d).
+# Páginas heredadas del sitio Hostinger (Carlo) que seguían rankeando en GSC pos 4-7
+# sin destino vivo. 301 a /en/case-studies/ (hub equivalente que YA tiene Wild Wing,
+# Sushi One y otros casos retail-adjacent). Blog "how we help retail trades" recupera
+# la parte trades vía /blog/ai-for-trades/ recién republicado; retail se pierde parcial.
+[[redirects]]
+  from = "/use-cases/"
+  to = "/en/case-studies/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/retail/"
+  to = "/en/case-studies/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/blog/how-we-help-retail-trades-professionals-grow/"
+  to = "/blog/ai-for-trades/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/blog/ai-for-retail/"
+  to = "/en/case-studies/"
+  status = 301
+  force = true
