@@ -1350,6 +1350,11 @@ a.case-card.is-linked:hover .case-card-cta { color: var(--brand-teal); transform
   color: var(--fg-muted);
   transition: color var(--dur-fast), transform var(--dur-fast);
 }
+.case-card:hover .case-card-cta,
+.hero-case:hover .case-card-cta {
+  color: var(--brand-teal);
+  transform: translateX(2px);
+}
 a.hero-case { text-decoration: none; color: inherit; cursor: pointer; display: block; }
 a.hero-case.is-linked { position: relative; }
 a.hero-case.is-linked::after {
