@@ -344,15 +344,10 @@
   status = 301
   force = true
 
-# 2026-05-30: blog Canadá (5,686 imp, rankeaba pos 3-7 en queries Canadá/SEO) estaba 404.
-# Re-apuntado al hub EN /en/case-studies/ que ahora contiene los casos Canadá reales
-# (MCS Burlington, Oakville, Family Dentistry Hamilton, BCS, Proforma...). Destino EN
-# temáticamente equivalente a "seo case studies canada" → recupera el equity al idioma correcto.
-[[redirects]]
-  from = "/blog/seo-case-studies-2025-canada/"
-  to = "/en/case-studies/"
-  status = 301
-  force = true
+# 2026-06-01: blog Canadá REPUBLICADO en path original con 4 casos del backup Hostinger
+# (Propel Active, Priority One, MCS Electrical, Oakville Sight&Sound). Voz Luis EN, no
+# copy genérico. URL preservada para no perder equity GSC (2,451 imps/90d pos 9.1).
+# Excepción justificada: <html lang="en"> en /blog/ legacy path. Redirect 301 eliminado.
 
 [[redirects]]
   from = "/pipeline-b2b-sin-publicidad-vs-meta-ads/"
@@ -450,10 +445,13 @@
   status = 410
   force = true
 
+# 2026-06-01: content-ai era 410, pero queries "ai content creation agency" (125 imps pos 13.7)
+# tienen intent comercial que SÍ encaja con AEO/SEO content service → 301 al servicio vivo.
+# Recupera 2,261 imps/90d hacia /en/services/aeo-seo/ (hoy 450 imps pos 31, inyecta autoridad).
 [[redirects]]
   from = "/the-elements/content-ai/"
-  to = "/"
-  status = 410
+  to = "/en/services/aeo-seo/"
+  status = 301
   force = true
 
 [[redirects]]
