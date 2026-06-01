@@ -235,17 +235,25 @@ a.case-card.is-linked:hover .case-card-cta { color: var(--brand-teal); transform
 .case-card-cta {
   display: inline-flex;
   align-items: center;
-  gap: 4px;
-  margin-top: 14px;
-  padding-top: 12px;
-  border-top: 1px dashed var(--border);
+  gap: 6px;
+  margin-top: 16px;
+  padding: 8px 14px;
+  border: 1px solid var(--brand-teal);
+  border-radius: 999px;
+  background: rgba(20, 184, 166, 0.08);
   font-family: var(--font-mono);
   font-size: 11px;
   font-weight: 700;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--fg-muted);
-  transition: color var(--dur-fast), transform var(--dur-fast);
+  color: var(--brand-teal);
+  transition: background var(--dur-fast), color var(--dur-fast), transform var(--dur-fast);
+}
+.case-card:hover .case-card-cta,
+.hero-case:hover .case-card-cta {
+  background: var(--brand-teal);
+  color: #fff;
+  transform: translateX(2px);
 }
 a.hero-case { text-decoration: none; color: inherit; cursor: pointer; display: block; }
 a.hero-case.is-linked { position: relative; }
