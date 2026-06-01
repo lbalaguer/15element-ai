@@ -1,0 +1,275 @@
+<!-- ════════════════════════════════════════════════════════════
+     CASE MODAL (ES) — partial reutilizable
+     Usado por: /catalogo/, /casos/, (futuro /en/catalog/ usa case-modal-en).
+     Cards: cualquier elemento con class .catalogo-card o .case-card
+     y atributo data-case="<slug>" abre el modal con la data del slug.
+     Soporta deep-link ?case=<slug> en URL (auto-abre al cargar).
+     CSS: en _styles/common.css (.case-lightbox, .clb-*).
+     Data: _data/cases.json (inyectada via token {{CASES_DATA}} en build).
+     ════════════════════════════════════════════════════════════ -->
+<div class="case-lightbox" id="caseLightbox" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="clbTitle">
+  <div class="case-lightbox-overlay" data-close-lightbox></div>
+  <div class="case-lightbox-inner">
+    <button class="case-lightbox-close" data-close-lightbox aria-label="Cerrar">&times;</button>
+    <span class="clb-badge" id="clbBadge">SEO · AEO · GEO</span>
+    <h2 class="clb-title" id="clbTitle">Cliente</h2>
+    <p class="clb-industria" id="clbIndustria">Industria · País</p>
+
+    <div class="clb-meta" id="clbMeta"></div>
+
+    <div class="clb-metric" id="clbMetric">Métrica destacada</div>
+
+    <div class="clb-section" id="clbContextoWrap">
+      <div class="clb-section-label">Contexto</div>
+      <p class="clb-section-text" id="clbContexto"></p>
+    </div>
+
+    <div class="clb-section" id="clbAccionWrap">
+      <div class="clb-section-label">Qué hicimos</div>
+      <p class="clb-section-text" id="clbAccion"></p>
+    </div>
+
+    <div class="clb-section" id="clbResultadosWrap">
+      <div class="clb-section-label">Resultados verificables</div>
+      <ul class="clb-section-text" id="clbResultados" style="padding-left:20px; margin:0;"></ul>
+    </div>
+
+    <div class="clb-section" id="clbQuoteWrap" style="display:none;">
+      <div class="clb-section-label">Voz del cliente</div>
+      <blockquote class="clb-section-text" id="clbQuote" style="border-left:3px solid var(--brand-teal); padding-left:16px; font-style:italic; margin:0;"></blockquote>
+    </div>
+
+    <div class="clb-carousel-wrap" id="clbCarouselWrap" style="display:none;">
+      <div class="clb-carousel">
+        <div class="clb-carousel-main">
+          <button class="clb-carousel-btn prev" id="clbPrev" aria-label="Anterior">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+          </button>
+          <img id="clbMainImg" src="" alt="Evidencia caso">
+          <button class="clb-carousel-btn next" id="clbNext" aria-label="Siguiente">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+          </button>
+          <div class="clb-carousel-counter" id="clbCounter">1 / 1</div>
+        </div>
+        <div class="clb-carousel-thumbs" id="clbThumbs"></div>
+      </div>
+      <div class="clb-zoom-hint">← → para navegar · click en imagen para ampliar</div>
+    </div>
+
+    <div class="clb-evidencia" id="clbEvidenciaPlaceholder" style="display:none;"></div>
+
+    <div class="clb-actions">
+      <button class="clb-btn primary" id="clbVideoBtn" style="display:none;">▶ Ver video testimonial</button>
+      <a href="/contacto/#agendar" class="clb-btn primary" id="clbAgendarBtn">Agendar diagnóstico</a>
+      <button class="clb-btn ghost" data-close-lightbox>Volver</button>
+    </div>
+  </div>
+</div>
+
+<script id="casesData" type="application/json">{{CASES_DATA}}</script>
+
+<script>
+(function(){
+  const lb = document.getElementById('caseLightbox');
+  if(!lb) return;
+
+  let DATA = {};
+  try { DATA = JSON.parse(document.getElementById('casesData').textContent); }
+  catch(e){ console.error('casesData parse error', e); }
+
+  const $ = id => document.getElementById(id);
+  const $badge = $('clbBadge'), $title = $('clbTitle'), $industria = $('clbIndustria');
+  const $meta = $('clbMeta'), $metric = $('clbMetric');
+  const $contextoW = $('clbContextoWrap'), $contexto = $('clbContexto');
+  const $accionW = $('clbAccionWrap'), $accion = $('clbAccion');
+  const $resultsW = $('clbResultadosWrap'), $results = $('clbResultados');
+  const $quoteW = $('clbQuoteWrap'), $quote = $('clbQuote');
+  const $carouselWrap = $('clbCarouselWrap'), $mainImg = $('clbMainImg');
+  const $thumbs = $('clbThumbs'), $counter = $('clbCounter');
+  const $prev = $('clbPrev'), $next = $('clbNext');
+  const $evidPH = $('clbEvidenciaPlaceholder'), $videoBtn = $('clbVideoBtn');
+
+  let carouselImgs = [], carouselIdx = 0;
+  function imgSrc(img){ return img.startsWith('http') ? img : '/assets/evidencia/' + img; }
+  function renderCarousel(){
+    if(!carouselImgs.length) return;
+    $mainImg.src = imgSrc(carouselImgs[carouselIdx]);
+    $counter.textContent = (carouselIdx+1) + ' / ' + carouselImgs.length;
+    [...$thumbs.children].forEach((t,i) => t.classList.toggle('is-active', i===carouselIdx));
+    const showNav = carouselImgs.length > 1;
+    $prev.style.display = $next.style.display = showNav ? '' : 'none';
+    $counter.style.display = showNav ? '' : 'none';
+    $thumbs.style.display = showNav ? '' : 'none';
+  }
+  $prev.addEventListener('click', e => { e.stopPropagation(); carouselIdx = (carouselIdx - 1 + carouselImgs.length) % carouselImgs.length; renderCarousel(); });
+  $next.addEventListener('click', e => { e.stopPropagation(); carouselIdx = (carouselIdx + 1) % carouselImgs.length; renderCarousel(); });
+  $mainImg.addEventListener('click', () => { if($mainImg.src) window.open($mainImg.src, '_blank'); });
+
+  function openLightboxBySlug(slug, opts){
+    opts = opts || {};
+    const data = DATA[slug] || null;
+    if(!data){ console.warn('case-modal: slug not found', slug); return; }
+
+    // Detect badge category from card if available, else fallback by slug intuition
+    const card = document.querySelector('[data-case="' + slug + '"]');
+    const badgeEl = card ? card.querySelector('.card-badge') : null;
+    const titleEl = card ? card.querySelector('h3') : null;
+    const industriaEl = card ? card.querySelector('.card-industria') : null;
+    const metricEl = card ? card.querySelector('.card-metric, .case-card-metric') : null;
+
+    $badge.className = 'clb-badge ' + (badgeEl ? (badgeEl.classList.contains('seo') ? 'seo' : badgeEl.classList.contains('linkedin') ? 'linkedin' : 'paid') : 'seo');
+    $badge.textContent = badgeEl ? badgeEl.textContent : (data.badge || 'SEO · AEO · GEO');
+    $title.textContent = titleEl ? titleEl.textContent : (data.title || slug);
+    $industria.textContent = industriaEl ? industriaEl.textContent : (data.industria || '');
+    $metric.innerHTML = metricEl ? metricEl.innerHTML : (data.metric || '');
+
+    // Reset
+    $meta.innerHTML = '';
+    $contextoW.style.display = 'none';
+    $accionW.style.display = 'none';
+    $resultsW.style.display = 'none';
+    $quoteW.style.display = 'none';
+    $carouselWrap.style.display = 'none';
+    $videoBtn.style.display = 'none';
+    $videoBtn.onclick = null;
+
+    const meta = [];
+    if(data.year) meta.push('📅 ' + data.year);
+    if(data.duration) meta.push('⏱ ' + data.duration);
+    if(data.ref) meta.push('✅ ' + data.ref);
+    $meta.innerHTML = meta.map(m => '<span class="clb-meta-item">' + m + '</span>').join('');
+
+    if(data.contexto){ $contexto.textContent = data.contexto; $contextoW.style.display = ''; }
+    if(data.accion){ $accion.textContent = data.accion; $accionW.style.display = ''; }
+    if(data.resultados && data.resultados.length){
+      $results.innerHTML = data.resultados.map(r => '<li style="margin-bottom:8px; line-height:1.6;">' + r + '</li>').join('');
+      $resultsW.style.display = '';
+    }
+    if(data.quote){ $quote.textContent = '"' + data.quote + '"'; $quoteW.style.display = ''; }
+    if(data.images && data.images.length){
+      carouselImgs = data.images.slice();
+      carouselIdx = 0;
+      $thumbs.innerHTML = carouselImgs.map((img,i) => '<div class="clb-thumb" data-i="' + i + '"><img src="' + imgSrc(img) + '" alt="" loading="lazy"></div>').join('');
+      [...$thumbs.children].forEach(t => t.addEventListener('click', () => { carouselIdx = +t.dataset.i; renderCarousel(); }));
+      renderCarousel();
+      $carouselWrap.style.display = '';
+      $evidPH.style.display = 'none';
+    } else {
+      carouselImgs = [];
+      $carouselWrap.style.display = 'none';
+      $evidPH.style.display = 'none';
+    }
+    if(data.videoId){
+      $videoBtn.style.display = '';
+      $videoBtn.onclick = () => {
+        closeLightbox();
+        setTimeout(() => openVideoFor(data.videoId), 260);
+      };
+    }
+
+    lb.classList.add('is-open');
+    lb.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+    lb.querySelector('.case-lightbox-inner').scrollTop = 0;
+
+    // Update URL for deep-linking (push if not already there)
+    if(opts.updateUrl !== false){
+      const url = new URL(window.location.href);
+      url.searchParams.set('case', slug);
+      history.pushState({ caseSlug: slug }, '', url);
+    }
+  }
+
+  function closeLightbox(opts){
+    opts = opts || {};
+    lb.classList.remove('is-open');
+    lb.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+    if(opts.updateUrl !== false){
+      const url = new URL(window.location.href);
+      if(url.searchParams.has('case')){
+        url.searchParams.delete('case');
+        history.pushState({}, '', url.pathname + (url.search ? url.search : '') + url.hash);
+      }
+    }
+  }
+
+  function openVideoFor(ytid){
+    const vlb = document.getElementById('vtLightbox') || document.querySelector('.vt-lightbox');
+    if(vlb){
+      const frame = vlb.querySelector('.vt-frame');
+      if(frame){
+        frame.innerHTML = '<iframe src="https://www.youtube.com/embed/' + ytid + '?autoplay=1&rel=0" title="Testimonial 15Element" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>';
+      }
+      vlb.classList.add('is-open');
+      vlb.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+    } else {
+      window.open('https://www.youtube.com/watch?v=' + ytid, '_blank');
+    }
+  }
+
+  // Hook all cards with data-case (catalogo-card OR case-card)
+  function wireCards(){
+    document.querySelectorAll('[data-case]').forEach(card => {
+      // Skip if wrapped in <a> linking to a real spoke (is-linked = has its own destination)
+      if(card.classList.contains('is-linked') || card.tagName === 'A') return;
+      // Skip if a child .card-link is external (target=_blank or http)
+      const link = card.querySelector('.card-link, .case-card-cta');
+      if(link){
+        const href = link.getAttribute('href') || '';
+        if(link.getAttribute('target') === '_blank' || (href.startsWith('http') && !href.includes(location.host))) return;
+      }
+      card.style.cursor = 'pointer';
+      card.addEventListener('click', e => {
+        if(e.target.closest('a[href]:not([data-case-link])')) return;
+        e.preventDefault();
+        openLightboxBySlug(card.dataset.case);
+      });
+    });
+    // Also: links with ?case=<slug> on same page → intercept and open modal
+    document.querySelectorAll('a[href*="?case="]').forEach(a => {
+      const href = a.getAttribute('href') || '';
+      const m = href.match(/[?&]case=([^&#]+)/);
+      if(!m) return;
+      const slug = decodeURIComponent(m[1]);
+      // Only intercept if link points to current page (e.g. /casos/?case=X on /casos/)
+      const url = new URL(href, location.href);
+      if(url.pathname === location.pathname){
+        a.addEventListener('click', e => {
+          e.preventDefault();
+          openLightboxBySlug(slug);
+        });
+      }
+    });
+  }
+  wireCards();
+
+  lb.querySelectorAll('[data-close-lightbox]').forEach(el => el.addEventListener('click', () => closeLightbox()));
+  document.addEventListener('keydown', e => {
+    if(!lb.classList.contains('is-open')) return;
+    if(e.key === 'Escape') closeLightbox();
+    if(carouselImgs.length > 1){
+      if(e.key === 'ArrowLeft'){ carouselIdx = (carouselIdx - 1 + carouselImgs.length) % carouselImgs.length; renderCarousel(); }
+      if(e.key === 'ArrowRight'){ carouselIdx = (carouselIdx + 1) % carouselImgs.length; renderCarousel(); }
+    }
+  });
+
+  // Browser back/forward — sync modal state with URL
+  window.addEventListener('popstate', () => {
+    const slug = new URL(location.href).searchParams.get('case');
+    if(slug && DATA[slug]) openLightboxBySlug(slug, { updateUrl: false });
+    else if(lb.classList.contains('is-open')) closeLightbox({ updateUrl: false });
+  });
+
+  // Auto-open on page load if ?case=<slug> in URL
+  const initialSlug = new URL(location.href).searchParams.get('case');
+  if(initialSlug && DATA[initialSlug]){
+    // Defer so layout settles
+    setTimeout(() => openLightboxBySlug(initialSlug, { updateUrl: false }), 50);
+  }
+
+  // Expose for programmatic open from other scripts
+  window.openCaseModal = openLightboxBySlug;
+})();
+</script>

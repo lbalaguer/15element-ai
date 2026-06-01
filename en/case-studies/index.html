@@ -996,6 +996,99 @@ a.case-card.is-linked:hover .case-card-cta { color: var(--brand-teal); transform
   .cta-mark { display: none; }
 }
 
+/* ════════════════════════════════════════════════════════════
+   CASE MODAL (shared across /catalogo/, /casos/, /en/case-studies/, /en/catalog/)
+   Moved here from catalogo.css 2026-06-02 so /casos/ and /en/case-studies/
+   can reuse the same lightbox via _partials/case-modal{,-en}.html.
+   ════════════════════════════════════════════════════════════ */
+.case-lightbox {
+  position: fixed; top: 0; right: 0; bottom: 0; left: 0; z-index: 9999;
+  display: flex; align-items: center; justify-content: center;
+  opacity: 0; pointer-events: none;
+  transition: opacity .25s ease;
+}
+.case-lightbox.is-open { opacity: 1; pointer-events: auto; }
+.case-lightbox-overlay {
+  position: absolute; top: 0; right: 0; bottom: 0; left: 0; background: rgba(0,0,0,.55);
+}
+.case-lightbox-inner {
+  position: relative; z-index: 1;
+  background: var(--bg-elevated);
+  border-radius: var(--r-xl);
+  box-shadow: var(--shadow-xl);
+  width: min(980px, 96vw);
+  max-height: 92vh; overflow-y: auto;
+  padding: 40px;
+  transform: translateY(16px) scale(.98);
+  transition: transform .3s cubic-bezier(.22,1,.36,1);
+}
+.case-lightbox.is-open .case-lightbox-inner { transform: translateY(0) scale(1); }
+.case-lightbox-close {
+  position: absolute; top: 16px; right: 20px;
+  background: transparent; border: 0;
+  font-size: 32px; line-height: 1; color: var(--fg-muted);
+  cursor: pointer; padding: 4px; width: 40px; height: 40px;
+  display: flex; align-items: center; justify-content: center;
+  border-radius: var(--r-sm);
+  transition: background var(--dur-fast), color var(--dur-fast);
+}
+.case-lightbox-close:hover { background: var(--bg-sunken); color: var(--fg); }
+.clb-badge {
+  display: inline-flex; font-size: 11px; font-weight: 700;
+  letter-spacing: .08em; text-transform: uppercase;
+  padding: 5px 12px; border-radius: var(--r-sm); margin-bottom: 16px;
+}
+.clb-badge.seo { background: rgba(126,183,73,.12); color: #4a7a1a; }
+.clb-badge.linkedin { background: rgba(32,148,153,.12); color: #0d6e72; }
+.clb-badge.paid { background: rgba(237,147,33,.12); color: #a85f0a; }
+.clb-title { font-family: var(--font-display); font-weight: 800; font-size: clamp(26px, 4vw, 36px); line-height: 1.15; margin: 0 0 8px; }
+.clb-industria { font-size: 13px; color: var(--fg-muted); text-transform: uppercase; letter-spacing: .08em; margin-bottom: 20px; }
+.clb-metric { font-family: var(--font-display); font-weight: 800; font-size: clamp(32px, 5vw, 52px); line-height: 1; letter-spacing: -.025em; color: var(--fg); margin-bottom: 20px; }
+.clb-metric strong { color: var(--brand-teal); }
+.clb-desc { font-size: 16px; line-height: 1.65; color: var(--fg); margin-bottom: 28px; }
+.clb-evidencia { border: 1px dashed var(--border); border-radius: var(--r-lg); padding: 28px; text-align: center; background: var(--bg-sunken); margin-bottom: 28px; }
+.clb-evidencia-icon { font-size: 32px; margin-bottom: 10px; }
+.clb-evidencia p { font-size: 14px; color: var(--fg-muted); margin: 0; line-height: 1.5; }
+.clb-carousel { position: relative; margin-bottom: 16px; background: var(--bg-sunken); border-radius: var(--r-lg); overflow: hidden; }
+.clb-carousel-main { position: relative; width: 100%; aspect-ratio: 16/10; background: #000; display: flex; align-items: center; justify-content: center; }
+.clb-carousel-main img { max-width: 100%; max-height: 100%; object-fit: contain; cursor: zoom-in; transition: opacity .2s ease; }
+.clb-carousel-btn { position: absolute; top: 50%; transform: translateY(-50%); width: 44px; height: 44px; border-radius: 50%; background: rgba(255,255,255,.95); color: #111; border: 0; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: var(--shadow-md); transition: transform var(--dur-fast), background var(--dur-fast); z-index: 2; }
+.clb-carousel-btn:hover { background: #fff; transform: translateY(-50%) scale(1.05); }
+.clb-carousel-btn.prev { left: 12px; }
+.clb-carousel-btn.next { right: 12px; }
+.clb-carousel-btn svg { width: 22px; height: 22px; }
+.clb-carousel-counter { position: absolute; bottom: 12px; right: 14px; font-family: var(--font-mono); font-size: 12px; padding: 4px 10px; border-radius: var(--r-pill); background: rgba(0,0,0,.65); color: #fff; z-index: 2; }
+.clb-carousel-thumbs { display: flex; gap: 8px; padding: 10px 12px; overflow-x: auto; background: var(--bg-elevated); border-top: 1px solid var(--border); }
+.clb-thumb { flex: 0 0 64px; height: 48px; border-radius: var(--r-sm); overflow: hidden; cursor: pointer; opacity: .55; transition: opacity var(--dur-fast), transform var(--dur-fast); border: 2px solid transparent; }
+.clb-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.clb-thumb:hover { opacity: .85; }
+.clb-thumb.is-active { opacity: 1; border-color: var(--brand-teal); }
+.clb-carousel-wrap { margin-bottom: 28px; }
+.clb-zoom-hint { display: flex; justify-content: center; gap: 6px; font-size: 11px; color: var(--fg-muted); margin-top: 6px; font-family: var(--font-mono); letter-spacing: .04em; }
+.clb-section { margin-bottom: 24px; }
+.clb-section-label { font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--brand-teal); margin-bottom: 8px; }
+.clb-section-text { font-size: 15px; line-height: 1.7; color: var(--fg); margin: 0; }
+.clb-section-text strong { color: var(--fg); }
+.clb-meta { display: flex; flex-wrap: wrap; gap: 16px; margin-bottom: 24px; }
+.clb-meta-item { display: flex; align-items: center; gap: 6px; font-size: 13px; color: var(--fg-muted); }
+.clb-meta-item svg, .clb-meta-item .icon { width: 16px; height: 16px; flex-shrink: 0; }
+.clb-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+.clb-btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: var(--font-body); font-size: 15px; font-weight: 600;
+  padding: 12px 22px; border-radius: var(--r-pill); text-decoration: none;
+  transition: all var(--dur-fast); cursor: pointer; border: 0;
+}
+.clb-btn.primary { background: var(--brand-teal); color: #fff; }
+.clb-btn.primary:hover { background: #1a7a7e; }
+.clb-btn.ghost { background: transparent; color: var(--fg-muted); border: 1px solid var(--border); }
+.clb-btn.ghost:hover { border-color: var(--fg); color: var(--fg); }
+@media (max-width: 640px) {
+  .case-lightbox-inner { padding: 24px 20px; }
+  .clb-actions { flex-direction: column; }
+  .clb-btn { justify-content: center; }
+}
+
 /* ============================================================
    _src\casos\index.html — page-specific styles
    Chrome (nav/footer/etc.) lives in _styles/common.css

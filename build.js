@@ -184,7 +184,20 @@ function findBadPostsGrids(html) {
   return errors;
 }
 
-const PARTIALS = ['nav', 'footer', 'nav-en', 'footer-en', 'wa-float', 'theme-script', 'vt-lightbox'];
+const PARTIALS = ['nav', 'footer', 'nav-en', 'footer-en', 'wa-float', 'theme-script', 'vt-lightbox', 'case-modal'];
+
+// ------------------------------------------------------------
+// Cases data — single source of truth for case modal across
+// /catalogo/, /casos/, /en/case-studies/, /en/catalog/.
+// Loaded once at build start; injected via {{CASES_DATA}} token.
+// ------------------------------------------------------------
+const CASES_DATA_PATH = path.join(ROOT, '_data', 'cases.json');
+let CASES_DATA_JSON = '{}';
+if (fs.existsSync(CASES_DATA_PATH)) {
+  const raw = fs.readFileSync(CASES_DATA_PATH, 'utf8').trim();
+  try { JSON.parse(raw); CASES_DATA_JSON = raw; }
+  catch (e) { console.error(`[build] ERROR: _data/cases.json invalid JSON: ${e.message}`); }
+}
 
 // ------------------------------------------------------------
 // i18n — pares hreflang ES↔EN (MVP Tornado Fase 1). Solo las páginas
@@ -306,6 +319,7 @@ function processFile(srcAbs) {
   html = html.replace(/\{\{COLORS_CSS\}\}/g, colorsCssPath);
   html = html.replace(/\{\{COMMON_CSS\}\}/g, commonCssPath);
   html = html.replace(/\{\{PAGE_CSS\}\}/g, pageCssPath);
+  html = html.replace(/\{\{CASES_DATA\}\}/g, CASES_DATA_JSON);
 
   // ----------------------------------------------------------------
   // i18n: hreflang ES↔EN (MVP Tornado). Solo páginas en HREFLANG_PAIRS.
