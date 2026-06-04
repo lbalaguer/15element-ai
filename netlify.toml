@@ -82,6 +82,13 @@
   status = 301
   force = true
 
+# Spoke ITESM: rename del slug inicial a slug definitivo basado en KW (LinkedIn Prospecting)
+[[redirects]]
+  from = "/casos/itesm-1270-leads-csuite-educacion-ejecutiva/"
+  to = "/casos/itesm-b2b-linkedin-prospecting/"
+  status = 301
+  force = true
+
 [[redirects]]
   from = "/nextco-842-leads-b2b-sin-ads/"
   to = "/blog/nextco-842-leads-b2b-sin-ads/"
