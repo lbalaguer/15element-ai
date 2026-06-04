@@ -14,7 +14,7 @@ Componente: `.video-testimonials` (CSS en common.css) + `<!-- @include vt-lightb
 
 | Nombre | YouTube ID | Tag original | Industria 15E | Estado |
 |---|---|---|---|---|
-| Top Energy | 223r5XlYSMg | Energía Solar — proyecto $10M USD | Energía Solar | ✅ |
+| Top Energy | 223r5XlYSMg | Energía Solar, proyecto $10M USD | Energía Solar | ✅ |
 | Active Energy | 0RTR7BcMItc | Energía Solar | Energía Solar | ✅ |
 | Fernando (Kuali Tecnología Solar) | FMGqB1MBD78 | Kuali Tecnología Solar | Energía Solar | ✅ |
 | OP Logistics | 6vpbI9SN4XA | Logística B2B | Logística | ✅ |

@@ -15,7 +15,7 @@
   "nextco": {
     "year": "2024-2025", "duration": "10 meses", "ref": "Cliente referenciable",
     "contexto": "Manufactura B2B mexicana. Equipo comercial pequeño. Gastaba $180 USD por lead frío en Google/Meta Ads sin pipeline predecible. Necesitaba romper el techo de capacidad sin contratar más vendedores.",
-    "accion": "Sistema 3 capas: (1) Magallanes — señales de compra B2B sobre 800+ cuentas objetivo. (2) Outreach contextual LinkedIn sobre señal verificada. (3) Calificación automatizada antes de pasar a Carlo. 0 inversión en ads.",
+    "accion": "Sistema 3 capas: (1) Magallanes, señales de compra B2B sobre 800+ cuentas objetivo. (2) Outreach contextual LinkedIn sobre señal verificada. (3) Calificación automatizada antes de pasar a Carlo. 0 inversión en ads.",
     "resultados": [
       "<strong>842 leads calificados</strong> en 10 meses, $0 USD en ads",
       "BOSCH · Continental · SuKarne en pipeline activo",
@@ -84,7 +84,7 @@
   },
   "tarimas-escudero": {
     "year": "2024", "duration": "45 días + 3 meses", "ref": "Cliente referenciable · Video testimonial",
-    "contexto": "Fabricante de pallets industriales en México. Categoría altamente competida — proveedores nacionales + internacionales pelean palabra clave principal. Cero presencia digital previa.",
+    "contexto": "Fabricante de pallets industriales en México. Categoría altamente competida, proveedores nacionales + internacionales pelean palabra clave principal. Cero presencia digital previa.",
     "accion": "SEO técnico fast-ramp + LinkedIn complementario sobre Compras/Procurement de marcas globales con operación México. Sistema combinado SEO + LinkedIn = misma marca dos canales.",
     "resultados": [
       "\"pallets México\" de <strong>nada al Top 10</strong> en menos de 45 días",
@@ -122,10 +122,10 @@
   },
   "spakio": {
     "year": "2023-2024", "duration": "Activo", "ref": "Cliente referenciable · Video testimonial",
-    "contexto": "Operador logístico y almacenamiento en México con bodegas industriales grandes que necesitaba importadores internacionales como anclas para llenar capacidad. Cero presupuesto para ads internacionales — y los ads en China son inviables (Google bloqueado, ecosistema cerrado). El reto: cómo aparecer frente a un comprador chino sin pagar.",
+    "contexto": "Operador logístico y almacenamiento en México con bodegas industriales grandes que necesitaba importadores internacionales como anclas para llenar capacidad. Cero presupuesto para ads internacionales, y los ads en China son inviables (Google bloqueado, ecosistema cerrado). El reto: cómo aparecer frente a un comprador chino sin pagar.",
     "accion": "SEO técnico orientado a búsquedas en inglés + chino simplificado para términos de logistics/warehousing/3PL México. Schema Service + landing bilingüe (EN/中文) + AEO con FAQs específicas de importación, certificaciones y cross-docking. El comprador chino encuentra Spakio en Google/Baidu antes de viajar a México.",
     "resultados": [
-      "<strong>Importador chino</strong> encontró Spakio vía SEO orgánico puro — sin un peso en ads",
+      "<strong>Importador chino</strong> encontró Spakio vía SEO orgánico puro, sin un peso en ads",
       "Bodegas <strong>llenas y operando</strong> (foto adjunta)",
       "El importador chino aterrizó en CDMX para cerrar <strong>Amazon, OXXO y Liverpool</strong> dentro de la operación",
       "Cliente repetitivo + referencias post-aterrizaje en círculos de import LATAM"
@@ -135,13 +135,13 @@
   },
   "15element-ai": {
     "year": "2024-2025", "duration": "12 meses (caso propio)", "ref": "Demostración de metodología",
-    "contexto": "Mismo playbook aplicado al sitio propio. Categoría \"agencia AEO LATAM\" inexistente — la creamos. Compitiendo contra agencias SEO tradicionales que aún no operan en LLMs.",
+    "contexto": "Mismo playbook aplicado al sitio propio. Categoría \"agencia AEO LATAM\" inexistente, la creamos. Compitiendo contra agencias SEO tradicionales que aún no operan en LLMs.",
     "accion": "Categoría definida + content stack AEO + Citation Share medible en ChatGPT/Gemini/Perplexity + LinkedIn organic del fundador como autoridad técnica.",
     "resultados": [
       "<strong>Top 3 en los 3 LLMs</strong> para \"agencia AEO LATAM\" y \"marketing B2B AI\"",
       "<strong>+400% inbound</strong> calificado mensual",
       "Categoría \"AEO LATAM\" definida y ocupada",
-      "Si funciona aquí — funciona para ti"
+      "Si funciona aquí, funciona para ti"
     ],
     "images": ["caso-15element-ai-01.webp"]
   },
@@ -159,7 +159,7 @@
   },
   "alaia-crossing": {
     "year": "2024", "duration": "Activo", "ref": "Cliente referenciable",
-    "contexto": "Desarrollo de real estate premium en Houston TX. Compitiendo contra Realtor, Zillow, Yelp para keywords transaccionales de gated communities — portales con autoridad masiva.",
+    "contexto": "Desarrollo de real estate premium en Houston TX. Compitiendo contra Realtor, Zillow, Yelp para keywords transaccionales de gated communities, portales con autoridad masiva.",
     "accion": "SEO local + content vertical específico + schema RealEstate + reviews acumulados + reputación de barrio.",
     "resultados": [
       "<strong>#1 orgánico</strong> en \"best gated communities in Houston\"",
@@ -171,7 +171,7 @@
   },
   "penwood-furniture": {
     "year": "2024", "duration": "Activo", "ref": "Cliente referenciable · Evidencia visual",
-    "contexto": "Mueblería artesanal en Canadá. Categoría local con buyers de proximidad. Sin Maps no hay negocio — competencia con cadenas más grandes y baratas.",
+    "contexto": "Mueblería artesanal en Canadá. Categoría local con buyers de proximidad. Sin Maps no hay negocio, competencia con cadenas más grandes y baratas.",
     "accion": "SEO local intensivo + GBP optimizado + content + acumulación sistemática de reviews 5★ + on-page para keywords \"near me\".",
     "resultados": [
       "<strong>#1 Google Maps</strong> en \"pine furniture near me\"",
@@ -183,7 +183,7 @@
   },
   "bcs-bioclean": {
     "year": "2024-2025", "duration": "Activo", "ref": "Cliente referenciable",
-    "contexto": "Industrial passivation, pickling, derouging y electropolishing en Canadá. Nicho ultra técnico B2B — buyers son ingenieros de mantenimiento de farma, biotech y procesos críticos. Compitiendo contra proveedores con décadas de autoridad histórica (Astro Pak, Purepass, Electro-Max). En este mercado el buyer NO investiga 30 opciones — abre Google o ChatGPT, lee el AI Overview, y la lista corta queda definida ahí mismo. Aparecer en ese AI Overview = quedar en la mesa de evaluación. No aparecer = no existes.",
+    "contexto": "Industrial passivation, pickling, derouging y electropolishing en Canadá. Nicho ultra técnico B2B, buyers son ingenieros de mantenimiento de farma, biotech y procesos críticos. Compitiendo contra proveedores con décadas de autoridad histórica (Astro Pak, Purepass, Electro-Max). En este mercado el buyer NO investiga 30 opciones, abre Google o ChatGPT, lee el AI Overview, y la lista corta queda definida ahí mismo. Aparecer en ese AI Overview = quedar en la mesa de evaluación. No aparecer = no existes.",
     "accion": "AEO + SEO técnico de cluster completo de servicios (passivation, pickling, derouging, electropolishing, chemical cleaning) + content profundo de procesos químicos con comparativas técnicas (passivation vs pickling, ASTM A967 vs A380) que los motores de IA citan como fuente de autoridad + schema FAQPage + optimización local GBP Oakville/Burlington para captar el filtro geográfico de Top Providers Canadá.",
     "resultados": [
       "Citado en <strong>AI Overview</strong> de \"industrial passivation services\"",
@@ -202,14 +202,14 @@
   },
   "two-guys-shovel": {
     "year": "2024-2025", "duration": "Activo", "ref": "Testimonial verificado",
-    "contexto": "Landscaping / Turf services en Canadá. Negocio local 100% dependiente de búsqueda. ChatGPT empezó a recomendar local services — los que aparecen ahí se quedan con el lead.",
+    "contexto": "Landscaping / Turf services en Canadá. Negocio local 100% dependiente de búsqueda. ChatGPT empezó a recomendar local services, los que aparecen ahí se quedan con el lead.",
     "accion": "AEO + on-page + reviews + GBP. Optimización para que LLMs nombren el negocio cuando un local busca \"landscaper near me\".",
     "resultados": [
       "Testimonial verificado del owner: <strong>\"Customer said they found us through CHAT GPT!\"</strong>",
-      "AEO puro en acción — tráfico medible desde LLM a local service",
+      "AEO puro en acción, tráfico medible desde LLM a local service",
       "Caso reproducible para cualquier local service business"
     ],
-    "quote": "Customer said they found us through CHAT GPT! — David Vella, owner",
+    "quote": "Customer said they found us through CHAT GPT!, David Vella, owner",
     "images": ["caso-two-guys-shovel-01.webp","caso-two-guys-shovel-02.webp","caso-two-guys-shovel-03.webp","caso-two-guys-shovel-04.webp"]
   },
   "oakville-sight-sound": {
@@ -226,7 +226,7 @@
   },
   "propel-active-health": {
     "year": "2024-2025", "duration": "Activo", "ref": "Cliente referenciable",
-    "contexto": "Fisioterapia + chiropractic en Burlington Canadá. Combo de SEO local + AEO + Paid coordinados — el cliente busca por síntoma, decide por reseñas + presencia AI.",
+    "contexto": "Fisioterapia + chiropractic en Burlington Canadá. Combo de SEO local + AEO + Paid coordinados, el cliente busca por síntoma, decide por reseñas + presencia AI.",
     "accion": "SEO local + AEO (FAQ + casos) + Paid Ads complementario (Google + Meta) sobre audiencias de mantenimiento físico.",
     "resultados": [
       "<strong>494 keywords activas</strong> en SERP",
@@ -297,7 +297,7 @@
   },
   "family-dentistry": {
     "year": "2024-2025", "duration": "Activo", "ref": "Cliente referenciable · Evidencia visual",
-    "contexto": "Clínica dental familiar en Hamilton, Ontario. Mercado local saturado de odontólogos. Dependencia 100% de búsquedas locales — sin Google Maps no hay pacientes nuevos.",
+    "contexto": "Clínica dental familiar en Hamilton, Ontario. Mercado local saturado de odontólogos. Dependencia 100% de búsquedas locales, sin Google Maps no hay pacientes nuevos.",
     "accion": "SEO local intensivo + GBP optimizado + reviews + content sobre servicios + on-page para keywords near me + autoridad local.",
     "resultados": [
       "<strong>#1 Google Maps</strong> en \"hess village dental\" Hamilton",
@@ -309,7 +309,7 @@
   },
   "capillary-wave": {
     "year": "2024-2025", "duration": "Activo", "ref": "Cliente referenciable · Evidencia visual",
-    "contexto": "Comunidad de salud mental para hombres y mujeres en Burlington, Canadá. Búsquedas sensibles de bienestar emocional — el usuario que busca tiene urgencia. Quien aparece primero (Google + AI) recibe al paciente.",
+    "contexto": "Comunidad de salud mental para hombres y mujeres en Burlington, Canadá. Búsquedas sensibles de bienestar emocional, el usuario que busca tiene urgencia. Quien aparece primero (Google + AI) recibe al paciente.",
     "accion": "SEO + AEO + autoridad temática + content sensible y respetuoso con E-E-A-T del practitioner + reviews + GBP local.",
     "resultados": [
       "<strong>Referente local</strong> de salud mental Burlington",
@@ -321,7 +321,7 @@
   },
   "mcs-electrical": {
     "year": "2024-2025", "duration": "3 meses + activo", "ref": "Cliente referenciable · Evidencia visual",
-    "contexto": "Contratista eléctrico en Burlington, Canadá. Posición 23 en \"electrician Burlington\" — invisible al usuario. Mercado local saturado de electricistas con presencia digital establecida.",
+    "contexto": "Contratista eléctrico en Burlington, Canadá. Posición 23 en \"electrician Burlington\", invisible al usuario. Mercado local saturado de electricistas con presencia digital establecida.",
     "accion": "SEO local + on-page + GBP optimizado + reviews + content vertical sobre tipos de servicio eléctrico + autoridad técnica + AEO.",
     "resultados": [
       "\"electrician Burlington\" de <strong>pos 23 → Top 10</strong> en 3 meses",
@@ -353,7 +353,7 @@
       "Equipo comercial liberado de llamadas frías",
       "Caso solar B2B México replicable"
     ],
-    "quote": "Pasamos de cold calling agotador a un sistema que nos llena el pipeline solo. — Fernando, Kuali Tecnología Solar",
+    "quote": "Pasamos de cold calling agotador a un sistema que nos llena el pipeline solo., Fernando, Kuali Tecnología Solar",
     "videoId": "FMGqB1MBD78"
   },
   "nova-energia": {
@@ -377,12 +377,12 @@
       "Alcance filtrado y acertado con público target",
       "0 ruido del consumer market"
     ],
-    "quote": "El alcance es directo, filtrado y muy acertado con el público objetivo. — Carlos Basauri, socio fundador",
+    "quote": "El alcance es directo, filtrado y muy acertado con el público objetivo., Carlos Basauri, socio fundador",
     "videoId": "4zJW81ez9Dk"
   },
   "kol-agency": {
     "year": "2024", "duration": "Activo", "ref": "Cliente referenciable · Video testimonial",
-    "contexto": "SaaS LMS vertical pharma con expansión a LATAM. Decisores son Training Directors + Compliance Heads en farmacéuticas globales — audiencia ultra técnica y regulada.",
+    "contexto": "SaaS LMS vertical pharma con expansión a LATAM. Decisores son Training Directors + Compliance Heads en farmacéuticas globales, audiencia ultra técnica y regulada.",
     "accion": "LinkedIn outreach 1:1 + base curada de Training Directors farma multinacional + propuesta compliance-first.",
     "resultados": [
       "<strong>3 mercados abiertos</strong>: México, LATAM, Centroamérica",
@@ -468,7 +468,7 @@
       "Outreach B2B + gestión completa funcionando",
       "Evidencia visual disponible (screenshots WhatsApp)"
     ],
-    "quote": "Hola Luis, sí estamos trabajando con todo con los leads. — Pablo Baltierra",
+    "quote": "Hola Luis, sí estamos trabajando con todo con los leads., Pablo Baltierra",
     "images": ["caso-testimonio-whatsapp-01.webp"]
   },
   "matthew-regan": {
@@ -481,12 +481,12 @@
       "<strong>+310% consultas calificadas</strong>",
       "Pipeline premium sostenido"
     ],
-    "quote": "Absolute gold. Tremendous ROI. — Matthew Regan, Royal LePage",
+    "quote": "Absolute gold. Tremendous ROI., Matthew Regan, Royal LePage",
     "videoId": "JufOJ4rKmdc"
   },
   "emotion-group": {
     "year": "2024", "duration": "Mes 1", "ref": "Cliente referenciable",
-    "contexto": "Servicios B2B en México con tickets alto valor. Equipo comercial chico. Cada reunión cuenta — no se puede quemar tiempo del comercial en leads de baja calidad.",
+    "contexto": "Servicios B2B en México con tickets alto valor. Equipo comercial chico. Cada reunión cuenta, no se puede quemar tiempo del comercial en leads de baja calidad.",
     "accion": "Prospecting AI-powered con ICP afinado desde día 1 + outreach LinkedIn contextual + filtro automatizado de leads.",
     "resultados": [
       "<strong>Mes 1</strong>: citas con clientes alto valor",
@@ -497,7 +497,7 @@
   },
   "smx": {
     "year": "2024", "duration": "4 meses", "ref": "Cliente referenciable",
-    "contexto": "Factoring / lending B2B en México. Buyers son CFOs + Tesoreros con necesidades cíclicas de liquidez. Outreach genérico falla — timing es todo.",
+    "contexto": "Factoring / lending B2B en México. Buyers son CFOs + Tesoreros con necesidades cíclicas de liquidez. Outreach genérico falla, timing es todo.",
     "accion": "LinkedIn outreach con señales de intención (CFO movements, funding rounds, growth signals) + propuesta de liquidez puntual.",
     "resultados": [
       "<strong>315 leads en 4 meses</strong>",
@@ -614,7 +614,7 @@
   },
   "lonestar-offroad": {
     "year": "2024", "duration": "Activo", "ref": "Cliente referenciable",
-    "contexto": "Especialista en accesorios off-road en USA. Buyers son entusiastas con high purchase intent — cada visita califica como prospect serio. Necesidad: triplicar volumen calificado sin perder ROAS.",
+    "contexto": "Especialista en accesorios off-road en USA. Buyers son entusiastas con high purchase intent, cada visita califica como prospect serio. Necesidad: triplicar volumen calificado sin perder ROAS.",
     "accion": "Google Ads de alta intención + Meta segmentado a comunidades + landing por categoría producto + retargeting cross-channel.",
     "resultados": [
       "<strong>3.8× ROAS</strong> sostenido",

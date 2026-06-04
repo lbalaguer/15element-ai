@@ -1,5 +1,5 @@
 <!-- ════════════════════════════════════════════════════════════
-     CASE MODAL (EN) — reusable partial
+     CASE MODAL (EN), reusable partial
      Usado por: /en/case-studies/, (future /en/catalog/).
      Cards: cualquier elemento con class .catalogo-card o .case-card
      y atributo data-case="<slug>" abre el modal con la data del slug.
@@ -255,7 +255,7 @@
     }
   });
 
-  // Browser back/forward — sync modal state with URL
+  // Browser back/forward, sync modal state with URL
   window.addEventListener('popstate', () => {
     const slug = new URL(location.href).searchParams.get('case');
     if(slug && DATA[slug]) openLightboxBySlug(slug, { updateUrl: false });
