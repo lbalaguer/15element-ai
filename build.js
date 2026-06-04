@@ -318,6 +318,7 @@ function processFile(srcAbs) {
   else if (dirParts[0] === 'servicios') slug = 'servicio-' + dirParts.slice(1).join('-');
   else if (dirParts[0] === 'industrias') slug = 'industria-' + dirParts.slice(1).join('-');
   else if (dirParts[0] === 'blog') slug = 'blog-post'; // all blog posts share the same CSS
+  else if (dirParts[0] === 'casos' && dirParts.length >= 2) slug = 'casos-spoke'; // all /casos/<slug>/ share CSS
   else slug = dirParts.join('-');
   const pageCssAbs = path.join(ROOT, '_styles', 'pages', `${slug}.css`);
   const pageCssPath = relativePath(srcAbs, `_styles/pages/${slug}.css`) + '?v=' + hashFile(pageCssAbs);

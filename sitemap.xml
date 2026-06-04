@@ -102,9 +102,15 @@
   <!-- ─── EMPRESA ─── -->
   <url>
     <loc>https://15element.ai/casos/</loc>
-    <lastmod>2026-05-25</lastmod>
+    <lastmod>2026-06-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.95</priority>
+  </url>
+  <url>
+    <loc>https://15element.ai/casos/itesm-1270-leads-csuite-educacion-ejecutiva/</loc>
+    <lastmod>2026-06-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
   <!-- /catalogo/ es pieza interna noindex,nofollow — NO incluida en sitemap -->
   <url>
