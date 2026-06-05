@@ -1355,9 +1355,11 @@ a.case-card.is-linked:hover .case-card-cta { color: var(--brand-teal); transform
   color: var(--brand-teal);
   transform: translateX(2px);
 }
-a.hero-case { text-decoration: none; color: inherit; cursor: pointer; display: block; }
-a.hero-case.is-linked { position: relative; }
-a.hero-case.is-linked::after {
+a.hero-case,
+button.hero-case { text-decoration: none; color: inherit; cursor: pointer; display: flex; }
+button.hero-case { appearance: none; border: 0; border-top: 4px solid; text-align: left; width: 100%; font: inherit; }
+.hero-case.is-linked { position: relative; }
+.hero-case.is-linked::after {
   content: "Ver caso →";
   position: absolute;
   bottom: 18px; right: 22px;
@@ -1366,11 +1368,13 @@ a.hero-case.is-linked::after {
   font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: rgba(255,255,255,0.7);
+  color: rgba(255,255,255,0.92);
   transition: color var(--dur-fast), transform var(--dur-fast);
 }
-a.hero-case.is-linked:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
-a.hero-case.is-linked:hover::after { color: var(--brand-teal-400); transform: translateX(2px); }
+:lang(en) .hero-case.is-linked::after { content: "View case →"; }
+.hero-case.is-linked:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+.hero-case.is-linked:hover::after { color: var(--brand-teal-400); transform: translateX(2px); }
+.hero-case.is-linked:focus-visible { outline: 2px solid var(--brand-teal-400); outline-offset: 3px; }
 </style>
 </head>
 <body>
@@ -2660,7 +2664,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       "Caso reproducible para cualquier local service business"
     ],
     "quote": "Customer said they found us through CHAT GPT!, David Vella, owner",
-    "images": ["caso-two-guys-shovel-01.webp","caso-two-guys-shovel-02.webp","caso-two-guys-shovel-03.webp","caso-two-guys-shovel-04.webp"]
+    "images": ["caso-two-guys-shovel-01.webp","caso-two-guys-shovel-02.webp","caso-two-guys-shovel-03.webp","caso-two-guys-shovel-04.webp","caso-two-guys-shovel-05.webp","caso-two-guys-shovel-06.webp","caso-two-guys-shovel-07.webp","caso-two-guys-shovel-08.webp"]
   },
   "oakville-sight-sound": {
     "year": "2024", "duration": "Activo", "ref": "Cliente referenciable",
@@ -3357,7 +3361,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       "Caso reproducible para cualquier local service business"
     ],
     "quote": "Customer said they found us through CHAT GPT!, David Vella, owner",
-    "images": ["caso-two-guys-shovel-01.webp","caso-two-guys-shovel-02.webp","caso-two-guys-shovel-03.webp","caso-two-guys-shovel-04.webp"]
+    "images": ["caso-two-guys-shovel-01.webp","caso-two-guys-shovel-02.webp","caso-two-guys-shovel-03.webp","caso-two-guys-shovel-04.webp","caso-two-guys-shovel-05.webp","caso-two-guys-shovel-06.webp","caso-two-guys-shovel-07.webp","caso-two-guys-shovel-08.webp"]
   },
   "oakville-sight-sound": {
     "year": "2024", "duration": "Activo", "ref": "Cliente referenciable",
