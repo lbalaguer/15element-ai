@@ -3706,8 +3706,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   // Hook all cards with data-case (catalogo-card OR case-card)
   function wireCards(){
     document.querySelectorAll('[data-case]').forEach(card => {
-      // Skip if wrapped in <a> linking to a real spoke (is-linked = has its own destination)
-      if(card.classList.contains('is-linked') || card.tagName === 'A') return;
+      // Skip if it's a real link <a> to a spoke (it has its own destination).
+      // is-linked alone on a <button> is purely visual (::after decorator) and MUST still open the modal.
+      if(card.tagName === 'A') return;
       // Skip if a child .card-link is external (target=_blank or http)
       const link = card.querySelector('.card-link, .case-card-cta');
       if(link){
