@@ -347,11 +347,13 @@ function processFile(srcAbs) {
   // Script en <head>, noscript inmediatamente después de <body>.
   // ----------------------------------------------------------------
   // PERF: GTM diferido hasta primera interacción del usuario (scroll/mouse/
-  // touch/tecla/click) O timeout de respaldo de 3.5s — lo que ocurra primero.
+  // touch/tecla/click) O timeout de respaldo de 5s — lo que ocurra primero.
   // Saca gtm.js (~165 KiB unused JS + long tasks) del critical path de carga,
-  // sube el score de Lighthouse mobile. Trade-off: bounces <3.5s sin interacción
-  // no se registran en GA4 (el timeout es la red de seguridad). 2026-06-08.
-  const gtmHead = `<!-- Google Tag Manager (deferred until interaction) -->\n<script>(function(w,d,s,l,i){w[l]=w[l]||[];var loaded=false;\nfunction gtmLoad(){if(loaded)return;loaded=true;\nw[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});\nvar f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';\nj.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;\nf.parentNode.insertBefore(j,f);}\nvar ev=['scroll','mousemove','touchstart','keydown','click'];\nev.forEach(function(e){w.addEventListener(e,gtmLoad,{once:true,passive:true});});\nsetTimeout(gtmLoad,3500);\n})(window,document,'script','dataLayer','GTM-5H7ZB6GD');</script>\n<!-- End Google Tag Manager -->`;
+  // sube el score de Lighthouse mobile. El timeout es 5s (no 3.5s) porque a 3.5s
+  // se colaba dentro del trace de Lighthouse en corridas lentas → TBT 350ms
+  // intermitente. Trade-off: bounces <5s sin interacción no se registran en GA4
+  // (el timeout es la red de seguridad). 2026-06-08.
+  const gtmHead = `<!-- Google Tag Manager (deferred until interaction) -->\n<script>(function(w,d,s,l,i){w[l]=w[l]||[];var loaded=false;\nfunction gtmLoad(){if(loaded)return;loaded=true;\nw[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});\nvar f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';\nj.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;\nf.parentNode.insertBefore(j,f);}\nvar ev=['scroll','mousemove','touchstart','keydown','click'];\nev.forEach(function(e){w.addEventListener(e,gtmLoad,{once:true,passive:true});});\nsetTimeout(gtmLoad,5000);\n})(window,document,'script','dataLayer','GTM-5H7ZB6GD');</script>\n<!-- End Google Tag Manager -->`;
   const gtmNoscript = `<!-- Google Tag Manager (noscript) -->\n<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5H7ZB6GD"\nheight="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>\n<!-- End Google Tag Manager (noscript) -->`;
   html = html.replace('<head>', `<head>\n${gtmHead}`);
   html = html.replace(/<body([^>]*)>/, `<body$1>\n${gtmNoscript}`);
@@ -373,23 +375,26 @@ function processFile(srcAbs) {
   }
 
   // ----------------------------------------------------------------
-  // PERF: async-load Google Fonts (non-blocking) — inserta después del
-  // preload del woff2. Saves ~750ms LCP on mobile.
-  //
-  // CLS fix: also preload IBM Plex Sans 400 latin (the body font).
-  // Without this preload, when IBM Plex finishes loading async, the body
-  // text re-renders with different metrics → layout shift (~0.2 CLS).
-  // NOTE: Google Fonts versions URLs (v23 etc) — if these expire, re-curl
-  // https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400 to get
-  // the new latin subset woff2 URL and update here.
+  // PERF: fuentes SELF-HOSTED same-origin (2026-06-08). Antes se cargaban de
+  // Google Fonts (preconnect + preload gstatic + stylesheet async). Eso metía
+  // DNS+connect a Google en el critical path → FCP/LCP ~3.0s clavado en mobile
+  // slow 4G + varianza de red. Ahora los woff2 viven en /assets/fonts/ y las
+  // @font-face están en colors_and_type.css (inline). Aquí solo:
+  //   1. quitar los preconnect a Google (ya no se usan),
+  //   2. reemplazar el preload de Saira gstatic por preloads locales de las 3
+  //      fuentes críticas above-the-fold (hero H1 Saira 800 = LCP, body IBM
+  //      Plex Sans 400, eyebrow IBM Plex Mono 600). El resto carga vía @font-face.
   // ----------------------------------------------------------------
-  const ibmPlexPreload = `<link rel="preload" href="https://fonts.gstatic.com/s/ibmplexsans/v23/zYXGKVElMYYaJe8bpLHnCwDKr932-G7dytD-Dmu1swZSAXcomDVmadSD6llDB6g4.woff2" as="font" type="font/woff2" crossorigin>`;
-  const fontsAsync = `<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@400;500;600;700;800;900&family=IBM+Plex+Sans:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" media="print" onload="this.media='all'">
-<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@400;500;600;700;800;900&family=IBM+Plex+Sans:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap"></noscript>`;
-  // Inserta después del preload de Saira Condensed
+  const localFontPreloads = [
+    `<link rel="preload" href="${assetsPath}/fonts/saira-condensed-800.woff2" as="font" type="font/woff2" crossorigin>`,
+    `<link rel="preload" href="${assetsPath}/fonts/ibm-plex-sans-400.woff2" as="font" type="font/woff2" crossorigin>`,
+    `<link rel="preload" href="${assetsPath}/fonts/ibm-plex-mono-600.woff2" as="font" type="font/woff2" crossorigin>`,
+  ].join('\n');
+  html = html.replace(/<link rel="preconnect" href="https:\/\/fonts\.googleapis\.com">\s*\n?/g, '');
+  html = html.replace(/<link rel="preconnect" href="https:\/\/fonts\.gstatic\.com"[^>]*>\s*\n?/g, '');
   html = html.replace(
-    /(<link rel="preload" href="https:\/\/fonts\.gstatic\.com\/s\/sairacondensed[^"]+" as="font"[^>]+>)/,
-    `$1\n${ibmPlexPreload}\n${fontsAsync}`
+    /<link rel="preload" href="https:\/\/fonts\.gstatic\.com\/s\/sairacondensed[^"]+" as="font"[^>]+>/,
+    localFontPreloads
   );
 
   // ----------------------------------------------------------------
@@ -400,7 +405,11 @@ function processFile(srcAbs) {
   const colorsCssContent = readCssIfExists(path.join(ROOT, 'colors_and_type.css'));
   const commonCssContent = readCssIfExists(path.join(ROOT, '_styles', 'common.css'));
   const pageCssContent   = readCssIfExists(pageCssAbs);
-  const combinedCss = [colorsCssContent, commonCssContent, pageCssContent].filter(Boolean).join('\n');
+  // Resolver {{ASSETS}} dentro del CSS (p.ej. url({{ASSETS}}/fonts/x.woff2) de
+  // las @font-face self-hosted) a la ruta relativa por profundidad de la página.
+  const combinedCss = [colorsCssContent, commonCssContent, pageCssContent]
+    .filter(Boolean).join('\n')
+    .replace(/\{\{ASSETS\}\}/g, assetsPath);
 
   // Remove the 3 link tags (now versioned URLs) and inject inline <style>
   html = html.replace(new RegExp('<link rel="stylesheet" href="' + escapeRe(colorsCssPath) + '">\\s*\\n?', 'g'), '');
