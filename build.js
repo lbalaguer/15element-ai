@@ -346,7 +346,12 @@ function processFile(srcAbs) {
   // ANALYTICS: Google Tag Manager — inyectado en TODAS las páginas.
   // Script en <head>, noscript inmediatamente después de <body>.
   // ----------------------------------------------------------------
-  const gtmHead = `<!-- Google Tag Manager -->\n<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':\nnew Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],\nj=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=\n'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);\n})(window,document,'script','dataLayer','GTM-5H7ZB6GD');</script>\n<!-- End Google Tag Manager -->`;
+  // PERF: GTM diferido hasta primera interacción del usuario (scroll/mouse/
+  // touch/tecla/click) O timeout de respaldo de 3.5s — lo que ocurra primero.
+  // Saca gtm.js (~165 KiB unused JS + long tasks) del critical path de carga,
+  // sube el score de Lighthouse mobile. Trade-off: bounces <3.5s sin interacción
+  // no se registran en GA4 (el timeout es la red de seguridad). 2026-06-08.
+  const gtmHead = `<!-- Google Tag Manager (deferred until interaction) -->\n<script>(function(w,d,s,l,i){w[l]=w[l]||[];var loaded=false;\nfunction gtmLoad(){if(loaded)return;loaded=true;\nw[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});\nvar f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';\nj.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;\nf.parentNode.insertBefore(j,f);}\nvar ev=['scroll','mousemove','touchstart','keydown','click'];\nev.forEach(function(e){w.addEventListener(e,gtmLoad,{once:true,passive:true});});\nsetTimeout(gtmLoad,3500);\n})(window,document,'script','dataLayer','GTM-5H7ZB6GD');</script>\n<!-- End Google Tag Manager -->`;
   const gtmNoscript = `<!-- Google Tag Manager (noscript) -->\n<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5H7ZB6GD"\nheight="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>\n<!-- End Google Tag Manager (noscript) -->`;
   html = html.replace('<head>', `<head>\n${gtmHead}`);
   html = html.replace(/<body([^>]*)>/, `<body$1>\n${gtmNoscript}`);

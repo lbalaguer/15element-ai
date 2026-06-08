@@ -1,11 +1,16 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="light">
 <head>
-<!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+<!-- Google Tag Manager (deferred until interaction) -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];var loaded=false;
+function gtmLoad(){if(loaded)return;loaded=true;
+w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});
+var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';
+j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;
+f.parentNode.insertBefore(j,f);}
+var ev=['scroll','mousemove','touchstart','keydown','click'];
+ev.forEach(function(e){w.addEventListener(e,gtmLoad,{once:true,passive:true});});
+setTimeout(gtmLoad,3500);
 })(window,document,'script','dataLayer','GTM-5H7ZB6GD');</script>
 <!-- End Google Tag Manager -->
 <meta charset="utf-8">
