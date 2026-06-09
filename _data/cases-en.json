@@ -1,4 +1,18 @@
 {
+  "solon-vein-clinic": {
+    "year": "2025", "duration": "Active", "ref": "Referenceable client · Visual evidence",
+    "contexto": "Vein clinic in Solon, Ohio (Cleveland area). Local YMYL healthcare: a patient about to treat varicose or spider veins researches before choosing, and increasingly that research starts in ChatGPT, Perplexity or Google's AI Overview, not a directory. The challenge: a local clinic competing for attention against giant hospital networks (Cleveland Clinic, University Hospitals) with massive domain authority. Showing up first in the AI answer = making the patient's shortlist. Not showing up = not existing.",
+    "accion": "AEO + local SEO + Google Business Profile + vascular-surgeon E-E-A-T across the full vein-service cluster (sclerotherapy, VenaSeal, endovenous ablation, microphlebectomy). Service content the AI engines cite as a local source + schema + 5★ review curation so ChatGPT, Perplexity and Google AI name the clinic when a patient searches for vein care in Solon.",
+    "resultados": [
+      "<strong>ChatGPT's first pick</strong> for vein care in Solon, above Cleveland Clinic",
+      "<strong>Perplexity</strong>: named \"the strongest local option\" with 4.9★ / 91 reviews",
+      "<strong>Named first in the Google AI Overview</strong> for \"best vein clinic near Solon Ohio\"",
+      "<strong>AEO trifecta</strong>: ChatGPT + Perplexity + Google AI citing the clinic simultaneously",
+      "<strong>Knowledge Panel 4.9★ / 91 reviews</strong> dominating the brand SERP with sitelinks",
+      "Visible in the <strong>Cleveland Local Pack</strong> among the large hospital networks"
+    ],
+    "images": ["caso-solon-vein-clinic-01.webp","caso-solon-vein-clinic-02.webp","caso-solon-vein-clinic-03.webp","caso-solon-vein-clinic-04.webp","caso-solon-vein-clinic-05.webp","caso-solon-vein-clinic-06.webp","caso-solon-vein-clinic-07.webp","caso-solon-vein-clinic-08.webp","caso-solon-vein-clinic-09.webp"]
+  },
   "leasemd": {
     "year": "2024-2025", "duration": "6 months", "ref": "Referenceable client",
     "contexto": "B2B medical equipment leasing company in Mexico. Aggressive competition on search engines and zero visibility inside LLMs. B2B medical equipment research is moving from Google to ChatGPT/Gemini/Perplexity as the first evaluation step.",
