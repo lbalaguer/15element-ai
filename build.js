@@ -227,6 +227,7 @@ const HREFLANG_PAIRS = [
 const EN_CSS_MAP = {
   '': 'home',
   'services/aeo-seo': 'servicio-seo-aeo-geo',
+  'services/ai-advertising': 'servicio-seo-aeo-geo',
   'services/linkedin-prospecting': 'servicio-linkedin-prospecting',
   'services/buying-signals': 'servicio-senales-de-compra',
   'services/consulting': 'servicio-consultoria-b2b',

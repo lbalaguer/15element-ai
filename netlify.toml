@@ -440,10 +440,14 @@
   status = 301
   force = true
 
+# 2026-06-09: reapertura ads. ads-ai era 410 (DFY no ofrecida), pero el cluster
+# "ai advertising agency / ai ad agency" (~1,300 imps/90d pos 13-19) tiene intent comercial
+# y SÍ hay servicio + proof de ROAS real (Underdog 3.2x, Lonestar 3.8x, Jeepers, PMC Tire).
+# 301 al servicio nuevo recupera ~2,573 imps/90d hacia /en/services/ai-advertising/.
 [[redirects]]
   from = "/the-elements/ads-ai/"
-  to = "/"
-  status = 410
+  to = "/en/services/ai-advertising/"
+  status = 301
   force = true
 
 [[redirects]]
