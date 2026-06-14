@@ -2106,6 +2106,75 @@ footer { background: var(--bg-sunken); padding: 64px 0 40px; border-top: 1px sol
   .home-wr-grid { grid-template-columns: 1fr; gap: 32px; }
   .home-war-room { padding: 64px 0; }
 }
+
+/* ============================================================
+   FUTURISTIC HERO — banda oscura + constelación + headline shiny
+   Capa aditiva (override). El resto del sitio NO se toca.
+   Progressive enhancement: sin JS el hero se ve completo.
+   ============================================================ */
+
+/* Banda oscura: el hero pasa a navy cinematográfico en cualquier tema */
+.hero {
+  background:
+    radial-gradient(120% 130% at 72% 8%, var(--brand-navy-soft) 0%, var(--brand-navy) 38%, var(--brand-navy-deep) 100%);
+}
+/* Glow del "elemento" más presente sobre oscuro */
+.hero::before { opacity: 0.14; }
+
+/* Logo-mark de fondo: fantasma blanco tenue (en vez de color muddy) */
+.hero .hero-decor { filter: brightness(0) invert(1); opacity: 0.045; }
+
+/* Canvas de la constelación: detrás del contenido, encima del fondo */
+.hero-net {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+  display: none;            /* off por default; JS lo prende solo en desktop */
+}
+@media (min-width: 1024px) { .hero-net { display: block; } }
+
+/* Texto sobre oscuro */
+.hero .hero-eyebrow { color: var(--brand-teal-400); }
+.hero .hero-eyebrow::before { background: var(--brand-teal-400); }
+.hero h1 { color: #FFFFFF; }
+.hero .lead { color: rgba(255, 255, 255, 0.74); }
+.hero .lead strong { color: #FFFFFF; }
+
+/* Headline shiny: barrido teal → blanco sobre el .accent (CSS puro, 0 JS) */
+.hero h1 .accent {
+  background: linear-gradient(100deg,
+    var(--brand-teal-400) 28%,
+    #EAFBFC 48%,
+    #FFFFFF 50%,
+    #EAFBFC 52%,
+    var(--brand-teal-400) 72%);
+  background-size: 220% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  animation: heroShine 5s linear infinite;
+}
+@keyframes heroShine { to { background-position: -220% center; } }
+
+/* Botón ghost legible sobre oscuro */
+.hero .btn-ghost {
+  color: #FFFFFF;
+  border-color: rgba(255, 255, 255, 0.28);
+}
+.hero .btn-ghost:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+/* Accesibilidad: sin animación si el usuario lo pide */
+@media (prefers-reduced-motion: reduce) {
+  .hero h1 .accent { animation: none; }
+  .hero .hero-decor { animation: none; }
+}
 </style>
 </head>
 <body>
