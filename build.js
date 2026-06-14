@@ -360,6 +360,14 @@ function processFile(srcAbs) {
   html = html.replace(/<body([^>]*)>/, `<body$1>\n${gtmNoscript}`);
 
   // ----------------------------------------------------------------
+  // ANALYTICS: Microsoft Clarity (heatmaps + session recordings + AEO).
+  // Diferido hasta primera interacción (mismo patrón que GTM) para no
+  // tocar el critical path / LCP. Project kujle89fz5. 2026-06-14.
+  // ----------------------------------------------------------------
+  const clarityHead = `<!-- Microsoft Clarity (deferred until interaction) -->\n<script>(function(c,l,a,r,i){var loaded=false;function clarityLoad(){if(loaded)return;loaded=true;c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};var t=l.createElement(r);t.async=1;t.src='https://www.clarity.ms/tag/'+i;var y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);}var ev=['scroll','mousemove','touchstart','keydown','click'];ev.forEach(function(e){c.addEventListener(e,clarityLoad,{once:true,passive:true});});setTimeout(clarityLoad,5000);})(window,document,'clarity','script','kujle89fz5');</script>\n<!-- End Microsoft Clarity -->`;
+  html = html.replace('<head>', `<head>\n${clarityHead}`);
+
+  // ----------------------------------------------------------------
   // SEO: Google Search Console verification meta tag — SOLO en home.
   // GSC verificó la propiedad URL prefix https://15element.ai/ y solo
   // necesita el tag en esa página. Tenerlo en todas las páginas era
