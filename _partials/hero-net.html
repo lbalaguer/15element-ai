@@ -1,0 +1,98 @@
+<!-- HERO: constelación atómica de partículas (desktop-only, post-paint, reduced-motion safe) -->
+<script>
+window.addEventListener('load', function(){
+  // ---- Campo de elementos (canvas 2D) ----
+  (function(){
+    var canvas = document.querySelector('.hero-net');
+    if (!canvas) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    if (window.matchMedia('(max-width: 1023px)').matches) return; // desktop only
+    var ctx = canvas.getContext('2d');
+    if (!ctx) return;
+    var hero = canvas.parentElement;
+    var DPR = Math.min(window.devicePixelRatio || 1, 2);
+    var W = 0, H = 0, nodes = [], COUNT = 0, raf = null, running = false;
+    var mouse = { x: -9999, y: -9999 }, baseScroll = window.scrollY;
+    var LINK = 128, t = 0;
+
+    function size(){
+      W = hero.clientWidth; H = hero.clientHeight;
+      canvas.width = W * DPR; canvas.height = H * DPR;
+      canvas.style.width = W + 'px'; canvas.style.height = H + 'px';
+      ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
+      COUNT = Math.max(26, Math.min(58, Math.round(W * H / 24000)));
+      nodes = [];
+      for (var i = 0; i < COUNT; i++){
+        nodes.push({
+          x: Math.random() * W, y: Math.random() * H,
+          vx: (Math.random() - 0.5) * 0.16, vy: (Math.random() - 0.5) * 0.16,
+          z: 0.4 + Math.random() * 0.6,
+          r: 1.0 + Math.random() * 1.6,
+          ph: Math.random() * 6.2832
+        });
+      }
+    }
+    function frame(){
+      ctx.clearRect(0, 0, W, H);
+      t += 0.016;
+      var py = (window.scrollY - baseScroll);
+      var i, j, n, a, b, ay, by;
+      for (i = 0; i < nodes.length; i++){
+        n = nodes[i];
+        n.x += n.vx; n.y += n.vy;
+        if (n.x < -30) n.x = W + 30; else if (n.x > W + 30) n.x = -30;
+        if (n.y < -30) n.y = H + 30; else if (n.y > H + 30) n.y = -30;
+        var dxm = n.x - mouse.x, dym = n.y - mouse.y, dm2 = dxm * dxm + dym * dym;
+        if (dm2 < 14000){ var f = (14000 - dm2) / 14000 * 0.035; n.x += dxm * f; n.y += dym * f; }
+      }
+      for (i = 0; i < nodes.length; i++){
+        a = nodes[i]; ay = a.y + py * 0.05 * a.z;
+        for (j = i + 1; j < nodes.length; j++){
+          b = nodes[j]; by = b.y + py * 0.05 * b.z;
+          var dx = a.x - b.x, dy = ay - by, d = Math.sqrt(dx * dx + dy * dy);
+          if (d < LINK){
+            var bo = 1 - d / LINK;
+            ctx.strokeStyle = 'rgba(63,178,183,' + (bo * bo * 0.42).toFixed(3) + ')';
+            ctx.lineWidth = bo > 0.6 ? 1.3 : 1;
+            ctx.beginPath(); ctx.moveTo(a.x, ay); ctx.lineTo(b.x, by); ctx.stroke();
+          }
+        }
+      }
+      for (i = 0; i < nodes.length; i++){
+        n = nodes[i]; ay = n.y + py * 0.05 * n.z;
+        var pulse = 0.5 + 0.5 * Math.sin(t * 1.3 + n.ph);
+        var rad = (n.r * n.z) * (0.85 + 0.3 * pulse) + 0.8;
+        ctx.beginPath(); ctx.arc(n.x, ay, rad * 3.4, 0, 6.2832);
+        ctx.fillStyle = 'rgba(63,178,183,' + (0.04 + 0.06 * pulse).toFixed(3) + ')';
+        ctx.fill();
+        ctx.beginPath(); ctx.arc(n.x, ay, rad, 0, 6.2832);
+        ctx.fillStyle = 'rgba(176,238,240,' + (0.6 + 0.3 * n.z).toFixed(2) + ')';
+        ctx.fill();
+        // anillo orbital (electron) solo en atomos grandes -> guino "elemento"
+        if (n.z > 0.74){
+          ctx.beginPath(); ctx.arc(n.x, ay, rad + 5 + 1.5 * pulse, 0, 6.2832);
+          ctx.strokeStyle = 'rgba(63,178,183,' + (0.09 + 0.05 * pulse).toFixed(3) + ')';
+          ctx.lineWidth = 1;
+          ctx.stroke();
+        }
+      }
+      raf = requestAnimationFrame(frame);
+    }
+    function start(){ if (running) return; running = true; raf = requestAnimationFrame(frame); }
+    function stop(){ running = false; if (raf) cancelAnimationFrame(raf); raf = null; }
+
+    hero.addEventListener('mousemove', function(e){
+      var r = hero.getBoundingClientRect(); mouse.x = e.clientX - r.left; mouse.y = e.clientY - r.top;
+    }, { passive: true });
+    hero.addEventListener('mouseleave', function(){ mouse.x = -9999; mouse.y = -9999; });
+    window.addEventListener('resize', size, { passive: true });
+    if ('IntersectionObserver' in window){
+      new IntersectionObserver(function(es){
+        es.forEach(function(e){ e.isIntersecting ? start() : stop(); });
+      }, { threshold: 0 }).observe(hero);
+    }
+    document.addEventListener('visibilitychange', function(){ document.hidden ? stop() : start(); });
+    size(); start();
+  })();
+});
+</script>

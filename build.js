@@ -184,7 +184,7 @@ function findBadPostsGrids(html) {
   return errors;
 }
 
-const PARTIALS = ['nav', 'footer', 'nav-en', 'footer-en', 'wa-float', 'theme-script', 'vt-lightbox', 'case-modal', 'case-modal-en'];
+const PARTIALS = ['nav', 'footer', 'nav-en', 'footer-en', 'wa-float', 'theme-script', 'vt-lightbox', 'case-modal', 'case-modal-en', 'hero-net'];
 
 // ------------------------------------------------------------
 // Cases data — single source of truth for case modal across

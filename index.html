@@ -3100,7 +3100,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </a>
 
 
-<!-- HERO: constelación de partículas (desktop-only, post-paint, reduced-motion safe) -->
+<!-- HERO: constelación atómica de partículas (desktop-only, post-paint, reduced-motion safe) -->
 <script>
 window.addEventListener('load', function(){
   // ---- Campo de elementos (canvas 2D) ----
@@ -3153,8 +3153,9 @@ window.addEventListener('load', function(){
           b = nodes[j]; by = b.y + py * 0.05 * b.z;
           var dx = a.x - b.x, dy = ay - by, d = Math.sqrt(dx * dx + dy * dy);
           if (d < LINK){
-            ctx.strokeStyle = 'rgba(63,178,183,' + ((1 - d / LINK) * 0.26).toFixed(3) + ')';
-            ctx.lineWidth = 1;
+            var bo = 1 - d / LINK;
+            ctx.strokeStyle = 'rgba(63,178,183,' + (bo * bo * 0.42).toFixed(3) + ')';
+            ctx.lineWidth = bo > 0.6 ? 1.3 : 1;
             ctx.beginPath(); ctx.moveTo(a.x, ay); ctx.lineTo(b.x, by); ctx.stroke();
           }
         }
@@ -3169,6 +3170,13 @@ window.addEventListener('load', function(){
         ctx.beginPath(); ctx.arc(n.x, ay, rad, 0, 6.2832);
         ctx.fillStyle = 'rgba(176,238,240,' + (0.6 + 0.3 * n.z).toFixed(2) + ')';
         ctx.fill();
+        // anillo orbital (electron) solo en atomos grandes -> guino "elemento"
+        if (n.z > 0.74){
+          ctx.beginPath(); ctx.arc(n.x, ay, rad + 5 + 1.5 * pulse, 0, 6.2832);
+          ctx.strokeStyle = 'rgba(63,178,183,' + (0.09 + 0.05 * pulse).toFixed(3) + ')';
+          ctx.lineWidth = 1;
+          ctx.stroke();
+        }
       }
       raf = requestAnimationFrame(frame);
     }
@@ -3190,6 +3198,7 @@ window.addEventListener('load', function(){
   })();
 });
 </script>
+
 
 <script>
 // Theme toggle (light/dark)
