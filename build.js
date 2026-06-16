@@ -234,6 +234,7 @@ const EN_CSS_MAP = {
   'seo-agency-mississauga': 'servicio-seo-aeo-geo',
   'seo-agency-ottawa': 'servicio-seo-aeo-geo',
   'seo-agency-burlington': 'servicio-seo-aeo-geo',
+  'seo-agency-hamilton': 'servicio-seo-aeo-geo',
   'case-studies': 'casos',
   'about': 'nosotros',
   'contact': 'contacto',
