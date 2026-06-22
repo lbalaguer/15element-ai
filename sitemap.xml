@@ -118,6 +118,12 @@
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
+  <url>
+    <loc>https://15element.ai/casos/seidor-vs-deloitte-ciberseguridad-seo-b2b/</loc>
+    <lastmod>2026-06-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
   <!-- /catalogo/ es pieza interna noindex,nofollow — NO incluida en sitemap -->
   <url>
     <loc>https://15element.ai/nosotros/</loc>
