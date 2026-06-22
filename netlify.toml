@@ -228,6 +228,16 @@
   status = 301
   force = true
 
+# 2026-06-22: /casos/xhamber-climate-chambers/ daba 404 (vivió en versión vieja del sitio;
+# GSC 278 imps/90d pos 10.5, mayormente la query de marca del cliente "xhamber"). Puente al
+# hub para matar el 404. REPUNTAR a /casos/<slug-spoke-xhamber>/ cuando se publique el spoke
+# real (calendar Ago 12, slug propuesto xhamber-190-camaras-climaticas-mexico).
+[[redirects]]
+  from = "/casos/xhamber-climate-chambers/"
+  to = "/casos/"
+  status = 301
+  force = true
+
 # Legal en inglés viejo
 [[redirects]]
   from = "/privacy-policy/"
