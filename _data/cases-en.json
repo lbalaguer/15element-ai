@@ -15,16 +15,17 @@
   },
   "leasemd": {
     "year": "2026", "duration": "6 months", "ref": "Referenceable client",
-    "contexto": "B2B medical equipment leasing company in Mexico. Aggressive competition on search engines and zero visibility inside LLMs. B2B medical equipment research is moving from Google to ChatGPT/Gemini/Perplexity as the first evaluation step.",
+    "contexto": "Mexican leasing company for the healthcare sector: medical equipment and tax-deductible vehicle leasing for doctors and clinics. Aggressive search competition (manufacturers, Kavak, lenders) and zero LLM visibility. B2B evaluation increasingly starts in ChatGPT/Gemini/Perplexity, but the decision still runs through Google: you have to win both.",
     "accion": "AEO/GEO diagnosis + site restructure + content stack built for Answer Engines (FAQ schema, comparisons, glossary, case proof). Citation Share tracked across the 3 main LLMs.",
     "resultados": [
       "<strong>Rank #1</strong> across ChatGPT, Gemini and Perplexity for \"best medical equipment leasing Mexico\"",
       "<strong>+320% qualified inbound</strong> in 6 months (Google + LLMs combined)",
       "Dominant Citation Share vs Lendar/Konfío and national competitors",
+      "<strong>Google Page 1</strong> on national auto-leasing terms — \"arrendamiento de carros\", \"arrendamiento mazda\" — competing against manufacturers and Kavak",
       "Average inbound lead = decision-maker (CMO/CFO of a private hospital)"
     ],
     "quote": "People used to ask Google. Now they ask ChatGPT, and we show up first. It's a different game.",
-    "images": ["caso-leasemd-12.webp","caso-leasemd-13.webp"]
+    "images": ["caso-leasemd-12.webp","caso-leasemd-13.webp","caso-leasemd-14.webp","caso-leasemd-15.webp","caso-leasemd-16.webp","caso-leasemd-17.webp"]
   },
   "nextco": {
     "year": "2024-2025", "duration": "10 months", "ref": "Referenceable client",
@@ -181,7 +182,7 @@
       "Outranking <strong>Realtor and Yelp</strong> with an owned asset",
       "Pipeline of highly qualified prospects"
     ],
-    "images": ["caso-alaia-crossing-02.webp","caso-alaia-crossing-03.webp","caso-alaia-crossing-04.webp","caso-alaia-crossing-05.webp"]
+    "images": ["caso-alaia-crossing-06.webp","caso-alaia-crossing-02.webp","caso-alaia-crossing-03.webp","caso-alaia-crossing-04.webp","caso-alaia-crossing-05.webp"]
   },
   "penwood-furniture": {
     "year": "2026", "duration": "Active", "ref": "Referenceable client · Visual evidence",
@@ -261,7 +262,7 @@
       "<strong>+195% new consultations</strong> (Paid)",
       "<strong>3.6× ROAS</strong> sustained"
     ],
-    "images": ["caso-priority-one-osteopathy-01.webp","caso-priority-one-osteopathy-02.webp","caso-priority-one-osteopathy-03.webp","caso-priority-one-osteopathy-04.webp","caso-priority-one-osteopathy-05.webp","caso-priority-one-osteopathy-06.webp","caso-priority-one-osteopathy-07.webp","caso-priority-one-osteopathy-08.webp","caso-priority-one-osteopathy-09.webp"]
+    "images": ["caso-priority-one-osteopathy-01.webp","caso-priority-one-osteopathy-02.webp","caso-priority-one-osteopathy-03.webp","caso-priority-one-osteopathy-04.webp","caso-priority-one-osteopathy-05.webp","caso-priority-one-osteopathy-06.webp","caso-priority-one-osteopathy-07.webp","caso-priority-one-osteopathy-08.webp","caso-priority-one-osteopathy-09.webp","caso-priority-one-osteopathy-10.webp","caso-priority-one-osteopathy-11.webp","caso-priority-one-osteopathy-12.webp","caso-priority-one-osteopathy-13.webp"]
   },
   "cinepolis": {
     "year": "2024", "duration": "Active", "ref": "Referenceable client",
