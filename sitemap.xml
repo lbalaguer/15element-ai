@@ -17,6 +17,14 @@
     <priority>0.95</priority>
   </url>
 
+  <!-- ─── AGENCIAS (white-label, standalone — fuera del menú, audiencia reseller) ─── -->
+  <url>
+    <loc>https://15element.ai/agencias/</loc>
+    <lastmod>2026-06-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
   <!-- ─── SERVICIOS ─── -->
   <url>
     <loc>https://15element.ai/servicios/</loc>
