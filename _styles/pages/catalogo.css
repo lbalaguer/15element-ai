@@ -126,8 +126,8 @@
   overflow: hidden;
 }
 .catalogo-card:hover {
-  transform: translateY(-3px);
-  box-shadow: var(--shadow-md);
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
   border-color: var(--brand-teal);
   cursor: pointer;
 }
