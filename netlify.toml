@@ -132,6 +132,22 @@
   status = 301
   force = true
 
+# 2026-06-28: /aeo/ daba 404 (el keyword dataset lo marcaba como target "AEO agency" pero
+# nunca se construyó). 301 a la service page que YA rankea para "agencia aeo"/"aeo agency"
+# (pos 12) en vez de crear un hub nuevo que canibalizaría /servicios/seo-aeo-geo/. Consolida
+# señal y captura cualquier link/tráfico tecleado. Con y sin slash final.
+[[redirects]]
+  from = "/aeo/"
+  to = "/servicios/seo-aeo-geo/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/aeo"
+  to = "/servicios/seo-aeo-geo/"
+  status = 301
+  force = true
+
 # ─── 301 redirects WP legacy (lote 2, detectados en GSC 2026-05-20) ───
 # URLs viejas con impresiones acumuladas que daban 404. Recuperan autoridad
 # y eliminan el 404 mandando a su equivalente nuevo.
