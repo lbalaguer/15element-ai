@@ -1,0 +1,7 @@
+/* /gracias-auditoria/ — thank-you de sesión discovery/audit agendada (redirect del calendario GHL) */
+.gd-wrap{min-height:62vh;display:flex;align-items:center;justify-content:center;padding:72px 20px;}
+.gd-card{max-width:580px;text-align:center;}
+.gd-card .check{font-size:54px;line-height:1;margin-bottom:14px;}
+.gd-card h1{margin:0 0 12px;}
+.gd-card p{opacity:.88;line-height:1.65;}
+.gd-card .btn{margin-top:22px;}

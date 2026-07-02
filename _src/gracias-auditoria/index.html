@@ -4,10 +4,10 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<title>¡Listo! Tu demo quedó agendada — 15Element</title>
-<meta name="description" content="Tu demo quedó agendada. Te llega la confirmación por correo con el link de la llamada.">
+<title>¡Listo! Tu sesión quedó agendada — 15Element</title>
+<meta name="description" content="Tu sesión de discovery quedó agendada. Te llega la confirmación por correo con el link de la llamada.">
 <meta name="robots" content="noindex, nofollow">
-<link rel="canonical" href="https://15element.ai/gracias-demo/">
+<link rel="canonical" href="https://15element.ai/gracias-auditoria/">
 
 <link rel="icon" type="image/png" href="{{ASSETS}}/logo-mark-color.png">
 <link rel="apple-touch-icon" href="{{ASSETS}}/logo-mark-color.png">
@@ -24,20 +24,20 @@
 <main class="gd-wrap">
   <div class="gd-card">
     <div class="check">✅</div>
-    <h1>Tu demo quedó agendada</h1>
-    <p>Te acaba de llegar la confirmación por correo con el link de la llamada. Si necesitas mover el horario, en ese mismo correo viene el link para reagendar.</p>
-    <p>Mientras llega el día, échale un ojo a resultados reales de la plataforma:</p>
+    <h1>Tu sesión quedó agendada</h1>
+    <p>Te acaba de llegar la confirmación por correo con el link de la llamada. Son 60 minutos, contigo y con tu operación en la mesa — no es un script de calificación.</p>
+    <p>Si necesitas mover el horario, en ese mismo correo viene el link para reagendar.</p>
     <a class="btn btn-primary" href="/casos/">Ver casos reales →</a>
   </div>
 </main>
 
 <script>
-// Meta: conversión "demo agendada" — el calendario (GHL) redirige aquí al confirmar.
-// El pixel base lo trae GTM (diferido a interacción o 5s) → se reintenta hasta que
-// fbq exista; en una thank-you el usuario se queda lo suficiente para que aterrice.
+// Meta: conversión "sesión de auditoría agendada" — el calendario Discovery/Review
+// (GHL) redirige aquí al confirmar. Pixel base via GTM (diferido) → retry-loop.
+// content_name separa este funnel (enterprise-audit) del de agencias en Meta.
 (function(){
   var n = 0, t = setInterval(function(){
-    if (window.fbq) { try { fbq('track', 'Schedule', { content_name: 'demo-agencias' }); } catch(e){} clearInterval(t); }
+    if (window.fbq) { try { fbq('track', 'Schedule', { content_name: 'enterprise-audit' }); } catch(e){} clearInterval(t); }
     else if (++n > 40) { clearInterval(t); }
   }, 500);
 })();
