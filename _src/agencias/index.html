@@ -433,6 +433,16 @@
   }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
   els.forEach(function(e){ io.observe(e); });
 })();
+
+// Meta: intención de demo del canal agencias. El pixel base lo trae GTM (diferido a
+// primera interacción) — aquí solo se marca el evento; si fbq aún no cargó al click,
+// se pierde ese caso raro (click sin scroll previo) y se acepta.
+(function(){
+  function track(){ if (window.fbq) { try { fbq('trackCustom', 'CTA_Demo_Agencias', { page: '/agencias/' }); } catch(e){} } }
+  document.querySelectorAll('a[href^="/contacto/"]').forEach(function(a){
+    a.addEventListener('click', track, { passive: true });
+  });
+})();
 </script>
 
 <!-- @include footer -->
